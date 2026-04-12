@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -12,15 +12,46 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Remove body background override — let Tailwind gradient in layout.tsx take effect */
 body {
-  background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ─── Animated gradient orb ─────────────────────────────────────────────── */
+@keyframes orb-drift {
+  0%   { transform: translate(-50%, -50%) scale(1);   opacity: 0.6; }
+  50%  { transform: translate(-48%, -52%) scale(1.08); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(1);   opacity: 0.6; }
+}
+
+/* ─── Pulse ring for hero glow ───────────────────────────────────────────── */
+@keyframes pulse-ring {
+  0%   { transform: translate(-50%, -50%) scale(0.95); opacity: 0.5; }
+  70%  { transform: translate(-50%, -50%) scale(1.1);  opacity: 0;   }
+  100% { transform: translate(-50%, -50%) scale(0.95); opacity: 0;   }
+}
+
+/* ─── Floating shimmer on cards ──────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* ─── Slow background pan ───────────────────────────────────────────────── */
+@keyframes bg-pan {
+  0%   { background-position: 0% 50%;   }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%;   }
+}
+
+.animate-orb-drift  { animation: orb-drift  8s ease-in-out infinite; }
+.animate-pulse-ring { animation: pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
+.animate-shimmer    { animation: shimmer    3s linear infinite; }
+.animate-bg-pan     {
+  background-size: 300% 300%;
+  animation: bg-pan 12s ease infinite;
 }
