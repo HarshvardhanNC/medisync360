@@ -1,0 +1,8 @@
+{
+  "pythonVersion": "3.9",
+  "typeCheckingMode": "off",
+  "useLibraryCodeForTypes": true,
+  "reportMissingModuleSource": "none",
+  "reportMissingImports": "none",
+  "reportMissingTypeStubs": "none"
+}

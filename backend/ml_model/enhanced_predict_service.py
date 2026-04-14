@@ -1,19 +1,20 @@
 import sys
 import json
-import numpy as np
-import joblib
+import numpy as np  # type: ignore[import-untyped]
+import joblib  # type: ignore[import-untyped]
 import os
-from typing import List, Dict, Any, Optional
+from itertools import islice as _islice
+from typing import Any, cast, ClassVar, Dict, List, Optional, Set, Tuple
 import re
 
 class EnhancedMedicalPredictor:
-    def __init__(self):
-        self.model = None
-        self.label_encoder = None
-        self.metadata = None
-        self.symptoms = []
-        self.diseases = []
-        self.symptom_to_diseases = {}
+    def __init__(self) -> None:
+        self.model: Any = None
+        self.label_encoder: Any = None
+        self.metadata: Dict[str, Any] = {}
+        self.symptoms: List[str] = []
+        self.diseases: List[str] = []
+        self.symptom_to_diseases: Dict[str, List[str]] = {}
         self.load_model()
     
     def load_model(self):
@@ -44,7 +45,7 @@ class EnhancedMedicalPredictor:
     # ------------------------------------------------------------------ #
 
     # Words/phrases to strip before symptom extraction
-    STOPWORDS = {
+    STOPWORDS: ClassVar[Set[str]] = {
         'i', 'have', 'has', 'had', 'am', 'is', 'are', 'was', 'were', 'be',
         'been', 'being', 'feel', 'feeling', 'felt', 'get', 'getting', 'got',
         'experiencing', 'experience', 'suffer', 'suffering', 'noticed', 'notice',
@@ -65,7 +66,7 @@ class EnhancedMedicalPredictor:
     # When the matched symptoms clearly point to a specific condition, we skip
     # the ML model and return a high-confidence rule-based result instead.
     # Format: (required_symptoms_set, min_match_count, disease, confidence, specialist, urgency)
-    CRITICAL_SYMPTOM_RULES = [
+    CRITICAL_SYMPTOM_RULES: ClassVar[List[Tuple[Set[str], int, str, int, str, str]]] = [
         # Cardiac
         ({'chest pain', 'chest tightness', 'heart pain', 'chest discomfort'},
          1, 'Heart attack', 88, 'Cardiologist', 'Emergency - Seek immediate care'),
@@ -100,7 +101,7 @@ class EnhancedMedicalPredictor:
     # Lay-person phrase → medical keyword mapping
     # IMPORTANT: Order matters - more specific patterns first.
     # Use word boundaries (\b) to avoid partial-word false positives.
-    PHRASE_MAP = [
+    PHRASE_MAP: ClassVar[List[Tuple[str, str]]] = [
         # ── Head / neurological ──────────────────────────────────────────────
         (r'\b(migrain)\b', 'headache'),
         (r'\bhead\b.{0,15}\b(pound|hurt|ach|throb|split|bang|pain)\b', 'headache'),
@@ -193,7 +194,7 @@ class EnhancedMedicalPredictor:
         for part in parts:
             # Remove stopwords word-by-word
             words = part.strip().split()
-            filtered_words = [w for w in words if w not in self.STOPWORDS and len(w) > 1]
+            filtered_words: List[str] = cast(List[str], [w for w in words if w not in self.STOPWORDS and len(w) > 1])
 
             if not filtered_words:
                 continue
@@ -201,21 +202,24 @@ class EnhancedMedicalPredictor:
             # Try 3-gram, 2-gram, 1-gram n-grams against the known symptom list
             n = len(filtered_words)
             matched_any = False
+            best_score_inner: float = 0.0
+            best_sym_inner: Optional[str] = None
             for size in [3, 2, 1]:
                 if matched_any:
                     break
                 for start in range(n - size + 1):
-                    ngram = ' '.join(filtered_words[start:start + size])
+                    tokens: List[str] = [filtered_words[j] for j in range(start, start + size)]
+                    ngram = ' '.join(tokens)
                     # Check against known symptoms with fuzzy matching
-                    best_score = 0
-                    best_sym = None
+                    best_score_inner = 0.0
+                    best_sym_inner = None
                     for sym in self.symptoms:
                         score = self.calculate_symptom_similarity(ngram, sym)
-                        if score > best_score:
-                            best_score = score
-                            best_sym = sym
-                    if best_sym and best_score >= 0.6:
-                        extracted.append(best_sym)
+                        if score > best_score_inner:
+                            best_score_inner = score
+                            best_sym_inner = sym
+                    if best_sym_inner and best_score_inner >= 0.6:
+                        extracted.append(best_sym_inner)
                         matched_any = True
                         break
 
@@ -230,7 +234,7 @@ class EnhancedMedicalPredictor:
 
         return unique if unique else [text_lower]  # fallback: return original
 
-    def preprocess_symptoms(self, user_symptoms: str) -> tuple:
+    def preprocess_symptoms(self, user_symptoms: str) -> Tuple[Any, List[str], float]:
         """Enhanced symptom preprocessing with NLP + fuzzy matching"""
         # ── NLP extraction: convert natural language → symptom keyword list ──
         # Check if it looks like plain comma-separated keywords already
@@ -250,20 +254,20 @@ class EnhancedMedicalPredictor:
         # Create feature vector
         feature_vector = np.zeros(len(self.symptoms))
         matched_symptoms = []
-        confidence_boost = 0
+        confidence_boost: float = 0.0
         
         for user_symptom in symptom_list:
             # Direct exact match
             if user_symptom in self.symptoms:
                 idx = self.symptoms.index(user_symptom)
-                feature_vector[idx] = 1
+                feature_vector[idx] = 1  # type: ignore[index]
                 matched_symptoms.append(user_symptom)
                 confidence_boost += 0.2
                 continue
             
             # Fuzzy matching with enhanced logic
-            best_match = None
-            best_score = 0
+            best_match: Optional[Tuple[int, str]] = None
+            best_score: float = 0.0
             
             for i, model_symptom in enumerate(self.symptoms):
                 score = self.calculate_symptom_similarity(user_symptom, model_symptom)
@@ -272,7 +276,7 @@ class EnhancedMedicalPredictor:
                     best_match = (i, model_symptom)
             
             if best_match:
-                feature_vector[best_match[0]] = best_score
+                feature_vector[best_match[0]] = best_score  # type: ignore[index]
                 matched_symptoms.append(best_match[1])
                 confidence_boost += best_score * 0.1
         
@@ -386,8 +390,8 @@ class EnhancedMedicalPredictor:
                             'confidence': 60.0,
                             'matchedSymptoms': [single_symptom],
                             'alternativePossibilities': [
-                                {'condition': d, 'confidence': 50 - i*10} 
-                                for i, d in enumerate(possible_diseases[1:3])
+                                {'condition': d, 'confidence': 50 - i*10}
+                                for i, d in enumerate(_islice(possible_diseases, 1, 3))  # type: ignore[arg-type]
                             ],
                             'precautions': self.metadata['disease_precautions'].get(primary_disease, []),
                             'dataSource': 'Enhanced ML Model - Single Symptom Mapping',
@@ -408,19 +412,19 @@ class EnhancedMedicalPredictor:
                 }
             
             # Get predictions with probabilities
-            probabilities = self.model.predict_proba([feature_vector])[0]
+            probabilities = self.model.predict_proba([feature_vector])[0]  # type: ignore[index]
             
             # Apply confidence boost
-            probabilities = probabilities * (1 + confidence_boost)
-            probabilities = probabilities / np.sum(probabilities)  # Renormalize
+            probabilities = probabilities * (1 + confidence_boost)  # type: ignore[operator]
+            probabilities = probabilities / np.sum(probabilities)  # type: ignore[operator]  # Renormalize
             
             # Get top predictions
-            top_indices = np.argsort(probabilities)[::-1][:5]
-            top_diseases = []
+            top_indices = np.argsort(probabilities)[::-1][:5]  # type: ignore[index]
+            top_diseases: List[Dict[str, Any]] = []
             
             for idx in top_indices:
-                disease = self.label_encoder.inverse_transform([idx])[0]
-                confidence = probabilities[idx] * 100
+                disease = self.label_encoder.inverse_transform([idx])[0]  # type: ignore[index]
+                confidence = probabilities[idx] * 100  # type: ignore[index]
                 if confidence > 1:  # Lower threshold
                     top_diseases.append({
                         'disease': disease,
@@ -453,10 +457,10 @@ class EnhancedMedicalPredictor:
             specialist = self.get_specialist(primary_disease)
             urgency = self.get_urgency(primary_disease, primary_confidence)
             
-            # Alternative possibilities
-            alternatives = [
-                {'condition': d['disease'], 'confidence': d['confidence']} 
-                for d in top_diseases[1:4]
+            # Alternative possibilities (skip index 0 = primary, take up to 3 more)
+            alternatives: List[Dict[str, Any]] = [
+                {'condition': d['disease'], 'confidence': d['confidence']}
+                for d in _islice(top_diseases, 1, 4)
             ]
             
             return {
