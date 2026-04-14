@@ -25,11 +25,14 @@ import authRoutes from './routes/authRoutes';
 import hospitalRoutes from './routes/hospitalRoutes';
 import userRoutes from './routes/userRoutes';
 import aiRoutes from './routes/aiRoutes';
+import testRoutes from './routes/testRoutes';
+
 app.use('/api/auth', authRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/api/hospitals', hospitalRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/ai', aiRoutes);
+app.use('/api/test', testRoutes);
 
 // Basic route
 app.get('/', (req: Request, res: Response) => {

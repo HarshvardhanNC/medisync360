@@ -13,7 +13,8 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    const isPublicPage = publicPages.includes(pathname);
+    const isPublicPage =
+      publicPages.includes(pathname) || pathname.startsWith("/emergency");
 
     if (!token && !isPublicPage) {
       // Redirect to login if trying to access a protected route without a token

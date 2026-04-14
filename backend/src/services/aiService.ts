@@ -1,103 +1,123 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { MLModelService } from './mlModelService';
+import fs from 'fs';
+import path from 'path';
 
-// Initialize Gemini with an API key from environment
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || 'fake-key-for-now');
+// Initialize ML Model Service (NO GEMINI AI)
+const mlService = new MLModelService();
 
 export const predictDiseaseFromSymptoms = async (symptoms: string) => {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
-    const prompt = `
-      You are an expert medical AI assistant.
-      The user describes the following symptoms: "${symptoms}"
-      Based on these symptoms, predict the most likely disease or medical condition.
-      Also suggest the appropriate medical specialist the user should consult.
-      Return the output strictly in the following JSON format without formatting blocks:
-      {
-        "predictedCondition": "Condition Name",
-        "recommendedSpecialist": "Specialist Name",
-        "urgencyLevel": "Low/Medium/High",
-        "description": "Short description of condition"
-      }
-    `;
-
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
+    if (!symptoms || symptoms.trim().length === 0) {
+      throw new Error("Please provide at least one symptom");
+    }
     
-    // Clean up potentially wrapped markdown from output
-    const cleanJsonString = text.replace(/```json/g, '').replace(/```/g, '');
-    return JSON.parse(cleanJsonString);
+    console.log(`Using trained ML model for symptoms: ${symptoms}`);
+    
+    // Use trained ML model for prediction
+    const result = await mlService.predictDisease(symptoms);
+    
+    console.log(`ML Model prediction: ${result.predictedCondition} (${result.confidence}% confidence)`);
+    
+    return {
+      predictedCondition: result.predictedCondition,
+      recommendedSpecialist: result.recommendedSpecialist,
+      urgencyLevel: result.urgencyLevel,
+      description: result.description,
+      confidence: result.confidence,
+      isEmergency: result.urgencyLevel.includes('Emergency'),
+      precautions: result.precautions,
+      alternativePossibilities: result.alternativePossibilities,
+      matchedSymptoms: result.matchedSymptoms,
+      dataSource: result.dataSource,
+      modelType: result.modelType,
+      totalDiseasesAnalyzed: 41 // From Kaggle dataset
+    };
   } catch (error: any) {
-    console.error("AI Prediction Error:", error);
-    throw new Error(error.message || "Failed to process prediction via AI");
+    console.error("ML Model Prediction Error:", error);
+    throw new Error(error.message || "Failed to process symptom analysis with ML model");
   }
 };
 
+// Keep insurance analysis simple without AI
 export const analyzeInsurancePolicy = async (policyText: string, costQuotation: number) => {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
-    const prompt = `
-      You are an expert health insurance claims analyst.
-      Analyze the following insurance policy excerpts:
-      "${policyText}"
-      
-      The hospital has quoted a treatment cost of: $${costQuotation}.
-      
-      Calculate or estimate:
-      1. Estimated approved amount.
-      2. Expenses not covered.
-      3. Possible reasons for claim rejection based on exclusions.
-      
-      Return the output strictly in the following JSON format without formatting blocks:
-      {
-        "estimatedCoveredAmount": 0,
-        "estimatedOutOfPocket": 0,
-        "notCoveredReasons": ["reason 1"],
-        "rejectionRisks": ["risk 1"]
-      }
-    `;
-
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
-
-    const cleanJsonString = text.replace(/```json/g, '').replace(/```/g, '');
-    return JSON.parse(cleanJsonString);
+    // Simple rule-based insurance analysis
+    const coveragePercentage = 0.8; // Assume 80% coverage
+    const estimatedCovered = Math.round(costQuotation * coveragePercentage);
+    const estimatedOutOfPocket = costQuotation - estimatedCovered;
+    
+    return {
+      estimatedCoveredAmount: estimatedCovered,
+      estimatedOutOfPocket: estimatedOutOfPocket,
+      notCoveredReasons: [
+        "Pre-existing conditions may not be covered",
+        "Cosmetic procedures typically excluded",
+        "Experimental treatments may not be covered"
+      ],
+      rejectionRisks: [
+        "Incomplete documentation",
+        "Treatment not medically necessary",
+        "Provider not in network"
+      ],
+      analysisMethod: "Rule-based estimation"
+    };
   } catch (error: any) {
-    console.error("AI Insurance Analysis Error:", error);
-    throw new Error(error.message || "Failed to process insurance policy via AI");
+    console.error("Insurance Analysis Error:", error);
+    throw new Error(error.message || "Failed to process insurance policy analysis");
   }
 };
 
 export const findRealHospitals = async (specialist: string, location: string) => {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
-    const prompt = `
-      You are an expert healthcare navigation assistant.
-      Provide a list of 6 real-world, prominent hospitals located in or near "${location}" that have excellent departments for "${specialist}".
-      Estimate their general treatment cost range (e.g. "$500 - $2000" or "$$$"), average hospital rating out of 5.0, average doctor experience in years, and common insurances they might accept.
-      Return the output strictly in the following JSON format as an array of objects without formatting blocks:
-      [
-        {
-          "name": "Actual Hospital Name",
-          "location": "City, State",
-          "treatmentCostRange": "Estimated Cost",
-          "rating": 4.5,
-          "doctorExperienceAvgYears": 15,
-          "insuranceCompatibility": ["Insurance A", "Insurance B"],
-          "specialties": ["Specialty 1", "Specialty 2"]
-        }
-      ]
-    `;
-
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
-
-    const cleanJsonString = text.replace(/```json/g, '').replace(/```/g, '');
-    return JSON.parse(cleanJsonString);
+    // Load hospital database
+    const hospitalDbPath = path.join(__dirname, '../data/hospital-database.json');
+    const hospitalData = JSON.parse(fs.readFileSync(hospitalDbPath, 'utf8'));
+    
+    // Filter hospitals by specialty
+    const matchingHospitals = hospitalData.hospitals.filter((hospital: any) => {
+      return hospital.specialties.some((specialty: string) => 
+        specialty.toLowerCase().includes(specialist.toLowerCase()) ||
+        specialist.toLowerCase().includes(specialty.toLowerCase())
+      );
+    });
+    
+    // If no specialty match, return top-rated general hospitals
+    const hospitalsToReturn = matchingHospitals.length > 0 ? matchingHospitals : hospitalData.hospitals;
+    
+    // Sort by rating and return top 6
+    const topHospitals = hospitalsToReturn
+      .sort((a: any, b: any) => b.rating - a.rating)
+      .slice(0, 6)
+      .map((hospital: any) => ({
+        name: hospital.name,
+        location: hospital.location,
+        treatmentCostRange: hospital.treatmentCostRange,
+        rating: hospital.rating,
+        doctorExperienceAvgYears: hospital.doctorExperienceAvg,
+        insuranceCompatibility: hospital.insuranceCompatibility,
+        specialties: hospital.specialties,
+        emergencyServices: hospital.emergencyServices
+      }));
+    
+    return topHospitals;
   } catch (error: any) {
-    console.error("AI Hospital Search Error:", error);
-    throw new Error(error.message || "Failed to search hospitals via AI");
+    console.error("Hospital Search Error:", error);
+    throw new Error(error.message || "Failed to search hospitals");
+  }
+};
+
+// ML Model health check
+export const getMLModelStatus = async () => {
+  try {
+    const modelInfo = await mlService.getModelInfo();
+    return {
+      status: 'ML Model Active',
+      ...modelInfo,
+      aiProvider: 'None - Using Trained ML Model',
+      geminiStatus: 'Disabled - Not using external AI'
+    };
+  } catch (error: any) {
+    console.error("ML Model Status Error:", error);
+    throw new Error("ML Model is not available");
   }
 };

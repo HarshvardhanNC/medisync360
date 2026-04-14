@@ -1,4 +1,4 @@
-import { Response } from 'express';
+import { Request, Response } from 'express';
 import { AuthRequest } from '../middleware/authMiddleware';
 import User from '../models/User';
 
@@ -53,6 +53,24 @@ export const updateUserProfile = async (req: AuthRequest, res: Response) => {
 export const getEmergencyData = async (req: AuthRequest, res: Response) => {
   try {
     const patient = await User.findById(req.params.id).select('name bloodGroup allergies chronicDiseases currentMedications emergencyContact');
+    if (patient) {
+      res.json(patient);
+    } else {
+      res.status(404).json({ error: 'Patient not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Server error retrieving emergency data' });
+  }
+};
+
+// Get public emergency data by patient ID — NO authentication required
+// Used by first responders who scan the patient's SOS QR code
+// GET /api/users/emergency-public/:id
+export const getPublicEmergencyData = async (req: Request, res: Response) => {
+  try {
+    const patient = await User.findById(req.params.id).select(
+      'name bloodGroup allergies chronicDiseases currentMedications emergencyContact -_id'
+    );
     if (patient) {
       res.json(patient);
     } else {

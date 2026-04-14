@@ -22,7 +22,11 @@
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.3.3",
-    "morgan": "^1.10.1"
+    "morgan": "^1.10.1",
+    "numpy": "^0.0.1",
+    "pandas": "^0.0.3",
+    "python-shell": "^5.0.0",
+    "scikit-learn": "^0.1.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
