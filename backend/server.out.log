@@ -1,0 +1,3 @@
+◇ injecting env (7) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+MongoDB connected on ac-acvdds1-shard-00-00.nsrzjjq.mongodb.net
+Server running in development mode on port 5000

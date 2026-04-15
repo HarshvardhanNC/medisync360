@@ -10,20 +10,32 @@ const sanitizeUser = (user: {
   email: string;
   role: UserRole;
   isApproved: boolean;
+  specialization?: string[];
+  experienceYears?: number;
+  consultationFee?: number;
+  location?: string;
 }) => ({
   id: String(user._id),
   name: user.name,
   email: user.email,
   role: user.role,
   isApproved: user.isApproved,
+  specialization: user.specialization,
+  experienceYears: user.experienceYears,
+  consultationFee: user.consultationFee,
+  location: user.location,
 });
 
 export const registerUser = asyncHandler(async (req: Request, res: Response) => {
-  const { name, email, password, role } = req.body as {
+  const { name, email, password, role, specialization, experienceYears, consultationFee, location } = req.body as {
     name?: string;
     email?: string;
     password?: string;
     role?: UserRole;
+    specialization?: string[];
+    experienceYears?: number;
+    consultationFee?: number;
+    location?: string;
   };
 
   if (!name || !email || !password) {
@@ -46,6 +58,10 @@ export const registerUser = asyncHandler(async (req: Request, res: Response) => 
     password,
     role: userRole,
     isApproved: userRole === 'patient',
+    specialization: userRole === 'doctor' ? specialization : undefined,
+    experienceYears: userRole === 'doctor' ? experienceYears : undefined,
+    consultationFee: userRole === 'doctor' ? consultationFee : undefined,
+    location: userRole === 'doctor' ? location : undefined,
   });
 
   const token = generateToken(String(user._id), user.role);

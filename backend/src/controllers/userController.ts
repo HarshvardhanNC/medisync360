@@ -38,6 +38,22 @@ export const updateUserProfile = async (req: AuthRequest, res: Response) => {
       user.password = req.body.password;
     }
 
+    if (req.body.specialization) {
+      user.specialization = req.body.specialization;
+    }
+
+    if (req.body.experienceYears !== undefined) {
+      user.experienceYears = req.body.experienceYears;
+    }
+
+    if (req.body.consultationFee !== undefined) {
+      user.consultationFee = req.body.consultationFee;
+    }
+
+    if (req.body.location) {
+      user.location = req.body.location;
+    }
+
     const updatedUser = await user.save();
     res.json({
       id: updatedUser._id,
@@ -45,6 +61,10 @@ export const updateUserProfile = async (req: AuthRequest, res: Response) => {
       email: updatedUser.email,
       role: updatedUser.role,
       isApproved: updatedUser.isApproved,
+      specialization: updatedUser.specialization,
+      experienceYears: updatedUser.experienceYears,
+      consultationFee: updatedUser.consultationFee,
+      location: updatedUser.location,
     });
   } catch (error) {
     res.status(500).json({ error: 'Server error updating profile' });

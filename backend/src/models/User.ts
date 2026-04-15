@@ -10,6 +10,10 @@ export interface IUser {
   password: string;
   role: UserRole;
   isApproved: boolean;
+  specialization?: string[];
+  experienceYears?: number;
+  consultationFee?: number;
+  location?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -50,6 +54,23 @@ const userSchema = new Schema<IUser, UserModel, IUserMethods>(
     isApproved: {
       type: Boolean,
       default: false,
+    },
+    specialization: {
+      type: [String],
+      default: undefined,
+    },
+    experienceYears: {
+      type: Number,
+      default: undefined,
+    },
+    consultationFee: {
+      type: Number,
+      default: undefined,
+    },
+    location: {
+      type: String,
+      trim: true,
+      default: undefined,
     },
   },
   {
