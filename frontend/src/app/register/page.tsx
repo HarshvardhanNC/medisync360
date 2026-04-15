@@ -12,7 +12,10 @@ export default function Register() {
     email: "",
     password: "",
     confirmPassword: "",
-    role: "patient",
+    role: "patient" as "patient" | "doctor" | "admin",
+    specialization: [] as string[],
+    experienceYears: 0,
+    consultationFee: 0,
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -76,14 +79,14 @@ export default function Register() {
                 className="w-full px-4 py-3 rounded-xl bg-[#1F2937] border border-gray-600 text-white focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 appearance-none cursor-pointer font-medium"
               >
                 <option value="patient">Patient</option>
-                <option value="provider">Provider (Doctor/Hospital)</option>
+                <option value="doctor">Doctor</option>
                 <option value="admin">Admin</option>
               </select>
             </div>
 
             <div>
               <label className="block text-sm font-semibold text-gray-300 mb-1 ml-1">
-                {formData.role === 'provider' ? 'Hospital / Doctor Name' : 'Full Name'}
+                {formData.role === 'doctor' ? 'Doctor Name' : 'Full Name'}
               </label>
               <input 
                 type="text" 
@@ -91,7 +94,7 @@ export default function Register() {
                 value={formData.name}
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-xl bg-[#1F2937] border border-gray-600 text-white placeholder-gray-500 focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition-all font-medium" 
-                placeholder={formData.role === 'provider' ? 'e.g. City General Hospital' : 'Jane Doe'} 
+                placeholder={formData.role === 'doctor' ? 'e.g. Dr. Jane Doe' : 'Jane Doe'} 
                 required
               />
             </div>
@@ -108,8 +111,8 @@ export default function Register() {
               />
             </div>
             
-            {/* Conditional Provider Fields */}
-            {formData.role === 'provider' && (
+            {/* Conditional Doctor Fields */}
+            {formData.role === 'doctor' && (
               <div className="p-4 bg-teal-900/20 border border-teal-500/30 rounded-xl space-y-4 animate-in fade-in slide-in-from-top-2">
                 <div>
                   <label className="block text-sm font-semibold text-teal-300 mb-1 ml-1">Specialization</label>
@@ -117,12 +120,14 @@ export default function Register() {
                     type="text" 
                     name="specialization"
                     onChange={(e) => {
-                       // Convert comma separated string to array for backend
-                       setFormData({ ...formData, specialization: e.target.value.split(',').map(s => s.trim()) as any })
+                       setFormData({
+                         ...formData,
+                         specialization: e.target.value.split(',').map((s) => s.trim()).filter(Boolean),
+                       })
                     }}
                     className="w-full px-4 py-2.5 rounded-lg bg-[#1F2937]/80 border border-teal-600/50 text-white placeholder-gray-500 focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition-all font-medium text-sm" 
                     placeholder="e.g. Cardiology, Neurology" 
-                    required={formData.role === 'provider'}
+                    required={formData.role === 'doctor'}
                   />
                   <p className="text-xs text-gray-500 mt-1 ml-1">Separate multiple with commas</p>
                 </div>
@@ -132,7 +137,7 @@ export default function Register() {
                     <input 
                       type="number" 
                       name="experienceYears"
-                      onChange={(e) => setFormData({ ...formData, experienceYears: parseInt(e.target.value) as any })}
+                      onChange={(e) => setFormData({ ...formData, experienceYears: parseInt(e.target.value || "0", 10) })}
                       className="w-full px-4 py-2.5 rounded-lg bg-[#1F2937]/80 border border-teal-600/50 text-white placeholder-gray-500 focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition-all font-medium text-sm" 
                       placeholder="e.g. 10" 
                     />
@@ -142,7 +147,7 @@ export default function Register() {
                     <input 
                       type="number" 
                       name="consultationFee"
-                      onChange={(e) => setFormData({ ...formData, consultationFee: parseInt(e.target.value) as any })}
+                      onChange={(e) => setFormData({ ...formData, consultationFee: parseInt(e.target.value || "0", 10) })}
                       className="w-full px-4 py-2.5 rounded-lg bg-[#1F2937]/80 border border-teal-600/50 text-white placeholder-gray-500 focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition-all font-medium text-sm" 
                       placeholder="e.g. 500" 
                     />

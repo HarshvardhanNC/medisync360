@@ -3,15 +3,43 @@
 import { useState } from "react";
 import { fetchAPI } from "../../utils/api";
 
+type ProviderSlot = {
+  time: string;
+  isBooked: boolean;
+};
+
+type ProviderDoctor = {
+  id: string;
+  name: string;
+  specialization: string;
+  experience: number;
+  fees: number;
+  availability: ProviderSlot[];
+};
+
+type ProviderCard = {
+  id: string;
+  type: "hospital" | "clinic";
+  name: string;
+  location: string;
+  treatmentCostRange: string;
+  rating: number;
+  doctorExperienceAvgYears: number;
+  insuranceCompatibility: string[];
+  emergencyServices: boolean;
+  doctors: ProviderDoctor[];
+};
+
 export default function SymptomChecker() {
   const [symptoms, setSymptoms] = useState("");
   const [loading, setLoading] = useState(false);
   const [prediction, setPrediction] = useState<any>(null);
   const [error, setError] = useState("");
 
-  const [hospitals, setHospitals] = useState<any[]>([]);
+  const [hospitals, setHospitals] = useState<ProviderCard[]>([]);
   const [fetchingHospitals, setFetchingHospitals] = useState(false);
   const [userLocation, setUserLocation] = useState("");
+  const [bookingKey, setBookingKey] = useState("");
 
   const handleAnalyze = async () => {
     if (!symptoms) return;
@@ -26,6 +54,50 @@ export default function SymptomChecker() {
       setError(err.message || 'Failed to analyze symptoms');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleBookSlot = async (hospital: ProviderCard, doctor: ProviderDoctor, slot: ProviderSlot) => {
+    const targetLocation = userLocation.trim() !== "" ? userLocation : hospital.location;
+    const bookingId = `${hospital.id}:${doctor.id}:${slot.time}`;
+
+    setBookingKey(bookingId);
+    setError("");
+
+    try {
+      await fetchAPI("/ai/book-generated-slot", "POST", {
+        providerId: hospital.id,
+        doctorId: doctor.id,
+        time: slot.time,
+        specialist: prediction?.recommendedSpecialist || doctor.specialization,
+        location: targetLocation,
+      });
+
+      setHospitals((current) =>
+        current.map((item) =>
+          item.id !== hospital.id
+            ? item
+            : {
+                ...item,
+                doctors: item.doctors.map((itemDoctor) =>
+                  itemDoctor.id !== doctor.id
+                    ? itemDoctor
+                    : {
+                        ...itemDoctor,
+                        availability: itemDoctor.availability.map((itemSlot) =>
+                          itemSlot.time === slot.time
+                            ? { ...itemSlot, isBooked: true }
+                            : itemSlot,
+                        ),
+                      },
+                ),
+              },
+        ),
+      );
+    } catch (err: any) {
+      setError(err.message || "Failed to book appointment slot");
+    } finally {
+      setBookingKey("");
     }
   };
 
@@ -136,26 +208,27 @@ export default function SymptomChecker() {
                  {prediction.description}
                </div>
 
-               {hospitals.length === 0 && !fetchingHospitals && (
-                 <div className="md:col-span-2 mt-4 p-6 bg-emerald-500/5 border border-emerald-500/20 rounded-2xl">
-                   <h3 className="text-lg font-semibold text-emerald-50 mb-2">Locate Treatment Facilities</h3>
-                   <p className="text-emerald-200/60 mb-6 font-light text-sm">Target area mapping for {prediction.recommendedSpecialist} availability.</p>
-                   <div className="flex flex-col md:flex-row gap-3">
-                     <input 
-                       type="text" 
-                       placeholder="Enter Region or Zip Code..."
-                       value={userLocation}
-                       onChange={(e) => setUserLocation(e.target.value)}
-                       className="flex-1 p-3.5 rounded-xl bg-zinc-950 border border-emerald-500/20 text-white text-base focus:border-emerald-500 focus:outline-none transition"
-                     />
-                     <button 
-                      onClick={handleFindHospitals}
-                      className="px-6 py-3.5 bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/30 text-emerald-400 font-semibold rounded-xl transition-all active:scale-95 whitespace-nowrap">
-                      Scan Network
-                     </button>
-                   </div>
+               <div className="md:col-span-2 mt-4 p-6 bg-emerald-500/5 border border-emerald-500/20 rounded-2xl">
+                 <h3 className="text-lg font-semibold text-emerald-50 mb-2">Locate Treatment Facilities</h3>
+                 <p className="text-emerald-200/60 mb-6 font-light text-sm">
+                   Target area mapping for {prediction.recommendedSpecialist} availability.
+                 </p>
+                 <div className="flex flex-col md:flex-row gap-3">
+                   <input 
+                     type="text" 
+                     placeholder="Enter Region or Zip Code..."
+                     value={userLocation}
+                     onChange={(e) => setUserLocation(e.target.value)}
+                     className="flex-1 p-3.5 rounded-xl bg-zinc-950 border border-emerald-500/20 text-white text-base focus:border-emerald-500 focus:outline-none transition"
+                   />
+                   <button 
+                    onClick={handleFindHospitals}
+                    disabled={fetchingHospitals}
+                    className={`px-6 py-3.5 bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/30 text-emerald-400 font-semibold rounded-xl transition-all active:scale-95 whitespace-nowrap ${fetchingHospitals ? 'opacity-70 cursor-wait' : ''}`}>
+                    {fetchingHospitals ? 'Scanning...' : 'Scan Network'}
+                   </button>
                  </div>
-               )}
+               </div>
 
                {fetchingHospitals && (
                  <div className="md:col-span-2 flex flex-col items-center justify-center p-12 bg-zinc-900/50 rounded-2xl border border-zinc-800 mt-2">
@@ -173,8 +246,8 @@ export default function SymptomChecker() {
             <h2 className="text-2xl font-bold text-white mb-6">Network Targets</h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              {hospitals.map((hospital, idx) => (
-                <div key={idx} className="bg-zinc-900/40 rounded-3xl p-6 border border-zinc-800 hover:bg-zinc-800/40 hover:border-zinc-700 transition duration-300 relative">
+              {hospitals.map((hospital) => (
+                <div key={hospital.id} className="bg-zinc-900/40 rounded-3xl p-6 border border-zinc-800 hover:bg-zinc-800/40 hover:border-zinc-700 transition duration-300 relative">
                   <div className="absolute top-6 right-6 bg-zinc-800 text-zinc-300 px-3 py-1 rounded-full text-xs font-bold border border-zinc-700">
                      {hospital.treatmentCostRange || '$$$'}
                   </div>
@@ -215,6 +288,47 @@ export default function SymptomChecker() {
                         <span className="text-[11px] font-medium text-zinc-500 px-1 py-1">+{hospital.insuranceCompatibility.length - 3}</span>
                       )}
                     </div>
+                  </div>
+
+                  <div className="mt-5 bg-zinc-950 p-4 rounded-xl border border-zinc-800/80 space-y-4">
+                    <p className="text-[10px] text-zinc-500 uppercase font-bold tracking-widest">Available Doctors</p>
+                    {hospital.doctors.map((doctor) => (
+                      <div key={doctor.id} className="rounded-xl border border-zinc-800 bg-zinc-900/70 p-4">
+                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                          <div>
+                            <h4 className="text-white font-semibold">{doctor.name}</h4>
+                            <p className="text-sm text-zinc-400">
+                              {doctor.specialization} • {doctor.experience} years • INR {doctor.fees}
+                            </p>
+                          </div>
+                          <span className="text-[10px] text-emerald-400 border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-1 rounded-full font-bold uppercase tracking-widest">
+                            {hospital.type}
+                          </span>
+                        </div>
+
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {doctor.availability.map((slot) => {
+                            const currentBookingKey = `${hospital.id}:${doctor.id}:${slot.time}`;
+                            const isBooking = bookingKey === currentBookingKey;
+
+                            return (
+                              <button
+                                key={slot.time}
+                                onClick={() => handleBookSlot(hospital, doctor, slot)}
+                                disabled={slot.isBooked || isBooking}
+                                className={`px-3 py-2 rounded-lg text-xs font-semibold border transition-all ${
+                                  slot.isBooked
+                                    ? "bg-red-500/10 border-red-500/20 text-red-400 cursor-not-allowed"
+                                    : "bg-white text-zinc-950 border-white hover:bg-zinc-200"
+                                } ${isBooking ? "opacity-70 cursor-wait" : ""}`}
+                              >
+                                {slot.isBooked ? `${slot.time} • Booked` : isBooking ? "Booking..." : `Book ${slot.time}`}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               ))}

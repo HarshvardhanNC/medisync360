@@ -4,7 +4,9 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import authRouter from './routes/authRoutes';
 import aiRouter from './routes/aiRoutes';
+import reportRouter from './routes/reportRoutes';
 import userRouter from './routes/userRoutes';
+import providerRouter from './routes/providerRoutes';
 import { errorHandler, notFoundHandler } from './middleware/errorMiddleware';
 
 const app = express();
@@ -26,7 +28,9 @@ app.get('/api/health', (_req, res) => {
 
 app.use('/api/auth', authRouter);
 app.use('/api/ai', aiRouter);
+app.use('/api/reports', reportRouter);
 app.use('/api/users', userRouter);
+app.use('/api/providers', providerRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
