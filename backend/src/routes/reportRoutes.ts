@@ -26,4 +26,12 @@ router.get('/:id', protect, getReportById);
 // POST /api/reports/verify/:id — recompute hash and compare with stored + blockchain hash
 router.post('/verify/:id', protect, verifyReport);
 
+import { shareReport, getSharedReports } from '../controllers/reportController';
+
+// POST /api/reports/:id/share — Share report with provider
+router.post('/:id/share', protect, shareReport);
+
+// GET /api/reports/shared-with-me — Get reports shared with provider
+router.get('/shared-with-me', protect, getSharedReports);
+
 export default router;

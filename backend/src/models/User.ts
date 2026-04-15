@@ -1,28 +1,74 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import bcrypt from 'bcryptjs';
+import { HydratedDocument, Model, Schema, model } from 'mongoose';
 
-export interface IUser extends Document {
+export const USER_ROLES = ['patient', 'doctor', 'admin'] as const;
+export type UserRole = (typeof USER_ROLES)[number];
+
+export interface IUser {
   name: string;
   email: string;
-  password?: string;
-  role: 'patient' | 'doctor';
-  bloodGroup?: string;
-  allergies?: string[];
-  chronicDiseases?: string[];
-  currentMedications?: string[];
-  emergencyContact?: string;
+  password: string;
+  role: UserRole;
+  isApproved: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-const UserSchema: Schema = new Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  role: { type: String, enum: ['patient', 'doctor'], default: 'patient' },
-  // Emergency Data
-  bloodGroup: { type: String },
-  allergies: [{ type: String }],
-  chronicDiseases: [{ type: String }],
-  currentMedications: [{ type: String }],
-  emergencyContact: { type: String },
-}, { timestamps: true });
+export interface IUserMethods {
+  comparePassword(candidatePassword: string): Promise<boolean>;
+}
 
-export default mongoose.model<IUser>('User', UserSchema);
+export type IUserDocument = HydratedDocument<IUser, IUserMethods>;
+type UserModel = Model<IUser, Record<string, never>, IUserMethods>;
+
+const userSchema = new Schema<IUser, UserModel, IUserMethods>(
+  {
+    name: {
+      type: String,
+      required: [true, 'Name is required'],
+      trim: true,
+    },
+    email: {
+      type: String,
+      required: [true, 'Email is required'],
+      unique: true,
+      lowercase: true,
+      trim: true,
+    },
+    password: {
+      type: String,
+      required: [true, 'Password is required'],
+      minlength: [6, 'Password must be at least 6 characters long'],
+      select: false,
+    },
+    role: {
+      type: String,
+      enum: USER_ROLES,
+      default: 'patient',
+      required: true,
+    },
+    isApproved: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  {
+    timestamps: true,
+    versionKey: false,
+  },
+);
+
+userSchema.pre('save', async function hashPassword() {
+  if (!this.isModified('password')) {
+    return;
+  }
+
+  this.password = await bcrypt.hash(this.password, 12);
+});
+
+userSchema.methods.comparePassword = function comparePassword(candidatePassword: string): Promise<boolean> {
+  return bcrypt.compare(candidatePassword, this.password);
+};
+
+export const User = model<IUser, UserModel>('User', userSchema);
+export default User;

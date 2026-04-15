@@ -10,7 +10,6 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Check if user is logged in
     const token = localStorage.getItem("token");
     setIsAuthenticated(!!token);
   }, [pathname]);
@@ -22,84 +21,106 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed w-full z-50 bg-[#0B0F19]/80 backdrop-blur-xl border-b border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          <div className="flex items-center">
-            <Link href="/" className="text-3xl font-extrabold tracking-tight flex items-center space-x-2 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-400 to-emerald-500 flex items-center justify-center shadow-lg shadow-teal-500/20 group-hover:scale-105 transition-transform">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4v16m8-8H4"></path></svg>
-              </div>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 group-hover:to-white transition-colors">MediSync</span>
-              <span className="text-teal-400">360</span>
+    <div className="fixed top-0 inset-x-0 z-50 flex justify-center pt-6 px-4 pointer-events-none">
+      <nav className="pointer-events-auto w-full max-w-5xl bg-zinc-950/70 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] rounded-full px-6 py-3 flex items-center justify-between transition-all">
+        
+        {/* Brand */}
+        <div className="flex items-center">
+          <Link href="/" className="flex items-center space-x-2.5 group">
+            <div className="w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+              <div className="w-3 h-3 rounded-full bg-emerald-400 group-hover:scale-110 transition-transform shadow-[0_0_12px_rgba(52,211,153,0.8)]" />
+            </div>
+            <span className="text-xl font-bold tracking-tight text-white group-hover:text-emerald-50 transition-colors">
+              MediSync<span className="text-zinc-500 font-medium">360</span>
+            </span>
+          </Link>
+        </div>
+        
+        {/* Desktop Links */}
+        <div className="hidden md:flex items-center space-x-2">
+          {[
+            { name: 'Dashboard', path: '/dashboard' },
+            { name: 'Diagnosis', path: '/symptom-checker' },
+            { name: 'Vault', path: '/vault' },
+            { name: 'Insurance', path: '/insurance' }
+          ].map((link) => {
+            const isActive = pathname === link.path;
+            return (
+              <Link 
+                key={link.name} 
+                href={link.path} 
+                className={`px-4 py-2.5 rounded-full text-base font-semibold transition-all ${
+                  isActive 
+                    ? 'bg-white/10 text-white shadow-inner' 
+                    : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                {link.name}
+              </Link>
+            )
+          })}
+        </div>
+        
+        {/* Auth Button */}
+        <div className="hidden md:flex items-center ml-4">
+          {isAuthenticated ? (
+            <button 
+              onClick={handleLogout}
+              className="px-5 py-2 text-sm font-semibold rounded-full bg-transparent text-zinc-400 hover:text-white border border-transparent hover:border-zinc-800 hover:bg-zinc-900 transition-all"
+            >
+              Logout
+            </button>
+          ) : (
+            <Link 
+              href="/login" 
+              className="px-6 py-2 text-sm font-semibold rounded-full bg-white text-zinc-950 hover:bg-zinc-200 transition-all shadow-[0_0_15px_rgba(255,255,255,0.15)]"
+            >
+              Sign In
             </Link>
-          </div>
+          )}
+        </div>
+
+        {/* Mobile menu button */}
+        <div className="md:hidden flex items-center">
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="text-zinc-400 hover:text-white p-2 focus:outline-none"
+          >
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {mobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Menu Dropdown */}
+      {mobileMenuOpen && (
+        <div className="md:hidden absolute top-[80px] w-[calc(100%-2rem)] max-w-sm right-4 bg-zinc-900/95 backdrop-blur-3xl border border-white/10 rounded-3xl p-4 shadow-2xl pointer-events-auto flex flex-col space-y-2 animate-subtle-fade">
+          <Link href="/dashboard" className="px-5 py-3 rounded-xl font-medium text-zinc-300 hover:bg-white/5 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Dashboard</Link>
+          <Link href="/symptom-checker" className="px-5 py-3 rounded-xl font-medium text-zinc-300 hover:bg-white/5 hover:text-white" onClick={() => setMobileMenuOpen(false)}>AI Diagnosis</Link>
+          <Link href="/vault" className="px-5 py-3 rounded-xl font-medium text-zinc-300 hover:bg-white/5 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Medical Vault</Link>
+          <Link href="/insurance" className="px-5 py-3 rounded-xl font-medium text-zinc-300 hover:bg-white/5 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Insurance</Link>
           
-          {/* Desktop Nav */}
-          <div className="hidden md:flex space-x-2 items-center bg-[#111827] border border-gray-700/50 rounded-full px-2 py-1.5 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
-            <Link href="/dashboard" className={`px-5 py-2 rounded-full font-medium transition-all ${pathname === '/dashboard' ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}>Dashboard</Link>
-            <Link href="/symptom-checker" className={`px-5 py-2 rounded-full font-medium transition-all ${pathname === '/symptom-checker' ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}>AI Diagnosis</Link>
-            <Link href="/vault" className={`px-5 py-2 rounded-full font-medium transition-all ${pathname === '/vault' ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}>Medical Vault</Link>
-            <Link href="/insurance" className={`px-5 py-2 rounded-full font-medium transition-all ${pathname === '/insurance' ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}>Insurance</Link>
-          </div>
-          
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="pt-4 mt-2 border-t border-zinc-800/50">
             {isAuthenticated ? (
               <button 
-                onClick={handleLogout}
-                className="px-6 py-2.5 text-sm font-bold rounded-full bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white border border-red-500/20 hover:border-red-500 transition-all shadow-lg"
+                onClick={() => { handleLogout(); setMobileMenuOpen(false); }}
+                className="w-full text-center px-5 py-3 rounded-xl font-semibold bg-red-500/10 text-red-400 hover:bg-red-500/20"
               >
                 Logout
               </button>
             ) : (
-              <Link href="/login" className="px-8 py-3 text-sm font-bold rounded-full bg-white text-gray-900 hover:bg-gray-100 hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-                Login
-              </Link>
-            )}
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-gray-300 hover:text-white p-2 rounded-lg hover:bg-white/5 transition focus:outline-none"
-            >
-              <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                {mobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0B0F19] border-b border-gray-800 px-4 pt-2 pb-6 space-y-3 absolute w-full shadow-2xl">
-          <Link href="/dashboard" className={`block px-4 py-3 rounded-xl font-medium transition ${pathname === '/dashboard' ? 'bg-teal-500/10 text-teal-400' : 'text-gray-300 hover:bg-[#111827]'}`} onClick={() => setMobileMenuOpen(false)}>Dashboard</Link>
-          <Link href="/symptom-checker" className={`block px-4 py-3 rounded-xl font-medium transition ${pathname === '/symptom-checker' ? 'bg-teal-500/10 text-teal-400' : 'text-gray-300 hover:bg-[#111827]'}`} onClick={() => setMobileMenuOpen(false)}>AI Diagnosis</Link>
-          <Link href="/vault" className={`block px-4 py-3 rounded-xl font-medium transition ${pathname === '/vault' ? 'bg-teal-500/10 text-teal-400' : 'text-gray-300 hover:bg-[#111827]'}`} onClick={() => setMobileMenuOpen(false)}>Medical Vault</Link>
-          <Link href="/insurance" className={`block px-4 py-3 rounded-xl font-medium transition ${pathname === '/insurance' ? 'bg-teal-500/10 text-teal-400' : 'text-gray-300 hover:bg-[#111827]'}`} onClick={() => setMobileMenuOpen(false)}>Insurance</Link>
-          
-          <div className="pt-6 border-t border-gray-800 pb-2">
-            {isAuthenticated ? (
-              <button 
-                onClick={() => { handleLogout(); setMobileMenuOpen(false); }}
-                className="w-full text-left px-4 py-3 rounded-xl bg-red-500/10 text-red-500 font-bold border border-red-500/20"
-              >
-                Logout All Sessions
-              </button>
-            ) : (
-              <Link href="/login" className="block text-center px-4 py-3 rounded-xl bg-white text-gray-900 font-bold shadow-lg" onClick={() => setMobileMenuOpen(false)}>
-                Secure Login
+              <Link href="/login" className="block text-center px-5 py-3 rounded-xl bg-white text-zinc-950 font-semibold" onClick={() => setMobileMenuOpen(false)}>
+                Sign In
               </Link>
             )}
           </div>
         </div>
       )}
-    </nav>
+    </div>
   );
 }

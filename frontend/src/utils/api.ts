@@ -31,10 +31,18 @@ export const fetchAPI = async (endpoint: string, method: string = 'GET', body: a
       throw new Error('Session expired. Please log in again.');
     }
 
-    const data = await response.json();
+    const contentType = response.headers.get('content-type') || '';
+    const data = contentType.includes('application/json')
+      ? await response.json()
+      : await response.text();
 
     if (!response.ok) {
-      throw new Error(data.error || 'API request failed');
+      const message =
+        typeof data === 'string'
+          ? data
+          : data.error || data.message || 'API request failed';
+
+      throw new Error(message);
     }
 
     return data;
@@ -71,10 +79,18 @@ export const fetchAPIForm = async (endpoint: string, formData: FormData) => {
       throw new Error('Session expired. Please log in again.');
     }
 
-    const data = await response.json();
+    const contentType = response.headers.get('content-type') || '';
+    const data = contentType.includes('application/json')
+      ? await response.json()
+      : await response.text();
 
     if (!response.ok) {
-      throw new Error(data.error || 'Upload failed');
+      const message =
+        typeof data === 'string'
+          ? data
+          : data.error || data.message || 'Upload failed';
+
+      throw new Error(message);
     }
 
     return data;

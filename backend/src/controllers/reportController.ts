@@ -221,3 +221,62 @@ export const verifyReport = async (req: AuthRequest, res: Response): Promise<voi
     res.status(500).json({ error: error.message || 'Server error during verification' });
   }
 };
+
+// ─────────────────────────────────────────────────────────────────────────────
+// POST /api/reports/:id/share
+// Allows a Patient to share their report with a Provider
+// ─────────────────────────────────────────────────────────────────────────────
+export const shareReport = async (req: AuthRequest, res: Response): Promise<void> => {
+  try {
+    const userId = req.user?._id;
+    const reportId = req.params.id;
+    const { doctorId } = req.body;
+
+    if (!doctorId) {
+      res.status(400).json({ error: 'Doctor ID is required' });
+      return;
+    }
+
+    const report = await MedicalReport.findOne({ _id: reportId, userId });
+    
+    if (!report) {
+      res.status(404).json({ error: 'Report not found or unauthorized' });
+      return;
+    }
+
+    if (report.sharedWith.includes(doctorId)) {
+      res.status(400).json({ error: 'Report is already shared with this doctor' });
+      return;
+    }
+
+    report.sharedWith.push(doctorId);
+    await report.save();
+
+    res.json({ message: 'Successfully securely shared report with doctor', report });
+  } catch (error: any) {
+    res.status(500).json({ error: 'Server error tracking shared permissions' });
+  }
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// GET /api/reports/shared-with-me
+// Providers use this to pull all reports explicitly shared with them by patients.
+// ─────────────────────────────────────────────────────────────────────────────
+export const getSharedReports = async (req: AuthRequest, res: Response): Promise<void> => {
+  try {
+    const doctorId = req.user?._id;
+    
+    if (req.user?.role !== 'doctor') {
+      res.status(403).json({ error: 'Endpoint restricted to doctors' });
+      return;
+    }
+
+    const reports = await MedicalReport.find({ sharedWith: doctorId })
+      .populate('userId', 'name email bloodGroup') // pull patient info
+      .sort({ uploadDate: -1 });
+      
+    res.json({ reports });
+  } catch (error: any) {
+    res.status(500).json({ error: 'Failed to access remote shared reports' });
+  }
+};

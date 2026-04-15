@@ -35,8 +35,8 @@ export default function Register() {
 
     setLoading(true);
     try {
-      const { name, email, password, role } = formData;
-      const data = await fetchAPI('/auth/register', 'POST', { name, email, password, role });
+      const { confirmPassword, ...submitData } = formData;
+      const data = await fetchAPI('/auth/register', 'POST', submitData);
       
       // Save token and redirect
       localStorage.setItem('token', data.token);
@@ -76,19 +76,22 @@ export default function Register() {
                 className="w-full px-4 py-3 rounded-xl bg-[#1F2937] border border-gray-600 text-white focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 appearance-none cursor-pointer font-medium"
               >
                 <option value="patient">Patient</option>
+                <option value="provider">Provider (Doctor/Hospital)</option>
                 <option value="admin">Admin</option>
               </select>
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-300 mb-1 ml-1">Full Name</label>
+              <label className="block text-sm font-semibold text-gray-300 mb-1 ml-1">
+                {formData.role === 'provider' ? 'Hospital / Doctor Name' : 'Full Name'}
+              </label>
               <input 
                 type="text" 
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
                 className="w-full px-4 py-3 rounded-xl bg-[#1F2937] border border-gray-600 text-white placeholder-gray-500 focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition-all font-medium" 
-                placeholder="Jane Doe" 
+                placeholder={formData.role === 'provider' ? 'e.g. City General Hospital' : 'Jane Doe'} 
                 required
               />
             </div>
@@ -104,6 +107,50 @@ export default function Register() {
                 required
               />
             </div>
+            
+            {/* Conditional Provider Fields */}
+            {formData.role === 'provider' && (
+              <div className="p-4 bg-teal-900/20 border border-teal-500/30 rounded-xl space-y-4 animate-in fade-in slide-in-from-top-2">
+                <div>
+                  <label className="block text-sm font-semibold text-teal-300 mb-1 ml-1">Specialization</label>
+                  <input 
+                    type="text" 
+                    name="specialization"
+                    onChange={(e) => {
+                       // Convert comma separated string to array for backend
+                       setFormData({ ...formData, specialization: e.target.value.split(',').map(s => s.trim()) as any })
+                    }}
+                    className="w-full px-4 py-2.5 rounded-lg bg-[#1F2937]/80 border border-teal-600/50 text-white placeholder-gray-500 focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition-all font-medium text-sm" 
+                    placeholder="e.g. Cardiology, Neurology" 
+                    required={formData.role === 'provider'}
+                  />
+                  <p className="text-xs text-gray-500 mt-1 ml-1">Separate multiple with commas</p>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-teal-300 mb-1 ml-1">Experience (Years)</label>
+                    <input 
+                      type="number" 
+                      name="experienceYears"
+                      onChange={(e) => setFormData({ ...formData, experienceYears: parseInt(e.target.value) as any })}
+                      className="w-full px-4 py-2.5 rounded-lg bg-[#1F2937]/80 border border-teal-600/50 text-white placeholder-gray-500 focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition-all font-medium text-sm" 
+                      placeholder="e.g. 10" 
+                    />
+                  </div>
+                  <div>
+                     <label className="block text-xs font-semibold text-teal-300 mb-1 ml-1">Consultation Fee (₹)</label>
+                    <input 
+                      type="number" 
+                      name="consultationFee"
+                      onChange={(e) => setFormData({ ...formData, consultationFee: parseInt(e.target.value) as any })}
+                      className="w-full px-4 py-2.5 rounded-lg bg-[#1F2937]/80 border border-teal-600/50 text-white placeholder-gray-500 focus:outline-none focus:border-teal-400 focus:ring-1 focus:ring-teal-400 transition-all font-medium text-sm" 
+                      placeholder="e.g. 500" 
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-semibold text-gray-300 mb-1 ml-1">Password</label>

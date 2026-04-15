@@ -65,12 +65,6 @@ When pushing changes:
 - Remember to lint code (`npm run lint` in frontend).
 - Ensure any new environment variables correspond with an updated `.env.example` if applicable.
 
-Happy Coding! 🚀
-#environment variables for backend
-PORT=5000
-MONGO_URI=mongodb://localhost:27017/medisync360
-JWT_SECRET=super_secret_jwt_key_secure
-
 #sample user for testing
 abc@gmail.com
 123@11

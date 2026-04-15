@@ -10,6 +10,7 @@ export interface IMedicalReport extends Document {
   fileHash: string;
   blockchainHashReference: string;
   verificationStatus: 'verified' | 'tampered' | 'unchecked';
+  sharedWith: mongoose.Types.ObjectId[];
 }
 
 const MedicalReportSchema: Schema = new Schema(
@@ -27,6 +28,8 @@ const MedicalReportSchema: Schema = new Schema(
       enum: ['verified', 'tampered', 'unchecked'],
       default: 'unchecked',
     },
+    // Array of Provider IDs this report is securely shared with
+    sharedWith: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
   },
   { timestamps: true }
 );
