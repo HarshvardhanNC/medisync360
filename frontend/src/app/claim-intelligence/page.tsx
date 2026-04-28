@@ -221,7 +221,7 @@ export default function ClaimIntelligencePage() {
 
           {error && (
             <div style={{ background: "rgba(220, 38, 38, 0.1)", border: "1px solid #7f1d1d", borderRadius: 8, padding: "1rem", color: "#fca5a5", fontSize: "0.875rem" }}>
-              ⚠️ {error}
+              {error}
             </div>
           )}
 
@@ -246,8 +246,8 @@ export default function ClaimIntelligencePage() {
         <div ref={resultRef}>
           {!result && !loading && (
             <div style={{ ...sectionStyle, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: 420, gap: "1rem", color: "#71717a", textAlign: "center" }}>
-              <div style={{ width: 64, height: 64, borderRadius: 8, background: "#18181b", border: "1px solid #27272a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.5rem" }}>
-                📊
+              <div style={{ width: 64, height: 64, borderRadius: 8, background: "#18181b", border: "1px solid #27272a", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <svg className="w-8 h-8 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
               </div>
               <h3 style={{ color: "#a1a1aa", fontWeight: 500, fontSize: "1rem" }}>Awaiting Claim Data</h3>
               <p style={{ fontSize: "0.875rem", lineHeight: 1.6, maxWidth: 280 }}>
@@ -341,7 +341,9 @@ function Results({ result, probColor, probLabel }: {
           <div style={{ marginTop: "1rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
             {result.deductions.map((d, i) => (
               <div key={i} style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start", background: "#18181b", border: "1px solid #27272a", borderRadius: 6, padding: "0.75rem" }}>
-                <div style={{ color: "#ef4444", marginTop: 2 }}>⚠️</div>
+                <div style={{ color: "#ef4444", marginTop: 2 }}>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                </div>
                 <div style={{ fontSize: "0.8rem", color: "#a1a1aa", lineHeight: 1.5 }}>
                   <span style={{ color: "#fafafa", fontWeight: 500, marginRight: "0.5rem" }}>{d.item}:</span>
                   {d.reason}

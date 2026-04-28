@@ -19,20 +19,20 @@ function VerificationBadge({ status }: { status: MedicalReport["verificationStat
   if (status === "verified") {
     return (
       <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/25">
-        <span>✅</span> Verified
+        Verified
       </span>
     );
   }
   if (status === "tampered") {
     return (
       <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-red-500/15 text-red-400 border border-red-500/25">
-        <span>❌</span> Tampered
+        Tampered
       </span>
     );
   }
   return (
     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">
-      <span>🔍</span> Unchecked
+      Unchecked
     </span>
   );
 }

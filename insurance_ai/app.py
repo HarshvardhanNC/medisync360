@@ -273,26 +273,26 @@ def run_rule_engine(payload: dict) -> dict:
     if hard_reject:
         eligible_amount = 0
         explanation = (
-            f"❌ Claim REJECTED — '{disease.title()}' is a pre-existing condition and the "
+            f"Claim REJECTED — '{disease.title()}' is a pre-existing condition and the "
             f"{wp_years}-year waiting period for {company} has not been completed. "
             "No amount is payable under this policy at this time."
         )
     elif eligible_amount <= 0:
         eligible_amount = 0
         explanation = (
-            "❌ Claim results in zero payable amount after applying all policy deductions. "
+            "Claim results in zero payable amount after applying all policy deductions. "
             "Review room rent, diagnostics sub-limits, and non-payable items."
         )
     elif eligible_amount < total_claimed * 0.5:
         explanation = (
-            f"⚠️ Partial approval — Significant deductions applied. "
+            f"Partial approval — Significant deductions applied. "
             f"₹{eligible_amount:,.0f} approved out of ₹{total_claimed:,.0f} claimed. "
             "Primary reductions are due to: "
             + ", ".join([d["item"] for d in deductions[:3]]) + "."
         )
     else:
         explanation = (
-            f"✅ Claim approved with standard deductions. "
+            f"Claim approved with standard deductions. "
             f"₹{eligible_amount:,.0f} will be disbursed out of ₹{total_claimed:,.0f} claimed. "
             "Ensure documents are submitted within 30 days of discharge."
         )
