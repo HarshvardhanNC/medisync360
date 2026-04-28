@@ -7,6 +7,7 @@ import aiRouter from './routes/aiRoutes';
 import reportRouter from './routes/reportRoutes';
 import userRouter from './routes/userRoutes';
 import providerRouter from './routes/providerRoutes';
+import adminRouter from './routes/adminRoutes';
 import { errorHandler, notFoundHandler } from './middleware/errorMiddleware';
 
 const app = express();
@@ -31,6 +32,7 @@ app.use('/api/ai', aiRouter);
 app.use('/api/reports', reportRouter);
 app.use('/api/users', userRouter);
 app.use('/api/providers', providerRouter);
+app.use('/api/admin', adminRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);

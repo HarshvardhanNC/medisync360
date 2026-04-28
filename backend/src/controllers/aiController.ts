@@ -104,24 +104,26 @@ export const compareHospitals = async (req: Request, res: Response) => {
 
 export const bookGeneratedProviderSlot = async (req: AuthRequest, res: Response) => {
   try {
-    const { providerId, doctorId, time, specialist, location, reason } = req.body as {
+    const { providerId, doctorId, date, time, specialist, location, reason } = req.body as {
       providerId?: string;
       doctorId?: string;
+      date?: string;
       time?: string;
       specialist?: string;
       location?: string;
       reason?: string;
     };
 
-    if (!providerId || !doctorId || !time || !specialist || !location) {
+    if (!providerId || !doctorId || !date || !time || !specialist || !location) {
       return res.status(400).json({
-        error: 'providerId, doctorId, time, specialist, and location are required',
+        error: 'providerId, doctorId, date, time, specialist, and location are required',
       });
     }
 
     const booking = await bookProviderSlot({
       providerId,
       doctorId,
+      date,
       time,
       specialist,
       location,

@@ -9,6 +9,8 @@ import {
 } from './providerWorkspaceService';
 
 export type ProviderSlot = {
+  id?: string;
+  date: string;
   time: string;
   isBooked: boolean;
 };
@@ -39,6 +41,11 @@ type ProviderCacheValue = {
 
 const providerCache = new Map<string, ProviderCacheValue>();
 const CACHE_TTL_MS = 30 * 60 * 1000;
+const getFutureDate = (offset: number): string => {
+  const value = new Date();
+  value.setDate(value.getDate() + offset);
+  return value.toISOString().slice(0, 10);
+};
 
 const buildCacheKey = (specialist: string, location: string): string => {
   return `${specialist.trim().toLowerCase()}::${location.trim().toLowerCase()}`;
@@ -60,9 +67,9 @@ const defaultProviders = (specialist: string, location: string): Provider[] => {
           experience: 14,
           fees: 1200,
           availability: [
-            { time: '10:00 AM', isBooked: false },
-            { time: '12:30 PM', isBooked: false },
-            { time: '05:00 PM', isBooked: false },
+            { date: getFutureDate(1), time: '10:00 AM', isBooked: false },
+            { date: getFutureDate(1), time: '12:30 PM', isBooked: false },
+            { date: getFutureDate(2), time: '05:00 PM', isBooked: false },
           ],
         },
       ],
@@ -81,9 +88,9 @@ const defaultProviders = (specialist: string, location: string): Provider[] => {
           experience: 10,
           fees: 800,
           availability: [
-            { time: '09:30 AM', isBooked: false },
-            { time: '01:00 PM', isBooked: false },
-            { time: '06:30 PM', isBooked: false },
+            { date: getFutureDate(1), time: '09:30 AM', isBooked: false },
+            { date: getFutureDate(2), time: '01:00 PM', isBooked: false },
+            { date: getFutureDate(2), time: '06:30 PM', isBooked: false },
           ],
         },
       ],
@@ -102,9 +109,9 @@ const defaultProviders = (specialist: string, location: string): Provider[] => {
           experience: 12,
           fees: 1000,
           availability: [
-            { time: '11:00 AM', isBooked: false },
-            { time: '03:00 PM', isBooked: false },
-            { time: '07:00 PM', isBooked: false },
+            { date: getFutureDate(1), time: '11:00 AM', isBooked: false },
+            { date: getFutureDate(3), time: '03:00 PM', isBooked: false },
+            { date: getFutureDate(3), time: '07:00 PM', isBooked: false },
           ],
         },
       ],
@@ -118,9 +125,9 @@ const getOrCreateRegisteredDoctorAvailability = (doctorId: string): ProviderSlot
     return existing;
   }
 
-  addProviderAvailabilitySlot(doctorId, '10:00 AM');
-  addProviderAvailabilitySlot(doctorId, '01:00 PM');
-  addProviderAvailabilitySlot(doctorId, '05:00 PM');
+  addProviderAvailabilitySlot(doctorId, getFutureDate(1), '10:00 AM');
+  addProviderAvailabilitySlot(doctorId, getFutureDate(1), '01:00 PM');
+  addProviderAvailabilitySlot(doctorId, getFutureDate(2), '05:00 PM');
   return getProviderAvailability(doctorId);
 };
 
@@ -210,6 +217,10 @@ const normalizeProviders = (rawProviders: unknown, specialist: string, location:
             availability: availability.map((slot) => {
               const currentSlot = slot as Record<string, unknown>;
               return {
+                date:
+                  typeof currentSlot.date === 'string' && currentSlot.date.trim().length > 0
+                    ? currentSlot.date
+                    : getFutureDate(1),
                 time:
                   typeof currentSlot.time === 'string' && currentSlot.time.trim().length > 0
                     ? currentSlot.time
@@ -259,7 +270,9 @@ Format:
         "experience": 10,
         "fees": 1000,
         "availability": [
-          { "time": "10:00 AM", "isBooked": false }
+          { "date": "${getFutureDate(1)}", "time": "10:00 AM", "isBooked": false },
+          { "date": "${getFutureDate(1)}", "time": "01:00 PM", "isBooked": false },
+          { "date": "${getFutureDate(2)}", "time": "05:00 PM", "isBooked": false }
         ]
       }
     ]
@@ -284,38 +297,32 @@ Rules:
 export const getProvidersForSpecialist = async (specialist: string, location: string): Promise<Provider[]> => {
   const cacheKey = buildCacheKey(specialist, location);
   const cached = providerCache.get(cacheKey);
+  const registeredProviders = await getRegisteredProviders(specialist, location);
 
   if (cached && Date.now() - cached.updatedAt < CACHE_TTL_MS) {
-    return cached.providers;
+    return [...registeredProviders, ...cached.providers];
   }
 
-  let providers: Provider[];
+  let generatedProviders: Provider[];
   try {
-    const [generatedProviders, registeredProviders] = await Promise.all([
-      generateProvidersWithGemini(specialist, location),
-      getRegisteredProviders(specialist, location),
-    ]);
-
-    providers = [...registeredProviders, ...generatedProviders];
+    generatedProviders = await generateProvidersWithGemini(specialist, location);
   } catch (error) {
     console.error('Provider generation error:', error);
-    providers = [
-      ...(await getRegisteredProviders(specialist, location)),
-      ...defaultProviders(specialist, location),
-    ];
+    generatedProviders = defaultProviders(specialist, location);
   }
 
   providerCache.set(cacheKey, {
-    providers,
+    providers: generatedProviders,
     updatedAt: Date.now(),
   });
 
-  return providers;
+  return [...registeredProviders, ...generatedProviders];
 };
 
 export const bookProviderSlot = async (params: {
   providerId: string;
   doctorId: string;
+  date: string;
   time: string;
   specialist: string;
   location: string;
@@ -323,7 +330,7 @@ export const bookProviderSlot = async (params: {
   patientName: string;
   reason: string;
 }) => {
-  const { providerId, doctorId, time, specialist, location, patientId, patientName, reason } = params;
+  const { providerId, doctorId, date, time, specialist, location, patientId, patientName, reason } = params;
   const cacheKey = buildCacheKey(specialist, location);
   const providers = await getProvidersForSpecialist(specialist, location);
   const provider = providers.find((item) => item.id === providerId);
@@ -337,7 +344,7 @@ export const bookProviderSlot = async (params: {
     throw new Error('Doctor not found');
   }
 
-  const slot = doctor.availability.find((item) => item.time === time);
+  const slot = doctor.availability.find((item) => item.date === date && item.time === time);
   if (!slot) {
     throw new Error('Slot not found');
   }
@@ -348,12 +355,13 @@ export const bookProviderSlot = async (params: {
 
   slot.isBooked = true;
   if (doctor.linkedUserId) {
-    markProviderAvailabilityBooked(doctor.linkedUserId, time);
+    markProviderAvailabilityBooked(doctor.linkedUserId, date, time);
     await createProviderAppointment(doctor.linkedUserId, {
       patientId,
       patientName,
       providerName: provider.name,
       reason,
+      date,
       time,
     });
   }
@@ -368,6 +376,7 @@ export const bookProviderSlot = async (params: {
     providerName: provider.name,
     doctorId: doctor.id,
     doctorName: doctor.name,
+    date: slot.date,
     time: slot.time,
     isBooked: slot.isBooked,
   };

@@ -22,7 +22,8 @@ type UserProfile = {
 };
 
 type ProviderSlot = {
-  id: string;
+  id?: string;
+  date: string;
   time: string;
   isBooked: boolean;
 };
@@ -31,8 +32,9 @@ type ProviderAppointment = {
   id: string;
   patientName: string;
   reason: string;
+  date: string;
   time: string;
-  status: "scheduled" | "completed";
+  status: "scheduled" | "completed" | "cancelled";
 };
 
 type ReportAccessRequest = {
@@ -52,6 +54,19 @@ type SharedReport = {
     name?: string;
     email?: string;
   };
+};
+
+type PatientAppointment = {
+  id: string;
+  providerName: string;
+  doctorName: string;
+  doctorEmail: string;
+  specialization: string;
+  date: string;
+  time: string;
+  reason: string;
+  status: "scheduled" | "completed" | "cancelled";
+  availableSlots: ProviderSlot[];
 };
 
 const getId = (user: UserProfile) => user._id || user.id || "";
@@ -95,12 +110,67 @@ function SOSQRModal({ user, onClose }: { user: UserProfile; onClose: () => void 
 }
 
 function PatientDashboard({ user }: { user: UserProfile }) {
+  const [appointmentsLoading, setAppointmentsLoading] = useState(true);
+  const [appointmentsError, setAppointmentsError] = useState("");
+  const [appointments, setAppointments] = useState<PatientAppointment[]>([]);
+  const [appointmentActionKey, setAppointmentActionKey] = useState("");
+  const [rescheduleChoice, setRescheduleChoice] = useState<Record<string, string>>({});
+
   const metrics = [
     { label: "Blood Vector", value: user.bloodGroup || "Null" },
     { label: "Immunology Flags", value: user.allergies?.join(", ") || "Clear / Subnull" },
     { label: "Chronic Vectors", value: user.chronicDiseases?.join(", ") || "Clear / Subnull" },
     { label: "SOS Node", value: user.emergencyContact || "Null" },
   ];
+
+  const loadAppointments = async () => {
+    setAppointmentsLoading(true);
+    setAppointmentsError("");
+    try {
+      const data = await fetchAPI("/users/appointments");
+      setAppointments(data.appointments || []);
+    } catch (err: any) {
+      setAppointmentsError(err.message || "Failed to load booked appointments");
+    } finally {
+      setAppointmentsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    void loadAppointments();
+  }, []);
+
+  const handleCancelAppointment = async (appointmentId: string) => {
+    setAppointmentActionKey(`cancel:${appointmentId}`);
+    setAppointmentsError("");
+    try {
+      await fetchAPI(`/users/appointments/${appointmentId}/cancel`, "POST");
+      await loadAppointments();
+    } catch (err: any) {
+      setAppointmentsError(err.message || "Failed to cancel appointment");
+    } finally {
+      setAppointmentActionKey("");
+    }
+  };
+
+  const handleRescheduleAppointment = async (appointmentId: string) => {
+    const slotValue = rescheduleChoice[appointmentId];
+    if (!slotValue) return;
+    const [date, time] = slotValue.split("||");
+    if (!date || !time) return;
+
+    setAppointmentActionKey(`reschedule:${appointmentId}`);
+    setAppointmentsError("");
+    try {
+      await fetchAPI(`/users/appointments/${appointmentId}/reschedule`, "POST", { date, time });
+      setRescheduleChoice((current) => ({ ...current, [appointmentId]: "" }));
+      await loadAppointments();
+    } catch (err: any) {
+      setAppointmentsError(err.message || "Failed to reschedule appointment");
+    } finally {
+      setAppointmentActionKey("");
+    }
+  };
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-4">
@@ -132,6 +202,93 @@ function PatientDashboard({ user }: { user: UserProfile }) {
             </Link>
           </div>
         </div>
+
+        <div className="bg-zinc-900/40 backdrop-blur-md rounded-3xl p-8 border border-zinc-800">
+          <div className="flex items-center justify-between gap-4 mb-5">
+            <h3 className="text-lg font-bold text-white">Booked Appointments</h3>
+            <button
+              onClick={() => void loadAppointments()}
+              className="px-4 py-2 rounded-xl border border-zinc-700 bg-zinc-950 text-zinc-200 text-sm font-semibold hover:bg-zinc-900 transition-all"
+            >
+              Refresh
+            </button>
+          </div>
+
+          {appointmentsError && (
+            <div className="mb-4 rounded-2xl border border-red-500/20 bg-red-500/10 p-4 text-sm font-medium text-red-300">
+              {appointmentsError}
+            </div>
+          )}
+
+          {appointmentsLoading ? (
+            <div className="flex items-center justify-center py-10">
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-zinc-700 border-t-emerald-500" />
+            </div>
+          ) : appointments.length === 0 ? (
+            <p className="text-zinc-500 text-sm">No appointments booked yet.</p>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {appointments.map((appointment) => (
+                <div key={appointment.id} className="rounded-2xl bg-zinc-950 border border-zinc-800 p-5">
+                  <p className="text-white font-semibold">{appointment.providerName}</p>
+                  <p className="text-zinc-300 text-sm mt-1">{appointment.doctorName}</p>
+                  <p className="text-zinc-500 text-xs mt-1">
+                    {[appointment.specialization, appointment.doctorEmail].filter(Boolean).join(" • ")}
+                  </p>
+                  <p className="text-zinc-400 text-sm mt-4">{appointment.reason}</p>
+                  <div className="mt-4 flex items-center justify-between gap-3">
+                    <span className="text-zinc-300 text-sm">{[appointment.date, appointment.time].filter(Boolean).join(" • ")}</span>
+                    <span
+                      className={`text-xs font-bold uppercase ${
+                        appointment.status === "cancelled" ? "text-red-400" : "text-emerald-400"
+                      }`}
+                    >
+                      {appointment.status}
+                    </span>
+                  </div>
+
+                  {appointment.status !== "cancelled" && (
+                    <div className="mt-4 space-y-3">
+                      <div className="flex flex-col sm:flex-row gap-2">
+                        <select
+                          value={rescheduleChoice[appointment.id] || ""}
+                          onChange={(e) =>
+                            setRescheduleChoice((current) => ({
+                              ...current,
+                              [appointment.id]: e.target.value,
+                            }))
+                          }
+                          className="flex-1 rounded-xl border border-zinc-800 bg-zinc-900 px-3 py-2 text-sm text-white"
+                        >
+                          <option value="">Select new slot</option>
+                          {appointment.availableSlots.map((slot) => (
+                            <option key={slot.id || `${slot.date}-${slot.time}`} value={`${slot.date}||${slot.time}`}>
+                              {[slot.date, slot.time].filter(Boolean).join(" • ")}
+                            </option>
+                          ))}
+                        </select>
+                        <button
+                          onClick={() => void handleRescheduleAppointment(appointment.id)}
+                          disabled={!rescheduleChoice[appointment.id] || appointmentActionKey === `reschedule:${appointment.id}`}
+                          className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm font-semibold text-emerald-300 disabled:opacity-50"
+                        >
+                          {appointmentActionKey === `reschedule:${appointment.id}` ? "Updating..." : "Reschedule"}
+                        </button>
+                      </div>
+                      <button
+                        onClick={() => void handleCancelAppointment(appointment.id)}
+                        disabled={appointmentActionKey === `cancel:${appointment.id}`}
+                        className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm font-semibold text-red-300 disabled:opacity-50"
+                      >
+                        {appointmentActionKey === `cancel:${appointment.id}` ? "Cancelling..." : "Cancel Appointment"}
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -144,10 +301,12 @@ function ProviderDashboard({ user }: { user: UserProfile }) {
   const [appointments, setAppointments] = useState<ProviderAppointment[]>([]);
   const [requests, setRequests] = useState<ReportAccessRequest[]>([]);
   const [sharedReports, setSharedReports] = useState<SharedReport[]>([]);
+  const [slotDate, setSlotDate] = useState("");
   const [slotTime, setSlotTime] = useState("");
   const [patientIdentifier, setPatientIdentifier] = useState("");
   const [requestNote, setRequestNote] = useState("");
   const [submittingSlot, setSubmittingSlot] = useState(false);
+  const [removingSlotId, setRemovingSlotId] = useState("");
   const [submittingRequest, setSubmittingRequest] = useState(false);
   const [showQRModal, setShowQRModal] = useState(false);
 
@@ -184,31 +343,15 @@ function ProviderDashboard({ user }: { user: UserProfile }) {
     void loadWorkspace();
   }, []);
 
-  useEffect(() => {
-    const handleFocus = () => {
-      void loadWorkspace();
-    };
-
-    window.addEventListener("focus", handleFocus);
-    return () => window.removeEventListener("focus", handleFocus);
-  }, []);
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      void loadWorkspace();
-    }, 15000);
-
-    return () => window.clearInterval(interval);
-  }, []);
-
   const handleAddSlot = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!slotTime.trim()) return;
+    if (!slotDate || !slotTime) return;
     setSubmittingSlot(true);
     setWorkspaceError("");
     try {
-      const data = await fetchAPI("/providers/availability", "POST", { time: slotTime.trim() });
+      const data = await fetchAPI("/providers/availability", "POST", { date: slotDate, time: slotTime });
       setAvailability((current) => [...current, data.slot]);
+      setSlotDate("");
       setSlotTime("");
     } catch (err: any) {
       setWorkspaceError(err.message || "Failed to add availability slot");
@@ -234,6 +377,21 @@ function ProviderDashboard({ user }: { user: UserProfile }) {
       setWorkspaceError(err.message || "Failed to request report access");
     } finally {
       setSubmittingRequest(false);
+    }
+  };
+
+  const handleRemoveSlot = async (slotId?: string) => {
+    if (!slotId) return;
+
+    setRemovingSlotId(slotId);
+    setWorkspaceError("");
+    try {
+      await fetchAPI(`/providers/availability/${slotId}`, "DELETE");
+      setAvailability((current) => current.filter((slot) => slot.id !== slotId));
+    } catch (err: any) {
+      setWorkspaceError(err.message || "Failed to remove availability slot");
+    } finally {
+      setRemovingSlotId("");
     }
   };
 
@@ -286,10 +444,16 @@ function ProviderDashboard({ user }: { user: UserProfile }) {
             <h3 className="text-lg font-bold text-white mb-4">Add Availability Slots</h3>
             <form onSubmit={handleAddSlot} className="space-y-4">
               <input
+                type="date"
+                value={slotDate}
+                onChange={(e) => setSlotDate(e.target.value)}
+                className="w-full bg-zinc-950 border border-zinc-800 text-white rounded-xl px-4 py-3 text-sm"
+              />
+              <input
+                type="time"
                 value={slotTime}
                 onChange={(e) => setSlotTime(e.target.value)}
-                placeholder="e.g. Tomorrow 10:00 AM"
-                className="w-full bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm"
+                className="w-full bg-zinc-950 border border-zinc-800 text-white rounded-xl px-4 py-3 text-sm"
               />
               <button
                 type="submit"
@@ -303,10 +467,19 @@ function ProviderDashboard({ user }: { user: UserProfile }) {
               {availability.length === 0 && <p className="text-zinc-500 text-sm">No availability slots added yet.</p>}
               {availability.map((slot) => (
                 <div key={slot.id} className="flex items-center justify-between rounded-xl bg-zinc-950 border border-zinc-800 px-4 py-3">
-                  <span className="text-white text-sm">{slot.time}</span>
-                  <span className={`text-xs font-bold ${slot.isBooked ? "text-red-400" : "text-emerald-400"}`}>
-                    {slot.isBooked ? "Booked" : "Open"}
-                  </span>
+                  <span className="text-white text-sm">{[slot.date, slot.time].filter(Boolean).join(" • ")}</span>
+                  <div className="flex items-center gap-3">
+                    <span className={`text-xs font-bold ${slot.isBooked ? "text-red-400" : "text-emerald-400"}`}>
+                      {slot.isBooked ? "Booked" : "Open"}
+                    </span>
+                    <button
+                      onClick={() => void handleRemoveSlot(slot.id)}
+                      disabled={slot.isBooked || removingSlotId === slot.id}
+                      className="rounded-lg border border-zinc-700 px-3 py-1.5 text-xs font-semibold text-zinc-200 disabled:opacity-50"
+                    >
+                      {removingSlotId === slot.id ? "Removing..." : "Remove"}
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
@@ -339,7 +512,7 @@ function ProviderDashboard({ user }: { user: UserProfile }) {
                   <p className="text-white font-semibold">{appointment.patientName}</p>
                   <p className="text-zinc-400 text-sm mt-1">{appointment.reason}</p>
                   <div className="mt-4 flex items-center justify-between">
-                    <span className="text-zinc-300 text-sm">{appointment.time}</span>
+                    <span className="text-zinc-300 text-sm">{[appointment.date, appointment.time].filter(Boolean).join(" • ")}</span>
                     <span className="text-xs font-bold text-emerald-400 uppercase">{appointment.status}</span>
                   </div>
                 </div>

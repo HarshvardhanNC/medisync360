@@ -5,9 +5,10 @@ export interface IAppointment {
   patientName: string;
   doctorId: string;
   providerName: string;
+  date?: string;
   time: string;
   reason: string;
-  status: 'scheduled' | 'completed';
+  status: 'scheduled' | 'completed' | 'cancelled';
 }
 
 const appointmentSchema = new Schema<IAppointment>(
@@ -31,6 +32,11 @@ const appointmentSchema = new Schema<IAppointment>(
       required: true,
       trim: true,
     },
+    date: {
+      type: String,
+      default: '',
+      trim: true,
+    },
     time: {
       type: String,
       required: true,
@@ -43,7 +49,7 @@ const appointmentSchema = new Schema<IAppointment>(
     },
     status: {
       type: String,
-      enum: ['scheduled', 'completed'],
+      enum: ['scheduled', 'completed', 'cancelled'],
       default: 'scheduled',
     },
   },

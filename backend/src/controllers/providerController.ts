@@ -7,6 +7,7 @@ import {
   getProviderAppointments,
   getProviderAvailability,
   getReportAccessRequests,
+  removeProviderAvailabilitySlot,
 } from '../services/providerWorkspaceService';
 
 export const getProviderWorkspace = async (req: AuthRequest, res: Response) => {
@@ -33,17 +34,29 @@ export const getProviderWorkspace = async (req: AuthRequest, res: Response) => {
 export const addAvailabilitySlot = async (req: AuthRequest, res: Response) => {
   try {
     const doctorId = String(req.user?._id);
-    const { time } = req.body as { time?: string };
+    const { date, time } = req.body as { date?: string; time?: string };
 
-    if (!time) {
-      res.status(400).json({ error: 'time is required' });
+    if (!date || !time) {
+      res.status(400).json({ error: 'date and time are required' });
       return;
     }
 
-    const slot = addProviderAvailabilitySlot(doctorId, time);
+    const slot = addProviderAvailabilitySlot(doctorId, date, time);
     res.status(201).json({ slot });
   } catch (error: any) {
     res.status(400).json({ error: error.message || 'Failed to add availability slot' });
+  }
+};
+
+export const removeAvailabilitySlot = async (req: AuthRequest, res: Response) => {
+  try {
+    const doctorId = String(req.user?._id);
+    const slotId = String(req.params.slotId);
+
+    removeProviderAvailabilitySlot(doctorId, slotId);
+    res.json({ message: 'Availability slot removed successfully' });
+  } catch (error: any) {
+    res.status(400).json({ error: error.message || 'Failed to remove availability slot' });
   }
 };
 
