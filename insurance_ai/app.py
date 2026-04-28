@@ -408,7 +408,7 @@ def get_companies():
 if __name__ == "__main__":
     # Auto-train model on first run if not already saved
     if not os.path.exists(MODEL_PATH):
-        print("🔄  First run — training ML model...")
+        print("First run - training ML model...")
         train_model()
-    print("🚀  Insurance AI server starting on http://localhost:5001")
+    print("Insurance AI server starting on http://localhost:5001")
     app.run(host="0.0.0.0", port=5001, debug=False)

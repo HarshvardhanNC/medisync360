@@ -1,4 +1,4 @@
-                                                """
+"""
 Insurance Rules Engine — MediSync360: Insurance Claim Intelligence System
 Defines hardcoded policy rules for each supported insurance company.
 """

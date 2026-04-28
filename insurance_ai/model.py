@@ -64,7 +64,7 @@ def train_model(df: pd.DataFrame = None) -> dict:
     with open(MODEL_PATH, "wb") as f:
         pickle.dump(pipeline, f)
 
-    print(f"✅ Model trained — Accuracy: {acc:.2%}")
+    print(f"Model trained - Accuracy: {acc:.2%}")
     print(classification_report(y_test, y_pred))
     return {"accuracy": acc, "report": report}
 
@@ -72,7 +72,7 @@ def train_model(df: pd.DataFrame = None) -> dict:
 # ── Load ───────────────────────────────────────────────────────────────────
 def load_model():
     if not os.path.exists(MODEL_PATH):
-        print("⚠️  No saved model found — training now...")
+        print("No saved model found - training now...")
         train_model()
     with open(MODEL_PATH, "rb") as f:
         return pickle.load(f)
