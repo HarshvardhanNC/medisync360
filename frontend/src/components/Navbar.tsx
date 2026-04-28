@@ -42,7 +42,7 @@ export default function Navbar() {
             { name: 'Dashboard', path: '/dashboard' },
             { name: 'Diagnosis', path: '/symptom-checker' },
             { name: 'Vault', path: '/vault' },
-            { name: 'Insurance', path: '/insurance' }
+            { name: '🛡️ Claim AI', path: '/claim-intelligence' },
           ].map((link) => {
             const isActive = pathname === link.path;
             return (
@@ -103,7 +103,7 @@ export default function Navbar() {
           <Link href="/dashboard" className="px-5 py-3 rounded-xl font-medium text-zinc-300 hover:bg-white/5 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Dashboard</Link>
           <Link href="/symptom-checker" className="px-5 py-3 rounded-xl font-medium text-zinc-300 hover:bg-white/5 hover:text-white" onClick={() => setMobileMenuOpen(false)}>AI Diagnosis</Link>
           <Link href="/vault" className="px-5 py-3 rounded-xl font-medium text-zinc-300 hover:bg-white/5 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Medical Vault</Link>
-          <Link href="/insurance" className="px-5 py-3 rounded-xl font-medium text-zinc-300 hover:bg-white/5 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Insurance</Link>
+          <Link href="/claim-intelligence" className="px-5 py-3 rounded-xl font-medium text-indigo-300 hover:bg-indigo-500/10 hover:text-indigo-100" onClick={() => setMobileMenuOpen(false)}>🛡️ Claim AI</Link>
           
           <div className="pt-4 mt-2 border-t border-zinc-800/50">
             {isAuthenticated ? (
