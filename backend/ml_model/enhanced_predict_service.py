@@ -68,8 +68,6 @@ class EnhancedMedicalPredictor:
     # Format: (required_symptoms_set, min_match_count, disease, confidence, specialist, urgency)
     CRITICAL_SYMPTOM_RULES: ClassVar[List[Tuple[Set[str], int, str, int, str, str]]] = [
         # Cardiac
-        ({'chest pain', 'chest tightness', 'heart pain', 'chest discomfort'},
-         1, 'Heart attack', 88, 'Cardiologist', 'Emergency - Seek immediate care'),
         ({'chest pain', 'shortness of breath'}, 2, 'Heart attack', 90, 'Cardiologist', 'Emergency - Seek immediate care'),
         ({'chest pain', 'sweating', 'nausea'}, 2, 'Heart attack', 92, 'Cardiologist', 'Emergency - Seek immediate care'),
         # Migraine / Headache

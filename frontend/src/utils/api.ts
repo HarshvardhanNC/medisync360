@@ -48,6 +48,13 @@ export const fetchAPI = async (endpoint: string, method: string = 'GET', body: a
     return data;
   } catch (error) {
     console.error('API Error:', error);
+
+    if (error instanceof TypeError) {
+      throw new Error(
+        `Unable to reach the backend at ${API_URL}. Make sure the API server is running.`,
+      );
+    }
+
     throw error;
   }
 };
@@ -96,6 +103,13 @@ export const fetchAPIForm = async (endpoint: string, formData: FormData) => {
     return data;
   } catch (error) {
     console.error('API Form Error:', error);
+
+    if (error instanceof TypeError) {
+      throw new Error(
+        `Unable to reach the backend at ${API_URL}. Make sure the API server is running.`,
+      );
+    }
+
     throw error;
   }
 };

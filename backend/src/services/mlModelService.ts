@@ -15,6 +15,8 @@ interface MLPredictionResult {
   precautions: string[];
   dataSource: string;
   modelType: string;
+  needs_more_info?: boolean;
+  follow_up_questions?: string[];
 }
 
 export class MLModelService {

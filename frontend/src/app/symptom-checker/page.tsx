@@ -32,8 +32,15 @@ type ProviderCard = {
   doctors: ProviderDoctor[];
 };
 
+type TriageRound = {
+  stage: number;
+  questions: string[];
+  answers: string[];
+};
+
 export default function SymptomChecker() {
   const [symptoms, setSymptoms] = useState("");
+  const [baseSymptoms, setBaseSymptoms] = useState("");
   const [loading, setLoading] = useState(false);
   const [prediction, setPrediction] = useState<any>(null);
   const [error, setError] = useState("");
@@ -41,8 +48,14 @@ export default function SymptomChecker() {
   const [fetchingHospitals, setFetchingHospitals] = useState(false);
   const [userLocation, setUserLocation] = useState("");
   const [bookingKey, setBookingKey] = useState("");
+  const [answers, setAnswers] = useState<Record<number, string>>({});
+  const [triageRounds, setTriageRounds] = useState<TriageRound[]>([]);
 
-  const resolvedSpecialist = prediction?.recommendedSpecialist || "";
+  const resolvedSpecialist = prediction && !prediction.needs_more_info ? prediction.recommendedSpecialist || "" : "";
+  const currentFollowUpQuestions: string[] = prediction?.follow_up_questions || [];
+  const allFollowUpAnswered =
+    currentFollowUpQuestions.length > 0 &&
+    currentFollowUpQuestions.every((_: string, index: number) => Boolean(answers[index]));
 
   const loadHospitals = async (showLoader: boolean) => {
     if (!resolvedSpecialist) return;
@@ -70,17 +83,35 @@ export default function SymptomChecker() {
     }
   };
 
-  const handleAnalyze = async () => {
-    if (!symptoms) return;
+  const handleAnalyze = async (
+    overrideSymptoms?: string,
+    overrideRounds?: TriageRound[],
+    options?: { preservePrediction?: boolean },
+  ) => {
+    const textToAnalyze = overrideSymptoms || symptoms;
+    if (!textToAnalyze) return;
 
     setLoading(true);
     setError("");
-    setPrediction(null);
+    if (!options?.preservePrediction) {
+      setPrediction(null);
+    }
     setHospitals([]);
 
     try {
-      const data = await fetchAPI("/ai/symptoms", "POST", { symptoms });
+      const roundsToSubmit = overrideRounds ?? triageRounds;
+      setTriageRounds(roundsToSubmit);
+      const data = await fetchAPI("/ai/symptoms", "POST", {
+        symptoms: textToAnalyze,
+        triageContext: roundsToSubmit.length > 0 ? { rounds: roundsToSubmit } : undefined,
+      });
       setPrediction(data);
+      if (data.needs_more_info) {
+        setAnswers({});
+      } else {
+        setAnswers({});
+        setTriageRounds([]);
+      }
     } catch (err: any) {
       setError(err.message || "Failed to analyze symptoms");
     } finally {
@@ -170,7 +201,12 @@ export default function SymptomChecker() {
 
             <div className="mt-6 flex justify-end">
               <button
-                onClick={handleAnalyze}
+                onClick={() => {
+                  setBaseSymptoms(symptoms.trim());
+                  setTriageRounds([]);
+                  setAnswers({});
+                  handleAnalyze(symptoms.trim(), [], { preservePrediction: false });
+                }}
                 disabled={loading || !symptoms}
                 className={`px-8 py-3.5 bg-white text-zinc-950 rounded-full font-semibold text-base hover:bg-zinc-200 transition-all active:scale-[0.98] flex items-center space-x-2 ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
               >
@@ -195,7 +231,79 @@ export default function SymptomChecker() {
           </div>
         </div>
 
-        {prediction && (
+        {prediction && prediction.needs_more_info && (
+          <div className="bg-zinc-950 rounded-3xl p-8 border border-zinc-800 mt-12 animate-subtle-fade relative overflow-hidden">
+            <h2 className="text-xl font-semibold text-white mb-6 flex items-center border-b border-zinc-800 pb-4">
+              <div className="w-8 h-8 rounded-full bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mr-3 text-amber-400">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+              Triage Follow-up Questions
+            </h2>
+            <p className="text-zinc-500 mb-3 uppercase tracking-wider text-xs">
+              Round {prediction.triage_stage || triageRounds.length + 1}
+            </p>
+            <p className="text-zinc-400 mb-8 font-light text-lg">{prediction.description}</p>
+            
+            <div className="space-y-6 relative z-10">
+              {prediction.follow_up_questions?.map((q: string, idx: number) => (
+                <div key={idx} className="bg-zinc-900/50 rounded-2xl p-6 border border-zinc-800 transition-all hover:border-zinc-700">
+                  <p className="text-white font-medium mb-4 text-lg">{q}</p>
+                  <div className="flex flex-wrap gap-3">
+                    {["Yes", "No", "Not sure"].map(opt => (
+                      <button
+                        key={opt}
+                        onClick={() => setAnswers(prev => ({ ...prev, [idx]: opt }))}
+                        className={`px-5 py-2.5 rounded-xl text-sm font-semibold border transition-all active:scale-[0.98] ${
+                          answers[idx] === opt
+                            ? "bg-emerald-500/20 border-emerald-500/50 text-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.1)]"
+                            : "bg-zinc-950 border-zinc-700 text-zinc-400 hover:border-zinc-500 hover:bg-zinc-900"
+                        }`}
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+
+              <div className="pt-8 mt-4 border-t border-zinc-800/80 flex justify-end">
+                <button
+                  onClick={() => {
+                    if (!allFollowUpAnswered) {
+                      setError("Please answer all follow-up questions before continuing.");
+                      return;
+                    }
+
+                    setError("");
+                    const roundAnswers = prediction.follow_up_questions.map((_: string, index: number) => answers[index] || "Not sure");
+                    const nextRounds = [
+                      ...triageRounds,
+                      {
+                        stage: prediction.triage_stage || triageRounds.length + 1,
+                        questions: prediction.follow_up_questions,
+                        answers: roundAnswers,
+                      },
+                    ];
+
+                    setTriageRounds(nextRounds);
+                    handleAnalyze(baseSymptoms || symptoms.trim(), nextRounds, { preservePrediction: true });
+                  }}
+                  disabled={loading || !allFollowUpAnswered}
+                  className={`px-8 py-3.5 bg-emerald-500 text-zinc-950 rounded-full font-bold text-base transition-all shadow-[0_0_20px_rgba(52,211,153,0.3)] flex items-center ${
+                    loading || !allFollowUpAnswered
+                      ? "opacity-60 cursor-not-allowed"
+                      : "hover:bg-emerald-400"
+                  }`}
+                >
+                  {loading ? "Continuing..." : "Continue Analysis"}
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {prediction && !prediction.needs_more_info && (
           <div className="bg-zinc-950 rounded-3xl p-8 border border-zinc-800 mt-12 animate-subtle-fade relative overflow-hidden">
             <h2 className="text-xl font-semibold text-white mb-6 flex items-center border-b border-zinc-800 pb-4">
               <div className="w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mr-3 text-emerald-400">

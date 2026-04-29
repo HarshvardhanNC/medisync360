@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { predictDiseaseFromSymptoms, analyzeInsurancePolicy } from '../services/aiService';
+import { predictDiseaseFromSymptoms, analyzeInsurancePolicy, TriageContext } from '../services/aiService';
 import { extractTopDisease, getSpecialistForDisease } from '../utils/doctorRecommendation';
 import { getProvidersForSpecialist, bookProviderSlot } from '../services/providerCatalogService';
 import { rankDoctorsFromProviders, summarizeProvidersForCards } from '../utils/providerRanking';
@@ -8,12 +8,15 @@ import { normalizeSpecialist } from '../utils/specialistAliases';
 
 export const analyzeSymptoms = async (req: Request, res: Response) => {
   try {
-    const { symptoms } = req.body;
+    const { symptoms, triageContext } = req.body as {
+      symptoms?: string;
+      triageContext?: TriageContext;
+    };
     if (!symptoms) {
       return res.status(400).json({ error: 'Symptoms are required' });
     }
 
-    const prediction = await predictDiseaseFromSymptoms(symptoms);
+    const prediction = await predictDiseaseFromSymptoms(symptoms, triageContext);
     res.json(prediction);
   } catch (error: any) {
     console.error("Controller Error (Symptoms):", error);
