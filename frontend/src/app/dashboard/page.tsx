@@ -456,7 +456,6 @@ function ProviderDashboard({ user }: { user: UserProfile }) {
   const [submittingSlot, setSubmittingSlot] = useState(false);
   const [removingSlotId, setRemovingSlotId] = useState("");
   const [submittingRequest, setSubmittingRequest] = useState(false);
-  const [showQRModal, setShowQRModal] = useState(false);
   const [emergencySearchQuery, setEmergencySearchQuery] = useState("");
   const [emergencySearchLoading, setEmergencySearchLoading] = useState(false);
   const [emergencySearchResults, setEmergencySearchResults] = useState<EmergencySearchResult[]>([]);
@@ -576,7 +575,6 @@ function ProviderDashboard({ user }: { user: UserProfile }) {
 
   return (
     <>
-      {showQRModal && <SOSQRModal user={user} onClose={() => setShowQRModal(false)} />}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 px-4">
         <div className="xl:col-span-1 space-y-6">
           <div className="bg-zinc-900/40 backdrop-blur-md border border-zinc-800 rounded-3xl p-8">
@@ -603,12 +601,6 @@ function ProviderDashboard({ user }: { user: UserProfile }) {
                 <p className="text-white font-semibold mt-1">INR {user.consultationFee || 0}</p>
               </div>
             </div>
-            <button
-              onClick={() => setShowQRModal(true)}
-              className="mt-6 w-full py-3.5 rounded-xl bg-white text-zinc-950 font-semibold hover:bg-zinc-200 transition-all"
-            >
-              Emergency QR Access
-            </button>
           </div>
 
           <div className="bg-zinc-900/40 backdrop-blur-md border border-zinc-800 rounded-3xl p-8">

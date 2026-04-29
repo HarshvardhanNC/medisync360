@@ -70,15 +70,15 @@ class EnhancedMedicalPredictor:
         # Cardiac
         ({'chest pain', 'shortness of breath'}, 2, 'Heart attack', 90, 'Cardiologist', 'Emergency - Seek immediate care'),
         ({'chest pain', 'sweating', 'nausea'}, 2, 'Heart attack', 92, 'Cardiologist', 'Emergency - Seek immediate care'),
+        # Gastro: evaluate before migraine so GI-only symptom clusters do not misfire as migraine
+        ({'nausea', 'vomiting', 'stomach pain'}, 2, 'Gastroenteritis', 85, 'Gastroenterologist', 'Medium - Schedule appointment soon'),
+        ({'stomach pain', 'acidity', 'nausea'}, 2, 'GERD', 80, 'Gastroenterologist', 'Medium - Schedule appointment soon'),
         # Migraine / Headache
-        ({'headache', 'nausea', 'vomiting'}, 2, 'Migraine', 82, 'Neurologist', 'Medium - Schedule appointment soon'),
+        ({'headache', 'nausea', 'vomiting'}, 3, 'Migraine', 82, 'Neurologist', 'Medium - Schedule appointment soon'),
         ({'headache', 'blurred vision'}, 2, 'Migraine', 80, 'Neurologist', 'Medium - Schedule appointment soon'),
         # Common Cold / Flu
         ({'runny nose', 'sore throat', 'cough'}, 2, 'Common Cold', 85, 'General Practitioner', 'Low - Monitor symptoms'),
         ({'cough', 'high fever', 'fatigue'}, 2, 'Influenza', 80, 'General Practitioner', 'Medium - Schedule appointment soon'),
-        # Gastro
-        ({'nausea', 'vomiting', 'stomach pain'}, 2, 'Gastroenteritis', 85, 'Gastroenterologist', 'Medium - Schedule appointment soon'),
-        ({'stomach pain', 'acidity', 'nausea'}, 2, 'GERD', 80, 'Gastroenterologist', 'Medium - Schedule appointment soon'),
         # UTI
         ({'burning micturition', 'frequent urination'}, 1, 'Urinary tract infection', 85, 'Urologist', 'Medium - Schedule appointment soon'),
         # Dengue (needs fever + rash + joint pain together)
