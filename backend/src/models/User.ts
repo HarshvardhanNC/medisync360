@@ -10,10 +10,20 @@ export interface IUser {
   password: string;
   role: UserRole;
   isApproved: boolean;
+  phoneNumber?: string;
   specialization?: string[];
   experienceYears?: number;
   consultationFee?: number;
   location?: string;
+  bloodGroup?: string;
+  allergies?: string[];
+  chronicDiseases?: string[];
+  currentMedications?: string[];
+  emergencyContactName?: string;
+  emergencyContactPhone?: string;
+  insuranceProvider?: string;
+  insurancePolicyNumber?: string;
+  emergencyConsent?: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -55,6 +65,11 @@ const userSchema = new Schema<IUser, UserModel, IUserMethods>(
       type: Boolean,
       default: false,
     },
+    phoneNumber: {
+      type: String,
+      trim: true,
+      default: undefined,
+    },
     specialization: {
       type: [String],
       default: undefined,
@@ -71,6 +86,47 @@ const userSchema = new Schema<IUser, UserModel, IUserMethods>(
       type: String,
       trim: true,
       default: undefined,
+    },
+    bloodGroup: {
+      type: String,
+      trim: true,
+      default: undefined,
+    },
+    allergies: {
+      type: [String],
+      default: [],
+    },
+    chronicDiseases: {
+      type: [String],
+      default: [],
+    },
+    currentMedications: {
+      type: [String],
+      default: [],
+    },
+    emergencyContactName: {
+      type: String,
+      trim: true,
+      default: undefined,
+    },
+    emergencyContactPhone: {
+      type: String,
+      trim: true,
+      default: undefined,
+    },
+    insuranceProvider: {
+      type: String,
+      trim: true,
+      default: undefined,
+    },
+    insurancePolicyNumber: {
+      type: String,
+      trim: true,
+      default: undefined,
+    },
+    emergencyConsent: {
+      type: Boolean,
+      default: false,
     },
   },
   {

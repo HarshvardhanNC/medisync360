@@ -11,11 +11,16 @@ type UserProfile = {
   email: string;
   role: "patient" | "doctor" | "admin";
   isApproved?: boolean;
+  phoneNumber?: string;
   bloodGroup?: string;
   allergies?: string[];
   chronicDiseases?: string[];
   currentMedications?: string[];
-  emergencyContact?: string;
+  emergencyContactName?: string;
+  emergencyContactPhone?: string;
+  insuranceProvider?: string;
+  insurancePolicyNumber?: string;
+  emergencyConsent?: boolean;
   specialization?: string[];
   experienceYears?: number;
   consultationFee?: number;
@@ -54,6 +59,22 @@ type SharedReport = {
     name?: string;
     email?: string;
   };
+};
+
+type EmergencySearchResult = {
+  id: string;
+  name: string;
+  email: string;
+  phoneNumber: string;
+  bloodGroup: string;
+  allergies: string[];
+  chronicDiseases: string[];
+  currentMedications: string[];
+  emergencyContactName: string;
+  emergencyContactPhone: string;
+  insuranceProvider: string;
+  insurancePolicyNumber: string;
+  emergencyConsent: boolean;
 };
 
 type PatientAppointment = {
@@ -115,12 +136,26 @@ function PatientDashboard({ user }: { user: UserProfile }) {
   const [appointments, setAppointments] = useState<PatientAppointment[]>([]);
   const [appointmentActionKey, setAppointmentActionKey] = useState("");
   const [rescheduleChoice, setRescheduleChoice] = useState<Record<string, string>>({});
+  const [profileForm, setProfileForm] = useState({
+    phoneNumber: user.phoneNumber || "",
+    bloodGroup: user.bloodGroup || "",
+    allergies: user.allergies?.join(", ") || "",
+    chronicDiseases: user.chronicDiseases?.join(", ") || "",
+    currentMedications: user.currentMedications?.join(", ") || "",
+    emergencyContactName: user.emergencyContactName || "",
+    emergencyContactPhone: user.emergencyContactPhone || "",
+    insuranceProvider: user.insuranceProvider || "",
+    insurancePolicyNumber: user.insurancePolicyNumber || "",
+    emergencyConsent: Boolean(user.emergencyConsent),
+  });
+  const [profileSaving, setProfileSaving] = useState(false);
+  const [profileMessage, setProfileMessage] = useState("");
 
   const metrics = [
     { label: "Blood Vector", value: user.bloodGroup || "Null" },
     { label: "Immunology Flags", value: user.allergies?.join(", ") || "Clear / Subnull" },
     { label: "Chronic Vectors", value: user.chronicDiseases?.join(", ") || "Clear / Subnull" },
-    { label: "SOS Node", value: user.emergencyContact || "Null" },
+    { label: "SOS Node", value: user.emergencyContactPhone || "Null" },
   ];
 
   const loadAppointments = async () => {
@@ -172,6 +207,21 @@ function PatientDashboard({ user }: { user: UserProfile }) {
     }
   };
 
+  const handleEmergencyProfileSave = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setProfileSaving(true);
+    setProfileMessage("");
+
+    try {
+      await fetchAPI("/users/profile", "PUT", profileForm);
+      setProfileMessage("Emergency profile updated successfully.");
+    } catch (err: any) {
+      setProfileMessage(err.message || "Failed to update emergency profile.");
+    } finally {
+      setProfileSaving(false);
+    }
+  };
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-4">
       <div className="col-span-1 bg-zinc-900/40 backdrop-blur-md border border-zinc-800 rounded-3xl p-8 flex flex-col items-center">
@@ -201,6 +251,104 @@ function PatientDashboard({ user }: { user: UserProfile }) {
               Open Vault
             </Link>
           </div>
+        </div>
+
+        <div className="bg-zinc-900/40 backdrop-blur-md rounded-3xl p-8 border border-zinc-800">
+          <div className="flex items-center justify-between gap-4 mb-5">
+            <div>
+              <h3 className="text-lg font-bold text-white">Emergency Profile</h3>
+              <p className="text-zinc-500 text-sm mt-1">
+                Fill the critical medical information that can be accessed through your QR code and by verified doctors when you enable consent.
+              </p>
+            </div>
+            <span
+              className={`text-xs font-bold uppercase ${
+                profileForm.emergencyConsent ? "text-emerald-400" : "text-amber-400"
+              }`}
+            >
+              {profileForm.emergencyConsent ? "Public for emergency access" : "Private"}
+            </span>
+          </div>
+
+          <form onSubmit={handleEmergencyProfileSave} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input
+              value={profileForm.phoneNumber}
+              onChange={(e) => setProfileForm((current) => ({ ...current, phoneNumber: e.target.value }))}
+              placeholder="Phone number"
+              className="bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm"
+            />
+            <input
+              value={profileForm.bloodGroup}
+              onChange={(e) => setProfileForm((current) => ({ ...current, bloodGroup: e.target.value }))}
+              placeholder="Blood group"
+              className="bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm"
+            />
+            <input
+              value={profileForm.emergencyContactName}
+              onChange={(e) => setProfileForm((current) => ({ ...current, emergencyContactName: e.target.value }))}
+              placeholder="Emergency contact name"
+              className="bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm"
+            />
+            <input
+              value={profileForm.emergencyContactPhone}
+              onChange={(e) => setProfileForm((current) => ({ ...current, emergencyContactPhone: e.target.value }))}
+              placeholder="Emergency contact phone"
+              className="bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm"
+            />
+            <input
+              value={profileForm.insuranceProvider}
+              onChange={(e) => setProfileForm((current) => ({ ...current, insuranceProvider: e.target.value }))}
+              placeholder="Insurance provider"
+              className="bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm"
+            />
+            <input
+              value={profileForm.insurancePolicyNumber}
+              onChange={(e) => setProfileForm((current) => ({ ...current, insurancePolicyNumber: e.target.value }))}
+              placeholder="Insurance policy number"
+              className="bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm"
+            />
+            <textarea
+              value={profileForm.allergies}
+              onChange={(e) => setProfileForm((current) => ({ ...current, allergies: e.target.value }))}
+              placeholder="Allergies, comma separated"
+              className="md:col-span-2 h-24 bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm resize-none"
+            />
+            <textarea
+              value={profileForm.chronicDiseases}
+              onChange={(e) => setProfileForm((current) => ({ ...current, chronicDiseases: e.target.value }))}
+              placeholder="Chronic diseases, comma separated"
+              className="md:col-span-2 h-24 bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm resize-none"
+            />
+            <textarea
+              value={profileForm.currentMedications}
+              onChange={(e) => setProfileForm((current) => ({ ...current, currentMedications: e.target.value }))}
+              placeholder="Current medications, comma separated"
+              className="md:col-span-2 h-24 bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm resize-none"
+            />
+            <label className="md:col-span-2 flex items-start gap-3 rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-4 text-sm text-zinc-300">
+              <input
+                type="checkbox"
+                checked={profileForm.emergencyConsent}
+                onChange={(e) => setProfileForm((current) => ({ ...current, emergencyConsent: e.target.checked }))}
+                className="mt-1"
+              />
+              <span>
+                I consent to make this emergency profile visible through QR code and accessible to verified doctors on the platform during emergencies.
+              </span>
+            </label>
+            <div className="md:col-span-2 flex items-center justify-between gap-4">
+              <p className={`text-sm ${profileMessage.includes("successfully") ? "text-emerald-400" : "text-red-400"}`}>
+                {profileMessage}
+              </p>
+              <button
+                type="submit"
+                disabled={profileSaving}
+                className="px-5 py-3 rounded-xl bg-white text-zinc-950 font-semibold hover:bg-zinc-200 transition-all disabled:opacity-50"
+              >
+                {profileSaving ? "Saving..." : "Save Emergency Profile"}
+              </button>
+            </div>
+          </form>
         </div>
 
         <div className="bg-zinc-900/40 backdrop-blur-md rounded-3xl p-8 border border-zinc-800">
@@ -309,6 +457,10 @@ function ProviderDashboard({ user }: { user: UserProfile }) {
   const [removingSlotId, setRemovingSlotId] = useState("");
   const [submittingRequest, setSubmittingRequest] = useState(false);
   const [showQRModal, setShowQRModal] = useState(false);
+  const [emergencySearchQuery, setEmergencySearchQuery] = useState("");
+  const [emergencySearchLoading, setEmergencySearchLoading] = useState(false);
+  const [emergencySearchResults, setEmergencySearchResults] = useState<EmergencySearchResult[]>([]);
+  const [emergencySearchError, setEmergencySearchError] = useState("");
 
   const loadWorkspace = async () => {
     setWorkspaceLoading(true);
@@ -392,6 +544,25 @@ function ProviderDashboard({ user }: { user: UserProfile }) {
       setWorkspaceError(err.message || "Failed to remove availability slot");
     } finally {
       setRemovingSlotId("");
+    }
+  };
+
+  const handleEmergencySearch = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!emergencySearchQuery.trim()) {
+      setEmergencySearchResults([]);
+      return;
+    }
+
+    setEmergencySearchLoading(true);
+    setEmergencySearchError("");
+    try {
+      const data = await fetchAPI(`/users/emergency-search?q=${encodeURIComponent(emergencySearchQuery.trim())}`);
+      setEmergencySearchResults(data.results || []);
+    } catch (err: any) {
+      setEmergencySearchError(err.message || "Failed to search emergency records");
+    } finally {
+      setEmergencySearchLoading(false);
     }
   };
 
@@ -517,6 +688,89 @@ function ProviderDashboard({ user }: { user: UserProfile }) {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          <div className="bg-zinc-900/40 backdrop-blur-md border border-zinc-800 rounded-3xl p-8">
+            <h3 className="text-lg font-bold text-white mb-5">Emergency Patient Search</h3>
+            <form onSubmit={handleEmergencySearch} className="flex flex-col md:flex-row gap-3">
+              <input
+                value={emergencySearchQuery}
+                onChange={(e) => setEmergencySearchQuery(e.target.value)}
+                placeholder="Search by patient name, email, or phone number"
+                className="flex-1 bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm"
+              />
+              <button
+                type="submit"
+                disabled={emergencySearchLoading}
+                className="px-5 py-3 rounded-xl bg-white text-zinc-950 font-semibold hover:bg-zinc-200 transition-all disabled:opacity-50"
+              >
+                {emergencySearchLoading ? "Searching..." : "Search"}
+              </button>
+            </form>
+
+            {emergencySearchError && (
+              <div className="mt-4 rounded-2xl border border-red-500/20 bg-red-500/10 p-4 text-sm font-medium text-red-300">
+                {emergencySearchError}
+              </div>
+            )}
+
+            <div className="mt-5 space-y-4">
+              {emergencySearchResults.length === 0 ? (
+                <p className="text-zinc-500 text-sm">No emergency search results yet.</p>
+              ) : (
+                emergencySearchResults.map((patient) => (
+                  <div key={patient.id} className="rounded-2xl bg-zinc-950 border border-zinc-800 p-5">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                      <div>
+                        <p className="text-white font-semibold">{patient.name}</p>
+                        <p className="text-zinc-400 text-sm mt-1">
+                          {[patient.email, patient.phoneNumber].filter(Boolean).join(" • ")}
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-xs font-bold uppercase text-rose-400">Blood Group</p>
+                        <p className="text-2xl font-black text-white">{patient.bloodGroup || "-"}</p>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-sm">
+                      <div>
+                        <p className="text-zinc-500 uppercase text-[10px] font-bold tracking-widest mb-1">Allergies</p>
+                        <p className="text-zinc-200">{patient.allergies.join(", ") || "None listed"}</p>
+                      </div>
+                      <div>
+                        <p className="text-zinc-500 uppercase text-[10px] font-bold tracking-widest mb-1">Chronic Diseases</p>
+                        <p className="text-zinc-200">{patient.chronicDiseases.join(", ") || "None listed"}</p>
+                      </div>
+                      <div>
+                        <p className="text-zinc-500 uppercase text-[10px] font-bold tracking-widest mb-1">Current Medications</p>
+                        <p className="text-zinc-200">{patient.currentMedications.join(", ") || "None listed"}</p>
+                      </div>
+                      <div>
+                        <p className="text-zinc-500 uppercase text-[10px] font-bold tracking-widest mb-1">Emergency Contact</p>
+                        <p className="text-zinc-200">
+                          {[patient.emergencyContactName, patient.emergencyContactPhone].filter(Boolean).join(" • ") || "Not listed"}
+                        </p>
+                      </div>
+                      <div className="md:col-span-2">
+                        <p className="text-zinc-500 uppercase text-[10px] font-bold tracking-widest mb-1">Insurance</p>
+                        <p className="text-zinc-200">
+                          {[patient.insuranceProvider, patient.insurancePolicyNumber].filter(Boolean).join(" • ") || "Not listed"}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="mt-4 flex items-center justify-between gap-4">
+                      <span className="text-xs font-bold uppercase text-emerald-400">Emergency consent active</span>
+                      <Link
+                        href={`/emergency/${patient.id}`}
+                        className="px-4 py-2 rounded-xl border border-zinc-700 bg-zinc-900 text-zinc-200 text-sm font-semibold hover:bg-zinc-800 transition-all"
+                      >
+                        Open QR View
+                      </Link>
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
           </div>
 

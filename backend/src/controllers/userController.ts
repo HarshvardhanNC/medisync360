@@ -7,6 +7,38 @@ import {
   rescheduleProviderAppointment,
 } from '../services/providerWorkspaceService';
 
+const parseCsvList = (value: unknown): string[] => {
+  if (Array.isArray(value)) {
+    return value
+      .map((item) => String(item).trim())
+      .filter(Boolean);
+  }
+
+  if (typeof value === 'string') {
+    return value
+      .split(',')
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
+
+  return [];
+};
+
+const buildEmergencyPayload = (user: any) => ({
+  id: String(user._id),
+  name: user.name,
+  phoneNumber: user.phoneNumber ?? '',
+  bloodGroup: user.bloodGroup ?? '',
+  allergies: Array.isArray(user.allergies) ? user.allergies : [],
+  chronicDiseases: Array.isArray(user.chronicDiseases) ? user.chronicDiseases : [],
+  currentMedications: Array.isArray(user.currentMedications) ? user.currentMedications : [],
+  emergencyContactName: user.emergencyContactName ?? '',
+  emergencyContactPhone: user.emergencyContactPhone ?? '',
+  insuranceProvider: user.insuranceProvider ?? '',
+  insurancePolicyNumber: user.insurancePolicyNumber ?? '',
+  emergencyConsent: Boolean(user.emergencyConsent),
+});
+
 export const getUserProfile = async (req: AuthRequest, res: Response) => {
   try {
     const user = await User.findById(req.user?._id).select('-password');
@@ -59,6 +91,46 @@ export const updateUserProfile = async (req: AuthRequest, res: Response) => {
       user.location = req.body.location;
     }
 
+    if (req.body.phoneNumber !== undefined) {
+      user.phoneNumber = req.body.phoneNumber || undefined;
+    }
+
+    if (req.body.bloodGroup !== undefined) {
+      user.bloodGroup = req.body.bloodGroup || undefined;
+    }
+
+    if (req.body.allergies !== undefined) {
+      user.allergies = parseCsvList(req.body.allergies);
+    }
+
+    if (req.body.chronicDiseases !== undefined) {
+      user.chronicDiseases = parseCsvList(req.body.chronicDiseases);
+    }
+
+    if (req.body.currentMedications !== undefined) {
+      user.currentMedications = parseCsvList(req.body.currentMedications);
+    }
+
+    if (req.body.emergencyContactName !== undefined) {
+      user.emergencyContactName = req.body.emergencyContactName || undefined;
+    }
+
+    if (req.body.emergencyContactPhone !== undefined) {
+      user.emergencyContactPhone = req.body.emergencyContactPhone || undefined;
+    }
+
+    if (req.body.insuranceProvider !== undefined) {
+      user.insuranceProvider = req.body.insuranceProvider || undefined;
+    }
+
+    if (req.body.insurancePolicyNumber !== undefined) {
+      user.insurancePolicyNumber = req.body.insurancePolicyNumber || undefined;
+    }
+
+    if (req.body.emergencyConsent !== undefined) {
+      user.emergencyConsent = Boolean(req.body.emergencyConsent);
+    }
+
     const updatedUser = await user.save();
     res.json({
       id: updatedUser._id,
@@ -66,10 +138,20 @@ export const updateUserProfile = async (req: AuthRequest, res: Response) => {
       email: updatedUser.email,
       role: updatedUser.role,
       isApproved: updatedUser.isApproved,
+      phoneNumber: updatedUser.phoneNumber,
       specialization: updatedUser.specialization,
       experienceYears: updatedUser.experienceYears,
       consultationFee: updatedUser.consultationFee,
       location: updatedUser.location,
+      bloodGroup: updatedUser.bloodGroup,
+      allergies: updatedUser.allergies,
+      chronicDiseases: updatedUser.chronicDiseases,
+      currentMedications: updatedUser.currentMedications,
+      emergencyContactName: updatedUser.emergencyContactName,
+      emergencyContactPhone: updatedUser.emergencyContactPhone,
+      insuranceProvider: updatedUser.insuranceProvider,
+      insurancePolicyNumber: updatedUser.insurancePolicyNumber,
+      emergencyConsent: updatedUser.emergencyConsent,
     });
   } catch (error) {
     res.status(500).json({ error: 'Server error updating profile' });
@@ -160,10 +242,92 @@ export const rescheduleMyAppointment = async (req: AuthRequest, res: Response) =
   }
 };
 
-export const getEmergencyData = async (_req: AuthRequest, res: Response) => {
-  res.status(501).json({ error: 'Emergency medical access is not implemented yet' });
+export const getEmergencyData = async (req: AuthRequest, res: Response) => {
+  try {
+    const id = String(req.params.id);
+    const requester = req.user;
+
+    if (!requester || requester.role !== 'doctor') {
+      res.status(403).json({ error: 'Doctor access required' });
+      return;
+    }
+
+    if (!requester.isApproved) {
+      res.status(403).json({ error: 'Only verified doctors can access emergency data' });
+      return;
+    }
+
+    const user = await User.findById(id).select(
+      'name phoneNumber bloodGroup allergies chronicDiseases currentMedications emergencyContactName emergencyContactPhone insuranceProvider insurancePolicyNumber emergencyConsent',
+    );
+
+    if (!user || user.role !== 'patient' || !user.emergencyConsent) {
+      res.status(404).json({ error: 'Emergency record not found or not shared publicly' });
+      return;
+    }
+
+    res.json(buildEmergencyPayload(user));
+  } catch (error) {
+    res.status(500).json({ error: 'Server error retrieving emergency data' });
+  }
 };
 
-export const getPublicEmergencyData = async (_req: Request, res: Response) => {
-  res.status(501).json({ error: 'Emergency medical access is not implemented yet' });
+export const getPublicEmergencyData = async (req: Request, res: Response) => {
+  try {
+    const id = String(req.params.id);
+    const user = await User.findById(id).select(
+      'name phoneNumber bloodGroup allergies chronicDiseases currentMedications emergencyContactName emergencyContactPhone insuranceProvider insurancePolicyNumber emergencyConsent',
+    );
+
+    if (!user || user.role !== 'patient' || !user.emergencyConsent) {
+      res.status(404).json({ error: 'Emergency record not found or not shared publicly' });
+      return;
+    }
+
+    res.json(buildEmergencyPayload(user));
+  } catch (error) {
+    res.status(500).json({ error: 'Server error retrieving public emergency data' });
+  }
+};
+
+export const searchEmergencyPatients = async (req: AuthRequest, res: Response) => {
+  try {
+    const requester = req.user;
+    if (!requester || requester.role !== 'doctor') {
+      res.status(403).json({ error: 'Doctor access required' });
+      return;
+    }
+
+    if (!requester.isApproved) {
+      res.status(403).json({ error: 'Only verified doctors can search emergency records' });
+      return;
+    }
+
+    const query = String(req.query.q || '').trim();
+    if (!query) {
+      res.json({ results: [] });
+      return;
+    }
+
+    const regex = new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+    const users = await User.find({
+      role: 'patient',
+      emergencyConsent: true,
+      $or: [{ name: regex }, { email: regex }, { phoneNumber: regex }],
+    })
+      .select(
+        'name email phoneNumber bloodGroup allergies chronicDiseases currentMedications emergencyContactName emergencyContactPhone insuranceProvider insurancePolicyNumber emergencyConsent',
+      )
+      .limit(15)
+      .lean();
+
+    res.json({
+      results: users.map((user) => ({
+        ...buildEmergencyPayload(user),
+        email: user.email,
+      })),
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Server error searching emergency records' });
+  }
 };

@@ -5,12 +5,17 @@ import { useParams } from "next/navigation";
 import { fetchAPI } from "../../../utils/api";
 
 type EmergencyData = {
+  id: string;
   name: string;
+  phoneNumber: string;
   bloodGroup: string;
   allergies: string[];
   chronicDiseases: string[];
   currentMedications: string[];
-  emergencyContact: string;
+  emergencyContactName: string;
+  emergencyContactPhone: string;
+  insuranceProvider: string;
+  insurancePolicyNumber: string;
 };
 
 export default function EmergencyPortal() {
@@ -153,16 +158,30 @@ export default function EmergencyPortal() {
         <div className="mt-8 bg-zinc-900/50 border border-zinc-800 p-6 flex items-center justify-between">
            <div>
              <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-1">SOS Node Routing</h3>
-             <p className="text-2xl font-bold text-white tracking-tight">{data.emergencyContact || "Not designated"}</p>
+             <p className="text-2xl font-bold text-white tracking-tight">{data.emergencyContactPhone || "Not designated"}</p>
            </div>
-           {data.emergencyContact && (
+           {data.emergencyContactPhone && (
              <a 
-              href={`tel:${data.emergencyContact}`} 
+              href={`tel:${data.emergencyContactPhone}`} 
               className="px-6 py-4 bg-white text-zinc-950 font-black tracking-tight hover:bg-zinc-200 transition-colors hidden sm:block"
              >
                INITIATE CALL
              </a>
            )}
+        </div>
+
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-zinc-900/50 border-l-4 border-l-emerald-500 p-6">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-4">Emergency Contact Name</h2>
+            <p className="text-white font-medium text-lg">{data.emergencyContactName || "Not designated"}</p>
+          </div>
+          <div className="bg-zinc-900/50 border-l-4 border-l-cyan-500 p-6">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-cyan-500 mb-4">Insurance</h2>
+            <p className="text-white font-medium text-lg">
+              {data.insuranceProvider || "Not provided"}
+              {data.insurancePolicyNumber ? ` • ${data.insurancePolicyNumber}` : ""}
+            </p>
+          </div>
         </div>
 
       </main>
