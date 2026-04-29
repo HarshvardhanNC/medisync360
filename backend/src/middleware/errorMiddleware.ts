@@ -25,8 +25,10 @@ export const errorHandler = (
     return;
   }
 
-  if ((error as NodeJS.ErrnoException).name === 'JsonWebTokenError') {
-    res.status(401).json({ message: 'Invalid token' });
+  // Handle all JWT-related errors (invalid signature, expired, malformed, etc.)
+  const JWT_ERROR_NAMES = ['JsonWebTokenError', 'TokenExpiredError', 'NotBeforeError'];
+  if (JWT_ERROR_NAMES.includes((error as NodeJS.ErrnoException).name)) {
+    res.status(401).json({ message: 'Token expired or invalid. Please log in again.' });
     return;
   }
 

@@ -23,7 +23,7 @@ export const fetchAPI = async (endpoint: string, method: string = 'GET', body: a
   try {
     const response = await fetch(`${API_URL}${endpoint}`, options);
 
-    if (response.status === 401) {
+    if (response.status === 401 && !endpoint.includes('/auth/login') && !endpoint.includes('/auth/register')) {
       if (typeof window !== 'undefined') {
         localStorage.removeItem('token');
         window.location.href = '/login?expired=1';
@@ -78,7 +78,7 @@ export const fetchAPIForm = async (endpoint: string, formData: FormData) => {
       body: formData,
     });
 
-    if (response.status === 401) {
+    if (response.status === 401 && !endpoint.includes('/auth/login') && !endpoint.includes('/auth/register')) {
       if (typeof window !== 'undefined') {
         localStorage.removeItem('token');
         window.location.href = '/login?expired=1';
