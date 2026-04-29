@@ -10,20 +10,40 @@ const sanitizeUser = (user: {
   email: string;
   role: UserRole;
   isApproved: boolean;
+  phoneNumber?: string;
   specialization?: string[];
   experienceYears?: number;
   consultationFee?: number;
   location?: string;
+  bloodGroup?: string;
+  allergies?: string[];
+  chronicDiseases?: string[];
+  currentMedications?: string[];
+  emergencyContactName?: string;
+  emergencyContactPhone?: string;
+  insuranceProvider?: string;
+  insurancePolicyNumber?: string;
+  emergencyConsent?: boolean;
 }) => ({
   id: String(user._id),
   name: user.name,
   email: user.email,
   role: user.role,
   isApproved: user.isApproved,
+  phoneNumber: user.phoneNumber,
   specialization: user.specialization,
   experienceYears: user.experienceYears,
   consultationFee: user.consultationFee,
   location: user.location,
+  bloodGroup: user.bloodGroup,
+  allergies: user.allergies,
+  chronicDiseases: user.chronicDiseases,
+  currentMedications: user.currentMedications,
+  emergencyContactName: user.emergencyContactName,
+  emergencyContactPhone: user.emergencyContactPhone,
+  insuranceProvider: user.insuranceProvider,
+  insurancePolicyNumber: user.insurancePolicyNumber,
+  emergencyConsent: user.emergencyConsent,
 });
 
 export const registerUser = asyncHandler(async (req: Request, res: Response) => {

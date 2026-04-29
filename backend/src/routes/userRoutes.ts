@@ -6,9 +6,10 @@ import {
   getPublicEmergencyData,
   getUserProfile,
   rescheduleMyAppointment,
+  searchEmergencyPatients,
   updateUserProfile,
 } from '../controllers/userController';
-import { protect } from '../middleware/authMiddleware';
+import { isDoctor, protect } from '../middleware/authMiddleware';
 
 const router = Router();
 
@@ -19,5 +20,6 @@ router.post('/appointments/:id/reschedule', protect, rescheduleMyAppointment);
 router.put('/profile', protect, updateUserProfile);
 router.get('/emergency/:id', protect, getEmergencyData);
 router.get('/emergency-public/:id', getPublicEmergencyData);
+router.get('/emergency-search', protect, isDoctor, searchEmergencyPatients);
 
 export default router;
