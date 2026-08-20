@@ -1,5 +1,6 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { MLModelService } from './mlModelService';
+import { getLaymanInfo } from '../utils/laymanConditions';
 
 const mlService = new MLModelService();
 const MAX_TRIAGE_ROUNDS = 3;
@@ -658,9 +659,12 @@ export const predictDiseaseFromSymptoms = async (symptoms: string, triageContext
     }
 
     const result = await mlService.predictDisease(processedSymptoms);
+    const layman = getLaymanInfo(result.predictedCondition);
 
     return {
       predictedCondition: result.predictedCondition,
+      simplifiedCondition: layman.simplified,
+      patientSummary: layman.shortSummary,
       recommendedSpecialist: result.recommendedSpecialist,
       urgencyLevel: result.urgencyLevel,
       description: result.description,

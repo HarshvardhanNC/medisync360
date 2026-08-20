@@ -52,17 +52,26 @@ const buildCacheKey = (specialist: string, location: string): string => {
 };
 
 const defaultProviders = (specialist: string, location: string): Provider[] => {
+  const isRheuma = specialist.toLowerCase().includes('rheuma');
+  const h1Name = isRheuma ? `${location} Joint & Rheumatology Hospital` : `${location} Advanced Care Hospital`;
+  const c2Name = isRheuma ? `${location} Arthritis & Joint Clinic` : `${location} Specialty Clinic`;
+  const h3Name = isRheuma ? `${location} Multi-Speciality Bone & Joint Center` : `${location} Multi-Speciality Center`;
+
+  const d1Name = isRheuma ? 'Dr. Aarav Mehta' : `Dr. Aarav ${specialist.replace(/[^a-zA-Z]/g, '')}`;
+  const d2Name = isRheuma ? 'Dr. Meera Iyer' : `Dr. Meera ${specialist.replace(/[^a-zA-Z]/g, '')}`;
+  const d3Name = isRheuma ? 'Dr. Rohan Kapoor' : `Dr. Rohan ${specialist.replace(/[^a-zA-Z]/g, '')}`;
+
   return [
     {
-      id: 'p1',
+      id: `p1-${specialist.toLowerCase().replace(/\s+/g, '-')}`,
       type: 'hospital',
-      name: `${location} Advanced Care Hospital`,
+      name: h1Name,
       location,
       rating: 4.6,
       doctors: [
         {
-          id: 'd1',
-          name: `Dr. Aarav ${specialist.replace(/\s+/g, '')}`,
+          id: `d1-${specialist.toLowerCase().replace(/\s+/g, '-')}`,
+          name: d1Name,
           specialization: specialist,
           experience: 14,
           fees: 1200,
@@ -75,15 +84,15 @@ const defaultProviders = (specialist: string, location: string): Provider[] => {
       ],
     },
     {
-      id: 'p2',
+      id: `p2-${specialist.toLowerCase().replace(/\s+/g, '-')}`,
       type: 'clinic',
-      name: `${location} Specialty Clinic`,
+      name: c2Name,
       location,
       rating: 4.3,
       doctors: [
         {
-          id: 'd2',
-          name: `Dr. Meera ${specialist.replace(/\s+/g, '')}`,
+          id: `d2-${specialist.toLowerCase().replace(/\s+/g, '-')}`,
+          name: d2Name,
           specialization: specialist,
           experience: 10,
           fees: 800,
@@ -96,15 +105,15 @@ const defaultProviders = (specialist: string, location: string): Provider[] => {
       ],
     },
     {
-      id: 'p3',
+      id: `p3-${specialist.toLowerCase().replace(/\s+/g, '-')}`,
       type: 'hospital',
-      name: `${location} Multi-Speciality Center`,
+      name: h3Name,
       location,
       rating: 4.5,
       doctors: [
         {
-          id: 'd3',
-          name: `Dr. Rohan ${specialist.replace(/\s+/g, '')}`,
+          id: `d3-${specialist.toLowerCase().replace(/\s+/g, '-')}`,
+          name: d3Name,
           specialization: specialist,
           experience: 12,
           fees: 1000,
@@ -135,28 +144,52 @@ const getRegisteredProviders = async (specialist: string, location: string): Pro
   const normalizedSpecialist = normalizeSpecialist(specialist) ?? specialist;
   const doctors = await User.find({
     role: 'doctor',
-    specialization: normalizedSpecialist,
-    $or: [{ location: { $exists: false } }, { location: { $regex: `^${location.trim()}$`, $options: 'i' } }],
   }).select('-password');
 
-  return doctors.map((doctor) => ({
-    id: `provider-user-${doctor._id}`,
-    type: 'clinic' as const,
-    name: `${doctor.name} Practice`,
-    location: doctor.location ?? location,
-    rating: 4.7,
-    doctors: [
-      {
-        id: String(doctor._id),
-        linkedUserId: String(doctor._id),
-        name: doctor.name,
-        specialization: doctor.specialization?.[0] ?? normalizedSpecialist,
-        experience: doctor.experienceYears ?? 8,
-        fees: doctor.consultationFee ?? 900,
-        availability: getOrCreateRegisteredDoctorAvailability(String(doctor._id)),
-      },
-    ],
-  }));
+  // Prioritize doctors matching the recommended specialist and location first
+  doctors.sort((a, b) => {
+    const isMatch = (specList?: string[]) => {
+      if (!specList || specList.length === 0) return false;
+      const target = normalizedSpecialist.toLowerCase();
+      return specList.some((s) => {
+        const current = s.toLowerCase();
+        return current === target || current.includes(target) || target.includes(current);
+      });
+    };
+
+    const aSpecMatch = isMatch(a.specialization) ? 1 : 0;
+    const bSpecMatch = isMatch(b.specialization) ? 1 : 0;
+    if (aSpecMatch !== bSpecMatch) return bSpecMatch - aSpecMatch;
+
+    const aLocMatch = a.location && a.location.toLowerCase() === location.trim().toLowerCase() ? 1 : 0;
+    const bLocMatch = b.location && b.location.toLowerCase() === location.trim().toLowerCase() ? 1 : 0;
+    return bLocMatch - aLocMatch;
+  });
+
+  return doctors.map((doctor) => {
+    const defaultFacilityName = `${doctor.name} Specialty Clinic`;
+    const facilityName = doctor.clinicName ?? defaultFacilityName;
+    const isHospital = facilityName.toLowerCase().includes('hospital');
+
+    return {
+      id: `provider-user-${doctor._id}`,
+      type: isHospital ? ('hospital' as const) : ('clinic' as const),
+      name: facilityName,
+      location: doctor.location ?? location,
+      rating: 4.8,
+      doctors: [
+        {
+          id: String(doctor._id),
+          linkedUserId: String(doctor._id),
+          name: doctor.name,
+          specialization: doctor.specialization?.[0] ?? normalizedSpecialist,
+          experience: doctor.experienceYears ?? 8,
+          fees: doctor.consultationFee ?? 900,
+          availability: getOrCreateRegisteredDoctorAvailability(String(doctor._id)),
+        },
+      ],
+    };
+  });
 };
 
 const safeJsonParse = (text: string): unknown => {
@@ -299,8 +332,20 @@ export const getProvidersForSpecialist = async (specialist: string, location: st
   const cached = providerCache.get(cacheKey);
   const registeredProviders = await getRegisteredProviders(specialist, location);
 
+  const deduplicate = (list: Provider[]): Provider[] => {
+    const seen = new Set<string>();
+    const result: Provider[] = [];
+    for (const item of list) {
+      if (!seen.has(item.id)) {
+        seen.add(item.id);
+        result.push(item);
+      }
+    }
+    return result;
+  };
+
   if (cached && Date.now() - cached.updatedAt < CACHE_TTL_MS) {
-    return [...registeredProviders, ...cached.providers];
+    return deduplicate([...registeredProviders, ...cached.providers]);
   }
 
   let generatedProviders: Provider[];
@@ -316,7 +361,7 @@ export const getProvidersForSpecialist = async (specialist: string, location: st
     updatedAt: Date.now(),
   });
 
-  return [...registeredProviders, ...generatedProviders];
+  return deduplicate([...registeredProviders, ...generatedProviders]);
 };
 
 export const bookProviderSlot = async (params: {

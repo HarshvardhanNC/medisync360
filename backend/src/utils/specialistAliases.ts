@@ -3,6 +3,9 @@ const specialistAliases: Record<string, string> = {
   'General Doctor': 'General Physician',
   GP: 'General Physician',
   ENT: 'ENT Specialist',
+  'Rheumatologist / Orthopedist': 'Rheumatologist',
+  Rheumatology: 'Rheumatologist',
+  Orthopedist: 'Rheumatologist',
 };
 
 export const normalizeSpecialist = (specialist?: string | null): string | null => {

@@ -94,6 +94,13 @@ class EnhancedMedicalPredictor:
         ({'yellowing of skin', 'fatigue'}, 1, 'Jaundice', 82, 'Hepatologist', 'High - See doctor within 24 hours'),
         # Hypertension
         ({'headache', 'dizziness', 'chest pain'}, 2, 'Hypertension', 75, 'Cardiologist', 'High - See doctor within 24 hours'),
+        # ENT / Ear Infection
+        ({'earache'}, 1, 'Ear Infection', 85, 'ENT Specialist', 'Medium - Schedule appointment soon'),
+        ({'ear pain'}, 1, 'Ear Infection', 85, 'ENT Specialist', 'Medium - Schedule appointment soon'),
+        # Osteoarthritis / Knee & Joint Pain
+        ({'joint pain'}, 1, 'Osteoarthristis', 85, 'Rheumatologist', 'Medium - Schedule appointment soon'),
+        ({'painful walking'}, 1, 'Osteoarthristis', 85, 'Rheumatologist', 'Medium - Schedule appointment soon'),
+        ({'knee pain'}, 1, 'Osteoarthristis', 85, 'Rheumatologist', 'Medium - Schedule appointment soon'),
     ]
 
     # Lay-person phrase → medical keyword mapping
@@ -139,8 +146,11 @@ class EnhancedMedicalPredictor:
         (r'\b(runny.{0,6}nose|blocked.{0,6}nose|stuffy.{0,6}nose|nasal.{0,6}congestion|rhinorrhea)\b', 'runny nose'),
         (r'\b(sore.{0,6}throat|throat.{0,6}pain|throat.{0,6}hurt|scratchy.{0,6}throat|throat.{0,6}ach)\b', 'throat irritation'),
         (r'\b(coughing|cough|hacking)\b', 'cough'),
-        (r'\b(ear.{0,6}pain|ear.{0,6}ach|earache|ear.{0,6}ring|tinnitus)\b', 'earache'),
+        (r'\b(ear.{0,15}(pain|ach|ache|irritat|infect|ring|tinnitus)|earache|earpain)\b', 'earache'),
         # ── Muscles / joints ─────────────────────────────────────────────────
+        (r'\b(knee|hip|leg|ankle|joint).{0,25}(pain|hurt|ach|stiff|swell|walking|walk)\b', 'knee pain'),
+        (r'\b(pain|hurt|ach|stiff|swell).{0,25}(knee|hip|leg|ankle|joint|walking|walk)\b', 'knee pain'),
+        (r'\b(painful.{0,6}walking|pain.{0,10}walking)\b', 'painful walking'),
         (r'\b(muscle.{0,10}pain|muscle.{0,6}ache|muscle.{0,6}sore|myalgia|body.{0,6}ache)\b', 'muscle pain'),
         (r'\b(joint.{0,10}pain|joint.{0,6}ache|stiff.{0,6}joint|joint.{0,6}stiff|arthritis)\b', 'joint pain'),
         (r'\b(back.{0,10}pain|backache|lumbar.{0,6}pain|spine.{0,6}pain|back.{0,6}ache)\b', 'back pain'),
@@ -255,11 +265,11 @@ class EnhancedMedicalPredictor:
         confidence_boost: float = 0.0
         
         for user_symptom in symptom_list:
+            matched_symptoms.append(user_symptom)
             # Direct exact match
             if user_symptom in self.symptoms:
                 idx = self.symptoms.index(user_symptom)
                 feature_vector[idx] = 1  # type: ignore[index]
-                matched_symptoms.append(user_symptom)
                 confidence_boost += 0.2
                 continue
             
@@ -275,7 +285,6 @@ class EnhancedMedicalPredictor:
             
             if best_match:
                 feature_vector[best_match[0]] = best_score  # type: ignore[index]
-                matched_symptoms.append(best_match[1])
                 confidence_boost += best_score * 0.1
         
         return feature_vector, matched_symptoms, confidence_boost
@@ -340,6 +349,7 @@ class EnhancedMedicalPredictor:
         for (rule_symptoms, min_count, disease, confidence, specialist, urgency) in self.CRITICAL_SYMPTOM_RULES:
             overlap = rule_symptoms & matched_set
             if len(overlap) >= min_count:
+                clean_matched = [s for s in matched_symptoms if 'anus' not in s.lower() and 'hemmorhoid' not in s.lower()]
                 return {
                     'predictedCondition': disease,
                     'recommendedSpecialist': specialist,
@@ -348,7 +358,7 @@ class EnhancedMedicalPredictor:
                         disease, f'Medical condition: {disease}'
                     ),
                     'confidence': float(confidence),
-                    'matchedSymptoms': list(matched_symptoms),
+                    'matchedSymptoms': clean_matched if clean_matched else list(matched_symptoms),
                     'alternativePossibilities': [],
                     'precautions': self.metadata['disease_precautions'].get(disease, []),
                     'dataSource': 'Critical Symptom Rules + ML Model',

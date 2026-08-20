@@ -12,6 +12,7 @@ const sanitizeUser = (user: {
   isApproved: boolean;
   phoneNumber?: string;
   specialization?: string[];
+  clinicName?: string;
   experienceYears?: number;
   consultationFee?: number;
   location?: string;
@@ -32,6 +33,7 @@ const sanitizeUser = (user: {
   isApproved: user.isApproved,
   phoneNumber: user.phoneNumber,
   specialization: user.specialization,
+  clinicName: user.clinicName,
   experienceYears: user.experienceYears,
   consultationFee: user.consultationFee,
   location: user.location,

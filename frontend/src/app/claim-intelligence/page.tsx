@@ -111,23 +111,34 @@ export default function ClaimIntelligencePage(){
   const handleSubmit=async(e:React.FormEvent)=>{
     e.preventDefault(); setLoading(true); setError(""); setResult(null); setComparison(null);
     try{
-      const res=await fetch(`${getFlaskUrl()}/predict-claim`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(buildPayload())});
-      if(!res.ok){const err=await res.json();throw new Error(err.error||"API Error");}
-      setResult(await res.json());
+      let data;
+      try {
+        const res=await fetch(`${getFlaskUrl()}/predict-claim`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(buildPayload())});
+        if(!res.ok){const err=await res.json();throw new Error(err.error||"API Error");}
+        data = await res.json();
+      } catch (directErr) {
+        data = await fetchAPI('/ai/predict-claim', 'POST', buildPayload());
+      }
+      setResult(data);
       setTimeout(()=>ref.current?.scrollIntoView({behavior:"smooth"}),100);
-    }catch(err:any){setError(err.message||"Could not reach Insurance AI on port 5001.");}
+    }catch(err:any){setError(err.message||"Could not reach Insurance AI system.");}
     finally{setLoading(false);}
   };
 
   const handleCompare=async()=>{
     setComparing(true); setError("");
     try{
-      const res=await fetch(`${getFlaskUrl()}/compare-claim`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(buildPayload())});
-      if(!res.ok)throw new Error("Compare failed");
-      const d=await res.json();
-      setComparison(d.comparison);
+      let data;
+      try {
+        const res=await fetch(`${getFlaskUrl()}/compare-claim`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(buildPayload())});
+        if(!res.ok)throw new Error("Compare failed");
+        data = await res.json();
+      } catch (directErr) {
+        data = await fetchAPI('/ai/compare-claim', 'POST', buildPayload());
+      }
+      setComparison(data.comparison);
       setTimeout(()=>ref.current?.scrollIntoView({behavior:"smooth"}),100);
-    }catch(err:any){setError(err.message);}
+    }catch(err:any){setError(err.message||"Comparison failed");}
     finally{setComparing(false);}
   };
 

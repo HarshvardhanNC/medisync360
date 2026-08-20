@@ -22,6 +22,9 @@ export default function Login() {
     try {
       const data = await fetchAPI('/auth/login', 'POST', { email, password });
       localStorage.setItem('token', data.token);
+      if (data.user?.role) {
+        localStorage.setItem('userRole', data.user.role);
+      }
       window.location.href = '/dashboard';
     } catch (err: any) {
       setError(err.message || 'Failed to login');

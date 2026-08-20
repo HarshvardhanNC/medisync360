@@ -65,12 +65,22 @@ export const rankDoctorsFromProviders = (
 };
 
 export const summarizeProvidersForCards = (providers: Provider[]) => {
-  return providers
+  const seenIds = new Set<string>();
+  const uniqueProviders: Provider[] = [];
+
+  for (const p of providers) {
+    if (!seenIds.has(p.id)) {
+      seenIds.add(p.id);
+      uniqueProviders.push(p);
+    }
+  }
+
+  return uniqueProviders
     .map((provider) => {
       const averageFees =
-        provider.doctors.reduce((total, doctor) => total + doctor.fees, 0) / provider.doctors.length;
+        provider.doctors.reduce((total, doctor) => total + doctor.fees, 0) / (provider.doctors.length || 1);
       const averageExperience =
-        provider.doctors.reduce((total, doctor) => total + doctor.experience, 0) / provider.doctors.length;
+        provider.doctors.reduce((total, doctor) => total + doctor.experience, 0) / (provider.doctors.length || 1);
 
       return {
         id: provider.id,

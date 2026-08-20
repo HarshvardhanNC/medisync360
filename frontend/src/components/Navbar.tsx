@@ -3,22 +3,49 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { fetchAPI } from "../utils/api";
 
 export default function Navbar() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userRole, setUserRole] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    const storedRole = localStorage.getItem("userRole");
     setIsAuthenticated(!!token);
+    setUserRole(storedRole);
+
+    if (token && !storedRole) {
+      fetchAPI("/users/profile")
+        .then((user) => {
+          if (user?.role) {
+            setUserRole(user.role);
+            localStorage.setItem("userRole", user.role);
+          }
+        })
+        .catch(() => {});
+    }
   }, [pathname]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("userRole");
     setIsAuthenticated(false);
+    setUserRole(null);
     window.location.href = "/login";
   };
+
+  const navLinks = userRole === "doctor"
+    ? [{ name: "Dashboard", path: "/dashboard" }]
+    : [
+        { name: "Dashboard", path: "/dashboard" },
+        { name: "Emergency", path: "/emergency-profile" },
+        { name: "Diagnosis", path: "/symptom-checker" },
+        { name: "Vault", path: "/vault" },
+        { name: "Claim AI", path: "/claim-intelligence" },
+      ];
 
   return (
     <div className="fixed top-0 inset-x-0 z-50 flex justify-center pt-6 px-4 pointer-events-none">
@@ -38,12 +65,7 @@ export default function Navbar() {
         
         {/* Desktop Links */}
         <div className="hidden md:flex items-center space-x-2">
-          {[
-            { name: 'Dashboard', path: '/dashboard' },
-            { name: 'Diagnosis', path: '/symptom-checker' },
-            { name: 'Vault', path: '/vault' },
-            { name: 'Claim AI', path: '/claim-intelligence' },
-          ].map((link) => {
+          {navLinks.map((link) => {
             const isActive = pathname === link.path;
             return (
               <Link 
@@ -57,7 +79,7 @@ export default function Navbar() {
               >
                 {link.name}
               </Link>
-            )
+            );
           })}
         </div>
         
@@ -100,10 +122,16 @@ export default function Navbar() {
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-[80px] w-[calc(100%-2rem)] max-w-sm right-4 bg-zinc-900/95 backdrop-blur-3xl border border-white/10 rounded-3xl p-4 shadow-2xl pointer-events-auto flex flex-col space-y-2 animate-subtle-fade">
-          <Link href="/dashboard" className="px-5 py-3 rounded-xl font-medium text-zinc-300 hover:bg-white/5 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Dashboard</Link>
-          <Link href="/symptom-checker" className="px-5 py-3 rounded-xl font-medium text-zinc-300 hover:bg-white/5 hover:text-white" onClick={() => setMobileMenuOpen(false)}>AI Diagnosis</Link>
-          <Link href="/vault" className="px-5 py-3 rounded-xl font-medium text-zinc-300 hover:bg-white/5 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Medical Vault</Link>
-          <Link href="/claim-intelligence" className="px-5 py-3 rounded-xl font-medium text-indigo-300 hover:bg-indigo-500/10 hover:text-indigo-100" onClick={() => setMobileMenuOpen(false)}>Claim AI</Link>
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.path}
+              className="px-5 py-3 rounded-xl font-medium text-zinc-300 hover:bg-white/5 hover:text-white"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {link.name}
+            </Link>
+          ))}
           
           <div className="pt-4 mt-2 border-t border-zinc-800/50">
             {isAuthenticated ? (

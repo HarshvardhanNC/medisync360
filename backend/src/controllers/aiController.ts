@@ -1,3 +1,4 @@
+import http from 'http';
 import { Request, Response } from 'express';
 import { predictDiseaseFromSymptoms, analyzeInsurancePolicy, TriageContext } from '../services/aiService';
 import { extractTopDisease, getSpecialistForDisease } from '../utils/doctorRecommendation';
@@ -144,5 +145,67 @@ export const bookGeneratedProviderSlot = async (req: AuthRequest, res: Response)
     return res.status(400).json({
       error: error.message || 'Failed to book appointment slot',
     });
+  }
+};
+
+const postToFlask = (path: string, payload: any): Promise<any> => {
+  return new Promise((resolve, reject) => {
+    const dataString = JSON.stringify(payload);
+    const options: http.RequestOptions = {
+      hostname: '127.0.0.1',
+      port: 5001,
+      path,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(dataString),
+      },
+    };
+
+    const req = http.request(options, (res) => {
+      let body = '';
+      res.on('data', (chunk) => {
+        body += chunk;
+      });
+      res.on('end', () => {
+        try {
+          const parsed = JSON.parse(body);
+          if (res.statusCode && res.statusCode >= 400) {
+            reject(new Error(parsed.error || `Flask Error ${res.statusCode}`));
+          } else {
+            resolve(parsed);
+          }
+        } catch (e) {
+          reject(new Error('Invalid JSON response from Flask AI server'));
+        }
+      });
+    });
+
+    req.on('error', (err) => {
+      reject(err);
+    });
+
+    req.write(dataString);
+    req.end();
+  });
+};
+
+export const predictClaimProxy = async (req: Request, res: Response, next: any) => {
+  try {
+    const data = await postToFlask('/predict-claim', req.body);
+    return res.json(data);
+  } catch (error: any) {
+    console.error('Insurance Proxy Error:', error?.message || error);
+    return res.status(500).json({ error: error?.message || 'Could not connect to Insurance AI service on port 5001.' });
+  }
+};
+
+export const compareClaimProxy = async (req: Request, res: Response, next: any) => {
+  try {
+    const data = await postToFlask('/compare-claim', req.body);
+    return res.json(data);
+  } catch (error: any) {
+    console.error('Insurance Compare Proxy Error:', error?.message || error);
+    return res.status(500).json({ error: error?.message || 'Could not connect to Insurance AI service on port 5001.' });
   }
 };

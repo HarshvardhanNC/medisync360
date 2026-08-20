@@ -316,8 +316,16 @@ export default function SymptomChecker() {
 
             <div className="grid md:grid-cols-2 gap-6 text-sm relative z-10">
               <div className="bg-zinc-900/50 rounded-2xl p-6 border border-zinc-800">
-                <h3 className="text-zinc-500 font-semibold uppercase tracking-wider mb-2">Predicted Pathogen/Condition</h3>
+                <h3 className="text-zinc-500 font-semibold uppercase tracking-wider mb-2">Predicted Pathogen / Condition</h3>
                 <p className="text-2xl font-bold text-white tracking-tight">{prediction.predictedCondition || "Unknown"}</p>
+                {prediction.simplifiedCondition && (
+                  <div className="mt-2 inline-flex items-center px-3 py-1 rounded-lg bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-semibold">
+                    <svg className="w-3.5 h-3.5 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Plain Language: {prediction.simplifiedCondition}
+                  </div>
+                )}
               </div>
 
               <div className="bg-zinc-900/50 rounded-2xl p-6 border border-zinc-800 flex flex-col justify-center">
@@ -330,8 +338,20 @@ export default function SymptomChecker() {
                 </div>
               </div>
 
+              {prediction.patientSummary && (
+                <div className="md:col-span-2 bg-teal-500/5 p-6 rounded-2xl border border-teal-500/20 text-teal-100 text-base leading-relaxed">
+                  <span className="block text-teal-400 font-semibold mb-1.5 uppercase tracking-wider text-xs flex items-center">
+                    <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                    What This Means For You (Patient Explanation)
+                  </span>
+                  <p className="font-medium text-sm sm:text-base text-teal-50">{prediction.patientSummary}</p>
+                </div>
+              )}
+
               <div className="md:col-span-2 bg-zinc-900/30 p-6 rounded-2xl border border-zinc-800 text-zinc-300 text-base leading-relaxed font-light">
-                <span className="block text-zinc-500 font-semibold mb-2 uppercase tracking-wider text-xs">Clinical Summary</span>
+                <span className="block text-zinc-500 font-semibold mb-2 uppercase tracking-wider text-xs">Full Clinical Summary</span>
                 {prediction.description}
               </div>
 
@@ -373,8 +393,8 @@ export default function SymptomChecker() {
             <h2 className="text-2xl font-bold text-white mb-6">Network Targets</h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-              {hospitals.map((hospital) => (
-                <div key={hospital.id} className="bg-zinc-900/40 rounded-3xl p-6 border border-zinc-800 hover:bg-zinc-800/40 hover:border-zinc-700 transition duration-300 relative">
+              {hospitals.map((hospital, hIndex) => (
+                <div key={`${hospital.id}-${hIndex}`} className="bg-zinc-900/40 rounded-3xl p-6 border border-zinc-800 hover:bg-zinc-800/40 hover:border-zinc-700 transition duration-300 relative">
                   <div className="absolute top-6 right-6 bg-zinc-800 text-zinc-300 px-3 py-1 rounded-full text-xs font-bold border border-zinc-700">
                     {hospital.treatmentCostRange || "$$$"}
                   </div>
@@ -400,32 +420,30 @@ export default function SymptomChecker() {
                     </div>
 
                     <div>
-                      <p className="text-[10px] text-zinc-500 uppercase font-bold tracking-widest mb-1.5">Experience</p>
-                      <p className="font-semibold text-lg text-white flex items-end">
+                      <p className="text-[10px] text-zinc-500 uppercase font-bold tracking-widest mb-1.5">Avg Experience</p>
+                      <p className="font-semibold text-lg text-white">
                         {hospital.doctorExperienceAvgYears || "10+"}
-                        <span className="text-xs text-zinc-600 ml-1 mb-0.5 font-light">years avg</span>
+                        <span className="text-xs text-zinc-400 font-light ml-1">years</span>
                       </p>
                     </div>
                   </div>
 
-                  <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800/80">
-                    <p className="text-[10px] text-zinc-500 uppercase font-bold tracking-widest mb-3">Accepted Payers</p>
-                    <div className="flex flex-wrap gap-2">
-                      {hospital.insuranceCompatibility?.slice(0, 3).map((ins: string, i: number) => (
-                        <span key={i} className="text-[11px] font-medium bg-zinc-900 border border-zinc-800 text-zinc-300 px-2.5 py-1 rounded-md">
-                          {ins}
-                        </span>
-                      ))}
-                      {hospital.insuranceCompatibility && hospital.insuranceCompatibility.length > 3 && (
-                        <span className="text-[11px] font-medium text-zinc-500 px-1 py-1">+{hospital.insuranceCompatibility.length - 3}</span>
-                      )}
-                    </div>
+                  <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-zinc-800/80">
+                    <span className="text-[10px] text-zinc-500 uppercase font-bold tracking-widest mr-1">Accepted Insurances:</span>
+                    {hospital.insuranceCompatibility.slice(0, 3).map((ins, i) => (
+                      <span key={i} className="text-xs bg-zinc-800 text-zinc-300 px-2.5 py-1 rounded-md border border-zinc-700">
+                        {ins}
+                      </span>
+                    ))}
+                    {hospital.insuranceCompatibility.length > 3 && (
+                      <span className="text-[11px] font-medium text-zinc-500 px-1 py-1">+{hospital.insuranceCompatibility.length - 3}</span>
+                    )}
                   </div>
 
                   <div className="mt-5 bg-zinc-950 p-4 rounded-xl border border-zinc-800/80 space-y-4">
                     <p className="text-[10px] text-zinc-500 uppercase font-bold tracking-widest">Available Doctors</p>
-                    {hospital.doctors.map((doctor) => (
-                      <div key={doctor.id} className="rounded-xl border border-zinc-800 bg-zinc-900/70 p-4">
+                    {hospital.doctors.map((doctor, dIndex) => (
+                      <div key={`${doctor.id}-${dIndex}`} className="rounded-xl border border-zinc-800 bg-zinc-900/70 p-4">
                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
                           <div>
                             <h4 className="text-white font-semibold">{doctor.name}</h4>

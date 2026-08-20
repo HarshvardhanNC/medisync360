@@ -243,112 +243,22 @@ function PatientDashboard({ user }: { user: UserProfile }) {
       <div className="col-span-2 space-y-6">
         <div className="bg-zinc-900/40 backdrop-blur-md rounded-3xl p-8 border border-zinc-800">
           <h3 className="text-lg font-bold mb-6 text-white">Patient Workspace</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Link href="/symptom-checker" className="bg-white text-zinc-950 font-semibold py-4 rounded-2xl text-center hover:bg-zinc-200 transition-all">
-              Start Diagnosis
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <Link href="/symptom-checker" className="bg-white text-zinc-950 font-semibold py-4 rounded-2xl text-center hover:bg-zinc-200 transition-all flex flex-col items-center justify-center gap-1">
+              <span className="text-sm font-bold">Start Diagnosis</span>
+              <span className="text-[11px] text-zinc-600 font-normal">AI Triage & Specialist Match</span>
             </Link>
-            <Link href="/vault" className="bg-zinc-950 border border-zinc-800 text-white font-semibold py-4 rounded-2xl text-center hover:bg-zinc-900 transition-all">
-              Open Vault
-            </Link>
-          </div>
-        </div>
-
-        <div className="bg-zinc-900/40 backdrop-blur-md rounded-3xl p-8 border border-zinc-800">
-          <div className="flex items-center justify-between gap-4 mb-5">
-            <div>
-              <h3 className="text-lg font-bold text-white">Emergency Profile</h3>
-              <p className="text-zinc-500 text-sm mt-1">
-                Fill the critical medical information that can be accessed through your QR code and by verified doctors when you enable consent.
-              </p>
-            </div>
-            <span
-              className={`text-xs font-bold uppercase ${
-                profileForm.emergencyConsent ? "text-emerald-400" : "text-amber-400"
-              }`}
-            >
-              {profileForm.emergencyConsent ? "Public for emergency access" : "Private"}
-            </span>
-          </div>
-
-          <form onSubmit={handleEmergencyProfileSave} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              value={profileForm.phoneNumber}
-              onChange={(e) => setProfileForm((current) => ({ ...current, phoneNumber: e.target.value }))}
-              placeholder="Phone number"
-              className="bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm"
-            />
-            <input
-              value={profileForm.bloodGroup}
-              onChange={(e) => setProfileForm((current) => ({ ...current, bloodGroup: e.target.value }))}
-              placeholder="Blood group"
-              className="bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm"
-            />
-            <input
-              value={profileForm.emergencyContactName}
-              onChange={(e) => setProfileForm((current) => ({ ...current, emergencyContactName: e.target.value }))}
-              placeholder="Emergency contact name"
-              className="bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm"
-            />
-            <input
-              value={profileForm.emergencyContactPhone}
-              onChange={(e) => setProfileForm((current) => ({ ...current, emergencyContactPhone: e.target.value }))}
-              placeholder="Emergency contact phone"
-              className="bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm"
-            />
-            <input
-              value={profileForm.insuranceProvider}
-              onChange={(e) => setProfileForm((current) => ({ ...current, insuranceProvider: e.target.value }))}
-              placeholder="Insurance provider"
-              className="bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm"
-            />
-            <input
-              value={profileForm.insurancePolicyNumber}
-              onChange={(e) => setProfileForm((current) => ({ ...current, insurancePolicyNumber: e.target.value }))}
-              placeholder="Insurance policy number"
-              className="bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm"
-            />
-            <textarea
-              value={profileForm.allergies}
-              onChange={(e) => setProfileForm((current) => ({ ...current, allergies: e.target.value }))}
-              placeholder="Allergies, comma separated"
-              className="md:col-span-2 h-24 bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm resize-none"
-            />
-            <textarea
-              value={profileForm.chronicDiseases}
-              onChange={(e) => setProfileForm((current) => ({ ...current, chronicDiseases: e.target.value }))}
-              placeholder="Chronic diseases, comma separated"
-              className="md:col-span-2 h-24 bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm resize-none"
-            />
-            <textarea
-              value={profileForm.currentMedications}
-              onChange={(e) => setProfileForm((current) => ({ ...current, currentMedications: e.target.value }))}
-              placeholder="Current medications, comma separated"
-              className="md:col-span-2 h-24 bg-zinc-950 border border-zinc-800 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm resize-none"
-            />
-            <label className="md:col-span-2 flex items-start gap-3 rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-4 text-sm text-zinc-300">
-              <input
-                type="checkbox"
-                checked={profileForm.emergencyConsent}
-                onChange={(e) => setProfileForm((current) => ({ ...current, emergencyConsent: e.target.checked }))}
-                className="mt-1"
-              />
-              <span>
-                I consent to make this emergency profile visible through QR code and accessible to verified doctors on the platform during emergencies.
+            <Link href="/emergency-profile" className="bg-red-500/10 border border-red-500/30 text-red-300 font-semibold py-4 rounded-2xl text-center hover:bg-red-500/20 transition-all flex flex-col items-center justify-center gap-1">
+              <span className="text-sm font-bold flex items-center gap-1">
+                Emergency Profile
               </span>
-            </label>
-            <div className="md:col-span-2 flex items-center justify-between gap-4">
-              <p className={`text-sm ${profileMessage.includes("successfully") ? "text-emerald-400" : "text-red-400"}`}>
-                {profileMessage}
-              </p>
-              <button
-                type="submit"
-                disabled={profileSaving}
-                className="px-5 py-3 rounded-xl bg-white text-zinc-950 font-semibold hover:bg-zinc-200 transition-all disabled:opacity-50"
-              >
-                {profileSaving ? "Saving..." : "Save Emergency Profile"}
-              </button>
-            </div>
-          </form>
+              <span className="text-[11px] text-red-400/80 font-normal">QR Code & Paramedic Info</span>
+            </Link>
+            <Link href="/vault" className="bg-zinc-950 border border-zinc-800 text-white font-semibold py-4 rounded-2xl text-center hover:bg-zinc-900 transition-all flex flex-col items-center justify-center gap-1">
+              <span className="text-sm font-bold">Open Vault</span>
+              <span className="text-[11px] text-zinc-500 font-normal">Encrypted Records</span>
+            </Link>
+          </div>
         </div>
 
         <div className="bg-zinc-900/40 backdrop-blur-md rounded-3xl p-8 border border-zinc-800">
@@ -428,7 +338,7 @@ function PatientDashboard({ user }: { user: UserProfile }) {
                         disabled={appointmentActionKey === `cancel:${appointment.id}`}
                         className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm font-semibold text-red-300 disabled:opacity-50"
                       >
-                        {appointmentActionKey === `cancel:${appointment.id}` ? "Cancelling..." : "Cancel Appointment"}
+                        {appointmentActionKey === `cancel:${appointment.id}` ? "Unbooking..." : "Unbook / Cancel Appointment"}
                       </button>
                     </div>
                   )}

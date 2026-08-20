@@ -127,8 +127,14 @@ def load_model():
     if not os.path.exists(MODEL_PATH):
         print("No saved model found — training now …")
         train_model()
-    with open(MODEL_PATH, "rb") as f:
-        return pickle.load(f)
+    try:
+        with open(MODEL_PATH, "rb") as f:
+            return pickle.load(f)
+    except Exception as e:
+        print("Model unpickle failed (version mismatch) — retraining model …", e)
+        train_model()
+        with open(MODEL_PATH, "rb") as f:
+            return pickle.load(f)
 
 
 # ── Predict ────────────────────────────────────────────────────────────────────

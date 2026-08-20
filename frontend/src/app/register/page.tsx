@@ -27,11 +27,11 @@ export default function Register() {
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    
+
     if (formData.password !== formData.confirmPassword) {
       return setError("Passwords do not match");
     }
-    
+
     if (formData.password.length < 6) {
       return setError("Password must be at least 6 characters");
     }
@@ -40,9 +40,11 @@ export default function Register() {
     try {
       const { confirmPassword, ...submitData } = formData;
       const data = await fetchAPI('/auth/register', 'POST', submitData);
-      
-      // Save token and redirect
+
       localStorage.setItem('token', data.token);
+      if (data.user?.role) {
+        localStorage.setItem('userRole', data.user.role);
+      }
       window.location.href = '/dashboard';
     } catch (err: any) {
       setError(err.message || 'Failed to register');
@@ -52,10 +54,8 @@ export default function Register() {
   };
 
   return (
-    <div className="flex-1 flex items-center justify-center -mt-10 px-4">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gray-950">
       <div className="relative w-full max-w-md animate-in zoom-in-95 duration-500">
-        <div className="absolute -inset-0.5 bg-gradient-to-tr from-cyan-500/20 to-teal-500/20 blur-2xl z-0 pointer-events-none rounded-full"></div>
-        
         <div className="bg-[#111827]/90 backdrop-blur-2xl border border-gray-700/60 p-8 sm:p-10 rounded-3xl shadow-2xl relative z-10">
           <div className="text-center mb-6">
             <h2 className="text-3xl font-extrabold text-white mb-2">Create Account</h2>
@@ -98,6 +98,7 @@ export default function Register() {
                 required
               />
             </div>
+
             <div>
               <label className="block text-sm font-semibold text-gray-300 mb-1 ml-1">Email Address</label>
               <input 

@@ -12,6 +12,7 @@ export interface IUser {
   isApproved: boolean;
   phoneNumber?: string;
   specialization?: string[];
+  clinicName?: string;
   experienceYears?: number;
   consultationFee?: number;
   location?: string;
@@ -72,6 +73,11 @@ const userSchema = new Schema<IUser, UserModel, IUserMethods>(
     },
     specialization: {
       type: [String],
+      default: undefined,
+    },
+    clinicName: {
+      type: String,
+      trim: true,
       default: undefined,
     },
     experienceYears: {

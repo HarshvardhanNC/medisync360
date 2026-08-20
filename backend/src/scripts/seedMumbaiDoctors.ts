@@ -9,6 +9,7 @@ const doctors = [
     role: 'doctor' as const,
     isApproved: true,
     specialization: ['General Physician'],
+    clinicName: 'Lilavati Hospital & Research Centre',
     experienceYears: 12,
     consultationFee: 900,
     location: 'Mumbai',
@@ -20,6 +21,7 @@ const doctors = [
     role: 'doctor' as const,
     isApproved: true,
     specialization: ['Neurologist'],
+    clinicName: 'Bombay Hospital & NeuroCare Institute',
     experienceYears: 14,
     consultationFee: 1600,
     location: 'Mumbai',
@@ -31,6 +33,7 @@ const doctors = [
     role: 'doctor' as const,
     isApproved: true,
     specialization: ['Cardiologist'],
+    clinicName: 'Kokilaben Dhirubhai Ambani Heart Centre',
     experienceYears: 15,
     consultationFee: 1800,
     location: 'Mumbai',
@@ -42,6 +45,7 @@ const doctors = [
     role: 'doctor' as const,
     isApproved: true,
     specialization: ['Pulmonologist'],
+    clinicName: 'Nanavati Max Pulmonology Care',
     experienceYears: 11,
     consultationFee: 1400,
     location: 'Mumbai',
@@ -53,6 +57,7 @@ const doctors = [
     role: 'doctor' as const,
     isApproved: true,
     specialization: ['ENT Specialist'],
+    clinicName: 'Fortis Hospital ENT & Hearing Clinic',
     experienceYears: 10,
     consultationFee: 1000,
     location: 'Mumbai',
@@ -70,6 +75,7 @@ const run = async () => {
       existing.role = doctor.role;
       existing.isApproved = doctor.isApproved;
       existing.specialization = doctor.specialization;
+      existing.clinicName = doctor.clinicName;
       existing.experienceYears = doctor.experienceYears;
       existing.consultationFee = doctor.consultationFee;
       existing.location = doctor.location;

@@ -309,17 +309,43 @@ export const searchEmergencyPatients = async (req: AuthRequest, res: Response) =
       return;
     }
 
-    const regex = new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+    const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const nameRegex = new RegExp(escapedQuery, 'i');
+
+    let searchConditions: any[];
+    if (query.includes('@')) {
+      searchConditions = [
+        { name: nameRegex },
+        { email: new RegExp(escapedQuery, 'i') },
+        { phoneNumber: nameRegex },
+      ];
+    } else {
+      // Match name, phone, or email username BEFORE the '@' symbol (prevents .com matching everything)
+      searchConditions = [
+        { name: nameRegex },
+        { phoneNumber: nameRegex },
+        { email: { $regex: `^[^@]*${escapedQuery}[^@]*@`, $options: 'i' } },
+      ];
+    }
+
     const users = await User.find({
       role: 'patient',
       emergencyConsent: true,
-      $or: [{ name: regex }, { email: regex }, { phoneNumber: regex }],
+      $or: searchConditions,
     })
       .select(
         'name email phoneNumber bloodGroup allergies chronicDiseases currentMedications emergencyContactName emergencyContactPhone insuranceProvider insurancePolicyNumber emergencyConsent',
       )
       .limit(15)
       .lean();
+
+    // Sort results so names starting with the search query appear first
+    const lowerQuery = query.toLowerCase();
+    users.sort((a, b) => {
+      const aNameStarts = a.name.toLowerCase().startsWith(lowerQuery) ? 2 : a.name.toLowerCase().includes(lowerQuery) ? 1 : 0;
+      const bNameStarts = b.name.toLowerCase().startsWith(lowerQuery) ? 2 : b.name.toLowerCase().includes(lowerQuery) ? 1 : 0;
+      return bNameStarts - aNameStarts;
+    });
 
     res.json({
       results: users.map((user) => ({
