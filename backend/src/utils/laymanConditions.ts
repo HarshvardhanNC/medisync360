@@ -4,6 +4,22 @@ export interface LaymanInfo {
 }
 
 export const LAYMAN_CONDITION_MAP: Record<string, LaymanInfo> = {
+  'Malaria': {
+    simplified: 'Mosquito-Borne Parasitic Infection (Malaria)',
+    shortSummary: 'A serious infection transmitted by mosquitoes causing cycles of high fever, shivering chills, profuse sweating, severe headache, and body aches.',
+  },
+  'Influenza': {
+    simplified: 'Seasonal Flu (Influenza Virus)',
+    shortSummary: 'A contagious respiratory infection causing sudden high fever, dry cough, severe body aches, weakness, and fatigue.',
+  },
+  'Appendicitis': {
+    simplified: 'Inflamed Appendix (Appendicitis)',
+    shortSummary: 'A painful inflammation of the appendix in your lower right abdomen requiring urgent medical evaluation.',
+  },
+  'Strep Throat': {
+    simplified: 'Infectious Condition (Strep Throat)',
+    shortSummary: 'A bacterial throat infection causing severe throat pain, painful swallowing, swollen tonsils with white patches, and fever.',
+  },
   'Osteoarthristis': {
     simplified: 'Joint Wear & Tear (Cartilage Breakdown)',
     shortSummary: 'The protective cushion (cartilage) at the ends of your joints has worn down over time, causing joint stiffness, swelling, and pain during movement.',
@@ -49,8 +65,8 @@ export const LAYMAN_CONDITION_MAP: Record<string, LaymanInfo> = {
     shortSummary: 'An infection of your stomach and intestines causing watery diarrhea, stomach cramps, nausea, vomiting, or low fever.',
   },
   'Bronchial Asthma': {
-    simplified: 'Airway Swelling & Wheezing Tightness',
-    shortSummary: 'Lung airways become inflamed and narrow, producing extra mucus that leads to breathing difficulty, chest tightness, or wheezing.',
+    simplified: 'Asthma Attack / Airway Constriction',
+    shortSummary: 'Airway inflammation and narrowing causing wheezing, severe shortness of breath, chest tightness, and rapid breathing.',
   },
   'Hypertension': {
     simplified: 'High Blood Pressure',
@@ -103,10 +119,6 @@ export const LAYMAN_CONDITION_MAP: Record<string, LaymanInfo> = {
   'Dengue': {
     simplified: 'Mosquito-Borne High Fever & Joint Aches',
     shortSummary: 'A viral infection transmitted by mosquitoes causing sudden high fever, severe eye/muscle pain, skin rash, and extreme fatigue.',
-  },
-  'Malaria': {
-    simplified: 'Mosquito-Borne Parasite Fever & Chills',
-    shortSummary: 'A parasite infection spread by mosquitoes causing repeating cycles of high fever, severe shaking chills, and sweating.',
   },
   'Typhoid': {
     simplified: 'Bacterial Digestive System Fever',
