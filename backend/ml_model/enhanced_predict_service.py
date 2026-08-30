@@ -55,211 +55,239 @@ class EnhancedMedicalPredictor:
         'days', 'weeks', 'hours', 'today', 'yesterday', 'night', 'morning',
         'past', 'last', 'few', 'couple', 'of', 'in', 'on', 'at', 'from',
         'there', 'this', 'that', 'these', 'those', 'also', 'too', 'as', 'well',
-        'but', 'not', 'no', 'yes', 'ok', 'okay', 'please', 'help', 'think',
+        'yes', 'ok', 'okay', 'please', 'help', 'think',
         'kind', 'sort', 'type', 'slight', 'severe', 'mild',
         'moderate', 'bad', 'terrible', 'awful', 'horrible', 'constant', 'sharp',
         'dull', 'throbbing', 'keep', 'keeps',
-        'cannot', "can't", 'cant', 'dont', "don't", 'doesnt', "doesn't",
     }
 
+    # Negation triggers for clause-level NegEx processing
+    NEGATION_PATTERNS: ClassVar[List[str]] = [
+        r'\b(no|not|denies|denied|without|free of|no history of|rules out|absent)\b',
+        r'\b(doesn\'t have|does not have|didn\'t have|did not have|don\'t have|do not have)\b',
+        r'\b(haven\'t|hasn\'t|never|no sign of|no evidence of|negative for|neither|nor)\b',
+        r'\b(dont have|doesnt have|didnt have|cant see|no symptoms of)\b',
+    ]
+
     # ── Critical symptom → disease overrides ──────────────────────────────────
-    # When the matched symptoms clearly point to a specific condition, we skip
-    # the ML model and return a high-confidence rule-based result instead.
-    # Format: (required_symptoms_set, min_match_count, disease, confidence, specialist, urgency)
     CRITICAL_SYMPTOM_RULES: ClassVar[List[Tuple[Set[str], int, str, int, str, str]]] = [
-        # Asthma / Airway Constriction (Wheezing takes priority over generic chest pain)
-        ({'wheezing'}, 1, 'Bronchial Asthma', 96, 'Pulmonologist', 'High - See doctor within 24 hours'),
-        ({'wheezing', 'shortness of breath'}, 1, 'Bronchial Asthma', 96, 'Pulmonologist', 'High - See doctor within 24 hours'),
-        # Cardiac
+        # Cardiac (Highest priority emergency overrides)
         ({'chest pain', 'shortness of breath'}, 2, 'Heart attack', 96, 'Cardiologist', 'Emergency - Seek immediate care'),
         ({'chest pain', 'sweating', 'nausea'}, 2, 'Heart attack', 97, 'Cardiologist', 'Emergency - Seek immediate care'),
-        # Gastro / Appendicitis (Higher Priority than single-symptom Migraine)
+        ({'chest pain', 'breathlessness'}, 2, 'Heart attack', 96, 'Cardiologist', 'Emergency - Seek immediate care'),
+        ({'chest pain', 'sweating'}, 2, 'Heart attack', 96, 'Cardiologist', 'Emergency - Seek immediate care'),
+        # Stroke / Hemorrhage
+        ({'weakness of one body side', 'slurred speech'}, 2, 'Paralysis (brain hemorrhage)', 98, 'Neurologist', 'Emergency - Seek immediate care'),
+        ({'altered sensorium', 'slurred speech'}, 2, 'Paralysis (brain hemorrhage)', 96, 'Neurologist', 'Emergency - Seek immediate care'),
+        ({'blurred and distorted vision', 'slurred speech'}, 2, 'Paralysis (brain hemorrhage)', 97, 'Neurologist', 'Emergency - Seek immediate care'),
+        # Asthma / Airway Constriction
+        ({'wheezing'}, 1, 'Bronchial Asthma', 96, 'Pulmonologist', 'High - See doctor within 24 hours'),
+        ({'wheezing', 'shortness of breath'}, 1, 'Bronchial Asthma', 96, 'Pulmonologist', 'High - See doctor within 24 hours'),
+        ({'breathlessness'}, 1, 'Bronchial Asthma', 95, 'Pulmonologist', 'High - See doctor within 24 hours'),
+        # Gastro / Appendicitis
         ({'lower right abdominal pain'}, 1, 'Appendicitis', 97, 'General Surgeon', 'Emergency - Seek immediate care'),
         ({'nausea', 'vomiting', 'diarrhoea'}, 2, 'Gastroenteritis', 96, 'Gastroenterologist', 'Medium - Schedule appointment soon'),
         ({'nausea', 'vomiting', 'stomach pain'}, 2, 'Gastroenteritis', 94, 'Gastroenterologist', 'Medium - Schedule appointment soon'),
         ({'stomach pain', 'acidity', 'nausea'}, 2, 'GERD', 93, 'Gastroenterologist', 'Medium - Schedule appointment soon'),
         ({'acidity'}, 1, 'GERD', 95, 'Gastroenterologist', 'Medium - Schedule appointment soon'),
         ({'stomach pain'}, 1, 'GERD', 93, 'Gastroenterologist', 'Medium - Schedule appointment soon'),
-        # Malaria / Mosquito-Borne Infection (Higher Priority than single-symptom Migraine)
+        ({'burning micturition'}, 1, 'Urinary tract infection', 96, 'Urologist', 'Medium - Schedule appointment soon'),
+        # Malaria / Mosquito-Borne Infection
         ({'high fever', 'chills', 'sweating'}, 2, 'Malaria', 96, 'Infectious Disease Specialist', 'Emergency - Seek immediate care'),
         ({'high fever', 'chills'}, 2, 'Malaria', 96, 'Infectious Disease Specialist', 'Emergency - Seek immediate care'),
         ({'high fever', 'sweating', 'headache'}, 2, 'Malaria', 96, 'Infectious Disease Specialist', 'Emergency - Seek immediate care'),
         ({'high fever', 'sweating'}, 2, 'Malaria', 95, 'Infectious Disease Specialist', 'Emergency - Seek immediate care'),
-        # Diabetes (Polyuria, Polydipsia, Weight loss, Blurred vision)
-        ({'increased thirst', 'frequent urination'}, 1, 'Diabetes', 96, 'Endocrinologist', 'Medium - Schedule appointment soon'),
-        ({'increased thirst', 'weight loss'}, 1, 'Diabetes', 96, 'Endocrinologist', 'Medium - Schedule appointment soon'),
-        ({'increased thirst'}, 1, 'Diabetes', 95, 'Endocrinologist', 'Medium - Schedule appointment soon'),
-        ({'frequent urination', 'weight loss'}, 1, 'Diabetes', 95, 'Endocrinologist', 'Medium - Schedule appointment soon'),
-        ({'frequent urination', 'blurred vision'}, 1, 'Diabetes', 95, 'Endocrinologist', 'Medium - Schedule appointment soon'),
-        ({'frequent urination', 'fatigue'}, 1, 'Diabetes', 95, 'Endocrinologist', 'Medium - Schedule appointment soon'),
-        # Migraine / Headache (Requires headache)
+        # Diabetes & Hypoglycemia
+        ({'excessive hunger', 'sweating'}, 2, 'Hypoglycemia', 97, 'Endocrinologist', 'Emergency - Consume fast-acting sugar immediately'),
+        ({'excessive hunger', 'altered sensorium'}, 2, 'Hypoglycemia', 97, 'Endocrinologist', 'Emergency - Consume fast-acting sugar immediately'),
+        ({'excessive hunger', 'shivering'}, 2, 'Hypoglycemia', 96, 'Endocrinologist', 'Emergency - Consume fast-acting sugar immediately'),
+        ({'increased thirst', 'frequent urination'}, 2, 'Diabetes', 96, 'Endocrinologist', 'Medium - Schedule appointment soon'),
+        ({'increased thirst', 'polyuria'}, 2, 'Diabetes', 96, 'Endocrinologist', 'Medium - Schedule appointment soon'),
+        ({'increased thirst', 'weight loss'}, 2, 'Diabetes', 96, 'Endocrinologist', 'Medium - Schedule appointment soon'),
+        ({'polyuria'}, 1, 'Diabetes', 94, 'Endocrinologist', 'Medium - Schedule appointment soon'),
+        # Migraine / Headache
         ({'headache', 'nausea', 'vomiting'}, 2, 'Migraine', 95, 'Neurologist', 'Medium - Schedule appointment soon'),
-        ({'headache', 'blurred vision'}, 2, 'Migraine', 93, 'Neurologist', 'Medium - Schedule appointment soon'),
+        ({'headache', 'blurred and distorted vision'}, 2, 'Migraine', 93, 'Neurologist', 'Medium - Schedule appointment soon'),
         ({'headache'}, 1, 'Migraine', 95, 'Neurologist', 'Medium - Schedule appointment soon'),
-        # Jaundice (Requires yellowing of skin)
+        # Autoimmune & Rheumatology / Arthritis
+        ({'joint pain', 'skin rash'}, 2, 'Arthritis', 96, 'Rheumatologist', 'High - See Rheumatologist within 24 hours'),
+        ({'joint pain', 'skin rash', 'mild fever'}, 2, 'Arthritis', 97, 'Rheumatologist', 'High - See Rheumatologist within 24 hours'),
+        ({'joint pain', 'skin rash', 'high fever'}, 2, 'Arthritis', 97, 'Rheumatologist', 'High - See Rheumatologist within 24 hours'),
+        # Vertigo
+        ({'spinning movements'}, 1, '(vertigo) Paroymsal  Positional Vertigo', 97, 'ENT Specialist', 'Medium - Schedule appointment soon'),
+        ({'spinning movements', 'loss of balance'}, 1, '(vertigo) Paroymsal  Positional Vertigo', 97, 'ENT Specialist', 'Medium - Schedule appointment soon'),
+        # Jaundice / Liver
         ({'yellowing of skin'}, 1, 'Jaundice', 95, 'Hepatologist', 'High - See doctor within 24 hours'),
-        ({'yellowing of skin', 'fatigue'}, 2, 'Jaundice', 96, 'Hepatologist', 'High - See doctor within 24 hours'),
-        # Hypertension
-        ({'headache', 'dizziness', 'chest pain'}, 2, 'Hypertension', 93, 'Cardiologist', 'High - See doctor within 24 hours'),
-        # ENT / Ear Infection
+        ({'yellowish skin'}, 1, 'Jaundice', 95, 'Hepatologist', 'High - See doctor within 24 hours'),
+        ({'yellowing of eyes'}, 1, 'Jaundice', 95, 'Hepatologist', 'High - See doctor within 24 hours'),
+        # ENT / Ear
         ({'earache'}, 1, 'Ear Infection', 96, 'ENT Specialist', 'Medium - Schedule appointment soon'),
-        ({'ear pain'}, 1, 'Ear Infection', 96, 'ENT Specialist', 'Medium - Schedule appointment soon'),
-        # Osteoarthritis / Knee & Joint Pain
+        # Joint / Knee
         ({'joint pain'}, 1, 'Osteoarthristis', 95, 'Rheumatologist', 'Medium - Schedule appointment soon'),
         ({'painful walking'}, 1, 'Osteoarthristis', 95, 'Rheumatologist', 'Medium - Schedule appointment soon'),
         ({'knee pain'}, 1, 'Osteoarthristis', 95, 'Rheumatologist', 'Medium - Schedule appointment soon'),
     ]
 
-    # Lay-person phrase → medical keyword mapping
-    # IMPORTANT: Order matters - more specific patterns first.
-    # Use word boundaries (\b) to avoid partial-word false positives.
+    # Lay-person phrase → exact dataset canonical symptom mapping
     PHRASE_MAP: ClassVar[List[Tuple[str, str]]] = [
-        # ── ENT / Nasal / Sinus / Nostril (High Priority) ─────────────────────
-        (r'\b(nostril|nostrail|nostrils|nostrails|nasal|sinus|rhinittis|rhinitis|mucus)\b', 'runny nose'),
-        (r'\b(inflammation.{0,10}(nostril|nose)|blockage.{0,10}(fluid|nose)|fluid.{0,10}nose)\b', 'runny nose'),
-        (r'\b(runny.{0,6}nose|blocked.{0,6}nose|stuffy.{0,6}nose|nasal.{0,6}congestion|rhinorrhea)\b', 'runny nose'),
-        (r'\b(strep.{0,6}throat|strep|swollen.{0,6}tonsil|tonsil|white.{0,6}patch|white.{0,6}spot)\b', 'swollen tonsils'),
-        (r'\b(painful.{0,6}swallow|pain.{0,6}swallow|difficulty.{0,6}swallow|hard.{0,6}swallow)\b', 'throat irritation'),
-        (r'\b(sore.{0,6}throat|throat.{0,6}pain|throat.{0,6}hurt|scratchy.{0,6}throat|throat.{0,6}ach|pharyngitis)\b', 'throat irritation'),
-        (r'\b(coughing|cough|hacking)\b', 'cough'),
-        (r'\b(ear.{0,15}(pain|ach|ache|irritat|infect|ring|tinnitus)|earache|earpain)\b', 'earache'),
-
-        # ── Head / neurological ──────────────────────────────────────────────
-        (r'\b(migrain|throbb|throb|pulsat|photophobia|phonophobia|sensitivity.{0,10}(light|sound)|sensit.vity.{0,10}(light|sound))\b', 'headache'),
-        (r'\b(head|temple).{0,15}\b(pound|hurt|ach|throb|split|bang|pain|press|throbbing)\b', 'headache'),
+        # ── Neurological & Vertigo ─────────────────────────────────────────────
+        (r'\b(room.{0,15}spin|room.{0,15}moving|head.{0,15}spin|spinning.{0,15}sensation|spinning)\b', 'spinning movements'),
+        (r'\b(loss.{0,15}balance|losing.{0,15}balance|off.{0,15}balance|unsteadiness|unsteady|cannot.{0,15}balance)\b', 'loss of balance'),
+        (r'\b(unsteadiness)\b', 'unsteadiness'),
+        (r'\b(altered.{0,10}sensorium|confused|confusion|disorient|disorientation|brain.{0,10}fog)\b', 'altered sensorium'),
+        (r'\b(slurred.{0,10}speech|speech.{0,10}slurred|trouble.{0,15}(speaking|talk|speech)|difficulty.{0,15}(speaking|talk|speech)|hard.{0,15}to.{0,15}speak|speech.{0,10}problem)\b', 'slurred speech'),
+        (r'\b(weakness.{0,15}(side|arm|leg|body)|(right|left).{0,10}side.{0,10}weak|one.{0,10}side.{0,10}weak|hemiparesis)\b', 'weakness of one body side'),
+        (r'\b(weakness.{0,10}in.{0,10}limbs|arm.{0,10}weakness|leg.{0,10}weakness|weak.{0,10}limbs)\b', 'weakness in limbs'),
+        (r'\b(migrain|throbb|throb|pulsat|photophobia|phonophobia|sensitivity.{0,10}(light|sound))\b', 'headache'),
+        (r'\b(head|temple).{0,15}(pound|hurt|ach|throb|split|bang|pain|press|throbbing)', 'headache'),
         (r'\b(dizz|vertigo|lightheaded|light.headed)\b', 'dizziness'),
-        (r'\broom.{0,6}spin\b', 'dizziness'),
-        (r'\b(blur|double).{0,10}\b(vision|sight)\b', 'blurred vision'),
-        (r'\b(insomni|cannot sleep|can.{0,3}t sleep|trouble sleeping|sleepless)\b', 'insomnia'),
+        (r'\b(blur|double|lost|loss.{0,10}of).{0,10}\b(vision|sight)|visual.{0,10}disturbance|cannot.{0,10}see\b', 'blurred and distorted vision'),
+        (r'\b(stiff.{0,10}neck|neck.{0,10}stiff)\b', 'stiff neck'),
 
-        # ── Breathing / chest ────────────────────────────────────────────────
-        (r'\b(chest).{0,15}\b(pain|tight|press|heavy|ach|hurt|discomfort)\b', 'chest pain'),
-        (r'\b(heart).{0,15}\b(pain|ach|hurt|paining|hurting)\b', 'chest pain'),
-        (r'\b(paining|hurting).{0,10}\b(heart|chest)\b', 'chest pain'),
-        (r'\b(rapid.{0,6}breath|fast.{0,6}breath|gasping|panting|chest.{0,6}tightness)\b', 'shortness of breath'),
-        (r'\b(wheez|wheezing|whistling.{0,6}breath)\b', 'wheezing'),
+        # ── Urinary & Renal ───────────────────────────────────────────────────
+        (r'\b(burn|burning|pain|painful).{0,35}\b(pee|urin|micturition|pass.{0,10}urine)\b', 'burning micturition'),
+        (r'\b(pass.{0,10}urine|urinat|pee).{0,35}\b(burn|burning|pain|painful)\b', 'burning micturition'),
+        (r'\b(continuous.{0,15}urine|urge.{0,15}urin|pee.{0,15}all.{0,10}time|feel.{0,15}like.{0,10}peeing)\b', 'continuous feel of urine'),
+        (r'\b(frequent.{0,10}urinat|excessive.{0,10}urinat|urinate.{0,10}often|polyuria|urinate.{0,25}(night|time|multiple)|night.{0,25}urinate)\b', 'polyuria'),
+        (r'\b(bladder.{0,10}discomfort|bladder.{0,10}pain|pelvic.{0,10}discomfort)\b', 'bladder discomfort'),
+        (r'\b(foul.{0,10}smell.{0,10}urine|smelly.{0,10}urine|bad.{0,10}smell.{0,10}urine)\b', 'foul smell of urine'),
+        (r'\b(dark.{0,10}urine|brown.{0,10}urine|tea.{0,10}colored.{0,10}urine)\b', 'dark urine'),
+        (r'\b(yellow.{0,10}urine)\b', 'yellow urine'),
 
-        # ── Stomach / GI ─────────────────────────────────────────────────────
-        (r'\b(lower.{0,6}right.{0,10}(abdominal|abdomen|stomach)|right.{0,6}lower.{0,10}(abdominal|abdomen|stomach)|appendix|appendicitis)\b', 'lower right abdominal pain'),
-        (r'\b(stomach|belly|tummy|abdomen|gut).{0,15}\b(pain|hurt|ach|cramp|upset|sore|inflammation)\b', 'stomach pain'),
-        (r'\b(throw.{0,5}up|threw.{0,5}up|puking|vomiting|retching|food.{0,6}poisoning)\b', 'vomiting'),
-        (r'\b(sick.{0,6}stomach|sick.{0,6}tummy)\b', 'vomiting'),
-        (r'\b(nausea|queasy|want.{0,6}vomit|feel.{0,6}sick)\b', 'nausea'),
-        (r'\b(loose.{0,6}stool|loose.{0,6}motion|watery.{0,6}stool|watery.{0,6}diarrhea|watery.{0,6}diarrhoea|diarr)\b', 'diarrhoea'),
-        (r'\b(constip|cannot.{0,6}pass.{0,6}stool|hard.{0,6}stool)\b', 'constipation'),
-        (r'\b(heartburn|heart.{0,4}burn|acid.{0,6}reflux|acidity|gastric|acid.{0,6}feeling|burning.{0,6}chest|burning.{0,6}stomach|chest.{0,6}discomfort|indigestion)\b', 'acidity'),
+        # ── ENT / Nasal / Throat ──────────────────────────────────────────────
+        (r'\b(nostril|nasal|sinus|rhinitis|mucus|stuffy.{0,10}nose|runny.{0,10}nose|rhinorrhea)\b', 'runny nose'),
+        (r'\b(continuous.{0,10}sneezing|sneezing.{0,10}constantly|sneezing)\b', 'continuous sneezing'),
+        (r'\b(throat.{0,10}irritat|sore.{0,10}throat|scratchy.{0,10}throat|throat.{0,10}pain|painful.{0,10}swallow)\b', 'throat irritation'),
+        (r'\b(coughing|cough|hacking)\b', 'cough'),
+        (r'\b(patches.{0,10}in.{0,10}throat|white.{0,10}patches.{0,10}throat)\b', 'patches in throat'),
+        (r'\b(sinus.{0,10}pressure|sinus.{0,10}pain)\b', 'sinus pressure'),
+        (r'\b(loss.{0,10}of.{0,10}smell|cannot.{0,10}smell|no.{0,10}smell|anosmia)\b', 'loss of smell'),
 
-        # ── Temperature / systemic ───────────────────────────────────────────
-        (r'\b(fever|feverish|high.{0,6}temp|body.{0,6}hot|feel.{0,6}hot)\b', 'high fever'),
-        (r'\b(chills|shivering|shaking|trembling)\b', 'chills'),
-        (r'\b(sweating|perspiring|drenched.{0,6}sweat)\b', 'sweating'),
-        (r'\b(tired|exhausted|fatigue|weakness|weak|no.{0,6}energy|lethargic|lethargy|worn.{0,6}out)\b', 'fatigue'),
-        (r'\b(weight.{0,6}loss|losing.{0,6}weight|lost.{0,6}weight)\b', 'weight loss'),
-        (r'\b(weight.{0,6}gain|gaining.{0,6}weight)\b', 'weight gain'),
+        # ── Breathing / Chest ────────────────────────────────────────────────
+        (r'\b(chest).{0,25}\b(pain|tight|press|heavy|ach|hurt|discomfort|squeezing)\b', 'chest pain'),
+        (r'\b(shortness.{0,10}of.{0,10}breath|breathlessness|difficulty.{0,10}breath|hard.{0,15}breathe|catch.{0,10}breath|dyspnea)\b', 'breathlessness'),
+        (r'\b(rapid.{0,10}heart|fast.{0,10}heart|palpitations|racing.{0,10}heart|heart.{0,10}racing)\b', 'palpitations'),
 
-        # ── Skin ─────────────────────────────────────────────────────────────
-        (r'\b(skin.{0,10}rash|rash.{0,10}skin|hives|skin.{0,6}irrit|dermatitis|blister)\b', 'skin rash'),
-        (r'\b(itching|itchy.{0,6}skin|itchy)\b', 'itching'),
-        (r'\b(yellow.{0,6}skin|yellow.{0,6}eye|jaundice)\b', 'yellowing of skin'),
+        # ── Stomach / Gastrointestinal ───────────────────────────────────────
+        (r'\b(lower.{0,15}right.{0,15}(side|abdominal|abdomen|stomach|quadrant)|appendix|appendicitis)\b', 'lower right abdominal pain'),
+        (r'\b(stomach|belly|tummy|abdomen|gut).{0,25}\b(pain|hurt|ach|cramp|upset|sore|burn|burning)\b', 'stomach pain'),
+        (r'\b(burning.{0,20}(stomach|belly|tummy|gut))\b', 'stomach pain'),
+        (r'\b(abdominal.{0,10}pain|cramp.{0,10}abdomen)\b', 'abdominal pain'),
+        (r'\b(belly.{0,10}pain)\b', 'belly pain'),
+        (r'\b(throw.{0,10}up|threw.{0,10}up|puking|vomiting|retching)\b', 'vomiting'),
+        (r'\b(nausea|queasy|want.{0,10}vomit|feel.{0,10}sick)\b', 'nausea'),
+        (r'\b(loose.{0,10}stool|loose.{0,10}motion|watery.{0,10}stool|diarrhea|diarrhoea)\b', 'diarrhoea'),
+        (r'\b(constip|cannot.{0,10}pass.{0,10}stool|hard.{0,10}stool)\b', 'constipation'),
+        (r'\b(heartburn|acid.{0,10}reflux|acidity|gastric|acid.{0,10}feeling|indigestion)\b', 'acidity'),
+        (r'\b(indigestion)\b', 'indigestion'),
+        (r'\b(bloody.{0,10}stool|blood.{0,10}in.{0,10}stool|rectal.{0,10}bleeding)\b', 'bloody stool'),
+        (r'\b(passage.{0,10}of.{0,10}gases|gas|flatulence|burping)\b', 'passage of gases'),
 
-        # ── Muscles / joints ─────────────────────────────────────────────────
-        (r'\b(knee|hip|leg|ankle|joint).{0,25}(pain|hurt|ach|stiff|swell|walking|walk|cartilage)\b', 'knee pain'),
-        (r'\b(pain|hurt|ach|stiff|swell).{0,25}(knee|hip|leg|ankle|joint|walking|walk|cartilage)\b', 'knee pain'),
-        (r'\b(painful.{0,6}walking|pain.{0,10}walking)\b', 'painful walking'),
-        (r'\b(muscle.{0,10}pain|muscle.{0,6}ache|muscle.{0,6}sore|myalgia|body.{0,6}ache)\b', 'muscle pain'),
-        (r'\b(joint.{0,10}pain|joint.{0,6}ache|stiff.{0,6}joint|joint.{0,6}stiff|arthritis)\b', 'joint pain'),
-        (r'\b(back.{0,10}pain|backache|lumbar.{0,6}pain|spine.{0,6}pain|back.{0,6}ache)\b', 'back pain'),
-        (r'\b(neck.{0,10}pain|neck.{0,6}ache|stiff.{0,6}neck|neck.{0,6}stiff)\b', 'neck pain'),
+        # ── Temperature & Systemic ───────────────────────────────────────────
+        (r'\b(high.{0,10}fever|feverish|fever|high.{0,10}temp|10[0-5].{0,5}f|hot.{0,10}body)\b', 'high fever'),
+        (r'\b(mild.{0,10}fever|low.{0,10}grade.{0,10}fever)\b', 'mild fever'),
+        (r'\b(chills|shivering|shaking|shaky|tremor|trembling)\b', 'shivering'),
+        (r'\b(shivering)\b', 'shivering'),
+        (r'\b(sweat|sweating|sweaty|cold.{0,10}sweat|perspiring|drenched.{0,10}sweat)\b', 'sweating'),
+        (r'\b(tired|exhausted|fatigue|weakness|no.{0,10}energy|lethargy|worn.{0,10}out)\b', 'fatigue'),
+        (r'\b(lethargy)\b', 'lethargy'),
+        (r'\b(malaise|feeling.{0,10}unwell)\b', 'malaise'),
+        (r'\b(weight.{0,10}loss|losing.{0,10}weight|lost.{0,10}weight)\b', 'weight loss'),
+        (r'\b(weight.{0,10}gain|gaining.{0,10}weight)\b', 'weight gain'),
+        (r'\b(increased.{0,10}thirst|excessive.{0,10}thirst|thirsty|polydipsia)\b', 'increased thirst'),
+        (r'\b(excessive.{0,10}hunger|extremely.{0,10}hungry|very.{0,10}hungry|ravenous|uncontrollable.{0,10}hunger|hungry)\b', 'excessive hunger'),
+        (r'\b(dehydration|dry.{0,10}mouth)\b', 'dehydration'),
+        (r'\b(loss.{0,10}of.{0,10}appetite|no.{0,10}appetite|not.{0,10}hungry)\b', 'loss of appetite'),
 
-        # ── Systemic / Endocrine (Diabetes) ──────────────────────────────────
-        (r'\b(increased.{0,6}thirst|excessive.{0,6}thirst|extreme.{0,6}thirst|thirsty|polydipsia)\b', 'increased thirst'),
-        (r'\b(excessive.{0,6}urinat|frequent.{0,6}urinat|urinate.{0,6}often|pee.{0,6}lot|pee.{0,6}frequently|polyuria)\b', 'frequent urination'),
+        # ── Skin & Eyes & Jaundice ───────────────────────────────────────────
+        (r'\b(yellow.{0,30}(skin|body)|yellowish.{0,30}skin|(skin|body).{0,30}yellow)\b', 'yellowish skin'),
+        (r'\b(yellow.{0,30}(eye|eyes)|yellowing.{0,30}eye|yellowing.{0,30}of.{0,30}eyes|(eye|eyes).{0,30}yellow)\b', 'yellowing of eyes'),
+        (r'\b(skin.{0,10}rash|rash|hives|dermatitis|malar.{0,10}rash|butterfly.{0,10}rash|rash.{0,15}(cheek|cheeks|face|nose))\b', 'skin rash'),
+        (r'\b(itching|itchy)\b', 'itching'),
+        (r'\b(blister|blisters)\b', 'blister'),
+        (r'\b(redness.{0,15}eyes|red.{0,15}eyes|eye.{0,15}red|eyes.{0,15}red)\b', 'redness of eyes'),
+        (r'\b(watering.{0,10}from.{0,10}eyes|watery.{0,10}eyes|(burn|burning|pain|painful|sting|stinging|irritat).{0,15}(eye|eyes)|(eye|eyes).{0,15}(burn|burning|pain|painful|sting|stinging|irritat))\b', 'watering from eyes'),
+        (r'\b(sunken.{0,10}eyes)\b', 'sunken eyes'),
+        (r'\b(puffy.{0,10}face|puffy.{0,10}eyes)\b', 'puffy face and eyes'),
+        (r'\b(red.{0,10}spots.{0,10}over.{0,10}body|red.{0,10}spots)\b', 'red spots over body'),
 
-        # ── Eyes ─────────────────────────────────────────────────────────────
-        (r'\b(red.{0,6}eye|eye.{0,6}red|pink.{0,6}eye|eye.{0,6}irrit|redness.{0,6}eye)\b', 'redness of eyes'),
-        (r'\b(watery.{0,6}eye|eye.{0,6}water|watering.{0,6}eye)\b', 'watering from eyes'),
+        # ── Muscles & Joints ─────────────────────────────────────────────────
+        (r'\b(painful.{0,10}walking|pain.{0,10}when.{0,10}walk|hurts.{0,10}to.{0,10}walk|difficulty.{0,10}walking)\b', 'painful walking'),
+        (r'\b(knee.{0,10}pain|pain.{0,10}in.{0,10}knee)\b', 'knee pain'),
+        (r'\b(joint.{0,10}pain|joint.{0,10}ache|stiff.{0,10}joint|arthritis)\b', 'joint pain'),
+        (r'\b(swelling.{0,10}joints|swollen.{0,10}joint)\b', 'swelling joints'),
+        (r'\b(muscle.{0,10}pain|muscle.{0,10}ache|body.{0,10}ache|myalgia)\b', 'muscle pain'),
+        (r'\b(back.{0,10}pain|backache|lumbar.{0,10}pain)\b', 'back pain'),
+        (r'\b(neck.{0,10}pain|neck.{0,10}ache)\b', 'neck pain'),
+        (r'\b(swollen.{0,10}legs|leg.{0,10}swelling)\b', 'swollen legs'),
 
-        # ── Appetite ─────────────────────────────────────────────────────────
-        (r'\b(no.{0,6}appetite|loss.{0,6}appetite|not.{0,6}hungry|don.{0,4}t.{0,6}want.{0,6}eat)\b', 'loss of appetite'),
-
-        # ── Mental ───────────────────────────────────────────────────────────
-        (r'\b(anxious|anxiety|panic.{0,6}attack|panic)\b', 'anxiety'),
-        (r'\b(depress|hopeless|low.{0,6}mood|very.{0,6}sad)\b', 'depression'),
+        # ── Mental & Mood ─────────────────────────────────────────────────────
+        (r'\b(anxious|anxiety|panic)\b', 'anxiety'),
+        (r'\b(depress|depression|hopeless)\b', 'depression'),
+        (r'\b(irritability|irritable)\b', 'irritability'),
+        (r'\b(restlessness|restless)\b', 'restlessness'),
     ]
+
+    def is_negated_clause(self, clause: str) -> bool:
+        """Check if a clause or sentence contains a negation pattern"""
+        for pattern in self.NEGATION_PATTERNS:
+            if re.search(pattern, clause, re.IGNORECASE):
+                return True
+        return False
 
     def extract_symptoms_from_text(self, text: str) -> List[str]:
         """
-        Convert free-form natural language into a list of medical symptom keywords.
-        Three-pass approach:
-          1. Phrase mapping (regex patterns → known keywords)
-          2. Tokenise + stopword removal → n-gram fuzzy matching
-          3. Deduplicate & return
+        Advanced Multi-Stage NLP Extractor with NegEx Clause Negation Detection.
+        Handles multi-line, multi-clause, conversational user inputs.
         """
         text_lower = text.lower().strip()
 
-        extracted = []
-        consumed_spans = []  # track char positions already matched by phrase map
+        # Split text into distinct logical clauses based on punctuation and contrastive conjunctions
+        clause_delimiters = r'[;\n.!?]|\bbut\b|\bhowever\b|\bexcept\b|\balthough\b|\bnonetheless\b'
+        clauses = re.split(clause_delimiters, text_lower)
 
-        # ── Pass 1: phrase map ────────────────────────────────────────────────
-        for pattern, keyword in self.PHRASE_MAP:
-            for m in re.finditer(pattern, text_lower):
-                extracted.append(keyword)
-                consumed_spans.append((m.start(), m.end()))
+        positive_symptoms: Set[str] = set()
+        negated_symptoms: Set[str] = set()
 
-        # ── Pass 2: tokenise remaining text and do n-gram fuzzy matching ──────
-        # Mask already-matched regions so we don't double-count
-        masked = list(text_lower)
-        for start, end in consumed_spans:
-            for i in range(start, min(end, len(masked))):
-                masked[i] = ' '
-        remaining = ''.join(masked)
-
-        # Split on common natural-language delimiters
-        delimiters = r'[,;.!?\n]|\band\b|\balso\b|\bplus\b|\bwith\b|\bas well as\b'
-        parts = re.split(delimiters, remaining)
-
-        for part in parts:
-            # Remove stopwords word-by-word
-            words = part.strip().split()
-            filtered_words: List[str] = cast(List[str], [w for w in words if w not in self.STOPWORDS and len(w) > 1])
-
-            if not filtered_words:
+        for clause in clauses:
+            clause_str = clause.strip()
+            if not clause_str:
                 continue
 
-            # Try 3-gram, 2-gram, 1-gram n-grams against the known symptom list
-            n = len(filtered_words)
-            matched_any = False
-            best_score_inner: float = 0.0
-            best_sym_inner: Optional[str] = None
-            for size in [3, 2, 1]:
-                if matched_any:
-                    break
-                for start in range(n - size + 1):
-                    tokens: List[str] = [filtered_words[j] for j in range(start, start + size)]
-                    ngram = ' '.join(tokens)
-                    # Check against known symptoms with fuzzy matching
-                    best_score_inner = 0.0
-                    best_sym_inner = None
-                    for sym in self.symptoms:
-                        score = self.calculate_symptom_similarity(ngram, sym)
-                        if score > best_score_inner:
-                            best_score_inner = score
-                            best_sym_inner = sym
-                    if best_sym_inner and best_score_inner >= 0.6:
-                        extracted.append(best_sym_inner)
-                        matched_any = True
-                        break
+            is_negated = self.is_negated_clause(clause_str)
+            clause_extracted: List[str] = []
 
-        # ── Pass 3: deduplicate while preserving order ────────────────────────
-        seen = set()
-        unique = []
-        for s in extracted:
-            key = s.replace('_', ' ').strip()
-            if key and key not in seen:
-                seen.add(key)
-                unique.append(key)
+            # Pass 1: Phrase mapping against layperson regexes
+            for pattern, canonical_symptom in self.PHRASE_MAP:
+                if re.search(pattern, clause_str, re.IGNORECASE):
+                    clause_extracted.append(canonical_symptom)
 
-        return unique if unique else [text_lower]  # fallback: return original
+            # Pass 2: Direct matching against canonical symptom strings
+            for sym in self.symptoms:
+                sym_clean = sym.replace('_', ' ').strip()
+                pattern = r'\b' + re.escape(sym_clean) + r'\b'
+                if re.search(pattern, clause_str, re.IGNORECASE):
+                    clause_extracted.append(sym)
+
+            # Categorize into positive or negated sets
+            for extracted_sym in clause_extracted:
+                if is_negated:
+                    negated_symptoms.add(extracted_sym)
+                else:
+                    positive_symptoms.add(extracted_sym)
+
+        # Remove explicitly negated symptoms from positive set
+        final_symptoms = positive_symptoms - negated_symptoms
+
+        if final_symptoms:
+            return list(final_symptoms)
+
+        # Fallback to direct tokenization if phrase maps found nothing
+        for sym in self.symptoms:
+            if sym in text_lower or sym.replace('_', ' ') in text_lower:
+                return [sym]
+
+        return [text_lower]
 
     def preprocess_symptoms(self, user_symptoms: str) -> Tuple[Any, List[str], float]:
         """Enhanced symptom preprocessing with NLP + fuzzy matching"""
@@ -604,14 +632,49 @@ class EnhancedMedicalPredictor:
         else:
             return 'Low - Monitor symptoms'
 
+def run_flask_server():
+    """Run Flask HTTP server for sub-millisecond API predictions on port 5002"""
+    try:
+        from flask import Flask, request, jsonify
+        from flask_cors import CORS
+    except ImportError:
+        print("Flask or flask-cors not installed. Running in CLI mode.", file=sys.stderr)
+        return False
+
+    app = Flask(__name__)
+    CORS(app)
+    predictor = EnhancedMedicalPredictor()
+
+    @app.route('/health', methods=['GET'])
+    def health():
+        return jsonify({"status": "ok", "service": "MediSync360 Symptom AI Predictor", "port": 5002})
+
+    @app.route('/predict', methods=['POST'])
+    def predict():
+        try:
+            data = request.get_json() or {}
+            symptoms = data.get('symptoms') or data.get('symptom') or data.get('text') or ''
+            if not symptoms:
+                return jsonify({"error": "No symptoms provided"}), 400
+            
+            result = predictor.predict_disease(symptoms)
+            return jsonify(result)
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+
+    print("🚀 Starting MediSync360 Symptom AI Flask Server on http://127.0.0.1:5002 ...", file=sys.stderr)
+    app.run(host='0.0.0.0', port=5002, debug=False)
+    return True
+
 def main():
-    """Main function to handle command line prediction"""
-    if len(sys.argv) != 2:
-        print(json.dumps({'error': 'Usage: python enhanced_predict_service.py "symptoms"'}))
-        sys.exit(1)
-    
+    """Main function to handle Flask server or CLI prediction"""
+    if len(sys.argv) == 1:
+        # No CLI arguments provided -> Run Flask API Server
+        run_flask_server()
+        return
+
+    # 1 CLI argument provided -> Run single CLI prediction
     symptoms = sys.argv[1]
-    
     try:
         predictor = EnhancedMedicalPredictor()
         result = predictor.predict_disease(symptoms)

@@ -545,15 +545,25 @@ export const predictDiseaseFromSymptoms = async (symptoms: string, triageContext
       });
       const prompt = likelySpecificEnough
         ? `
-        You are a medical symptom extraction AI.
-        Read the following patient input:
+        You are a medical NLP entity extraction AI.
+        Read the following patient description:
         ${triageNarrative}
 
-        The input already contains enough detail for extraction. Do not ask follow-up questions.
-        Extract a precise array of normalized medical symptom keywords explicitly present in the text.
-        If a triage answer is Yes, treat it as confirmed evidence.
-        If a triage answer is No, treat that symptom as absent.
-        If a triage answer is Not sure, treat that symptom as unknown and do not extract it as present.
+        Extract an array of canonical medical symptoms present in the text.
+        IMPORTANT RULES FOR NLP EXTRACTION:
+        1. Context-Aware Negation Filtering: Ignore any symptom that the user explicitly states they DO NOT have (e.g., "no fever", "denies chest pain", "don't have nausea").
+        2. Canonical Mapping: Map layperson descriptions to standard canonical medical terms such as:
+           - "room spinning" -> "spinning movements"
+           - "losing balance" / "unsteady" -> "loss of balance"
+           - "burning pee/urine" -> "burning micturition"
+           - "hard to breathe" -> "breathlessness"
+           - "coughing" -> "cough"
+           - "feeling hot/fever" -> "high fever"
+           - "throwing up" -> "vomiting"
+           - "tired/exhausted" -> "fatigue"
+           - "red skin" / "hives" -> "skin rash"
+           - "stomach pain" -> "stomach pain"
+        3. Do not ask follow-up questions.
 
         Return ONLY valid JSON:
         {
@@ -577,24 +587,15 @@ export const predictDiseaseFromSymptoms = async (symptoms: string, triageContext
         - "headache"
 
         Mark needs_more_info as false when the user gives any meaningful qualifiers, associated symptoms, or answers to follow-up questions.
-        Examples that are specific enough and should be extracted:
-        - "my leg hurts, red and swollen"
-        - "chest pain with sweating and nausea"
-        - "stomach pain after vomiting twice"
-        - "sharp pain in my right knee after falling"
-        - "fever with chills and body ache"
 
         If needs_more_info is true:
-        - return exactly 3 highly specific follow-up questions
-        - questions must be tailored to the user input
+        - return exactly 3 highly specific follow-up questions tailored to the user input.
 
         If needs_more_info is false:
-        - extract precise medical symptom keywords
-        - prefer normalized symptom phrases such as "leg pain", "swelling", "redness", "chest pain", "nausea", "vomiting", "high fever"
-        - include all meaningful symptoms that are explicitly present in the user input
-        - if triage answers are present: Yes = confirmed, No = absent, Not sure = unknown
-        - do not treat No or Not sure answers as positive symptoms
-        - do not ask questions
+        - Extract precise canonical medical symptom keywords.
+        - Ignore symptoms that are negated ("no fever", "denies cough", "haven't vomited").
+        - Prefer canonical terms such as "spinning movements", "burning micturition", "breathlessness", "high fever", "nausea", "vomiting", "chest pain", "headache", "skin rash".
+        - Do not ask follow-up questions.
 
         Return ONLY valid JSON:
         {

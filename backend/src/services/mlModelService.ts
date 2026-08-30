@@ -32,15 +32,31 @@ export class MLModelService {
    * Predict disease from symptoms using enhanced trained ML model
    */
   public async predictDisease(symptoms: string): Promise<MLPredictionResult> {
-    return new Promise((resolve, reject) => {
-      if (!symptoms || symptoms.trim().length === 0) {
-        reject(new Error("Please provide at least one symptom"));
-        return;
+    if (!symptoms || symptoms.trim().length === 0) {
+      throw new Error("Please provide at least one symptom");
+    }
+
+    console.log(`Enhanced ML Model analyzing symptoms: ${symptoms}`);
+
+    // Tier 1: Fast HTTP call to running Flask AI Service (Port 5001)
+    try:
+      const flaskResponse = await fetch('http://127.0.0.1:5001/predict', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ symptoms }),
+      });
+
+      if (flaskResponse.ok) {
+        const result = (await flaskResponse.json()) as MLPredictionResult;
+        console.log(`Flask ML Prediction: ${result.predictedCondition} (${result.confidence}% confidence)`);
+        return result;
       }
+    } catch (httpError) {
+      console.warn("Flask server port 5001 not reachable, falling back to Python CLI spawn...", httpError);
+    }
 
-      console.log(`Enhanced ML Model analyzing symptoms: ${symptoms}`);
-
-      // Spawn Python process
+    // Tier 2: Fallback to CLI Python Process Spawn
+    return new Promise((resolve, reject) => {
       const pythonProcess = spawn(this.pythonPath, [this.scriptPath, symptoms], {
         cwd: path.dirname(this.scriptPath)
       });
@@ -48,53 +64,52 @@ export class MLModelService {
       let outputData = '';
       let errorData = '';
 
-      // Collect stdout data
       pythonProcess.stdout.on('data', (data) => {
         outputData += data.toString();
       });
 
-      // Collect stderr data
       pythonProcess.stderr.on('data', (data) => {
         errorData += data.toString();
       });
 
-      // Handle process completion
       pythonProcess.on('close', (code) => {
-        if (code !== 0) {
+        // Extract JSON from outputData if present
+        const jsonMatch = outputData.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          try {
+            const result = JSON.parse(jsonMatch[0]);
+            if (result.predictedCondition) {
+              console.log(`Enhanced ML CLI Prediction: ${result.predictedCondition} (${result.confidence}% confidence)`);
+              resolve(result);
+              return;
+            }
+          } catch (e) {
+            // Ignore parse failure and fall through
+          }
+        }
+
+        if (code !== 0 && !outputData.includes('predictedCondition')) {
           console.error(`Python process error: ${errorData}`);
           reject(new Error(`Enhanced ML model prediction failed: ${errorData}`));
           return;
         }
 
         try {
-          // Parse JSON output
           const result = JSON.parse(outputData);
-          
-          if (result.error) {
-            reject(new Error(result.error));
-            return;
-          }
-
-          console.log(`Enhanced ML Prediction: ${result.predictedCondition} (${result.confidence}% confidence)`);
           resolve(result);
-
         } catch (parseError) {
-          console.error('Failed to parse enhanced ML model output:', outputData);
-          reject(new Error(`Failed to parse enhanced ML model response: ${parseError}`));
+          reject(new Error(`Failed to parse ML response: ${parseError}`));
         }
       });
 
-      // Handle process errors
       pythonProcess.on('error', (error) => {
-        console.error('Failed to start Python process:', error);
-        reject(new Error(`Failed to start enhanced ML model: ${error.message}`));
+        reject(new Error(`Failed to start ML model: ${error.message}`));
       });
 
-      // Set timeout for long-running processes
       setTimeout(() => {
         pythonProcess.kill();
         reject(new Error('Enhanced ML model prediction timeout'));
-      }, 30000); // 30 second timeout
+      }, 30000);
     });
   }
 
