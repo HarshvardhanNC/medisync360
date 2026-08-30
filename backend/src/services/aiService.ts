@@ -604,8 +604,16 @@ export const predictDiseaseFromSymptoms = async (symptoms: string, triageContext
         }
       `;
       
+      const withTimeout = <T>(promise: Promise<T>, ms: number): Promise<T> =>
+        Promise.race([
+          promise,
+          new Promise<never>((_, reject) =>
+            setTimeout(() => reject(new Error(`Gemini API call timed out after ${ms}ms`)), ms),
+          ),
+        ]);
+
       try {
-        const result = await model.generateContent(prompt);
+        const result = await withTimeout(model.generateContent(prompt), 3500);
         const text = result.response.text();
         const cleanJsonString = text.replace(/```json/gi, '').replace(/```/gi, '').trim();
         const parsed = JSON.parse(cleanJsonString);
@@ -658,10 +666,38 @@ export const predictDiseaseFromSymptoms = async (symptoms: string, triageContext
       }
     }
 
-    const result = await mlService.predictDisease(processedSymptoms);
+    const result = await mlService.predictDisease(processedSymptoms, triageContext);
     const layman = getLaymanInfo(result.predictedCondition);
 
     return {
+      // Canonical Contract Fields (Assignment 13 / Assignment 16)
+      decision: result.decision || result.decisionAction,
+      prediction: result.prediction || (result.decision === 'PREDICT' || result.decisionAction === 'PREDICT' ? {
+        condition: result.predictedCondition,
+        probability: result.calibrated_probability ?? result.calibratedProbability ?? 0.85,
+        confidence_percentage: result.confidence ?? 85.0,
+        simplified_condition: layman.simplified,
+        patient_summary: layman.shortSummary,
+      } : null),
+      calibrated_probability: result.calibrated_probability ?? result.calibratedProbability ?? 0.0,
+      alternatives: result.alternatives || result.alternativePossibilities || [],
+      matched_symptoms: result.matched_symptoms || result.matchedSymptoms || [],
+      missing_information: result.missing_information || [],
+      uncertainty: result.uncertainty || {
+        score: result.calibrated_probability ? Math.round((1 - result.calibrated_probability) * 10000) / 10000 : 0,
+        entropy: 0.0,
+        level: result.decision === 'PREDICT' ? 'Low' : 'Moderate',
+      },
+      questions: result.questions || result.follow_up_questions || [],
+      clarification_questions: result.clarification_questions || result.questions || result.follow_up_questions || [],
+      urgency: result.urgency || result.urgencyLevel,
+      abstained: result.abstained !== undefined ? result.abstained : (result.decision === 'ABSTAIN'),
+      reason: result.reason || result.description,
+      abstention_reason: result.abstention_reason || (result.decision === 'ABSTAIN' ? (result.reason || result.description) : null),
+      model_version: result.model_version || 'medisync360-v2.0-calibrated-rf',
+
+      // Backward Compatibility Properties
+      decisionAction: result.decisionAction || result.decision,
       predictedCondition: result.predictedCondition,
       simplifiedCondition: layman.simplified,
       patientSummary: layman.shortSummary,
@@ -669,7 +705,11 @@ export const predictDiseaseFromSymptoms = async (symptoms: string, triageContext
       urgencyLevel: result.urgencyLevel,
       description: result.description,
       confidence: result.confidence,
-      isEmergency: result.urgencyLevel.includes('Emergency'),
+      calibratedProbability: result.calibratedProbability,
+      rawModelScore: result.rawModelScore,
+      calibrationMethod: result.calibrationMethod,
+      clinicalDisclaimer: result.clinicalDisclaimer,
+      isEmergency: result.urgencyLevel.includes('Emergency') || result.decision === 'URGENT_ESCALATION',
       precautions: result.precautions,
       alternativePossibilities: result.alternativePossibilities,
       matchedSymptoms: result.matchedSymptoms,
@@ -677,7 +717,8 @@ export const predictDiseaseFromSymptoms = async (symptoms: string, triageContext
       modelType: result.modelType,
       needs_more_info: result.needs_more_info,
       follow_up_questions: result.follow_up_questions,
-      totalDiseasesAnalyzed: 41,
+      triage_stage: result.triage_stage || 1,
+      totalDiseasesAnalyzed: result.totalDiseasesAnalyzed || 41,
     };
   } catch (error: any) {
     console.error('ML Model Prediction Error:', error);

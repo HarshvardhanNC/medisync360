@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef } from "react";
+import { fetchAPI } from "@/utils/api";
 
 interface Deduction { item:string; claimed:number; allowed:number; deducted:number; reason:string; }
 interface Factor { factor:string; status:string; impact:string; detail:string; }

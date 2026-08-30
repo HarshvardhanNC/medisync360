@@ -3,9 +3,18 @@ import json
 import numpy as np  # type: ignore[import-untyped]
 import joblib  # type: ignore[import-untyped]
 import os
-from itertools import islice as _islice
 from typing import Any, cast, ClassVar, Dict, List, Optional, Set, Tuple
 import re
+
+from symptom_ontology import SymptomOntology
+from symptom_parser import ClinicalSymptomParser
+from safety_rules import SafetyRuleEngine, RedFlagAlert
+from diagnostic_evidence import DiagnosticEvidenceEngine
+from feature_engineering import ClinicalFeatureExtractor
+from decision_policy import DecisionPolicyEngine
+from clarification_engine import ClarificationEngine
+
+MODEL_VERSION = "medisync360-v2.0-calibrated-rf"
 
 class EnhancedMedicalPredictor:
     def __init__(self) -> None:
@@ -15,18 +24,25 @@ class EnhancedMedicalPredictor:
         self.symptoms: List[str] = []
         self.diseases: List[str] = []
         self.symptom_to_diseases: Dict[str, List[str]] = {}
+        
+        self.ontology = SymptomOntology.get_instance()
+        self.parser = ClinicalSymptomParser.get_instance()
+        self.safety_engine = SafetyRuleEngine.get_instance()
+        self.evidence_engine = DiagnosticEvidenceEngine.get_instance()
+        self.feature_extractor = ClinicalFeatureExtractor.get_instance()
+        self.decision_policy = DecisionPolicyEngine.get_instance()
+        self.clarification_engine = ClarificationEngine.get_instance()
+        
         self.load_model()
     
     def load_model(self):
-        """Load enhanced trained model and metadata"""
+        """Load trained calibrated model and metadata"""
         try:
-            model_dir = 'trained_model'
+            model_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'trained_model')
             
-            # Load model components
             self.model = joblib.load(os.path.join(model_dir, 'disease_classifier.pkl'))
             self.label_encoder = joblib.load(os.path.join(model_dir, 'label_encoder.pkl'))
             
-            # Load metadata
             with open(os.path.join(model_dir, 'metadata.json'), 'r') as f:
                 self.metadata = json.load(f)
             
@@ -39,586 +55,415 @@ class EnhancedMedicalPredictor:
         except Exception as e:
             print(f"Error loading enhanced model: {e}", file=sys.stderr)
             raise
-    
-    # ------------------------------------------------------------------ #
-    #  NLP helpers – understand natural language from real patients       #
-    # ------------------------------------------------------------------ #
-
-    # Words/phrases to strip before symptom extraction
-    STOPWORDS: ClassVar[Set[str]] = {
-        'i', 'have', 'has', 'had', 'am', 'is', 'are', 'was', 'were', 'be',
-        'been', 'being', 'feel', 'feeling', 'felt', 'get', 'getting', 'got',
-        'experiencing', 'experience', 'suffer', 'suffering', 'noticed', 'notice',
-        'having', 'my', 'me', 'the', 'a', 'an', 'some', 'bit',
-        'little', 'lot', 'very', 'quite', 'really', 'so', 'much', 'many',
-        'sometimes', 'often', 'always', 'lately', 'recently', 'since', 'for',
-        'days', 'weeks', 'hours', 'today', 'yesterday', 'night', 'morning',
-        'past', 'last', 'few', 'couple', 'of', 'in', 'on', 'at', 'from',
-        'there', 'this', 'that', 'these', 'those', 'also', 'too', 'as', 'well',
-        'but', 'not', 'no', 'yes', 'ok', 'okay', 'please', 'help', 'think',
-        'kind', 'sort', 'type', 'slight', 'severe', 'mild',
-        'moderate', 'bad', 'terrible', 'awful', 'horrible', 'constant', 'sharp',
-        'dull', 'throbbing', 'keep', 'keeps',
-        'cannot', "can't", 'cant', 'dont', "don't", 'doesnt', "doesn't",
-    }
-
-    # ── Critical symptom → disease overrides ──────────────────────────────────
-    # When the matched symptoms clearly point to a specific condition, we skip
-    # the ML model and return a high-confidence rule-based result instead.
-    # Format: (required_symptoms_set, min_match_count, disease, confidence, specialist, urgency)
-    CRITICAL_SYMPTOM_RULES: ClassVar[List[Tuple[Set[str], int, str, int, str, str]]] = [
-        # Asthma / Airway Constriction (Wheezing takes priority over generic chest pain)
-        ({'wheezing'}, 1, 'Bronchial Asthma', 96, 'Pulmonologist', 'High - See doctor within 24 hours'),
-        ({'wheezing', 'shortness of breath'}, 1, 'Bronchial Asthma', 96, 'Pulmonologist', 'High - See doctor within 24 hours'),
-        # Cardiac
-        ({'chest pain', 'shortness of breath'}, 2, 'Heart attack', 96, 'Cardiologist', 'Emergency - Seek immediate care'),
-        ({'chest pain', 'sweating', 'nausea'}, 2, 'Heart attack', 97, 'Cardiologist', 'Emergency - Seek immediate care'),
-        # Gastro / Appendicitis (Higher Priority than single-symptom Migraine)
-        ({'lower right abdominal pain'}, 1, 'Appendicitis', 97, 'General Surgeon', 'Emergency - Seek immediate care'),
-        ({'nausea', 'vomiting', 'diarrhoea'}, 2, 'Gastroenteritis', 96, 'Gastroenterologist', 'Medium - Schedule appointment soon'),
-        ({'nausea', 'vomiting', 'stomach pain'}, 2, 'Gastroenteritis', 94, 'Gastroenterologist', 'Medium - Schedule appointment soon'),
-        ({'stomach pain', 'acidity', 'nausea'}, 2, 'GERD', 93, 'Gastroenterologist', 'Medium - Schedule appointment soon'),
-        ({'acidity'}, 1, 'GERD', 95, 'Gastroenterologist', 'Medium - Schedule appointment soon'),
-        ({'stomach pain'}, 1, 'GERD', 93, 'Gastroenterologist', 'Medium - Schedule appointment soon'),
-        # Malaria / Mosquito-Borne Infection (Higher Priority than single-symptom Migraine)
-        ({'high fever', 'chills', 'sweating'}, 2, 'Malaria', 96, 'Infectious Disease Specialist', 'Emergency - Seek immediate care'),
-        ({'high fever', 'chills'}, 2, 'Malaria', 96, 'Infectious Disease Specialist', 'Emergency - Seek immediate care'),
-        ({'high fever', 'sweating', 'headache'}, 2, 'Malaria', 96, 'Infectious Disease Specialist', 'Emergency - Seek immediate care'),
-        ({'high fever', 'sweating'}, 2, 'Malaria', 95, 'Infectious Disease Specialist', 'Emergency - Seek immediate care'),
-        # Diabetes (Polyuria, Polydipsia, Weight loss, Blurred vision)
-        ({'increased thirst', 'frequent urination'}, 1, 'Diabetes', 96, 'Endocrinologist', 'Medium - Schedule appointment soon'),
-        ({'increased thirst', 'weight loss'}, 1, 'Diabetes', 96, 'Endocrinologist', 'Medium - Schedule appointment soon'),
-        ({'increased thirst'}, 1, 'Diabetes', 95, 'Endocrinologist', 'Medium - Schedule appointment soon'),
-        ({'frequent urination', 'weight loss'}, 1, 'Diabetes', 95, 'Endocrinologist', 'Medium - Schedule appointment soon'),
-        ({'frequent urination', 'blurred vision'}, 1, 'Diabetes', 95, 'Endocrinologist', 'Medium - Schedule appointment soon'),
-        ({'frequent urination', 'fatigue'}, 1, 'Diabetes', 95, 'Endocrinologist', 'Medium - Schedule appointment soon'),
-        # Migraine / Headache (Requires headache)
-        ({'headache', 'nausea', 'vomiting'}, 2, 'Migraine', 95, 'Neurologist', 'Medium - Schedule appointment soon'),
-        ({'headache', 'blurred vision'}, 2, 'Migraine', 93, 'Neurologist', 'Medium - Schedule appointment soon'),
-        ({'headache'}, 1, 'Migraine', 95, 'Neurologist', 'Medium - Schedule appointment soon'),
-        # Jaundice (Requires yellowing of skin)
-        ({'yellowing of skin'}, 1, 'Jaundice', 95, 'Hepatologist', 'High - See doctor within 24 hours'),
-        ({'yellowing of skin', 'fatigue'}, 2, 'Jaundice', 96, 'Hepatologist', 'High - See doctor within 24 hours'),
-        # Hypertension
-        ({'headache', 'dizziness', 'chest pain'}, 2, 'Hypertension', 93, 'Cardiologist', 'High - See doctor within 24 hours'),
-        # ENT / Ear Infection
-        ({'earache'}, 1, 'Ear Infection', 96, 'ENT Specialist', 'Medium - Schedule appointment soon'),
-        ({'ear pain'}, 1, 'Ear Infection', 96, 'ENT Specialist', 'Medium - Schedule appointment soon'),
-        # Osteoarthritis / Knee & Joint Pain
-        ({'joint pain'}, 1, 'Osteoarthristis', 95, 'Rheumatologist', 'Medium - Schedule appointment soon'),
-        ({'painful walking'}, 1, 'Osteoarthristis', 95, 'Rheumatologist', 'Medium - Schedule appointment soon'),
-        ({'knee pain'}, 1, 'Osteoarthristis', 95, 'Rheumatologist', 'Medium - Schedule appointment soon'),
-    ]
-
-    # Lay-person phrase → medical keyword mapping
-    # IMPORTANT: Order matters - more specific patterns first.
-    # Use word boundaries (\b) to avoid partial-word false positives.
-    PHRASE_MAP: ClassVar[List[Tuple[str, str]]] = [
-        # ── ENT / Nasal / Sinus / Nostril (High Priority) ─────────────────────
-        (r'\b(nostril|nostrail|nostrils|nostrails|nasal|sinus|rhinittis|rhinitis|mucus)\b', 'runny nose'),
-        (r'\b(inflammation.{0,10}(nostril|nose)|blockage.{0,10}(fluid|nose)|fluid.{0,10}nose)\b', 'runny nose'),
-        (r'\b(runny.{0,6}nose|blocked.{0,6}nose|stuffy.{0,6}nose|nasal.{0,6}congestion|rhinorrhea)\b', 'runny nose'),
-        (r'\b(strep.{0,6}throat|strep|swollen.{0,6}tonsil|tonsil|white.{0,6}patch|white.{0,6}spot)\b', 'swollen tonsils'),
-        (r'\b(painful.{0,6}swallow|pain.{0,6}swallow|difficulty.{0,6}swallow|hard.{0,6}swallow)\b', 'throat irritation'),
-        (r'\b(sore.{0,6}throat|throat.{0,6}pain|throat.{0,6}hurt|scratchy.{0,6}throat|throat.{0,6}ach|pharyngitis)\b', 'throat irritation'),
-        (r'\b(coughing|cough|hacking)\b', 'cough'),
-        (r'\b(ear.{0,15}(pain|ach|ache|irritat|infect|ring|tinnitus)|earache|earpain)\b', 'earache'),
-
-        # ── Head / neurological ──────────────────────────────────────────────
-        (r'\b(migrain|throbb|throb|pulsat|photophobia|phonophobia|sensitivity.{0,10}(light|sound)|sensit.vity.{0,10}(light|sound))\b', 'headache'),
-        (r'\b(head|temple).{0,15}\b(pound|hurt|ach|throb|split|bang|pain|press|throbbing)\b', 'headache'),
-        (r'\b(dizz|vertigo|lightheaded|light.headed)\b', 'dizziness'),
-        (r'\broom.{0,6}spin\b', 'dizziness'),
-        (r'\b(blur|double).{0,10}\b(vision|sight)\b', 'blurred vision'),
-        (r'\b(insomni|cannot sleep|can.{0,3}t sleep|trouble sleeping|sleepless)\b', 'insomnia'),
-
-        # ── Breathing / chest ────────────────────────────────────────────────
-        (r'\b(chest).{0,15}\b(pain|tight|press|heavy|ach|hurt|discomfort)\b', 'chest pain'),
-        (r'\b(heart).{0,15}\b(pain|ach|hurt|paining|hurting)\b', 'chest pain'),
-        (r'\b(paining|hurting).{0,10}\b(heart|chest)\b', 'chest pain'),
-        (r'\b(rapid.{0,6}breath|fast.{0,6}breath|gasping|panting|chest.{0,6}tightness)\b', 'shortness of breath'),
-        (r'\b(wheez|wheezing|whistling.{0,6}breath)\b', 'wheezing'),
-
-        # ── Stomach / GI ─────────────────────────────────────────────────────
-        (r'\b(lower.{0,6}right.{0,10}(abdominal|abdomen|stomach)|right.{0,6}lower.{0,10}(abdominal|abdomen|stomach)|appendix|appendicitis)\b', 'lower right abdominal pain'),
-        (r'\b(stomach|belly|tummy|abdomen|gut).{0,15}\b(pain|hurt|ach|cramp|upset|sore|inflammation)\b', 'stomach pain'),
-        (r'\b(throw.{0,5}up|threw.{0,5}up|puking|vomiting|retching|food.{0,6}poisoning)\b', 'vomiting'),
-        (r'\b(sick.{0,6}stomach|sick.{0,6}tummy)\b', 'vomiting'),
-        (r'\b(nausea|queasy|want.{0,6}vomit|feel.{0,6}sick)\b', 'nausea'),
-        (r'\b(loose.{0,6}stool|loose.{0,6}motion|watery.{0,6}stool|watery.{0,6}diarrhea|watery.{0,6}diarrhoea|diarr)\b', 'diarrhoea'),
-        (r'\b(constip|cannot.{0,6}pass.{0,6}stool|hard.{0,6}stool)\b', 'constipation'),
-        (r'\b(heartburn|heart.{0,4}burn|acid.{0,6}reflux|acidity|gastric|acid.{0,6}feeling|burning.{0,6}chest|burning.{0,6}stomach|chest.{0,6}discomfort|indigestion)\b', 'acidity'),
-
-        # ── Temperature / systemic ───────────────────────────────────────────
-        (r'\b(fever|feverish|high.{0,6}temp|body.{0,6}hot|feel.{0,6}hot)\b', 'high fever'),
-        (r'\b(chills|shivering|shaking|trembling)\b', 'chills'),
-        (r'\b(sweating|perspiring|drenched.{0,6}sweat)\b', 'sweating'),
-        (r'\b(tired|exhausted|fatigue|weakness|weak|no.{0,6}energy|lethargic|lethargy|worn.{0,6}out)\b', 'fatigue'),
-        (r'\b(weight.{0,6}loss|losing.{0,6}weight|lost.{0,6}weight)\b', 'weight loss'),
-        (r'\b(weight.{0,6}gain|gaining.{0,6}weight)\b', 'weight gain'),
-
-        # ── Skin ─────────────────────────────────────────────────────────────
-        (r'\b(skin.{0,10}rash|rash.{0,10}skin|hives|skin.{0,6}irrit|dermatitis|blister)\b', 'skin rash'),
-        (r'\b(itching|itchy.{0,6}skin|itchy)\b', 'itching'),
-        (r'\b(yellow.{0,6}skin|yellow.{0,6}eye|jaundice)\b', 'yellowing of skin'),
-
-        # ── Muscles / joints ─────────────────────────────────────────────────
-        (r'\b(knee|hip|leg|ankle|joint).{0,25}(pain|hurt|ach|stiff|swell|walking|walk|cartilage)\b', 'knee pain'),
-        (r'\b(pain|hurt|ach|stiff|swell).{0,25}(knee|hip|leg|ankle|joint|walking|walk|cartilage)\b', 'knee pain'),
-        (r'\b(painful.{0,6}walking|pain.{0,10}walking)\b', 'painful walking'),
-        (r'\b(muscle.{0,10}pain|muscle.{0,6}ache|muscle.{0,6}sore|myalgia|body.{0,6}ache)\b', 'muscle pain'),
-        (r'\b(joint.{0,10}pain|joint.{0,6}ache|stiff.{0,6}joint|joint.{0,6}stiff|arthritis)\b', 'joint pain'),
-        (r'\b(back.{0,10}pain|backache|lumbar.{0,6}pain|spine.{0,6}pain|back.{0,6}ache)\b', 'back pain'),
-        (r'\b(neck.{0,10}pain|neck.{0,6}ache|stiff.{0,6}neck|neck.{0,6}stiff)\b', 'neck pain'),
-
-        # ── Systemic / Endocrine (Diabetes) ──────────────────────────────────
-        (r'\b(increased.{0,6}thirst|excessive.{0,6}thirst|extreme.{0,6}thirst|thirsty|polydipsia)\b', 'increased thirst'),
-        (r'\b(excessive.{0,6}urinat|frequent.{0,6}urinat|urinate.{0,6}often|pee.{0,6}lot|pee.{0,6}frequently|polyuria)\b', 'frequent urination'),
-
-        # ── Eyes ─────────────────────────────────────────────────────────────
-        (r'\b(red.{0,6}eye|eye.{0,6}red|pink.{0,6}eye|eye.{0,6}irrit|redness.{0,6}eye)\b', 'redness of eyes'),
-        (r'\b(watery.{0,6}eye|eye.{0,6}water|watering.{0,6}eye)\b', 'watering from eyes'),
-
-        # ── Appetite ─────────────────────────────────────────────────────────
-        (r'\b(no.{0,6}appetite|loss.{0,6}appetite|not.{0,6}hungry|don.{0,4}t.{0,6}want.{0,6}eat)\b', 'loss of appetite'),
-
-        # ── Mental ───────────────────────────────────────────────────────────
-        (r'\b(anxious|anxiety|panic.{0,6}attack|panic)\b', 'anxiety'),
-        (r'\b(depress|hopeless|low.{0,6}mood|very.{0,6}sad)\b', 'depression'),
-    ]
 
     def extract_symptoms_from_text(self, text: str) -> List[str]:
+        """Convert free-form natural language into canonical symptom keywords using ClinicalSymptomParser."""
+        parsed = self.parser.parse(text)
+        return parsed["present_symptoms"]
+
+    def preprocess_symptoms(self, user_symptoms: str) -> Tuple[np.ndarray, List[str], Dict[str, Any]]:
+        """Extracts canonical symptoms, evaluates entity attribution and builds 154-dim feature vector."""
+        if not user_symptoms or not isinstance(user_symptoms, str):
+            user_symptoms = str(user_symptoms or '')
+
+        parsed_result = self.parser.parse(user_symptoms)
+        present_symptoms = parsed_result["present_symptoms"]
+        
+        feature_vector = self.feature_extractor.extract_features_model_b(user_symptoms)
+        return feature_vector, present_symptoms, parsed_result
+
+    def get_specialist(self, condition: str) -> str:
+        """Get recommended medical specialist for a condition"""
+        return self.metadata.get('disease_specialists', {}).get(condition, 'General Practitioner')
+
+    def get_urgency(self, condition: str, confidence: float) -> str:
+        """Determine clinical urgency based on condition and severity"""
+        return self.metadata.get('disease_urgencies', {}).get(condition, 'Medium - Schedule appointment soon')
+
+    def predict_disease(
+        self,
+        user_symptoms: str,
+        triage_rounds: Optional[List[Dict[str, Any]]] = None
+    ) -> Dict[str, Any]:
         """
-        Convert free-form natural language into a list of medical symptom keywords.
-        Three-pass approach:
-          1. Phrase mapping (regex patterns → known keywords)
-          2. Tokenise + stopword removal → n-gram fuzzy matching
-          3. Deduplicate & return
+        Unified Multi-Turn Decision API Contract Pipeline (Assignment 13):
+        Returns canonical contract fields:
+        - decision: PREDICT | CLARIFY | ABSTAIN | URGENT_ESCALATION
+        - prediction: { condition, probability, confidence_percentage } | null
+        - alternatives: [ { condition, probability, confidence } ]
+        - matched_symptoms, missing_information, questions, urgency, abstained, reason, model_version
         """
-        text_lower = text.lower().strip()
+        if not user_symptoms or not isinstance(user_symptoms, str):
+            user_symptoms = str(user_symptoms or '')
 
-        extracted = []
-        consumed_spans = []  # track char positions already matched by phrase map
+        triage_rounds = triage_rounds or []
+        current_stage = len(triage_rounds) + 1
 
-        # ── Pass 1: phrase map ────────────────────────────────────────────────
-        for pattern, keyword in self.PHRASE_MAP:
-            for m in re.finditer(pattern, text_lower):
-                extracted.append(keyword)
-                consumed_spans.append((m.start(), m.end()))
-
-        # ── Pass 2: tokenise remaining text and do n-gram fuzzy matching ──────
-        # Mask already-matched regions so we don't double-count
-        masked = list(text_lower)
-        for start, end in consumed_spans:
-            for i in range(start, min(end, len(masked))):
-                masked[i] = ' '
-        remaining = ''.join(masked)
-
-        # Split on common natural-language delimiters
-        delimiters = r'[,;.!?\n]|\band\b|\balso\b|\bplus\b|\bwith\b|\bas well as\b'
-        parts = re.split(delimiters, remaining)
-
-        for part in parts:
-            # Remove stopwords word-by-word
-            words = part.strip().split()
-            filtered_words: List[str] = cast(List[str], [w for w in words if w not in self.STOPWORDS and len(w) > 1])
-
-            if not filtered_words:
-                continue
-
-            # Try 3-gram, 2-gram, 1-gram n-grams against the known symptom list
-            n = len(filtered_words)
-            matched_any = False
-            best_score_inner: float = 0.0
-            best_sym_inner: Optional[str] = None
-            for size in [3, 2, 1]:
-                if matched_any:
-                    break
-                for start in range(n - size + 1):
-                    tokens: List[str] = [filtered_words[j] for j in range(start, start + size)]
-                    ngram = ' '.join(tokens)
-                    # Check against known symptoms with fuzzy matching
-                    best_score_inner = 0.0
-                    best_sym_inner = None
-                    for sym in self.symptoms:
-                        score = self.calculate_symptom_similarity(ngram, sym)
-                        if score > best_score_inner:
-                            best_score_inner = score
-                            best_sym_inner = sym
-                    if best_sym_inner and best_score_inner >= 0.6:
-                        extracted.append(best_sym_inner)
-                        matched_any = True
-                        break
-
-        # ── Pass 3: deduplicate while preserving order ────────────────────────
-        seen = set()
-        unique = []
-        for s in extracted:
-            key = s.replace('_', ' ').strip()
-            if key and key not in seen:
-                seen.add(key)
-                unique.append(key)
-
-        return unique if unique else [text_lower]  # fallback: return original
-
-    def preprocess_symptoms(self, user_symptoms: str) -> Tuple[Any, List[str], float]:
-        """Enhanced symptom preprocessing with NLP + fuzzy matching"""
-        # ── NLP extraction: convert natural language → symptom keyword list ──
-        # Check if it looks like plain comma-separated keywords already
-        looks_like_keywords = all(
-            len(s.strip().split()) <= 3
-            for s in user_symptoms.split(',') if s.strip()
-        )
-        if looks_like_keywords and ',' in user_symptoms:
-            # Already structured as keyword list — use directly
-            symptom_list = [s.strip().lower() for s in user_symptoms.split(',')]
+        # 1. Merge previous clarification answers into cumulative clinical state
+        if triage_rounds:
+            merged_symptoms, _ = self.clarification_engine.merge_clarification_answers(
+                base_symptoms=user_symptoms,
+                triage_rounds=triage_rounds
+            )
+            analysis_text = merged_symptoms
         else:
-            # Natural language → extract symptoms first
-            symptom_list = self.extract_symptoms_from_text(user_symptoms)
+            analysis_text = user_symptoms
 
-        symptom_list = [s for s in symptom_list if s and len(s) > 1]
-        
-        # Create feature vector
-        feature_vector = np.zeros(len(self.symptoms))
-        matched_symptoms = []
-        confidence_boost: float = 0.0
-        
-        for user_symptom in symptom_list:
-            matched_symptoms.append(user_symptom)
-            # Direct exact match
-            if user_symptom in self.symptoms:
-                idx = self.symptoms.index(user_symptom)
-                feature_vector[idx] = 1  # type: ignore[index]
-                confidence_boost += 0.2
-                continue
-            
-            # Fuzzy matching with enhanced logic
-            best_match: Optional[Tuple[int, str]] = None
-            best_score: float = 0.0
-            
-            for i, model_symptom in enumerate(self.symptoms):
-                score = self.calculate_symptom_similarity(user_symptom, model_symptom)
-                if score > best_score and score > 0.6:  # Threshold for matching
-                    best_score = score
-                    best_match = (i, model_symptom)
-            
-            if best_match:
-                feature_vector[best_match[0]] = best_score  # type: ignore[index]
-                confidence_boost += best_score * 0.1
-        
-        return feature_vector, matched_symptoms, confidence_boost
-    
-    def calculate_symptom_similarity(self, user_symptom: str, model_symptom: str) -> float:
-        """Calculate similarity between user symptom and model symptom"""
-        u_sym = user_symptom.strip().lower()
-        m_sym = model_symptom.strip().lower()
-
-        if len(u_sym) < 4 or len(m_sym) < 4 or u_sym in self.STOPWORDS:
-            return 0.0
-
-        # Direct substring match for meaningful medical terms
-        if u_sym == m_sym:
-            return 1.0
-        if u_sym in m_sym or m_sym in u_sym:
-            return 0.85
-        
-        # Enhanced synonym mapping
-        synonyms = {
-            'headache': ['head pain', 'migraine', 'head ache', 'cranial pain', 'cephalgia'],
-            'stomach pain': ['abdominal pain', 'belly pain', 'tummy ache', 'gut pain', 'gastric pain'],
-            'fever': ['high temperature', 'pyrexia', 'hot', 'feverish', 'hyperthermia'],
-            'nausea': ['feeling sick', 'queasy', 'stomach upset', 'queasiness', 'sick feeling'],
-            'fatigue': ['tired', 'exhausted', 'weakness', 'tiredness', 'worn out', 'lethargy'],
-            'shortness of breath': ['difficulty breathing', 'breathlessness', 'dyspnea', 'breathing problems'],
-            'chest pain': ['heart pain', 'chest discomfort', 'thoracic pain', 'chest tightness'],
-            'joint pain': ['arthritis', 'joint ache', 'stiff joints', 'joint stiffness', 'arthritic pain'],
-            'skin rash': ['rash', 'skin irritation', 'skin eruption', 'dermatitis'],
-            'dizziness': ['lightheaded', 'vertigo', 'spinning sensation', 'unsteady'],
-            'cough': ['coughing', 'hack', 'persistent cough', 'dry cough', 'wet cough'],
-            'vomiting': ['throwing up', 'puking', 'emesis', 'retching'],
-            'diarrhea': ['loose stool', 'watery stool', 'loose bowel movement'],
-            'constipation': ['difficulty passing stool', 'hard stool', 'blocked bowel'],
-            'muscle pain': ['muscle ache', 'myalgia', 'sore muscles', 'muscle soreness'],
-            'back pain': ['backache', 'spinal pain', 'lumbar pain'],
-            'sore throat': ['throat pain', 'pharyngitis', 'throat irritation'],
-            'runny nose': ['nasal discharge', 'rhinorrhea', 'nasal congestion'],
-            'weight loss': ['losing weight', 'unexplained weight loss', 'weight reduction'],
-            'blurred vision': ['vision problems', 'unclear vision', 'visual disturbance']
-        }
-        
-        # Check synonyms
-        for key, values in synonyms.items():
-            if ((key in user_symptom or user_symptom in key) and 
-                any(v in model_symptom or model_symptom in v for v in values)):
-                return 0.9
-            if ((key in model_symptom or model_symptom in key) and 
-                any(v in user_symptom or user_symptom in v for v in values)):
-                return 0.9
-        
-        # Word overlap scoring
-        user_words = set(user_symptom.split())
-        model_words = set(model_symptom.split())
-        
-        if user_words & model_words:  # Common words
-            overlap = len(user_words & model_words)
-            total = len(user_words | model_words)
-            return overlap / total
-        
-        return 0.0
-    
-    def apply_critical_rules(self, matched_symptoms: List[str]) -> Optional[Dict[str, Any]]:
-        """
-        Check matched symptoms against hard-coded critical rules.
-        Returns a result dict if a rule fires, else None.
-        The rules encode well-known medical knowledge that the ML model sometimes misses.
-        """
-        matched_set = set(s.lower().strip() for s in matched_symptoms)
-        normalized_matched = set(matched_set)
-        for s in matched_set:
-            for pattern, std_symptom in self.PHRASE_MAP:
-                if re.search(pattern, s, re.IGNORECASE):
-                    normalized_matched.add(std_symptom)
-
-        for (rule_symptoms, min_count, disease, confidence, specialist, urgency) in self.CRITICAL_SYMPTOM_RULES:
-            overlap = rule_symptoms & normalized_matched
-            if len(overlap) >= min_count:
-                clean_matched = [s for s in matched_symptoms if 'anus' not in s.lower() and 'hemmorhoid' not in s.lower()]
-                return {
-                    'predictedCondition': disease,
-                    'recommendedSpecialist': specialist,
-                    'urgencyLevel': urgency,
-                    'description': self.metadata['disease_descriptions'].get(
-                        disease, f'Medical condition: {disease}'
-                    ),
-                    'confidence': float(confidence),
-                    'matchedSymptoms': clean_matched if clean_matched else list(matched_symptoms),
-                    'alternativePossibilities': [],
-                    'precautions': self.metadata['disease_precautions'].get(disease, []),
-                    'dataSource': 'Critical Symptom Rules + ML Model',
-                    'modelType': 'Rule-Based Override'
-                }
-        return None
-
-    def predict_disease(self, user_symptoms: str) -> Dict[str, Any]:
-        """Enhanced disease prediction"""
         try:
-            # Preprocess symptoms
-            feature_vector, matched_symptoms, confidence_boost = self.preprocess_symptoms(user_symptoms)
+            # 2. Preprocess & extract structured evidence
+            feature_vector, matched_symptoms, parsed_result = self.preprocess_symptoms(analysis_text)
             
-            # ── Critical rule override (runs BEFORE ML model) ────────────────
-            if matched_symptoms:
-                rule_result = self.apply_critical_rules(matched_symptoms)
-                if rule_result:
-                    return rule_result
+            # 3. ML Model Inference (154-dim input with calibrated probabilities)
+            raw_probabilities = self.model.predict_proba([feature_vector])[0]
+            prob_dict = {self.label_encoder.inverse_transform([i])[0]: float(p) for i, p in enumerate(raw_probabilities)}
 
-            if np.sum(feature_vector) == 0:
-                # Try direct symptom-to-disease mapping for single symptoms
-                user_symptom_list = [s.strip().lower() for s in user_symptoms.split(',')]
-                if len(user_symptom_list) == 1:
-                    single_symptom = user_symptom_list[0]
-                    possible_diseases = self.get_diseases_for_symptom(single_symptom)
-                    
-                    if possible_diseases:
-                        # Return most common disease for this symptom
-                        primary_disease = possible_diseases[0]
-                        return {
-                            'predictedCondition': primary_disease,
-                            'recommendedSpecialist': self.get_specialist(primary_disease),
-                            'urgencyLevel': self.get_urgency(primary_disease, 60),
-                            'description': self.metadata['disease_descriptions'].get(
-                                primary_disease, f'Medical condition: {primary_disease}'
-                            ),
-                            'confidence': 60.0,
-                            'matchedSymptoms': [single_symptom],
-                            'alternativePossibilities': [
-                                {'condition': d, 'confidence': 50 - i*10}
-                                for i, d in enumerate(_islice(possible_diseases, 1, 3))  # type: ignore[arg-type]
-                            ],
-                            'precautions': self.metadata['disease_precautions'].get(primary_disease, []),
-                            'dataSource': 'Enhanced ML Model - Single Symptom Mapping',
-                            'modelType': 'Gradient Boosting Classifier'
-                        }
-                
+            # 4. Decision Policy Routing Engine
+            decision_result = self.decision_policy.route_decision(
+                raw_text=analysis_text,
+                feature_vector=feature_vector,
+                calibrated_probabilities=prob_dict,
+                parsed_result=parsed_result
+            )
+
+            # Calculate clinical uncertainty (Shannon entropy & probability margin)
+            non_zero_probs = [p for p in prob_dict.values() if p > 0.0001]
+            if non_zero_probs:
+                raw_entropy = -float(sum(p * np.log(p) for p in non_zero_probs))
+                normalized_entropy = round(float(raw_entropy / np.log(max(len(self.diseases), 2))), 4)
+            else:
+                raw_entropy = 0.0
+                normalized_entropy = 0.0
+
+            action = decision_result["decision_action"]
+
+            # Format Response based on Action
+            # -------------------------------------------------------------
+            # CASE 1: URGENT_ESCALATION
+            # -------------------------------------------------------------
+            if action == "URGENT_ESCALATION":
                 return {
-                    'predictedCondition': 'No clear match found',
-                    'recommendedSpecialist': 'General Practitioner',
-                    'urgencyLevel': 'Low - Consult a doctor for proper evaluation',
-                    'description': 'Symptoms don\'t match conditions in our database',
-                    'confidence': 0,
-                    'matchedSymptoms': [],
+                    # Canonical API Contract Fields (Assignment 13 / 16)
+                    'decision': 'URGENT_ESCALATION',
+                    'prediction': None,
+                    'calibrated_probability': 0.0,
+                    'alternatives': [],
+                    'matched_symptoms': matched_symptoms,
+                    'missing_information': [],
+                    'uncertainty': {
+                        'score': 0.0,
+                        'entropy': 0.0,
+                        'level': 'Critical - Deterministic Red Flag'
+                    },
+                    'urgency': 'Emergency - Seek immediate emergency medical care (Call 911/112)',
+                    'questions': [],
+                    'clarification_questions': [],
+                    'abstained': False,
+                    'reason': f"CRITICAL SAFETY ESCALATION: {decision_result['rationale']}",
+                    'abstention_reason': None,
+                    'model_version': MODEL_VERSION,
+
+                    # Backward Compatibility Properties
+                    'decisionAction': 'URGENT_ESCALATION',
+                    'safetyEscalation': 'EMERGENCY',
+                    'predictedCondition': 'URGENT_MEDICAL_EVALUATION_REQUIRED',
+                    'recommendedSpecialist': decision_result["recommended_specialist"],
+                    'urgencyLevel': decision_result["urgency_level"],
+                    'description': f"CRITICAL SAFETY ESCALATION: {decision_result['rationale']} {decision_result['guidance']}",
+                    'confidence': 0.0,
+                    'calibratedProbability': 0.0,
+                    'rawModelScore': 0.0,
+                    'calibrationMethod': 'statistical_safety_triage',
+                    'clinicalDisclaimer': 'Emergency safety red-flags override standard outpatient predictive modeling.',
+                    'matchedSymptoms': matched_symptoms,
+                    'redFlagsDetected': [decision_result["rationale"]],
                     'alternativePossibilities': [],
-                    'precautions': ['Consult a healthcare professional', 'Monitor symptoms'],
-                    'dataSource': 'Enhanced ML Model',
-                    'modelType': 'Gradient Boosting Classifier'
+                    'precautions': [
+                        'Call emergency services (911/112) or go to the nearest emergency room immediately',
+                        'Do not drive yourself to the hospital',
+                        'Rest and stay in a safe, seated or lying position'
+                    ],
+                    'isEmergency': True,
+                    'needs_more_info': False,
+                    'follow_up_questions': [],
+                    'triage_stage': current_stage,
+                    'dataSource': 'MediSync360 Clinical Safety & Emergency Triage Engine',
+                    'modelType': 'Safety Rule Engine (Category A)',
+                    'totalDiseasesAnalyzed': len(self.diseases)
                 }
-            
-            # Get predictions with probabilities
-            probabilities = self.model.predict_proba([feature_vector])[0]  # type: ignore[index]
-            
-            # Apply confidence boost
-            probabilities = probabilities * (1 + confidence_boost)  # type: ignore[operator]
-            probabilities = probabilities / np.sum(probabilities)  # type: ignore[operator]  # Renormalize
-            
-            # Get top predictions
-            top_indices = np.argsort(probabilities)[::-1][:5]  # type: ignore[index]
-            top_diseases: List[Dict[str, Any]] = []
-            
-            for idx in top_indices:
-                disease = self.label_encoder.inverse_transform([idx])[0]  # type: ignore[index]
-                confidence = probabilities[idx] * 100  # type: ignore[index]
-                if confidence > 1:  # Lower threshold
-                    top_diseases.append({
-                        'disease': disease,
-                        'confidence': round(confidence, 1)
-                    })
-            
-            if not top_diseases:
+
+            # -------------------------------------------------------------
+            # CASE 2: ABSTAIN
+            # -------------------------------------------------------------
+            if action == "ABSTAIN":
                 return {
-                    'predictedCondition': 'Low confidence prediction',
-                    'recommendedSpecialist': 'General Practitioner',
-                    'urgencyLevel': 'Low - Consult a doctor for proper evaluation',
-                    'description': 'Multiple conditions possible with low confidence',
-                    'confidence': 0,
+                    # Canonical API Contract Fields (Assignment 13 / 16)
+                    'decision': 'ABSTAIN',
+                    'prediction': None,
+                    'calibrated_probability': 0.0,
+                    'alternatives': [],
+                    'matched_symptoms': matched_symptoms,
+                    'missing_information': ['Specific recognized in-domain clinical symptoms'],
+                    'uncertainty': {
+                        'score': 1.0,
+                        'entropy': 1.0,
+                        'level': 'High - Insufficient In-Domain Evidence'
+                    },
+                    'urgency': decision_result["urgency_level"],
+                    'questions': [],
+                    'clarification_questions': [],
+                    'abstained': True,
+                    'reason': decision_result['rationale'],
+                    'abstention_reason': decision_result['rationale'],
+                    'model_version': MODEL_VERSION,
+
+                    # Backward Compatibility Properties
+                    'decisionAction': 'ABSTAIN',
+                    'safetyEscalation': 'ROUTINE',
+                    'predictedCondition': 'No clear match found',
+                    'recommendedSpecialist': decision_result["recommended_specialist"],
+                    'urgencyLevel': decision_result["urgency_level"],
+                    'description': f"ABSTAIN: {decision_result['rationale']} {decision_result['guidance']}",
+                    'confidence': 0.0,
+                    'calibratedProbability': 0.0,
+                    'rawModelScore': 0.0,
+                    'calibrationMethod': 'selective_abstention',
+                    'clinicalDisclaimer': 'No reliable prediction possible. Abstaining rather than providing a false prediction.',
                     'matchedSymptoms': matched_symptoms,
                     'alternativePossibilities': [],
-                    'precautions': ['Consult a healthcare professional']
+                    'precautions': ['Please provide a more detailed clinical description', 'Consult a healthcare professional for clinical examination'],
+                    'isEmergency': False,
+                    'needs_more_info': False,
+                    'follow_up_questions': [],
+                    'triage_stage': current_stage,
+                    'dataSource': 'MediSync360 Selective Abstention Engine',
+                    'modelType': 'OOD Detector & Policy Router',
+                    'totalDiseasesAnalyzed': len(self.diseases)
                 }
-            
-            # Primary prediction
-            primary_disease = top_diseases[0]['disease']
-            primary_confidence = top_diseases[0]['confidence']
-            
-            # Get disease info
-            description = self.metadata['disease_descriptions'].get(
-                primary_disease, f'Medical condition: {primary_disease}'
-            )
-            precautions = self.metadata['disease_precautions'].get(primary_disease, [])
-            
-            # Determine specialist and urgency
-            specialist = self.get_specialist(primary_disease)
-            urgency = self.get_urgency(primary_disease, primary_confidence)
-            
-            # Alternative possibilities (skip index 0 = primary, take up to 3 more)
-            alternatives: List[Dict[str, Any]] = [
-                {'condition': d['disease'], 'confidence': d['confidence']}
-                for d in _islice(top_diseases, 1, 4)
+
+            # -------------------------------------------------------------
+            # CASE 3: CLARIFY
+            # -------------------------------------------------------------
+            if action == "CLARIFY":
+                if current_stage <= 3:
+                    questions = self.clarification_engine.generate_clarification_questions(
+                        present_symptoms=matched_symptoms,
+                        top_candidates=decision_result.get("top_candidates", []),
+                        conversation_history=triage_rounds,
+                        raw_text=analysis_text
+                    )
+                    
+                    if questions:
+                        top_disease = decision_result.get("top_prediction", "Clinical Evaluation Pending")
+                        conf = decision_result.get("confidence", 35.0)
+                        prob = round(conf / 100.0, 4)
+                        alternatives = [
+                            {
+                                'condition': cand["disease"],
+                                'probability': round(cand["calibrated_score"], 4),
+                                'confidence': round(cand["calibrated_score"] * 100, 1)
+                            }
+                            for cand in decision_result.get("top_candidates", [])[1:4]
+                            if cand["calibrated_score"] > 0.05
+                        ]
+
+                        return {
+                            # Canonical API Contract Fields (Assignment 13 / 16)
+                            'decision': 'CLARIFY',
+                            'prediction': {
+                                'condition': top_disease,
+                                'probability': prob,
+                                'confidence_percentage': conf
+                            },
+                            'calibrated_probability': prob,
+                            'alternatives': alternatives,
+                            'matched_symptoms': matched_symptoms,
+                            'missing_information': ['Differential confirmation indicators', 'Associated key symptoms'],
+                            'uncertainty': {
+                                'score': round(1.0 - prob, 4),
+                                'entropy': normalized_entropy,
+                                'level': 'High - Ambiguous Differential Candidates'
+                            },
+                            'urgency': 'Medium - Clarification required',
+                            'questions': questions,
+                            'clarification_questions': questions,
+                            'abstained': False,
+                            'reason': 'Multiple conditions are plausible. Clarifying questions required to reduce clinical entropy.',
+                            'abstention_reason': None,
+                            'model_version': MODEL_VERSION,
+
+                            # Backward Compatibility Properties
+                            'decisionAction': 'CLARIFY',
+                            'safetyEscalation': 'ROUTINE',
+                            'predictedCondition': top_disease,
+                            'recommendedSpecialist': self.get_specialist(top_disease),
+                            'urgencyLevel': 'Medium - Clarification required',
+                            'description': 'Multiple conditions plausible. Please answer the following clarifying questions to refine your assessment.',
+                            'confidence': conf,
+                            'calibratedProbability': prob,
+                            'rawModelScore': round(prob_dict.get(top_disease, 0.0) * 100, 1),
+                            'calibrationMethod': 'isotonic',
+                            'clinicalDisclaimer': 'Assessment is preliminary pending symptom clarification.',
+                            'matchedSymptoms': matched_symptoms,
+                            'alternativePossibilities': alternatives,
+                            'precautions': ['Answer clarifying questions to narrow down possibilities'],
+                            'isEmergency': False,
+                            'needs_more_info': True,
+                            'follow_up_questions': questions,
+                            'triage_stage': current_stage,
+                            'dataSource': 'MediSync360 Intelligent Clarification Engine',
+                            'modelType': 'Active Clarification Loop',
+                            'totalDiseasesAnalyzed': len(self.diseases)
+                        }
+
+                # After 3 rounds without resolution
+                action = "CLARIFY"
+
+            # -------------------------------------------------------------
+            # CASE 4: PREDICT
+            # -------------------------------------------------------------
+            top_disease = decision_result["top_prediction"]
+            confidence = decision_result["confidence"]
+            calibrated_prob = round(confidence / 100.0, 4)
+            uncalibrated_raw_percentage = round(prob_dict.get(top_disease, 0.0) * 100, 1)
+
+            top_candidates = decision_result.get("top_candidates", [])
+            alternatives = [
+                {
+                    'condition': cand["disease"],
+                    'probability': round(cand["calibrated_score"], 4),
+                    'confidence': round(cand["calibrated_score"] * 100, 1)
+                }
+                for cand in top_candidates[1:4]
+                if cand["calibrated_score"] > 0.05
             ]
-            
+
+            description = self.metadata.get('disease_descriptions', {}).get(
+                top_disease, f'Medical condition: {top_disease}'
+            )
+            precautions = self.metadata.get('disease_precautions', {}).get(top_disease, [])
+            specialist = self.get_specialist(top_disease)
+            urgency = self.get_urgency(top_disease, confidence)
+
             return {
-                'predictedCondition': primary_disease,
+                # Canonical API Contract Fields (Assignment 13 / 16)
+                'decision': 'PREDICT',
+                'prediction': {
+                    'condition': top_disease,
+                    'probability': calibrated_prob,
+                    'confidence_percentage': confidence
+                },
+                'calibrated_probability': calibrated_prob,
+                'alternatives': alternatives,
+                'matched_symptoms': matched_symptoms,
+                'missing_information': [],
+                'uncertainty': {
+                    'score': round(1.0 - calibrated_prob, 4),
+                    'entropy': normalized_entropy,
+                    'level': 'Low' if calibrated_prob >= 0.70 else 'Moderate'
+                },
+                'urgency': urgency,
+                'questions': [],
+                'clarification_questions': [],
+                'abstained': False,
+                'reason': decision_result.get("rationale", "Sufficient distinct clinical evidence supports diagnostic prediction."),
+                'abstention_reason': None,
+                'model_version': MODEL_VERSION,
+
+                # Backward Compatibility Properties
+                'decisionAction': 'PREDICT',
+                'safetyEscalation': decision_result["safety_escalation"],
+                'predictedCondition': top_disease,
                 'recommendedSpecialist': specialist,
                 'urgencyLevel': urgency,
                 'description': description,
-                'confidence': primary_confidence,
+                'confidence': confidence,
+                'calibratedProbability': calibrated_prob,
+                'rawModelScore': uncalibrated_raw_percentage,
+                'calibrationMethod': 'isotonic',
+                'clinicalDisclaimer': 'Calibrated probability is a statistical estimate based on reported symptoms, not medical certainty.',
                 'matchedSymptoms': matched_symptoms,
                 'alternativePossibilities': alternatives,
                 'precautions': precautions,
-                'dataSource': 'Enhanced ML Model on Kaggle Dataset',
-                'modelType': 'Gradient Boosting Classifier'
+                'decisionRationale': decision_result.get("rationale", "Evidence supports diagnostic prediction."),
+                'isEmergency': 'Emergency' in urgency,
+                'needs_more_info': False,
+                'follow_up_questions': [],
+                'triage_stage': current_stage,
+                'dataSource': 'MediSync360 Unified Prediction & Calibration Pipeline',
+                'modelType': 'Isotonically Calibrated Classifier + Decision Policy',
+                'totalDiseasesAnalyzed': len(self.diseases)
             }
-            
+
         except Exception as e:
-            print(f"Enhanced prediction error: {e}", file=sys.stderr)
-            raise
-    
-    def get_diseases_for_symptom(self, symptom: str) -> List[str]:
-        """Get possible diseases for a single symptom"""
-        # Direct mapping
-        if symptom in self.symptom_to_diseases:
-            return self.symptom_to_diseases[symptom]
-        
-        # Fuzzy search in mappings
-        for mapped_symptom, diseases in self.symptom_to_diseases.items():
-            if self.calculate_symptom_similarity(symptom, mapped_symptom) > 0.7:
-                return diseases
-        
-        return []
-    
-    def get_specialist(self, disease: str) -> str:
-        """Map disease to specialist"""
-        specialist_mapping = {
-            'Fungal infection': 'Dermatologist',
-            'Allergy': 'Allergist',
-            'GERD': 'Gastroenterologist',
-            'Chronic cholestasis': 'Hepatologist',
-            'Drug Reaction': 'Emergency Medicine',
-            'Peptic ulcer diseae': 'Gastroenterologist',
-            'AIDS': 'Infectious Disease Specialist',
-            'Diabetes': 'Endocrinologist',
-            'Gastroenteritis': 'Gastroenterologist',
-            'Bronchial Asthma': 'Pulmonologist',
-            'Hypertension': 'Cardiologist',
-            'Migraine': 'Neurologist',
-            'Cervical spondylosis': 'Orthopedist',
-            'Paralysis (brain hemorrhage)': 'Neurologist',
-            'Jaundice': 'Hepatologist',
-            'Malaria': 'Infectious Disease Specialist',
-            'Chicken pox': 'Dermatologist',
-            'Dengue': 'Infectious Disease Specialist',
-            'Typhoid': 'Infectious Disease Specialist',
-            'hepatitis A': 'Hepatologist',
-            'Hepatitis B': 'Hepatologist',
-            'Hepatitis C': 'Hepatologist',
-            'Hepatitis D': 'Hepatologist',
-            'Hepatitis E': 'Hepatologist',
-            'Alcoholic hepatitis': 'Hepatologist',
-            'Tuberculosis': 'Pulmonologist',
-            'Common Cold': 'General Practitioner',
-            'Pneumonia': 'Pulmonologist',
-            'Dimorphic hemmorhoids(piles)': 'Proctologist',
-            'Heart attack': 'Cardiologist',
-            'Varicose veins': 'Vascular Surgeon',
-            'Hypothyroidism': 'Endocrinologist',
-            'Hyperthyroidism': 'Endocrinologist',
-            'Hypoglycemia': 'Endocrinologist',
-            'Osteoarthristis': 'Rheumatologist',
-            'Arthritis': 'Rheumatologist',
-            'Paroymsal Positional Vertigo': 'ENT Specialist',
-            'Acne': 'Dermatologist',
-            'Urinary tract infection': 'Urologist',
-            'Psoriasis': 'Dermatologist',
-            'Impetigo': 'Dermatologist'
-        }
-        return specialist_mapping.get(disease, 'General Practitioner')
-    
-    def get_urgency(self, disease: str, confidence: float) -> str:
-        """Determine urgency level"""
-        critical_conditions = [
-            'Heart attack', 'Paralysis (brain hemorrhage)', 'Drug Reaction',
-            'hepatitis A', 'Hepatitis B', 'Malaria', 'Dengue', 'Typhoid'
-        ]
-        
-        high_priority = [
-            'Pneumonia', 'Bronchial Asthma', 'AIDS', 'Tuberculosis',
-            'Hepatitis C', 'Hepatitis D', 'Hepatitis E', 'Alcoholic hepatitis'
-        ]
-        
-        if disease in critical_conditions and confidence > 40:
-            return 'Emergency - Seek immediate care'
-        elif disease in critical_conditions and confidence > 20:
-            return 'High - See doctor within 24 hours'
-        elif disease in high_priority and confidence > 30:
-            return 'High - See doctor within 24 hours'
-        elif confidence > 50:
-            return 'Medium - Schedule appointment soon'
-        else:
-            return 'Low - Monitor symptoms'
+            return {
+                # Canonical API Contract Fields
+                'decision': 'ABSTAIN',
+                'prediction': None,
+                'calibrated_probability': 0.0,
+                'alternatives': [],
+                'matched_symptoms': [],
+                'missing_information': ['Technical evaluation error'],
+                'uncertainty': {
+                    'score': 1.0,
+                    'entropy': 1.0,
+                    'level': 'High - System Fallback'
+                },
+                'urgency': 'Medium - Consult a doctor',
+                'questions': [],
+                'clarification_questions': [],
+                'abstained': True,
+                'reason': f'Error in prediction service: {str(e)}',
+                'abstention_reason': f'Error in prediction service: {str(e)}',
+                'model_version': MODEL_VERSION,
+
+                # Backward Compatibility Properties
+                'decisionAction': 'ABSTAIN',
+                'safetyEscalation': 'ROUTINE',
+                'predictedCondition': 'Diagnostic evaluation unavailable',
+                'recommendedSpecialist': 'General Practitioner',
+                'urgencyLevel': 'Medium - Consult a doctor',
+                'description': f'Error in prediction service: {str(e)}',
+                'confidence': 0.0,
+                'calibratedProbability': 0.0,
+                'rawModelScore': 0.0,
+                'calibrationMethod': 'none',
+                'clinicalDisclaimer': 'Evaluation failed due to system exception.',
+                'matchedSymptoms': [],
+                'alternativePossibilities': [],
+                'precautions': ['Please consult a healthcare professional'],
+                'isEmergency': False,
+                'needs_more_info': False,
+                'follow_up_questions': [],
+                'triage_stage': current_stage,
+                'dataSource': 'MediSync360 Fallback Service',
+                'modelType': 'Diagnostic Triage',
+                'totalDiseasesAnalyzed': len(self.diseases)
+            }
 
 def main():
-    """Main function to handle command line prediction"""
-    if len(sys.argv) != 2:
-        print(json.dumps({'error': 'Usage: python enhanced_predict_service.py "symptoms"'}))
-        sys.exit(1)
-    
-    symptoms = sys.argv[1]
-    
-    try:
-        predictor = EnhancedMedicalPredictor()
-        result = predictor.predict_disease(symptoms)
-        print(json.dumps(result, indent=2))
-    except Exception as e:
-        print(json.dumps({'error': str(e)}))
-        sys.exit(1)
+    if len(sys.argv) < 2:
+        print(json.dumps({
+            "error": "Please provide symptoms as argument"
+        }))
+        return
+
+    first_arg = sys.argv[1]
+    if first_arg.startswith("{") and "symptoms" in first_arg:
+        try:
+            payload = json.loads(first_arg)
+            user_symptoms = payload.get("symptoms", "")
+            triage_rounds = payload.get("triageContext", {}).get("rounds", [])
+            predictor = EnhancedMedicalPredictor()
+            result = predictor.predict_disease(user_symptoms, triage_rounds=triage_rounds)
+            print(json.dumps(result, indent=2))
+            return
+        except Exception:
+            pass
+
+    user_symptoms = " ".join(sys.argv[1:])
+    predictor = EnhancedMedicalPredictor()
+    result = predictor.predict_disease(user_symptoms)
+    print(json.dumps(result, indent=2))
 
 if __name__ == "__main__":
     main()

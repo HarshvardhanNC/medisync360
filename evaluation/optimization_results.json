@@ -1,0 +1,77 @@
+{
+  "optimization_cycle": "Assignment 15 - Systemic Improvement & Optimization Cycle",
+  "baseline_vs_optimized": {
+    "adversarial_pass_rate": {
+      "baseline_v1": 94.0,
+      "optimized_v2": 100.0,
+      "improvement": "+6.0% (100% pass across 50 adversarial categories)"
+    },
+    "high_confidence_wrong_predictions": {
+      "baseline_v1": 2,
+      "optimized_v2": 0,
+      "improvement": "-100% (Zero high-confidence misclassifications)"
+    },
+    "forced_predictions_on_ood": {
+      "baseline_v1": 0,
+      "optimized_v2": 0,
+      "improvement": "Maintained 0.0% forced predictions"
+    },
+    "selective_accuracy": {
+      "baseline_v1": 100.0,
+      "optimized_v2": 100.0,
+      "improvement": "100.0% precision on predicted diagnoses"
+    },
+    "expected_calibration_error_ece": {
+      "uncalibrated_baseline": 0.4309,
+      "isotonic_calibrated": 0.0336,
+      "reduction": "92.2% reduction in calibration error"
+    }
+  },
+  "retained_systemic_improvements": [
+    {
+      "id": "OPT_001_ONTOLOGY_SLANG",
+      "component": "Symptom Ontology & Alias Map",
+      "hypothesis": "Expanding canonical ontology with common colloquial idioms increases token recall on informal patient descriptions without introducing semantic collisions.",
+      "implemented_changes": [
+        "Added 'wiped out' -> fatigue",
+        "Added 'tummy on fire' / 'belly on fire' -> acidity",
+        "Added 'barfing' / 'puking my guts out' -> vomiting",
+        "Added 'teeth chattering' -> chills"
+      ],
+      "validation_result": "Resolved failure ADV_027_SLANG_01 (100% pass on slang taxonomy). All 105 ontology tests passing.",
+      "retained": true
+    },
+    {
+      "id": "OPT_002_PARSER_HYPOTHETICAL",
+      "component": "Clinical NLP Parser Assertion Filter",
+      "hypothesis": "Filtering prospective and hypothetical expressions prevents extracting active physical symptoms from speculative queries.",
+      "implemented_changes": [
+        "Added prospective assertion regex filter: r'\\b(?:suppose|supposing|if i had|if i get|tomorrow|in the future|hypothetically)\\b'",
+        "Mapped hypothetical symptom mentions to status='uncertain' while preserving active demonstrative complaints ('this cough')"
+      ],
+      "validation_result": "Resolved failure ADV_020_HYPO_02 (100% pass on hypothetical statements). All 210 parser tests passing.",
+      "retained": true
+    },
+    {
+      "id": "OPT_003_DECISION_DIFF_TRIADS",
+      "component": "Decision Policy & Clarification Engine",
+      "hypothesis": "Gating high-entropy shared symptom triads into CLARIFY prevents premature high-confidence misclassifications on overlapping infectious/neurological presentations.",
+      "implemented_changes": [
+        "Added non-discriminative triad gate in decision_policy.py for fever+headache+vomiting, fatigue+joint pain+weakness, nausea+headache+dizziness"
+      ],
+      "validation_result": "Resolved failure ADV_007_OVERLAP_02 (routes to CLARIFY with targeted paroxysm/meningeal questions). All 21 decision policy tests passing.",
+      "retained": true
+    }
+  ],
+  "regression_test_summary": {
+    "test_ontology_tests": "105/105 PASS",
+    "test_symptom_parser_tests": "210/210 PASS",
+    "test_rule_engine_tests": "18/18 PASS",
+    "test_decision_policy_tests": "21/21 PASS",
+    "test_clarification_engine_scenarios": "210/210 PASS",
+    "test_api_contract_tests": "4/4 PASS",
+    "red_team_adversarial_tests": "50/50 PASS",
+    "typescript_backend_check": "0 ERRORS",
+    "typescript_frontend_check": "0 ERRORS"
+  }
+}

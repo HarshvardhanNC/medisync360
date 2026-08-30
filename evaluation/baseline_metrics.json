@@ -1,0 +1,37 @@
+{
+  "total_test_cases": 60,
+  "in_scope_test_cases": 27,
+  "out_of_scope_or_vague_test_cases": 33,
+  "successful_clinical_evaluations": 13,
+  "total_failures": 47,
+  "failure_rate_percentage": 78.33,
+  "high_confidence_wrong_predictions_count": 31,
+  "forced_in_scope_on_out_of_domain_cases": 19,
+  "abstention_support_in_predictor": false,
+  "clarification_support_in_predictor": false,
+  "rule_override_activation_count": 25,
+  "failure_taxonomy_breakdown": {
+    "dataset": 0,
+    "parser": 5,
+    "ontology": 0,
+    "feature_engineering": 0,
+    "rules": 7,
+    "classifier": 8,
+    "calibration": 0,
+    "unknown_ood": 9,
+    "decision_policy": 5,
+    "clarification": 13,
+    "backend_api": 0,
+    "frontend_ui": 0,
+    "none_correct": 13
+  },
+  "dataset_summary": {
+    "total_records": 4920,
+    "exact_duplicate_records": 4616,
+    "unique_symptom_disease_patterns": 304,
+    "total_diseases": 41,
+    "total_symptoms": 131,
+    "class_balance": "Strictly artificial (120 records per class across all 41 classes)",
+    "train_test_leakage": "Massive (4616 duplicate rows split across train/test before deduplication)"
+  }
+}

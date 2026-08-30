@@ -1,0 +1,2104 @@
+{
+  "total_cases": 45,
+  "split": "VAL",
+  "cases": [
+    {
+      "case_id": "CASE_VAL_0001_abadd8",
+      "split": "VAL",
+      "disease": "(vertigo) Paroymsal  Positional Vertigo",
+      "original_raw_symptoms": [
+        "headache",
+        "loss of balance",
+        "spinning movements",
+        "unsteadiness",
+        "vomiting"
+      ],
+      "canonical_symptoms": [
+        "headache",
+        "loss of balance",
+        "spinning movements",
+        "unsteadiness",
+        "vomiting"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "6d7f940e426a4f79",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.5,
+        "symptom_count": 5,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0002_f7add2",
+      "split": "VAL",
+      "disease": "AIDS",
+      "original_raw_symptoms": [
+        "extra marital contacts",
+        "high fever",
+        "muscle wasting",
+        "patches in throat"
+      ],
+      "canonical_symptoms": [
+        "extra marital contacts",
+        "high fever",
+        "muscle wasting",
+        "patches in throat"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "bf7f14fcca4d1686",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 4,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0003_5e4ff9",
+      "split": "VAL",
+      "disease": "Acne",
+      "original_raw_symptoms": [
+        "blackheads",
+        "pus filled pimples",
+        "skin rash"
+      ],
+      "canonical_symptoms": [
+        "blackheads",
+        "pus filled pimples",
+        "skin rash"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "3553e564f8007398",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.3,
+        "symptom_count": 3,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0004_77ae34",
+      "split": "VAL",
+      "disease": "Alcoholic hepatitis",
+      "original_raw_symptoms": [
+        "abdominal pain",
+        "distention of abdomen",
+        "fluid overload",
+        "history of alcohol consumption",
+        "vomiting",
+        "yellowish skin"
+      ],
+      "canonical_symptoms": [
+        "abdominal pain",
+        "distention of abdomen",
+        "fluid overload",
+        "history of alcohol consumption",
+        "vomiting",
+        "yellowish skin"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "71022dad501eca77",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.6,
+        "symptom_count": 6,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0005_63b800",
+      "split": "VAL",
+      "disease": "Allergy",
+      "original_raw_symptoms": [
+        "chills",
+        "shivering",
+        "watering from eyes"
+      ],
+      "canonical_symptoms": [
+        "chills",
+        "shivering",
+        "watering from eyes"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "645a23a7eb14a475",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.3,
+        "symptom_count": 3,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0006_04c748",
+      "split": "VAL",
+      "disease": "Arthritis",
+      "original_raw_symptoms": [
+        "muscle weakness",
+        "painful walking",
+        "stiff neck",
+        "swelling joints"
+      ],
+      "canonical_symptoms": [
+        "muscle weakness",
+        "painful walking",
+        "stiff neck",
+        "swelling joints"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "1e6c899c539d73d8",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 4,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0007_d2a2e3",
+      "split": "VAL",
+      "disease": "Bronchial Asthma",
+      "original_raw_symptoms": [
+        "breathlessness",
+        "cough",
+        "family history",
+        "fatigue",
+        "mucoid sputum"
+      ],
+      "canonical_symptoms": [
+        "breathlessness",
+        "cough",
+        "family history",
+        "fatigue",
+        "mucoid sputum"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "7b1fdf6e7e9718f4",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.5,
+        "symptom_count": 5,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0008_42dc6f",
+      "split": "VAL",
+      "disease": "Cervical spondylosis",
+      "original_raw_symptoms": [
+        "back pain",
+        "dizziness",
+        "loss of balance",
+        "weakness in limbs"
+      ],
+      "canonical_symptoms": [
+        "back pain",
+        "dizziness",
+        "loss of balance",
+        "weakness in limbs"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "9afff300ed45f65d",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 4,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0009_374f05",
+      "split": "VAL",
+      "disease": "Chicken pox",
+      "original_raw_symptoms": [
+        "fatigue",
+        "headache",
+        "high fever",
+        "itching",
+        "lethargy",
+        "loss of appetite",
+        "malaise",
+        "mild fever",
+        "red spots over body",
+        "skin rash",
+        "swelled lymph nodes"
+      ],
+      "canonical_symptoms": [
+        "fatigue",
+        "headache",
+        "high fever",
+        "itching",
+        "lethargy",
+        "loss of appetite",
+        "malaise",
+        "mild fever",
+        "red spots over body",
+        "skin rash",
+        "swelled lymph nodes"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "793414f537161f10",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 1.1,
+        "symptom_count": 11,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0010_2ee91b",
+      "split": "VAL",
+      "disease": "Chicken pox",
+      "original_raw_symptoms": [
+        "headache",
+        "high fever",
+        "itching",
+        "lethargy",
+        "loss of appetite",
+        "malaise",
+        "mild fever",
+        "red spots over body",
+        "skin rash",
+        "swelled lymph nodes"
+      ],
+      "canonical_symptoms": [
+        "headache",
+        "high fever",
+        "itching",
+        "lethargy",
+        "loss of appetite",
+        "malaise",
+        "mild fever",
+        "red spots over body",
+        "skin rash",
+        "swelled lymph nodes"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "64b484e2a4a05204",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 1.0,
+        "symptom_count": 10,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0011_882928",
+      "split": "VAL",
+      "disease": "Chronic cholestasis",
+      "original_raw_symptoms": [
+        "itching",
+        "loss of appetite",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "canonical_symptoms": [
+        "itching",
+        "loss of appetite",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "16e86b5b244bf236",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.6,
+        "symptom_count": 6,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0012_37556e",
+      "split": "VAL",
+      "disease": "Common Cold",
+      "original_raw_symptoms": [
+        "chest pain",
+        "chills",
+        "congestion",
+        "cough",
+        "fatigue",
+        "headache",
+        "high fever",
+        "loss of smell",
+        "malaise",
+        "muscle pain",
+        "phlegm",
+        "redness of eyes",
+        "runny nose",
+        "sinus pressure",
+        "swelled lymph nodes",
+        "throat irritation"
+      ],
+      "canonical_symptoms": [
+        "chest pain",
+        "chills",
+        "congestion",
+        "cough",
+        "fatigue",
+        "headache",
+        "high fever",
+        "loss of smell",
+        "malaise",
+        "muscle pain",
+        "phlegm",
+        "redness of eyes",
+        "runny nose",
+        "sinus pressure",
+        "swelled lymph nodes",
+        "throat irritation"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "c76f476ca78f0790",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 1.6,
+        "symptom_count": 16,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0013_fd62ac",
+      "split": "VAL",
+      "disease": "Dengue",
+      "original_raw_symptoms": [
+        "back pain",
+        "chills",
+        "fatigue",
+        "headache",
+        "high fever",
+        "joint pain",
+        "loss of appetite",
+        "malaise",
+        "muscle pain",
+        "nausea",
+        "pain behind the eyes",
+        "skin rash",
+        "vomiting"
+      ],
+      "canonical_symptoms": [
+        "back pain",
+        "chills",
+        "fatigue",
+        "headache",
+        "high fever",
+        "joint pain",
+        "loss of appetite",
+        "malaise",
+        "muscle pain",
+        "nausea",
+        "pain behind the eyes",
+        "skin rash",
+        "vomiting"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "994abecde31ecc49",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 1.3,
+        "symptom_count": 13,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0014_52c9aa",
+      "split": "VAL",
+      "disease": "Dengue",
+      "original_raw_symptoms": [
+        "back pain",
+        "chills",
+        "fatigue",
+        "headache",
+        "joint pain",
+        "loss of appetite",
+        "malaise",
+        "muscle pain",
+        "nausea",
+        "pain behind the eyes",
+        "red spots over body",
+        "skin rash",
+        "vomiting"
+      ],
+      "canonical_symptoms": [
+        "back pain",
+        "chills",
+        "fatigue",
+        "headache",
+        "joint pain",
+        "loss of appetite",
+        "malaise",
+        "muscle pain",
+        "nausea",
+        "pain behind the eyes",
+        "red spots over body",
+        "skin rash",
+        "vomiting"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "37ad43811f497be3",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 1.3,
+        "symptom_count": 13,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0015_27eb8f",
+      "split": "VAL",
+      "disease": "Diabetes",
+      "original_raw_symptoms": [
+        "blurred and distorted vision",
+        "excessive hunger",
+        "increased appetite",
+        "irregular sugar level",
+        "lethargy",
+        "obesity",
+        "polyuria",
+        "restlessness",
+        "weight loss"
+      ],
+      "canonical_symptoms": [
+        "blurred and distorted vision",
+        "excessive hunger",
+        "increased appetite",
+        "irregular sugar level",
+        "lethargy",
+        "obesity",
+        "polyuria",
+        "restlessness",
+        "weight loss"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "49af16e61d9a7755",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.9,
+        "symptom_count": 9,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0016_932de8",
+      "split": "VAL",
+      "disease": "Dimorphic hemmorhoids(piles)",
+      "original_raw_symptoms": [
+        "bloody stool",
+        "constipation",
+        "pain during bowel movements",
+        "pain in anal region"
+      ],
+      "canonical_symptoms": [
+        "bloody stool",
+        "constipation",
+        "pain during bowel movements",
+        "pain in anal region"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "cac0986dcc1bff56",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 4,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0017_bf3edf",
+      "split": "VAL",
+      "disease": "Drug Reaction",
+      "original_raw_symptoms": [
+        "itching",
+        "skin rash",
+        "spotting  urination",
+        "stomach pain"
+      ],
+      "canonical_symptoms": [
+        "itching",
+        "skin rash",
+        "spotting urination",
+        "stomach pain"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "bc13e5c6f7bcef37",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 4,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0018_73658d",
+      "split": "VAL",
+      "disease": "Fungal infection",
+      "original_raw_symptoms": [
+        "dischromic  patches",
+        "itching",
+        "nodal skin eruptions",
+        "skin rash"
+      ],
+      "canonical_symptoms": [
+        "dischromic patches",
+        "itching",
+        "nodal skin eruptions",
+        "skin rash"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "8d78910b8417905a",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 4,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0019_945133",
+      "split": "VAL",
+      "disease": "GERD",
+      "original_raw_symptoms": [
+        "acidity",
+        "chest pain",
+        "cough",
+        "ulcers on tongue",
+        "vomiting"
+      ],
+      "canonical_symptoms": [
+        "acidity",
+        "chest pain",
+        "cough",
+        "ulcers on tongue",
+        "vomiting"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "0a85e8e4c0029d3f",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.5,
+        "symptom_count": 5,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0020_d8c8c6",
+      "split": "VAL",
+      "disease": "Gastroenteritis",
+      "original_raw_symptoms": [
+        "dehydration",
+        "diarrhoea",
+        "sunken eyes",
+        "vomiting"
+      ],
+      "canonical_symptoms": [
+        "dehydration",
+        "diarrhoea",
+        "sunken eyes",
+        "vomiting"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "d714287f756eefa7",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 4,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0021_ca5afb",
+      "split": "VAL",
+      "disease": "Heart attack",
+      "original_raw_symptoms": [
+        "chest pain",
+        "sweating",
+        "vomiting"
+      ],
+      "canonical_symptoms": [
+        "chest pain",
+        "sweating",
+        "vomiting"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "65d2fd36be81ebd7",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.3,
+        "symptom_count": 3,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0022_04b489",
+      "split": "VAL",
+      "disease": "Hepatitis B",
+      "original_raw_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "itching",
+        "lethargy",
+        "malaise",
+        "receiving blood transfusion",
+        "receiving unsterile injections",
+        "yellow urine",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "itching",
+        "lethargy",
+        "malaise",
+        "receiving blood transfusion",
+        "receiving unsterile injections",
+        "yellow urine",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "7a02e038c72fe735",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 1.1,
+        "symptom_count": 11,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0023_802c5f",
+      "split": "VAL",
+      "disease": "Hepatitis C",
+      "original_raw_symptoms": [
+        "family history",
+        "fatigue",
+        "loss of appetite",
+        "nausea",
+        "yellowish skin"
+      ],
+      "canonical_symptoms": [
+        "family history",
+        "fatigue",
+        "loss of appetite",
+        "nausea",
+        "yellowish skin"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "c9ca7b70b21675e6",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.5,
+        "symptom_count": 5,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0024_9fb63a",
+      "split": "VAL",
+      "disease": "Hepatitis D",
+      "original_raw_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "joint pain",
+        "loss of appetite",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "joint pain",
+        "loss of appetite",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "045b1537572f305c",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.9,
+        "symptom_count": 9,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0025_4d87bd",
+      "split": "VAL",
+      "disease": "Hepatitis D",
+      "original_raw_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "loss of appetite",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "loss of appetite",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "995504743cdc46c9",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.8,
+        "symptom_count": 8,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0026_5cc3d4",
+      "split": "VAL",
+      "disease": "Hepatitis E",
+      "original_raw_symptoms": [
+        "abdominal pain",
+        "acute liver failure",
+        "coma",
+        "dark urine",
+        "fatigue",
+        "high fever",
+        "joint pain",
+        "loss of appetite",
+        "stomach bleeding",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "canonical_symptoms": [
+        "abdominal pain",
+        "acute liver failure",
+        "coma",
+        "dark urine",
+        "fatigue",
+        "high fever",
+        "joint pain",
+        "loss of appetite",
+        "stomach bleeding",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "baa7fbedd8399e12",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 1.2,
+        "symptom_count": 12,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0027_c27ca4",
+      "split": "VAL",
+      "disease": "Hypertension",
+      "original_raw_symptoms": [
+        "chest pain",
+        "dizziness",
+        "headache",
+        "lack of concentration",
+        "loss of balance"
+      ],
+      "canonical_symptoms": [
+        "chest pain",
+        "dizziness",
+        "headache",
+        "lack of concentration",
+        "loss of balance"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "e174978bed0e22a6",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.5,
+        "symptom_count": 5,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0028_03adf2",
+      "split": "VAL",
+      "disease": "Hyperthyroidism",
+      "original_raw_symptoms": [
+        "abnormal menstruation",
+        "diarrhoea",
+        "excessive hunger",
+        "fast heart rate",
+        "fatigue",
+        "irritability",
+        "mood swings",
+        "muscle weakness",
+        "restlessness",
+        "sweating",
+        "weight loss"
+      ],
+      "canonical_symptoms": [
+        "abnormal menstruation",
+        "diarrhoea",
+        "excessive hunger",
+        "fast heart rate",
+        "fatigue",
+        "irritability",
+        "mood swings",
+        "muscle weakness",
+        "restlessness",
+        "sweating",
+        "weight loss"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "13c9bfebba526f8b",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 1.1,
+        "symptom_count": 11,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0029_b39939",
+      "split": "VAL",
+      "disease": "Hypoglycemia",
+      "original_raw_symptoms": [
+        "anxiety",
+        "blurred and distorted vision",
+        "drying and tingling lips",
+        "excessive hunger",
+        "fatigue",
+        "irritability",
+        "nausea",
+        "palpitations",
+        "slurred speech",
+        "sweating",
+        "vomiting"
+      ],
+      "canonical_symptoms": [
+        "anxiety",
+        "blurred and distorted vision",
+        "drying and tingling lips",
+        "excessive hunger",
+        "fatigue",
+        "irritability",
+        "nausea",
+        "palpitations",
+        "slurred speech",
+        "sweating",
+        "vomiting"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "a6d463261dca9122",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 1.1,
+        "symptom_count": 11,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0030_28e1b7",
+      "split": "VAL",
+      "disease": "Hypothyroidism",
+      "original_raw_symptoms": [
+        "abnormal menstruation",
+        "brittle nails",
+        "cold hands and feets",
+        "depression",
+        "dizziness",
+        "enlarged thyroid",
+        "fatigue",
+        "irritability",
+        "lethargy",
+        "mood swings",
+        "swollen extremeties",
+        "weight gain"
+      ],
+      "canonical_symptoms": [
+        "abnormal menstruation",
+        "brittle nails",
+        "cold hands and feets",
+        "depression",
+        "dizziness",
+        "enlarged thyroid",
+        "fatigue",
+        "irritability",
+        "lethargy",
+        "mood swings",
+        "swollen extremeties",
+        "weight gain"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "4dffad887ce12118",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 1.2,
+        "symptom_count": 12,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0031_c6cd72",
+      "split": "VAL",
+      "disease": "Impetigo",
+      "original_raw_symptoms": [
+        "blister",
+        "high fever",
+        "red sore around nose",
+        "skin rash"
+      ],
+      "canonical_symptoms": [
+        "blister",
+        "high fever",
+        "red sore around nose",
+        "skin rash"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "2b5ba34a965b1d7c",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 4,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0032_332d4d",
+      "split": "VAL",
+      "disease": "Jaundice",
+      "original_raw_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "high fever",
+        "itching",
+        "vomiting",
+        "yellowish skin"
+      ],
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "high fever",
+        "itching",
+        "vomiting",
+        "yellowish skin"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "52e9cfd7a446eca8",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.7,
+        "symptom_count": 7,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0033_79d51f",
+      "split": "VAL",
+      "disease": "Malaria",
+      "original_raw_symptoms": [
+        "chills",
+        "diarrhoea",
+        "headache",
+        "high fever",
+        "muscle pain",
+        "nausea",
+        "sweating",
+        "vomiting"
+      ],
+      "canonical_symptoms": [
+        "chills",
+        "diarrhoea",
+        "headache",
+        "high fever",
+        "muscle pain",
+        "nausea",
+        "sweating",
+        "vomiting"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "eb641a61257c783e",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.8,
+        "symptom_count": 8,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0034_97cf1b",
+      "split": "VAL",
+      "disease": "Migraine",
+      "original_raw_symptoms": [
+        "acidity",
+        "blurred and distorted vision",
+        "depression",
+        "headache",
+        "indigestion",
+        "irritability",
+        "stiff neck",
+        "visual disturbances"
+      ],
+      "canonical_symptoms": [
+        "acidity",
+        "blurred and distorted vision",
+        "depression",
+        "headache",
+        "indigestion",
+        "irritability",
+        "stiff neck",
+        "visual disturbances"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "a22a07a0a4f1cc8c",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.8,
+        "symptom_count": 8,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0035_58a778",
+      "split": "VAL",
+      "disease": "Migraine",
+      "original_raw_symptoms": [
+        "acidity",
+        "blurred and distorted vision",
+        "depression",
+        "excessive hunger",
+        "headache",
+        "irritability",
+        "stiff neck",
+        "visual disturbances"
+      ],
+      "canonical_symptoms": [
+        "acidity",
+        "blurred and distorted vision",
+        "depression",
+        "excessive hunger",
+        "headache",
+        "irritability",
+        "stiff neck",
+        "visual disturbances"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "80a85f95a76220ed",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.8,
+        "symptom_count": 8,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0036_9b6bbb",
+      "split": "VAL",
+      "disease": "Osteoarthristis",
+      "original_raw_symptoms": [
+        "hip joint pain",
+        "joint pain",
+        "knee pain",
+        "neck pain",
+        "painful walking"
+      ],
+      "canonical_symptoms": [
+        "hip joint pain",
+        "joint pain",
+        "knee pain",
+        "neck pain",
+        "painful walking"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "11f0d07ec8534d30",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.5,
+        "symptom_count": 5,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0037_cb25f9",
+      "split": "VAL",
+      "disease": "Paralysis (brain hemorrhage)",
+      "original_raw_symptoms": [
+        "altered sensorium",
+        "vomiting",
+        "weakness of one body side"
+      ],
+      "canonical_symptoms": [
+        "altered sensorium",
+        "vomiting",
+        "weakness of one body side"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "bb1dedfb2a505760",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.3,
+        "symptom_count": 3,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0038_f6bf93",
+      "split": "VAL",
+      "disease": "Peptic ulcer diseae",
+      "original_raw_symptoms": [
+        "abdominal pain",
+        "indigestion",
+        "internal itching",
+        "loss of appetite",
+        "passage of gases"
+      ],
+      "canonical_symptoms": [
+        "abdominal pain",
+        "indigestion",
+        "internal itching",
+        "loss of appetite",
+        "passage of gases"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "ff59b6799b60699d",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.5,
+        "symptom_count": 5,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0039_e529f0",
+      "split": "VAL",
+      "disease": "Pneumonia",
+      "original_raw_symptoms": [
+        "breathlessness",
+        "chest pain",
+        "chills",
+        "cough",
+        "fast heart rate",
+        "fatigue",
+        "high fever",
+        "malaise",
+        "phlegm",
+        "rusty sputum",
+        "sweating"
+      ],
+      "canonical_symptoms": [
+        "breathlessness",
+        "chest pain",
+        "chills",
+        "cough",
+        "fast heart rate",
+        "fatigue",
+        "high fever",
+        "malaise",
+        "phlegm",
+        "rusty sputum",
+        "sweating"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "209a6657f580819e",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 1.1,
+        "symptom_count": 11,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0040_83ccd1",
+      "split": "VAL",
+      "disease": "Psoriasis",
+      "original_raw_symptoms": [
+        "joint pain",
+        "silver like dusting",
+        "skin peeling",
+        "skin rash",
+        "small dents in nails"
+      ],
+      "canonical_symptoms": [
+        "joint pain",
+        "silver like dusting",
+        "skin peeling",
+        "skin rash",
+        "small dents in nails"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "1f512f1ccd87bfe1",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.5,
+        "symptom_count": 5,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0041_4ef37b",
+      "split": "VAL",
+      "disease": "Tuberculosis",
+      "original_raw_symptoms": [
+        "blood in sputum",
+        "breathlessness",
+        "chest pain",
+        "chills",
+        "cough",
+        "fatigue",
+        "loss of appetite",
+        "malaise",
+        "mild fever",
+        "phlegm",
+        "sweating",
+        "swelled lymph nodes",
+        "vomiting",
+        "weight loss",
+        "yellowing of eyes"
+      ],
+      "canonical_symptoms": [
+        "blood in sputum",
+        "breathlessness",
+        "chest pain",
+        "chills",
+        "cough",
+        "fatigue",
+        "loss of appetite",
+        "malaise",
+        "mild fever",
+        "phlegm",
+        "sweating",
+        "swelled lymph nodes",
+        "vomiting",
+        "weight loss",
+        "yellowing of eyes"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "534764f297554f8d",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 1.5,
+        "symptom_count": 15,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0042_22a01d",
+      "split": "VAL",
+      "disease": "Typhoid",
+      "original_raw_symptoms": [
+        "belly pain",
+        "chills",
+        "constipation",
+        "diarrhoea",
+        "fatigue",
+        "headache",
+        "high fever",
+        "nausea",
+        "toxic look (typhos)",
+        "vomiting"
+      ],
+      "canonical_symptoms": [
+        "belly pain",
+        "chills",
+        "constipation",
+        "diarrhoea",
+        "fatigue",
+        "headache",
+        "high fever",
+        "nausea",
+        "toxic look (typhos)",
+        "vomiting"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "e8a7d21843373830",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 1.0,
+        "symptom_count": 10,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0043_0f4d9a",
+      "split": "VAL",
+      "disease": "Urinary tract infection",
+      "original_raw_symptoms": [
+        "bladder discomfort",
+        "burning micturition",
+        "continuous feel of urine",
+        "foul smell of urine"
+      ],
+      "canonical_symptoms": [
+        "bladder discomfort",
+        "burning micturition",
+        "continuous feel of urine",
+        "foul smell of urine"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "bd2b6404227a1a89",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 4,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0044_3ff17d",
+      "split": "VAL",
+      "disease": "Varicose veins",
+      "original_raw_symptoms": [
+        "bruising",
+        "cramps",
+        "fatigue",
+        "prominent veins on calf",
+        "swollen blood vessels",
+        "swollen legs"
+      ],
+      "canonical_symptoms": [
+        "bruising",
+        "cramps",
+        "fatigue",
+        "prominent veins on calf",
+        "swollen blood vessels",
+        "swollen legs"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "58cb82c04ed29413",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 0.6,
+        "symptom_count": 6,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_VAL_0045_b4fc62",
+      "split": "VAL",
+      "disease": "hepatitis A",
+      "original_raw_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "joint pain",
+        "loss of appetite",
+        "mild fever",
+        "muscle pain",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "joint pain",
+        "loss of appetite",
+        "mild fever",
+        "muscle pain",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_description": "UNKNOWN",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "backend/src/data/dataset.csv",
+        "pattern_hash": "c9dd593a4d286ae2",
+        "split_assignment": "VAL",
+        "dataset_row_indices": []
+      },
+      "evidence_quality": {
+        "completeness_score": 1.0,
+        "symptom_count": 10,
+        "record_type": "STRUCTURED_CANONICAL_RECORD",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    }
+  ]
+}

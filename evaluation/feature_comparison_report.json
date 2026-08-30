@@ -1,0 +1,38 @@
+{
+  "validation_metrics": {
+    "model_A_top1_acc": 100.0,
+    "model_B_top1_acc": 100.0,
+    "model_A_top3_acc": 100.0,
+    "model_B_top3_acc": 100.0
+  },
+  "locked_test_metrics": {
+    "model_A_top1_acc": 100.0,
+    "model_B_top1_acc": 100.0,
+    "model_A_top3_acc": 100.0,
+    "model_B_top3_acc": 100.0,
+    "model_A_macro_precision": 1.0,
+    "model_B_macro_precision": 1.0,
+    "model_A_macro_recall": 1.0,
+    "model_B_macro_recall": 1.0,
+    "model_A_macro_f1": 1.0,
+    "model_B_macro_f1": 1.0
+  },
+  "free_form_test_metrics": {
+    "total_eval_cases": 135,
+    "model_A_top1_acc": 100.0,
+    "model_B_top1_acc": 98.52,
+    "model_A_top3_acc": 100.0,
+    "model_B_top3_acc": 100.0
+  },
+  "partial_symptom_metrics": {
+    "total_cases": 45,
+    "model_A_top1_acc": 60.0,
+    "model_B_top1_acc": 48.89
+  },
+  "noise_and_false_confidence": {
+    "evaluated_ambiguous_noise_cases": 30,
+    "model_A_false_confident_count": 1,
+    "model_B_false_confident_count": 3,
+    "confidence_suppression_improvement": "-200.0%"
+  }
+}

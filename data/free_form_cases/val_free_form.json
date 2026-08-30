@@ -1,0 +1,3423 @@
+{
+  "total_cases": 135,
+  "split": "VAL",
+  "cases": [
+    {
+      "free_form_case_id": "FF_CASE_VAL_0001_abadd8_SHO_01_92b4",
+      "parent_case_id": "CASE_VAL_0001_abadd8",
+      "split": "VAL",
+      "disease": "(vertigo) Paroymsal  Positional Vertigo",
+      "canonical_symptoms": [
+        "headache",
+        "loss of balance",
+        "spinning movements",
+        "unsteadiness",
+        "vomiting"
+      ],
+      "free_form_text": "Currently struggling with loss of balance, unsteadiness, headache, vomiting, and spinning movements for the past three days.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "for the past three days",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0001_abadd8",
+        "pattern_hash": "6d7f940e426a4f79",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0001_abadd8_TYP_02_5ba1",
+      "parent_case_id": "CASE_VAL_0001_abadd8",
+      "split": "VAL",
+      "disease": "(vertigo) Paroymsal  Positional Vertigo",
+      "canonical_symptoms": [
+        "headache",
+        "loss of balance",
+        "spinning movements",
+        "unsteadiness",
+        "vomiting"
+      ],
+      "free_form_text": "Doc feeling bad, having spinning sensation with vomitting, head ache, unsteady, lost balance over the last 24 to 48 hours.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "over the last 24 to 48 hours",
+      "severity_mentioned": "constant",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0001_abadd8",
+        "pattern_hash": "6d7f940e426a4f79",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0001_abadd8_COL_03_3afc",
+      "parent_case_id": "CASE_VAL_0001_abadd8",
+      "split": "VAL",
+      "disease": "(vertigo) Paroymsal  Positional Vertigo",
+      "canonical_symptoms": [
+        "headache",
+        "loss of balance",
+        "spinning movements",
+        "unsteadiness",
+        "vomiting"
+      ],
+      "free_form_text": "Hi doctor, my poor balance has been acting up for the past few days and I keep having emesis, head ache, feeling off balance, room spinning.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for the past few days",
+      "severity_mentioned": "persistent",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0001_abadd8",
+        "pattern_hash": "6d7f940e426a4f79",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0002_f7add2_TYP_01_62ce",
+      "parent_case_id": "CASE_VAL_0002_f7add2",
+      "split": "VAL",
+      "disease": "AIDS",
+      "canonical_symptoms": [
+        "extra marital contacts",
+        "high fever",
+        "muscle wasting",
+        "patches in throat"
+      ],
+      "free_form_text": "Feeling very sick, having high fevr with throat patches, extramarital contacts, muscle wastng over the last 24 to 48 hours.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "over the last 24 to 48 hours",
+      "severity_mentioned": "persistent",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0002_f7add2",
+        "pattern_hash": "bf7f14fcca4d1686",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0002_f7add2_SHO_02_7586",
+      "parent_case_id": "CASE_VAL_0002_f7add2",
+      "split": "VAL",
+      "disease": "AIDS",
+      "canonical_symptoms": [
+        "extra marital contacts",
+        "high fever",
+        "muscle wasting",
+        "patches in throat"
+      ],
+      "free_form_text": "I am experiencing muscle wasting, patches in throat, extra marital contacts, and high fever since yesterday morning.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "since yesterday morning",
+      "severity_mentioned": "terrible",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0002_f7add2",
+        "pattern_hash": "bf7f14fcca4d1686",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0002_f7add2_COL_03_02b4",
+      "parent_case_id": "CASE_VAL_0002_f7add2",
+      "split": "VAL",
+      "disease": "AIDS",
+      "canonical_symptoms": [
+        "extra marital contacts",
+        "high fever",
+        "muscle wasting",
+        "patches in throat"
+      ],
+      "free_form_text": "Hi doctor, my multiple sexual partners has been acting up for nearly 5 days and I keep having muscle atrophy, strep spots, high temperature.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for nearly 5 days",
+      "severity_mentioned": "unbearable",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0002_f7add2",
+        "pattern_hash": "bf7f14fcca4d1686",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0003_5e4ff9_COL_01_9820",
+      "parent_case_id": "CASE_VAL_0003_5e4ff9",
+      "split": "VAL",
+      "disease": "Acne",
+      "canonical_symptoms": [
+        "blackheads",
+        "pus filled pimples",
+        "skin rash"
+      ],
+      "free_form_text": "Hey doctor, my rash has been acting up for almost a week now and I keep having blocked pores, inflamed acne.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for almost a week now",
+      "severity_mentioned": "constant",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0003_5e4ff9",
+        "pattern_hash": "3553e564f8007398",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0003_5e4ff9_TYP_02_159e",
+      "parent_case_id": "CASE_VAL_0003_5e4ff9",
+      "split": "VAL",
+      "disease": "Acne",
+      "canonical_symptoms": [
+        "blackheads",
+        "pus filled pimples",
+        "skin rash"
+      ],
+      "free_form_text": "Doc feeling bad, having black heads with pus pimples, skyn rash starting about 3 days ago.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "starting about 3 days ago",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0003_5e4ff9",
+        "pattern_hash": "3553e564f8007398",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0003_5e4ff9_DET_03_2f9e",
+      "parent_case_id": "CASE_VAL_0003_5e4ff9",
+      "split": "VAL",
+      "disease": "Acne",
+      "canonical_symptoms": [
+        "blackheads",
+        "pus filled pimples",
+        "skin rash"
+      ],
+      "free_form_text": "Starting about 3 days ago I have been experiencing constant blocked pores. It progressively developed into pustules, alongside dermatitis rash.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "starting about 3 days ago",
+      "severity_mentioned": "constant",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0003_5e4ff9",
+        "pattern_hash": "3553e564f8007398",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0004_77ae34_CON_01_a3ed",
+      "parent_case_id": "CASE_VAL_0004_77ae34",
+      "split": "VAL",
+      "disease": "Alcoholic hepatitis",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "distention of abdomen",
+        "fluid overload",
+        "history of alcohol consumption",
+        "vomiting",
+        "yellowish skin"
+      ],
+      "free_form_text": "I'm feeling quite unwell and seeking advice. I've been having swollen abdomen, fluid overload, throwing up for nearly 5 days. On top of that, I have also developed history of alcohol consumption, gut pain, yellowish skin.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for nearly 5 days",
+      "severity_mentioned": "persistent",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0004_77ae34",
+        "pattern_hash": "71022dad501eca77",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0004_77ae34_DET_02_ca12",
+      "parent_case_id": "CASE_VAL_0004_77ae34",
+      "split": "VAL",
+      "disease": "Alcoholic hepatitis",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "distention of abdomen",
+        "fluid overload",
+        "history of alcohol consumption",
+        "vomiting",
+        "yellowish skin"
+      ],
+      "free_form_text": "For the past few days I have been experiencing intense heavy drinking history. It progressively developed into jaundice skin, alongside emesis. Along with this, I have also noticed edema, swollen belly, stomach cramps.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "for the past few days",
+      "severity_mentioned": "intense",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0004_77ae34",
+        "pattern_hash": "71022dad501eca77",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0004_77ae34_TYP_03_919d",
+      "parent_case_id": "CASE_VAL_0004_77ae34",
+      "split": "VAL",
+      "disease": "Alcoholic hepatitis",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "distention of abdomen",
+        "fluid overload",
+        "history of alcohol consumption",
+        "vomiting",
+        "yellowish skin"
+      ],
+      "free_form_text": "Doc feeling bad, having distention of stomach with vomit, alcohol consumption history, fluid retension, yellow skin, stomch pain for the past three days.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "for the past three days",
+      "severity_mentioned": "constant",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0004_77ae34",
+        "pattern_hash": "71022dad501eca77",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0005_63b800_TYP_01_7870",
+      "parent_case_id": "CASE_VAL_0005_63b800",
+      "split": "VAL",
+      "disease": "Allergy",
+      "canonical_symptoms": [
+        "chills",
+        "shivering",
+        "watering from eyes"
+      ],
+      "free_form_text": "Doc feeling bad, having shivring with watering eyes, chils starting about 3 days ago.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "starting about 3 days ago",
+      "severity_mentioned": "persistent",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0005_63b800",
+        "pattern_hash": "645a23a7eb14a475",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0005_63b800_CON_02_b065",
+      "parent_case_id": "CASE_VAL_0005_63b800",
+      "split": "VAL",
+      "disease": "Allergy",
+      "canonical_symptoms": [
+        "chills",
+        "shivering",
+        "watering from eyes"
+      ],
+      "free_form_text": "I'm feeling quite unwell and seeking advice. I've been having body shaking for the past two days. On top of that, I have also developed teary eyes, feeling cold.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "unbearable",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0005_63b800",
+        "pattern_hash": "645a23a7eb14a475",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0005_63b800_DET_03_f7ea",
+      "parent_case_id": "CASE_VAL_0005_63b800",
+      "split": "VAL",
+      "disease": "Allergy",
+      "canonical_symptoms": [
+        "chills",
+        "shivering",
+        "watering from eyes"
+      ],
+      "free_form_text": "Starting about 3 days ago I have been experiencing terrible epiphora. It progressively developed into teeth chattering chills, alongside rigors.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "starting about 3 days ago",
+      "severity_mentioned": "terrible",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0005_63b800",
+        "pattern_hash": "645a23a7eb14a475",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0006_04c748_TYP_01_0708",
+      "parent_case_id": "CASE_VAL_0006_04c748",
+      "split": "VAL",
+      "disease": "Arthritis",
+      "canonical_symptoms": [
+        "muscle weakness",
+        "painful walking",
+        "stiff neck",
+        "swelling joints"
+      ],
+      "free_form_text": "Pls advice, having pain in walking with joint swelling, stif neck, muscular weakness for the past two days.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "troubling",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0006_04c748",
+        "pattern_hash": "1e6c899c539d73d8",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0006_04c748_SHO_02_57ae",
+      "parent_case_id": "CASE_VAL_0006_04c748",
+      "split": "VAL",
+      "disease": "Arthritis",
+      "canonical_symptoms": [
+        "muscle weakness",
+        "painful walking",
+        "stiff neck",
+        "swelling joints"
+      ],
+      "free_form_text": "I am experiencing stiff neck, swelling joints, painful walking, and muscle weakness for the past three days.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "for the past three days",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0006_04c748",
+        "pattern_hash": "1e6c899c539d73d8",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0006_04c748_CON_03_ec01",
+      "parent_case_id": "CASE_VAL_0006_04c748",
+      "split": "VAL",
+      "disease": "Arthritis",
+      "canonical_symptoms": [
+        "muscle weakness",
+        "painful walking",
+        "stiff neck",
+        "swelling joints"
+      ],
+      "free_form_text": "I started feeling sick a few days back. I've been having reduced muscle strength, limping from pain for the past three days. To make matters worse, I have also developed nuchal rigidity, swelling joints.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for the past three days",
+      "severity_mentioned": "troubling",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0006_04c748",
+        "pattern_hash": "1e6c899c539d73d8",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0007_d2a2e3_TYP_01_9dcf",
+      "parent_case_id": "CASE_VAL_0007_d2a2e3",
+      "split": "VAL",
+      "disease": "Bronchial Asthma",
+      "canonical_symptoms": [
+        "breathlessness",
+        "cough",
+        "family history",
+        "fatigue",
+        "mucoid sputum"
+      ],
+      "free_form_text": "Feeling very sick, having mucoid phlegm with short of breath, cogh, fatige, family medical history for the past two days.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "severe",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0007_d2a2e3",
+        "pattern_hash": "7b1fdf6e7e9718f4",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0007_d2a2e3_SHO_02_2e31",
+      "parent_case_id": "CASE_VAL_0007_d2a2e3",
+      "split": "VAL",
+      "disease": "Bronchial Asthma",
+      "canonical_symptoms": [
+        "breathlessness",
+        "cough",
+        "family history",
+        "fatigue",
+        "mucoid sputum"
+      ],
+      "free_form_text": "I am experiencing mucoid sputum, cough, fatigue, family history, and breathlessness over the last 24 to 48 hours.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "over the last 24 to 48 hours",
+      "severity_mentioned": "intense",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0007_d2a2e3",
+        "pattern_hash": "7b1fdf6e7e9718f4",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0007_d2a2e3_CON_03_9543",
+      "parent_case_id": "CASE_VAL_0007_d2a2e3",
+      "split": "VAL",
+      "disease": "Bronchial Asthma",
+      "canonical_symptoms": [
+        "breathlessness",
+        "cough",
+        "family history",
+        "fatigue",
+        "mucoid sputum"
+      ],
+      "free_form_text": "I've been experiencing a cluster of uncomfortable symptoms. I've been having clear thick mucus, out of breath for almost a week now. Along with this, I have also developed exhaustion, family history, chest cough.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for almost a week now",
+      "severity_mentioned": "really bad",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0007_d2a2e3",
+        "pattern_hash": "7b1fdf6e7e9718f4",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0008_42dc6f_TYP_01_e556",
+      "parent_case_id": "CASE_VAL_0008_42dc6f",
+      "split": "VAL",
+      "disease": "Cervical spondylosis",
+      "canonical_symptoms": [
+        "back pain",
+        "dizziness",
+        "loss of balance",
+        "weakness in limbs"
+      ],
+      "free_form_text": "Pls advice, having lost balance with limb weakness, backpain, diziness starting about 3 days ago.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "starting about 3 days ago",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0008_42dc6f",
+        "pattern_hash": "9afff300ed45f65d",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0008_42dc6f_COL_02_7b1b",
+      "parent_case_id": "CASE_VAL_0008_42dc6f",
+      "split": "VAL",
+      "disease": "Cervical spondylosis",
+      "canonical_symptoms": [
+        "back pain",
+        "dizziness",
+        "loss of balance",
+        "weakness in limbs"
+      ],
+      "free_form_text": "Hello doc, my wooziness has been acting up for the past few days and I keep having weak arms and legs, stumbling, lower back pain.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for the past few days",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0008_42dc6f",
+        "pattern_hash": "9afff300ed45f65d",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0008_42dc6f_CON_03_9ea0",
+      "parent_case_id": "CASE_VAL_0008_42dc6f",
+      "split": "VAL",
+      "disease": "Cervical spondylosis",
+      "canonical_symptoms": [
+        "back pain",
+        "dizziness",
+        "loss of balance",
+        "weakness in limbs"
+      ],
+      "free_form_text": "I haven't been feeling well at all lately. I've been having heavy limbs, loss of balance over the last 24 to 48 hours. On top of that, I have also developed unsteady head, upper back pain.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "over the last 24 to 48 hours",
+      "severity_mentioned": "terrible",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0008_42dc6f",
+        "pattern_hash": "9afff300ed45f65d",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0009_374f05_COL_01_4e4b",
+      "parent_case_id": "CASE_VAL_0009_374f05",
+      "split": "VAL",
+      "disease": "Chicken pox",
+      "canonical_symptoms": [
+        "fatigue",
+        "headache",
+        "high fever",
+        "itching",
+        "lethargy",
+        "loss of appetite",
+        "malaise",
+        "mild fever",
+        "red spots over body",
+        "skin rash",
+        "swelled lymph nodes"
+      ],
+      "free_form_text": "Hi doctor, my not hungry has been acting up for nearly 5 days and I keep having spots on body, inactive, severe fever, lymph node swelling, hives, head ache, feeling unwell, slight fever, pruritus, worn out.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for nearly 5 days",
+      "severity_mentioned": "terrible",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0009_374f05",
+        "pattern_hash": "793414f537161f10",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0009_374f05_SHO_02_3447",
+      "parent_case_id": "CASE_VAL_0009_374f05",
+      "split": "VAL",
+      "disease": "Chicken pox",
+      "canonical_symptoms": [
+        "fatigue",
+        "headache",
+        "high fever",
+        "itching",
+        "lethargy",
+        "loss of appetite",
+        "malaise",
+        "mild fever",
+        "red spots over body",
+        "skin rash",
+        "swelled lymph nodes"
+      ],
+      "free_form_text": "I've been dealing with red spots over body, mild fever, swelled lymph nodes, fatigue, high fever, loss of appetite, skin rash, malaise, lethargy, headache, and itching for the past three days.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "for the past three days",
+      "severity_mentioned": "really bad",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0009_374f05",
+        "pattern_hash": "793414f537161f10",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0009_374f05_TYP_03_d5cb",
+      "parent_case_id": "CASE_VAL_0009_374f05",
+      "split": "VAL",
+      "disease": "Chicken pox",
+      "canonical_symptoms": [
+        "fatigue",
+        "headache",
+        "high fever",
+        "itching",
+        "lethargy",
+        "loss of appetite",
+        "malaise",
+        "mild fever",
+        "red spots over body",
+        "skin rash",
+        "swelled lymph nodes"
+      ],
+      "free_form_text": "Doc feeling bad, having mallaise with red spots, headach, lost appetite, skin rashs, itch, swollen lymph nodes, lethargic, high fevr, mild fevr, fatige since last Tuesday.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "since last Tuesday",
+      "severity_mentioned": "unbearable",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0009_374f05",
+        "pattern_hash": "793414f537161f10",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0010_2ee91b_SHO_01_8969",
+      "parent_case_id": "CASE_VAL_0010_2ee91b",
+      "split": "VAL",
+      "disease": "Chicken pox",
+      "canonical_symptoms": [
+        "headache",
+        "high fever",
+        "itching",
+        "lethargy",
+        "loss of appetite",
+        "malaise",
+        "mild fever",
+        "red spots over body",
+        "skin rash",
+        "swelled lymph nodes"
+      ],
+      "free_form_text": "Reporting headache, loss of appetite, skin rash, malaise, red spots over body, high fever, itching, lethargy, swelled lymph nodes, and mild fever for nearly 5 days.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "for nearly 5 days",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0010_2ee91b",
+        "pattern_hash": "64b484e2a4a05204",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0010_2ee91b_TYP_02_886a",
+      "parent_case_id": "CASE_VAL_0010_2ee91b",
+      "split": "VAL",
+      "disease": "Chicken pox",
+      "canonical_symptoms": [
+        "headache",
+        "high fever",
+        "itching",
+        "lethargy",
+        "loss of appetite",
+        "malaise",
+        "mild fever",
+        "red spots over body",
+        "skin rash",
+        "swelled lymph nodes"
+      ],
+      "free_form_text": "Feeling very sick, having itch with mallaise, red spots, lost appetite, mild fevr, swollen lymph nodes, skyn rash, lethargic, head ache, feever for almost a week now.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "for almost a week now",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0010_2ee91b",
+        "pattern_hash": "64b484e2a4a05204",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0010_2ee91b_DET_03_f9ab",
+      "parent_case_id": "CASE_VAL_0010_2ee91b",
+      "split": "VAL",
+      "disease": "Chicken pox",
+      "canonical_symptoms": [
+        "headache",
+        "high fever",
+        "itching",
+        "lethargy",
+        "loss of appetite",
+        "malaise",
+        "mild fever",
+        "red spots over body",
+        "skin rash",
+        "swelled lymph nodes"
+      ],
+      "free_form_text": "For the past three days I have been experiencing intense body burning hot. It progressively developed into head ache, alongside skin eruption. Additionally, I have also noticed slight fever, not hungry, swelled lymph nodes, petechiae, feeling sick all over, lack of vitality, scratchy skin.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "for the past three days",
+      "severity_mentioned": "intense",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0010_2ee91b",
+        "pattern_hash": "64b484e2a4a05204",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0011_882928_DET_01_1343",
+      "parent_case_id": "CASE_VAL_0011_882928",
+      "split": "VAL",
+      "disease": "Chronic cholestasis",
+      "canonical_symptoms": [
+        "itching",
+        "loss of appetite",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_text": "For the past few days I have been experiencing heavy nausea. It progressively developed into skin turning yellow, alongside anorexia. Furthermore, I have also noticed jaundice eyes, vomiting, itchiness.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "for the past few days",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0011_882928",
+        "pattern_hash": "16e86b5b244bf236",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0011_882928_COL_02_8a06",
+      "parent_case_id": "CASE_VAL_0011_882928",
+      "split": "VAL",
+      "disease": "Chronic cholestasis",
+      "canonical_symptoms": [
+        "itching",
+        "loss of appetite",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_text": "Hey doctor, my feeling sick has been acting up since yesterday morning and I keep having icteric skin, scleral icterus, don't feel like eating, throwing up, scratchy skin.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "since yesterday morning",
+      "severity_mentioned": "intense",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0011_882928",
+        "pattern_hash": "16e86b5b244bf236",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0011_882928_SHO_03_4dd6",
+      "parent_case_id": "CASE_VAL_0011_882928",
+      "split": "VAL",
+      "disease": "Chronic cholestasis",
+      "canonical_symptoms": [
+        "itching",
+        "loss of appetite",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_text": "Currently struggling with yellowish skin, vomiting, loss of appetite, yellowing of eyes, nausea, and itching for the past few days.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "for the past few days",
+      "severity_mentioned": "troubling",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0011_882928",
+        "pattern_hash": "16e86b5b244bf236",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0012_37556e_COL_01_637f",
+      "parent_case_id": "CASE_VAL_0012_37556e",
+      "split": "VAL",
+      "disease": "Common Cold",
+      "canonical_symptoms": [
+        "chest pain",
+        "chills",
+        "congestion",
+        "cough",
+        "fatigue",
+        "headache",
+        "high fever",
+        "loss of smell",
+        "malaise",
+        "muscle pain",
+        "phlegm",
+        "redness of eyes",
+        "runny nose",
+        "sinus pressure",
+        "swelled lymph nodes",
+        "throat irritation"
+      ],
+      "free_form_text": "Doc, please help, my fever has been acting up for nearly 5 days and I keep having body ache, dry cough, sore throat, bloodshot eyes, green phlegm, stuffy nose, rigors, lost sense of smell, feeling sick all over, dripping nose, feeling drained, migraine, facial fullness, chest tightness, tender neck lumps.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for nearly 5 days",
+      "severity_mentioned": "intense",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0012_37556e",
+        "pattern_hash": "c76f476ca78f0790",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0012_37556e_DET_02_8de0",
+      "parent_case_id": "CASE_VAL_0012_37556e",
+      "split": "VAL",
+      "disease": "Common Cold",
+      "canonical_symptoms": [
+        "chest pain",
+        "chills",
+        "congestion",
+        "cough",
+        "fatigue",
+        "headache",
+        "high fever",
+        "loss of smell",
+        "malaise",
+        "muscle pain",
+        "phlegm",
+        "redness of eyes",
+        "runny nose",
+        "sinus pressure",
+        "swelled lymph nodes",
+        "throat irritation"
+      ],
+      "free_form_text": "For nearly 5 days I have been experiencing intense feeling cold. It progressively developed into phlegm, alongside smell impairment. Along with this, I have also noticed congestion, pressure under eyes, body uneasiness, chest discomfort, dry cough, throat pain, feeling drained, runny nose, sore muscles, fever, migraine, swelled lymph nodes, red eyes.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "for nearly 5 days",
+      "severity_mentioned": "intense",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0012_37556e",
+        "pattern_hash": "c76f476ca78f0790",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0012_37556e_CON_03_da03",
+      "parent_case_id": "CASE_VAL_0012_37556e",
+      "split": "VAL",
+      "disease": "Common Cold",
+      "canonical_symptoms": [
+        "chest pain",
+        "chills",
+        "congestion",
+        "cough",
+        "fatigue",
+        "headache",
+        "high fever",
+        "loss of smell",
+        "malaise",
+        "muscle pain",
+        "phlegm",
+        "redness of eyes",
+        "runny nose",
+        "sinus pressure",
+        "swelled lymph nodes",
+        "throat irritation"
+      ],
+      "free_form_text": "Please evaluate what could be causing this illness. I've been having aching muscles, high temperature, pressure under eyes, temple pain, body uneasiness, bloodshot eyes, congestion, cough for the past three days. On top of that, I have also developed mucus cough, loss of smell, chest pressure, lymph node swelling, rhinorrhea, chills, lethargy, sore throat.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for the past three days",
+      "severity_mentioned": "unbearable",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0012_37556e",
+        "pattern_hash": "c76f476ca78f0790",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0013_fd62ac_COL_01_a13c",
+      "parent_case_id": "CASE_VAL_0013_fd62ac",
+      "split": "VAL",
+      "disease": "Dengue",
+      "canonical_symptoms": [
+        "back pain",
+        "chills",
+        "fatigue",
+        "headache",
+        "high fever",
+        "joint pain",
+        "loss of appetite",
+        "malaise",
+        "muscle pain",
+        "nausea",
+        "pain behind the eyes",
+        "skin rash",
+        "vomiting"
+      ],
+      "free_form_text": "Hello doc, my throbbing head has been acting up for almost a week now and I keep having feeling cold, feeling sick all over, spiking fever, arthralgia, lethargy, backache, myalgia, want to throw up, don't feel like eating, rash, pain behind eyeball, emesis.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for almost a week now",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0013_fd62ac",
+        "pattern_hash": "994abecde31ecc49",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0013_fd62ac_DET_02_415b",
+      "parent_case_id": "CASE_VAL_0013_fd62ac",
+      "split": "VAL",
+      "disease": "Dengue",
+      "canonical_symptoms": [
+        "back pain",
+        "chills",
+        "fatigue",
+        "headache",
+        "high fever",
+        "joint pain",
+        "loss of appetite",
+        "malaise",
+        "muscle pain",
+        "nausea",
+        "pain behind the eyes",
+        "skin rash",
+        "vomiting"
+      ],
+      "free_form_text": "Over the last 24 to 48 hours I have been experiencing troubling lower back pain. It progressively developed into headache, alongside pain behind the eyes. Along with this, I have also noticed red skin bumps, high temperature, feeling sick, pain in joints, body uneasiness, muscle soreness, fatigue, chills, throwing up, loss of appetite.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "over the last 24 to 48 hours",
+      "severity_mentioned": "troubling",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0013_fd62ac",
+        "pattern_hash": "994abecde31ecc49",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0013_fd62ac_SHO_03_f49e",
+      "parent_case_id": "CASE_VAL_0013_fd62ac",
+      "split": "VAL",
+      "disease": "Dengue",
+      "canonical_symptoms": [
+        "back pain",
+        "chills",
+        "fatigue",
+        "headache",
+        "high fever",
+        "joint pain",
+        "loss of appetite",
+        "malaise",
+        "muscle pain",
+        "nausea",
+        "pain behind the eyes",
+        "skin rash",
+        "vomiting"
+      ],
+      "free_form_text": "Reporting pain behind the eyes, malaise, vomiting, joint pain, chills, headache, loss of appetite, back pain, high fever, skin rash, muscle pain, nausea, and fatigue since last Tuesday.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "since last Tuesday",
+      "severity_mentioned": "troubling",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0013_fd62ac",
+        "pattern_hash": "994abecde31ecc49",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0014_52c9aa_SHO_01_2353",
+      "parent_case_id": "CASE_VAL_0014_52c9aa",
+      "split": "VAL",
+      "disease": "Dengue",
+      "canonical_symptoms": [
+        "back pain",
+        "chills",
+        "fatigue",
+        "headache",
+        "joint pain",
+        "loss of appetite",
+        "malaise",
+        "muscle pain",
+        "nausea",
+        "pain behind the eyes",
+        "red spots over body",
+        "skin rash",
+        "vomiting"
+      ],
+      "free_form_text": "I've been dealing with nausea, malaise, pain behind the eyes, back pain, fatigue, headache, muscle pain, vomiting, skin rash, loss of appetite, chills, red spots over body, and joint pain over the last 24 to 48 hours.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "over the last 24 to 48 hours",
+      "severity_mentioned": "troubling",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0014_52c9aa",
+        "pattern_hash": "37ad43811f497be3",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0014_52c9aa_TYP_02_4266",
+      "parent_case_id": "CASE_VAL_0014_52c9aa",
+      "split": "VAL",
+      "disease": "Dengue",
+      "canonical_symptoms": [
+        "back pain",
+        "chills",
+        "fatigue",
+        "headache",
+        "joint pain",
+        "loss of appetite",
+        "malaise",
+        "muscle pain",
+        "nausea",
+        "pain behind the eyes",
+        "red spots over body",
+        "skin rash",
+        "vomiting"
+      ],
+      "free_form_text": "Doc feeling bad, having joint ache with vomit, chill, back ach, mallaise, lost appetite, red spots, pain behind eyes, head ache, fatigued, muscl pain, skyn rash, nawsea for the past two days.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "really bad",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0014_52c9aa",
+        "pattern_hash": "37ad43811f497be3",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0014_52c9aa_COL_03_0581",
+      "parent_case_id": "CASE_VAL_0014_52c9aa",
+      "split": "VAL",
+      "disease": "Dengue",
+      "canonical_symptoms": [
+        "back pain",
+        "chills",
+        "fatigue",
+        "headache",
+        "joint pain",
+        "loss of appetite",
+        "malaise",
+        "muscle pain",
+        "nausea",
+        "pain behind the eyes",
+        "red spots over body",
+        "skin rash",
+        "vomiting"
+      ],
+      "free_form_text": "Doc, please help, my erythematous spots has been acting up for the past three days and I keep having don't feel like eating, cold shivering, upper back pain, eye socket ache, hives, throwing up, stiff painful joints, queasiness, migraine, no energy, muscle soreness, feeling unwell.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for the past three days",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0014_52c9aa",
+        "pattern_hash": "37ad43811f497be3",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0015_27eb8f_DET_01_398e",
+      "parent_case_id": "CASE_VAL_0015_27eb8f",
+      "split": "VAL",
+      "disease": "Diabetes",
+      "canonical_symptoms": [
+        "blurred and distorted vision",
+        "excessive hunger",
+        "increased appetite",
+        "irregular sugar level",
+        "lethargy",
+        "obesity",
+        "polyuria",
+        "restlessness",
+        "weight loss"
+      ],
+      "free_form_text": "For the past two days I have been experiencing persistent excess body fat. It progressively developed into increased food cravings, alongside lethargy. Additionally, I have also noticed blurred and distorted vision, weight loss, peeing often, blood sugar spikes, restlessness, extreme appetite.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "persistent",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0015_27eb8f",
+        "pattern_hash": "49af16e61d9a7755",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0015_27eb8f_COL_02_c912",
+      "parent_case_id": "CASE_VAL_0015_27eb8f",
+      "split": "VAL",
+      "disease": "Diabetes",
+      "canonical_symptoms": [
+        "blurred and distorted vision",
+        "excessive hunger",
+        "increased appetite",
+        "irregular sugar level",
+        "lethargy",
+        "obesity",
+        "polyuria",
+        "restlessness",
+        "weight loss"
+      ],
+      "free_form_text": "Hi doctor, my lack of vitality has been acting up for almost a week now and I keep having overweight, blood sugar spikes, frequent peeing, constant hunger, distorted sight, frequent eating, wasting, feeling unsettled.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for almost a week now",
+      "severity_mentioned": "unbearable",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0015_27eb8f",
+        "pattern_hash": "49af16e61d9a7755",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0015_27eb8f_CON_03_e98c",
+      "parent_case_id": "CASE_VAL_0015_27eb8f",
+      "split": "VAL",
+      "disease": "Diabetes",
+      "canonical_symptoms": [
+        "blurred and distorted vision",
+        "excessive hunger",
+        "increased appetite",
+        "irregular sugar level",
+        "lethargy",
+        "obesity",
+        "polyuria",
+        "restlessness",
+        "weight loss"
+      ],
+      "free_form_text": "I'm writing because I'm very concerned about these symptoms. I've been having blurred vision, high BMI, increased food cravings, weight loss for the past two days. Additionally, I have also developed lack of vitality, urinating large volumes, unstable blood sugar, motor restlessness, always feeling hungry.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "severe",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0015_27eb8f",
+        "pattern_hash": "49af16e61d9a7755",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0016_932de8_SHO_01_7290",
+      "parent_case_id": "CASE_VAL_0016_932de8",
+      "split": "VAL",
+      "disease": "Dimorphic hemmorhoids(piles)",
+      "canonical_symptoms": [
+        "bloody stool",
+        "constipation",
+        "pain during bowel movements",
+        "pain in anal region"
+      ],
+      "free_form_text": "I've been dealing with pain during bowel movements, bloody stool, constipation, and pain in anal region over the last 24 to 48 hours.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "over the last 24 to 48 hours",
+      "severity_mentioned": "really bad",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0016_932de8",
+        "pattern_hash": "cac0986dcc1bff56",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0016_932de8_TYP_02_fa64",
+      "parent_case_id": "CASE_VAL_0016_932de8",
+      "split": "VAL",
+      "disease": "Dimorphic hemmorhoids(piles)",
+      "canonical_symptoms": [
+        "bloody stool",
+        "constipation",
+        "pain during bowel movements",
+        "pain in anal region"
+      ],
+      "free_form_text": "Doc feeling bad, having painful bowel movement with bloody stools, constipasion, anal pain for the past three days.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "for the past three days",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0016_932de8",
+        "pattern_hash": "cac0986dcc1bff56",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0016_932de8_CON_03_4459",
+      "parent_case_id": "CASE_VAL_0016_932de8",
+      "split": "VAL",
+      "disease": "Dimorphic hemmorhoids(piles)",
+      "canonical_symptoms": [
+        "bloody stool",
+        "constipation",
+        "pain during bowel movements",
+        "pain in anal region"
+      ],
+      "free_form_text": "Please evaluate what could be causing this illness. I've been having dyschezia, irregular bowel movements since yesterday morning. Additionally, I have also developed pain in anal region, dark bloody stool.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "since yesterday morning",
+      "severity_mentioned": "troubling",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0016_932de8",
+        "pattern_hash": "cac0986dcc1bff56",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0017_bf3edf_DET_01_a2b0",
+      "parent_case_id": "CASE_VAL_0017_bf3edf",
+      "split": "VAL",
+      "disease": "Drug Reaction",
+      "canonical_symptoms": [
+        "itching",
+        "skin rash",
+        "spotting urination",
+        "stomach pain"
+      ],
+      "free_form_text": "Over the last 24 to 48 hours I have been experiencing really bad skin rash. It progressively developed into pain in tummy, alongside need to scratch. Furthermore, I have also noticed trace blood in pee.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "over the last 24 to 48 hours",
+      "severity_mentioned": "really bad",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0017_bf3edf",
+        "pattern_hash": "bc13e5c6f7bcef37",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0017_bf3edf_COL_02_96cf",
+      "parent_case_id": "CASE_VAL_0017_bf3edf",
+      "split": "VAL",
+      "disease": "Drug Reaction",
+      "canonical_symptoms": [
+        "itching",
+        "skin rash",
+        "spotting urination",
+        "stomach pain"
+      ],
+      "free_form_text": "Hey doctor, my hives has been acting up for the past few days and I keep having gastric pain, hematuria spots, itchiness.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for the past few days",
+      "severity_mentioned": "constant",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0017_bf3edf",
+        "pattern_hash": "bc13e5c6f7bcef37",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0017_bf3edf_CON_03_0d31",
+      "parent_case_id": "CASE_VAL_0017_bf3edf",
+      "split": "VAL",
+      "disease": "Drug Reaction",
+      "canonical_symptoms": [
+        "itching",
+        "skin rash",
+        "spotting urination",
+        "stomach pain"
+      ],
+      "free_form_text": "I started feeling sick a few days back. I've been having pain in tummy, hives for nearly 5 days. Furthermore, I have also developed pruritus, spotting urination.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for nearly 5 days",
+      "severity_mentioned": "persistent",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0017_bf3edf",
+        "pattern_hash": "bc13e5c6f7bcef37",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0018_73658d_TYP_01_3e19",
+      "parent_case_id": "CASE_VAL_0018_73658d",
+      "split": "VAL",
+      "disease": "Fungal infection",
+      "canonical_symptoms": [
+        "dischromic patches",
+        "itching",
+        "nodal skin eruptions",
+        "skin rash"
+      ],
+      "free_form_text": "Doc feeling bad, having dischromic patches with nodal eruptions, itch, skyn rash for the past three days.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "for the past three days",
+      "severity_mentioned": "really bad",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0018_73658d",
+        "pattern_hash": "8d78910b8417905a",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0018_73658d_CON_02_a588",
+      "parent_case_id": "CASE_VAL_0018_73658d",
+      "split": "VAL",
+      "disease": "Fungal infection",
+      "canonical_symptoms": [
+        "dischromic patches",
+        "itching",
+        "nodal skin eruptions",
+        "skin rash"
+      ],
+      "free_form_text": "I haven't been feeling well at all lately. I've been having nodal skin eruptions, hives starting about 3 days ago. Additionally, I have also developed discolored spots, itchy skin.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "starting about 3 days ago",
+      "severity_mentioned": "persistent",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0018_73658d",
+        "pattern_hash": "8d78910b8417905a",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0018_73658d_SHO_03_35a9",
+      "parent_case_id": "CASE_VAL_0018_73658d",
+      "split": "VAL",
+      "disease": "Fungal infection",
+      "canonical_symptoms": [
+        "dischromic patches",
+        "itching",
+        "nodal skin eruptions",
+        "skin rash"
+      ],
+      "free_form_text": "Currently struggling with itching, skin rash, dischromic patches, and nodal skin eruptions for nearly 5 days.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "for nearly 5 days",
+      "severity_mentioned": "troubling",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0018_73658d",
+        "pattern_hash": "8d78910b8417905a",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0019_945133_COL_01_952e",
+      "parent_case_id": "CASE_VAL_0019_945133",
+      "split": "VAL",
+      "disease": "GERD",
+      "canonical_symptoms": [
+        "acidity",
+        "chest pain",
+        "cough",
+        "ulcers on tongue",
+        "vomiting"
+      ],
+      "free_form_text": "Hello doc, my chest cough has been acting up for the past few days and I keep having retching, crushing chest pain, painful mouth blisters, burning stomach.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for the past few days",
+      "severity_mentioned": "severe",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0019_945133",
+        "pattern_hash": "0a85e8e4c0029d3f",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0019_945133_SHO_02_3b02",
+      "parent_case_id": "CASE_VAL_0019_945133",
+      "split": "VAL",
+      "disease": "GERD",
+      "canonical_symptoms": [
+        "acidity",
+        "chest pain",
+        "cough",
+        "ulcers on tongue",
+        "vomiting"
+      ],
+      "free_form_text": "I am experiencing vomiting, acidity, ulcers on tongue, cough, and chest pain over the last 24 to 48 hours.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "over the last 24 to 48 hours",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0019_945133",
+        "pattern_hash": "0a85e8e4c0029d3f",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0019_945133_DET_03_d3ce",
+      "parent_case_id": "CASE_VAL_0019_945133",
+      "split": "VAL",
+      "disease": "GERD",
+      "canonical_symptoms": [
+        "acidity",
+        "chest pain",
+        "cough",
+        "ulcers on tongue",
+        "vomiting"
+      ],
+      "free_form_text": "Since yesterday morning I have been experiencing unbearable dry cough. It progressively developed into ulcers on tongue, alongside chest pain. I also noticed I have also noticed sour stomach, threw up.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "since yesterday morning",
+      "severity_mentioned": "unbearable",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0019_945133",
+        "pattern_hash": "0a85e8e4c0029d3f",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0020_d8c8c6_SHO_01_c6c2",
+      "parent_case_id": "CASE_VAL_0020_d8c8c6",
+      "split": "VAL",
+      "disease": "Gastroenteritis",
+      "canonical_symptoms": [
+        "dehydration",
+        "diarrhoea",
+        "sunken eyes",
+        "vomiting"
+      ],
+      "free_form_text": "Reporting diarrhoea, dehydration, sunken eyes, and vomiting for the past few days.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "for the past few days",
+      "severity_mentioned": "constant",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0020_d8c8c6",
+        "pattern_hash": "d714287f756eefa7",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0020_d8c8c6_TYP_02_8d33",
+      "parent_case_id": "CASE_VAL_0020_d8c8c6",
+      "split": "VAL",
+      "disease": "Gastroenteritis",
+      "canonical_symptoms": [
+        "dehydration",
+        "diarrhoea",
+        "sunken eyes",
+        "vomiting"
+      ],
+      "free_form_text": "Doc feeling bad, having diarhea with vomit, dehydrated, sunken eye for the past two days.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "troubling",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0020_d8c8c6",
+        "pattern_hash": "d714287f756eefa7",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0020_d8c8c6_COL_03_384e",
+      "parent_case_id": "CASE_VAL_0020_d8c8c6",
+      "split": "VAL",
+      "disease": "Gastroenteritis",
+      "canonical_symptoms": [
+        "dehydration",
+        "diarrhoea",
+        "sunken eyes",
+        "vomiting"
+      ],
+      "free_form_text": "Hey doctor, my puking has been acting up for nearly 5 days and I keep having deep sunken eyes, watery stools, lack of fluids.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for nearly 5 days",
+      "severity_mentioned": "intense",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0020_d8c8c6",
+        "pattern_hash": "d714287f756eefa7",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0021_ca5afb_COL_01_e95f",
+      "parent_case_id": "CASE_VAL_0021_ca5afb",
+      "split": "VAL",
+      "disease": "Heart attack",
+      "canonical_symptoms": [
+        "chest pain",
+        "sweating",
+        "vomiting"
+      ],
+      "free_form_text": "Hello doc, my chest pressure has been acting up for the past two days and I keep having retching, perspiration.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "terrible",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0021_ca5afb",
+        "pattern_hash": "65d2fd36be81ebd7",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0021_ca5afb_SHO_02_d2d0",
+      "parent_case_id": "CASE_VAL_0021_ca5afb",
+      "split": "VAL",
+      "disease": "Heart attack",
+      "canonical_symptoms": [
+        "chest pain",
+        "sweating",
+        "vomiting"
+      ],
+      "free_form_text": "I am experiencing sweating, vomiting, and chest pain over the last 24 to 48 hours.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "over the last 24 to 48 hours",
+      "severity_mentioned": "constant",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0021_ca5afb",
+        "pattern_hash": "65d2fd36be81ebd7",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0021_ca5afb_DET_03_b6ca",
+      "parent_case_id": "CASE_VAL_0021_ca5afb",
+      "split": "VAL",
+      "disease": "Heart attack",
+      "canonical_symptoms": [
+        "chest pain",
+        "sweating",
+        "vomiting"
+      ],
+      "free_form_text": "Since yesterday morning I have been experiencing heavy diaphoresis. It progressively developed into emesis, alongside chest discomfort.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "since yesterday morning",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0021_ca5afb",
+        "pattern_hash": "65d2fd36be81ebd7",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0022_04b489_CON_01_124e",
+      "parent_case_id": "CASE_VAL_0022_04b489",
+      "split": "VAL",
+      "disease": "Hepatitis B",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "itching",
+        "lethargy",
+        "malaise",
+        "receiving blood transfusion",
+        "receiving unsterile injections",
+        "yellow urine",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_text": "I've been experiencing a cluster of uncomfortable symptoms. I've been having receiving blood transfusion, belly pain, fatigue, scleral icterus, concentrated urine for almost a week now. I also noticed I have also developed unsterile needle exposure, tea colored urine, sluggishness, itchy skin, jaundice skin, general discomfort.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for almost a week now",
+      "severity_mentioned": "persistent",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0022_04b489",
+        "pattern_hash": "7a02e038c72fe735",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0022_04b489_DET_02_e84d",
+      "parent_case_id": "CASE_VAL_0022_04b489",
+      "split": "VAL",
+      "disease": "Hepatitis B",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "itching",
+        "lethargy",
+        "malaise",
+        "receiving blood transfusion",
+        "receiving unsterile injections",
+        "yellow urine",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_text": "For nearly 5 days I have been experiencing terrible weakness. It progressively developed into tea colored urine, alongside yellowish skin. On top of that, I have also noticed tummy ache, received donor blood, icteric sclera, needle sharing history, feeling sick all over, listless, concentrated urine, itchy skin.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "for nearly 5 days",
+      "severity_mentioned": "terrible",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0022_04b489",
+        "pattern_hash": "7a02e038c72fe735",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0022_04b489_SHO_03_722e",
+      "parent_case_id": "CASE_VAL_0022_04b489",
+      "split": "VAL",
+      "disease": "Hepatitis B",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "itching",
+        "lethargy",
+        "malaise",
+        "receiving blood transfusion",
+        "receiving unsterile injections",
+        "yellow urine",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_text": "Currently struggling with yellowing of eyes, dark urine, lethargy, yellow urine, receiving blood transfusion, receiving unsterile injections, yellowish skin, itching, abdominal pain, fatigue, and malaise for the past two days.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "unbearable",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0022_04b489",
+        "pattern_hash": "7a02e038c72fe735",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0023_802c5f_TYP_01_2680",
+      "parent_case_id": "CASE_VAL_0023_802c5f",
+      "split": "VAL",
+      "disease": "Hepatitis C",
+      "canonical_symptoms": [
+        "family history",
+        "fatigue",
+        "loss of appetite",
+        "nausea",
+        "yellowish skin"
+      ],
+      "free_form_text": "Feeling very sick, having nawsea with lost appetite, fatigued, yellow skin, family medical history for the past two days.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "terrible",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0023_802c5f",
+        "pattern_hash": "c9ca7b70b21675e6",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0023_802c5f_COL_02_7d0d",
+      "parent_case_id": "CASE_VAL_0023_802c5f",
+      "split": "VAL",
+      "disease": "Hepatitis C",
+      "canonical_symptoms": [
+        "family history",
+        "fatigue",
+        "loss of appetite",
+        "nausea",
+        "yellowish skin"
+      ],
+      "free_form_text": "Doc, please help, my hereditary condition has been acting up for the past few days and I keep having icteric skin, not hungry, exhaustion, want to throw up.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for the past few days",
+      "severity_mentioned": "severe",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0023_802c5f",
+        "pattern_hash": "c9ca7b70b21675e6",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0023_802c5f_CON_03_4aab",
+      "parent_case_id": "CASE_VAL_0023_802c5f",
+      "split": "VAL",
+      "disease": "Hepatitis C",
+      "canonical_symptoms": [
+        "family history",
+        "fatigue",
+        "loss of appetite",
+        "nausea",
+        "yellowish skin"
+      ],
+      "free_form_text": "I've been experiencing a cluster of uncomfortable symptoms. I've been having yellowish skin, queasy for nearly 5 days. Furthermore, I have also developed hereditary condition, exhaustion, anorexia.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for nearly 5 days",
+      "severity_mentioned": "constant",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0023_802c5f",
+        "pattern_hash": "c9ca7b70b21675e6",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0024_9fb63a_COL_01_0b4d",
+      "parent_case_id": "CASE_VAL_0024_9fb63a",
+      "split": "VAL",
+      "disease": "Hepatitis D",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "joint pain",
+        "loss of appetite",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_text": "Doc, please help, my scleral icterus has been acting up starting about 3 days ago and I keep having worn out, stomach pain, retching, feeling sick, arthralgia, tea colored urine, not hungry, skin turning yellow.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "starting about 3 days ago",
+      "severity_mentioned": "severe",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0024_9fb63a",
+        "pattern_hash": "045b1537572f305c",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0024_9fb63a_TYP_02_ee05",
+      "parent_case_id": "CASE_VAL_0024_9fb63a",
+      "split": "VAL",
+      "disease": "Hepatitis D",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "joint pain",
+        "loss of appetite",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_text": "Doc feeling bad, having vomitting with dark colored urine, joint ache, abdonimal pain, yellow eyes, fatige, yellow skin, lost appetite, nawsea for the past two days.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "persistent",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0024_9fb63a",
+        "pattern_hash": "045b1537572f305c",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0024_9fb63a_DET_03_3619",
+      "parent_case_id": "CASE_VAL_0024_9fb63a",
+      "split": "VAL",
+      "disease": "Hepatitis D",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "joint pain",
+        "loss of appetite",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_text": "Since yesterday morning I have been experiencing intense emesis. It progressively developed into worn out, alongside cola colored urine. Furthermore, I have also noticed queasiness, loss of appetite, gut pain, yellow eyes, arthralgia, jaundice skin.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "since yesterday morning",
+      "severity_mentioned": "intense",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0024_9fb63a",
+        "pattern_hash": "045b1537572f305c",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0025_4d87bd_SHO_01_b524",
+      "parent_case_id": "CASE_VAL_0025_4d87bd",
+      "split": "VAL",
+      "disease": "Hepatitis D",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "loss of appetite",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_text": "I've been dealing with yellowish skin, yellowing of eyes, fatigue, loss of appetite, nausea, vomiting, dark urine, and abdominal pain for the past two days.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "troubling",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0025_4d87bd",
+        "pattern_hash": "995504743cdc46c9",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0025_4d87bd_CON_02_268a",
+      "parent_case_id": "CASE_VAL_0025_4d87bd",
+      "split": "VAL",
+      "disease": "Hepatitis D",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "loss of appetite",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_text": "I haven't been feeling well at all lately. I've been having poor appetite, tea colored urine, feeling sick, yellowish skin for nearly 5 days. Furthermore, I have also developed jaundice eyes, tiredness, emesis, belly pain.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for nearly 5 days",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0025_4d87bd",
+        "pattern_hash": "995504743cdc46c9",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0025_4d87bd_TYP_03_5979",
+      "parent_case_id": "CASE_VAL_0025_4d87bd",
+      "split": "VAL",
+      "disease": "Hepatitis D",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "loss of appetite",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_text": "Doc feeling bad, having abdomial pain with vomitting, lost appetite, nausia, fatige, yellow eyes, yellow skin, dark colored urine starting about 3 days ago.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "starting about 3 days ago",
+      "severity_mentioned": "persistent",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0025_4d87bd",
+        "pattern_hash": "995504743cdc46c9",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0026_5cc3d4_DET_01_b034",
+      "parent_case_id": "CASE_VAL_0026_5cc3d4",
+      "split": "VAL",
+      "disease": "Hepatitis E",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "acute liver failure",
+        "coma",
+        "dark urine",
+        "fatigue",
+        "high fever",
+        "joint pain",
+        "loss of appetite",
+        "stomach bleeding",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_text": "For the past three days I have been experiencing troubling arthralgia. It progressively developed into yellow skin, alongside deep amber urine. On top of that, I have also noticed coffee ground emesis, hepatic failure, threw up, reduced appetite, icteric sclera, coma, lethargy, stomach pain, pyrexia.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "for the past three days",
+      "severity_mentioned": "troubling",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0026_5cc3d4",
+        "pattern_hash": "baa7fbedd8399e12",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0026_5cc3d4_SHO_02_ced9",
+      "parent_case_id": "CASE_VAL_0026_5cc3d4",
+      "split": "VAL",
+      "disease": "Hepatitis E",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "acute liver failure",
+        "coma",
+        "dark urine",
+        "fatigue",
+        "high fever",
+        "joint pain",
+        "loss of appetite",
+        "stomach bleeding",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_text": "I've been dealing with dark urine, fatigue, abdominal pain, high fever, acute liver failure, joint pain, coma, yellowing of eyes, yellowish skin, stomach bleeding, loss of appetite, and vomiting over the last 24 to 48 hours.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "over the last 24 to 48 hours",
+      "severity_mentioned": "persistent",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0026_5cc3d4",
+        "pattern_hash": "baa7fbedd8399e12",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0026_5cc3d4_COL_03_e2f0",
+      "parent_case_id": "CASE_VAL_0026_5cc3d4",
+      "split": "VAL",
+      "disease": "Hepatitis E",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "acute liver failure",
+        "coma",
+        "dark urine",
+        "fatigue",
+        "high fever",
+        "joint pain",
+        "loss of appetite",
+        "stomach bleeding",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_text": "Doc, please help, my lethargy has been acting up since yesterday morning and I keep having pain in joints, throwing up, cramp in stomach, unconscious state, vomiting dark blood, jaundice eyes, jaundice skin, tea colored urine, hepatic failure, pyrexia, reduced appetite.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "since yesterday morning",
+      "severity_mentioned": "unbearable",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0026_5cc3d4",
+        "pattern_hash": "baa7fbedd8399e12",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0027_c27ca4_DET_01_da7c",
+      "parent_case_id": "CASE_VAL_0027_c27ca4",
+      "split": "VAL",
+      "disease": "Hypertension",
+      "canonical_symptoms": [
+        "chest pain",
+        "dizziness",
+        "headache",
+        "lack of concentration",
+        "loss of balance"
+      ],
+      "free_form_text": "Since last tuesday I have been experiencing severe migraine. It progressively developed into poor balance, alongside wooziness. Additionally, I have also noticed cannot focus, chest pressure.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "since last Tuesday",
+      "severity_mentioned": "severe",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0027_c27ca4",
+        "pattern_hash": "e174978bed0e22a6",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0027_c27ca4_TYP_02_f1c4",
+      "parent_case_id": "CASE_VAL_0027_c27ca4",
+      "split": "VAL",
+      "disease": "Hypertension",
+      "canonical_symptoms": [
+        "chest pain",
+        "dizziness",
+        "headache",
+        "lack of concentration",
+        "loss of balance"
+      ],
+      "free_form_text": "Feeling very sick, having lost balance with head ache, diziness, loss of concentration, cheest pain since yesterday morning.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "since yesterday morning",
+      "severity_mentioned": "really bad",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0027_c27ca4",
+        "pattern_hash": "e174978bed0e22a6",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0027_c27ca4_SHO_03_d302",
+      "parent_case_id": "CASE_VAL_0027_c27ca4",
+      "split": "VAL",
+      "disease": "Hypertension",
+      "canonical_symptoms": [
+        "chest pain",
+        "dizziness",
+        "headache",
+        "lack of concentration",
+        "loss of balance"
+      ],
+      "free_form_text": "I've been dealing with chest pain, headache, dizziness, lack of concentration, and loss of balance since yesterday morning.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "since yesterday morning",
+      "severity_mentioned": "constant",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0027_c27ca4",
+        "pattern_hash": "e174978bed0e22a6",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0028_03adf2_DET_01_808b",
+      "parent_case_id": "CASE_VAL_0028_03adf2",
+      "split": "VAL",
+      "disease": "Hyperthyroidism",
+      "canonical_symptoms": [
+        "abnormal menstruation",
+        "diarrhoea",
+        "excessive hunger",
+        "fast heart rate",
+        "fatigue",
+        "irritability",
+        "mood swings",
+        "muscle weakness",
+        "restlessness",
+        "sweating",
+        "weight loss"
+      ],
+      "free_form_text": "For the past few days I have been experiencing heavy shifting moods. It progressively developed into no energy, alongside motor restlessness. To make matters worse, I have also noticed tachycardia, constant hunger, losing weight without trying, loss of strength in muscles, heavy bleeding, diarrhea, profuse sweating, short tempered.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "for the past few days",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0028_03adf2",
+        "pattern_hash": "13c9bfebba526f8b",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0028_03adf2_SHO_02_7fa3",
+      "parent_case_id": "CASE_VAL_0028_03adf2",
+      "split": "VAL",
+      "disease": "Hyperthyroidism",
+      "canonical_symptoms": [
+        "abnormal menstruation",
+        "diarrhoea",
+        "excessive hunger",
+        "fast heart rate",
+        "fatigue",
+        "irritability",
+        "mood swings",
+        "muscle weakness",
+        "restlessness",
+        "sweating",
+        "weight loss"
+      ],
+      "free_form_text": "Reporting weight loss, fast heart rate, sweating, restlessness, diarrhoea, abnormal menstruation, mood swings, fatigue, excessive hunger, muscle weakness, and irritability for the past two days.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "troubling",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0028_03adf2",
+        "pattern_hash": "13c9bfebba526f8b",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0028_03adf2_CON_03_b319",
+      "parent_case_id": "CASE_VAL_0028_03adf2",
+      "split": "VAL",
+      "disease": "Hyperthyroidism",
+      "canonical_symptoms": [
+        "abnormal menstruation",
+        "diarrhoea",
+        "excessive hunger",
+        "fast heart rate",
+        "fatigue",
+        "irritability",
+        "mood swings",
+        "muscle weakness",
+        "restlessness",
+        "sweating",
+        "weight loss"
+      ],
+      "free_form_text": "Just wanted to check what medical condition might explain this. I've been having wasting, rapid heartbeat, excessive hunger, menstrual irregularity, reduced muscle strength for almost a week now. Additionally, I have also developed diarrhea, fidgety, night sweats, mood swings, agitated, no energy.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for almost a week now",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0028_03adf2",
+        "pattern_hash": "13c9bfebba526f8b",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0029_b39939_CON_01_34ae",
+      "parent_case_id": "CASE_VAL_0029_b39939",
+      "split": "VAL",
+      "disease": "Hypoglycemia",
+      "canonical_symptoms": [
+        "anxiety",
+        "blurred and distorted vision",
+        "drying and tingling lips",
+        "excessive hunger",
+        "fatigue",
+        "irritability",
+        "nausea",
+        "palpitations",
+        "slurred speech",
+        "sweating",
+        "vomiting"
+      ],
+      "free_form_text": "I'm writing because I'm very concerned about these symptoms. I've been having trouble speaking clearly, prickly lip feeling, easily annoyed, heart fluttering, queasy starting about 3 days ago. To make matters worse, I have also developed panic attacks, emesis, tiredness, constant hunger, blurry eyes, profuse sweating.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "starting about 3 days ago",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0029_b39939",
+        "pattern_hash": "a6d463261dca9122",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0029_b39939_DET_02_9057",
+      "parent_case_id": "CASE_VAL_0029_b39939",
+      "split": "VAL",
+      "disease": "Hypoglycemia",
+      "canonical_symptoms": [
+        "anxiety",
+        "blurred and distorted vision",
+        "drying and tingling lips",
+        "excessive hunger",
+        "fatigue",
+        "irritability",
+        "nausea",
+        "palpitations",
+        "slurred speech",
+        "sweating",
+        "vomiting"
+      ],
+      "free_form_text": "For almost a week now I have been experiencing heavy vomiting. It progressively developed into dysarthria, alongside irritability. I also noticed I have also noticed panic attacks, burning dry lips, want to throw up, constant hunger, heart fluttering, night sweats, blurred vision, tiredness.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "for almost a week now",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0029_b39939",
+        "pattern_hash": "a6d463261dca9122",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0029_b39939_TYP_03_0985",
+      "parent_case_id": "CASE_VAL_0029_b39939",
+      "split": "VAL",
+      "disease": "Hypoglycemia",
+      "canonical_symptoms": [
+        "anxiety",
+        "blurred and distorted vision",
+        "drying and tingling lips",
+        "excessive hunger",
+        "fatigue",
+        "irritability",
+        "nausea",
+        "palpitations",
+        "slurred speech",
+        "sweating",
+        "vomiting"
+      ],
+      "free_form_text": "Feeling very sick, having sweting with nausia, vomit, tingling lips, fatige, palpitation, excess hunger, anxity, irritable, blured vision, slured speech since last Tuesday.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "since last Tuesday",
+      "severity_mentioned": "unbearable",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0029_b39939",
+        "pattern_hash": "a6d463261dca9122",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0030_28e1b7_CON_01_a524",
+      "parent_case_id": "CASE_VAL_0030_28e1b7",
+      "split": "VAL",
+      "disease": "Hypothyroidism",
+      "canonical_symptoms": [
+        "abnormal menstruation",
+        "brittle nails",
+        "cold hands and feets",
+        "depression",
+        "dizziness",
+        "enlarged thyroid",
+        "fatigue",
+        "irritability",
+        "lethargy",
+        "mood swings",
+        "swollen extremeties",
+        "weight gain"
+      ],
+      "free_form_text": "I've been experiencing a cluster of uncomfortable symptoms. I've been having drowsiness, shifting moods, freezing fingers, irritability, thyroid lump, lightheaded for almost a week now. I also noticed I have also developed swollen hands and feet, cracking nails, tiredness, irregular periods, melancholy, putting on weight.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for almost a week now",
+      "severity_mentioned": "terrible",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0030_28e1b7",
+        "pattern_hash": "4dffad887ce12118",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0030_28e1b7_SHO_02_cbd2",
+      "parent_case_id": "CASE_VAL_0030_28e1b7",
+      "split": "VAL",
+      "disease": "Hypothyroidism",
+      "canonical_symptoms": [
+        "abnormal menstruation",
+        "brittle nails",
+        "cold hands and feets",
+        "depression",
+        "dizziness",
+        "enlarged thyroid",
+        "fatigue",
+        "irritability",
+        "lethargy",
+        "mood swings",
+        "swollen extremeties",
+        "weight gain"
+      ],
+      "free_form_text": "I've been dealing with depression, mood swings, dizziness, lethargy, brittle nails, abnormal menstruation, cold hands and feets, swollen extremeties, enlarged thyroid, fatigue, weight gain, and irritability since last Tuesday.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "since last Tuesday",
+      "severity_mentioned": "persistent",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0030_28e1b7",
+        "pattern_hash": "4dffad887ce12118",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0030_28e1b7_DET_03_9aee",
+      "parent_case_id": "CASE_VAL_0030_28e1b7",
+      "split": "VAL",
+      "disease": "Hypothyroidism",
+      "canonical_symptoms": [
+        "abnormal menstruation",
+        "brittle nails",
+        "cold hands and feets",
+        "depression",
+        "dizziness",
+        "enlarged thyroid",
+        "fatigue",
+        "irritability",
+        "lethargy",
+        "mood swings",
+        "swollen extremeties",
+        "weight gain"
+      ],
+      "free_form_text": "Over the last 24 to 48 hours I have been experiencing constant wooziness. It progressively developed into mood swings, alongside low mood. On top of that, I have also noticed weight gain, menstrual irregularity, swollen thyroid, sluggishness, easily annoyed, cold extremities, easily broken nails, no energy, swollen hands and feet.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "over the last 24 to 48 hours",
+      "severity_mentioned": "constant",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0030_28e1b7",
+        "pattern_hash": "4dffad887ce12118",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0031_c6cd72_TYP_01_6887",
+      "parent_case_id": "CASE_VAL_0031_c6cd72",
+      "split": "VAL",
+      "disease": "Impetigo",
+      "canonical_symptoms": [
+        "blister",
+        "high fever",
+        "red sore around nose",
+        "skin rash"
+      ],
+      "free_form_text": "Doc feeling bad, having blstr with skyn rash, hi fever, red sores around nose for the past two days.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "unbearable",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0031_c6cd72",
+        "pattern_hash": "2b5ba34a965b1d7c",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0031_c6cd72_DET_02_59c8",
+      "parent_case_id": "CASE_VAL_0031_c6cd72",
+      "split": "VAL",
+      "disease": "Impetigo",
+      "canonical_symptoms": [
+        "blister",
+        "high fever",
+        "red sore around nose",
+        "skin rash"
+      ],
+      "free_form_text": "Since yesterday morning I have been experiencing troubling impetigo sores. It progressively developed into skin blisters, alongside red skin bumps. Additionally, I have also noticed fever.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "since yesterday morning",
+      "severity_mentioned": "troubling",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0031_c6cd72",
+        "pattern_hash": "2b5ba34a965b1d7c",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0031_c6cd72_CON_03_2b6d",
+      "parent_case_id": "CASE_VAL_0031_c6cd72",
+      "split": "VAL",
+      "disease": "Impetigo",
+      "canonical_symptoms": [
+        "blister",
+        "high fever",
+        "red sore around nose",
+        "skin rash"
+      ],
+      "free_form_text": "I haven't been feeling well at all lately. I've been having hives, pyrexia for the past two days. I also noticed I have also developed red sore around nose, blister.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "constant",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0031_c6cd72",
+        "pattern_hash": "2b5ba34a965b1d7c",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0032_332d4d_DET_01_5762",
+      "parent_case_id": "CASE_VAL_0032_332d4d",
+      "split": "VAL",
+      "disease": "Jaundice",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "high fever",
+        "itching",
+        "vomiting",
+        "yellowish skin"
+      ],
+      "free_form_text": "For the past few days I have been experiencing persistent feeling drained. It progressively developed into pruritus, alongside high temperature. To make matters worse, I have also noticed tea colored urine, jaundice skin, retching, cramp in stomach.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "for the past few days",
+      "severity_mentioned": "persistent",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0032_332d4d",
+        "pattern_hash": "52e9cfd7a446eca8",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0032_332d4d_TYP_02_ee64",
+      "parent_case_id": "CASE_VAL_0032_332d4d",
+      "split": "VAL",
+      "disease": "Jaundice",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "high fever",
+        "itching",
+        "vomiting",
+        "yellowish skin"
+      ],
+      "free_form_text": "Pls advice, having vomit with fatigued, hi fever, abdomial pain, yellow skin, itchng, dark colored urine for the past two days.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "terrible",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0032_332d4d",
+        "pattern_hash": "52e9cfd7a446eca8",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0032_332d4d_COL_03_bc38",
+      "parent_case_id": "CASE_VAL_0032_332d4d",
+      "split": "VAL",
+      "disease": "Jaundice",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "fatigue",
+        "high fever",
+        "itching",
+        "vomiting",
+        "yellowish skin"
+      ],
+      "free_form_text": "Hi doctor, my worn out has been acting up for the past three days and I keep having pyrexia, pruritus, cramp in stomach, dark yellow urine, emesis, icteric skin.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for the past three days",
+      "severity_mentioned": "troubling",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0032_332d4d",
+        "pattern_hash": "52e9cfd7a446eca8",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0033_79d51f_SHO_01_4cdb",
+      "parent_case_id": "CASE_VAL_0033_79d51f",
+      "split": "VAL",
+      "disease": "Malaria",
+      "canonical_symptoms": [
+        "chills",
+        "diarrhoea",
+        "headache",
+        "high fever",
+        "muscle pain",
+        "nausea",
+        "sweating",
+        "vomiting"
+      ],
+      "free_form_text": "I am experiencing vomiting, diarrhoea, sweating, high fever, muscle pain, nausea, chills, and headache for the past few days.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "for the past few days",
+      "severity_mentioned": "constant",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0033_79d51f",
+        "pattern_hash": "eb641a61257c783e",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0033_79d51f_TYP_02_2d30",
+      "parent_case_id": "CASE_VAL_0033_79d51f",
+      "split": "VAL",
+      "disease": "Malaria",
+      "canonical_symptoms": [
+        "chills",
+        "diarrhoea",
+        "headache",
+        "high fever",
+        "muscle pain",
+        "nausea",
+        "sweating",
+        "vomiting"
+      ],
+      "free_form_text": "Pls advice, having nawsea with sweting, vomitting, chill, diarhea, hi fever, hedache, muscle ache since last Tuesday.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "since last Tuesday",
+      "severity_mentioned": "unbearable",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0033_79d51f",
+        "pattern_hash": "eb641a61257c783e",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0033_79d51f_DET_03_2364",
+      "parent_case_id": "CASE_VAL_0033_79d51f",
+      "split": "VAL",
+      "disease": "Malaria",
+      "canonical_symptoms": [
+        "chills",
+        "diarrhoea",
+        "headache",
+        "high fever",
+        "muscle pain",
+        "nausea",
+        "sweating",
+        "vomiting"
+      ],
+      "free_form_text": "Since last tuesday I have been experiencing really bad headache. It progressively developed into nausea, alongside loose stools. I also noticed I have also noticed aching muscles, perspiration, chills, threw up, high fever.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "since last Tuesday",
+      "severity_mentioned": "really bad",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0033_79d51f",
+        "pattern_hash": "eb641a61257c783e",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0034_97cf1b_DET_01_92de",
+      "parent_case_id": "CASE_VAL_0034_97cf1b",
+      "split": "VAL",
+      "disease": "Migraine",
+      "canonical_symptoms": [
+        "acidity",
+        "blurred and distorted vision",
+        "depression",
+        "headache",
+        "indigestion",
+        "irritability",
+        "stiff neck",
+        "visual disturbances"
+      ],
+      "free_form_text": "Since last tuesday I have been experiencing unbearable depressed mood. It progressively developed into neck stiffness, alongside headache. To make matters worse, I have also noticed short tempered, visual aura, upset stomach, burning in chest, blurred and distorted vision.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "since last Tuesday",
+      "severity_mentioned": "unbearable",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0034_97cf1b",
+        "pattern_hash": "a22a07a0a4f1cc8c",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0034_97cf1b_TYP_02_d838",
+      "parent_case_id": "CASE_VAL_0034_97cf1b",
+      "split": "VAL",
+      "disease": "Migraine",
+      "canonical_symptoms": [
+        "acidity",
+        "blurred and distorted vision",
+        "depression",
+        "headache",
+        "indigestion",
+        "irritability",
+        "stiff neck",
+        "visual disturbances"
+      ],
+      "free_form_text": "Pls advice, having head ache with stif neck, visual disturbance, acidty, blurry vision, depressed, irritable, indijestion for the past few days.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "for the past few days",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0034_97cf1b",
+        "pattern_hash": "a22a07a0a4f1cc8c",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0034_97cf1b_SHO_03_0f27",
+      "parent_case_id": "CASE_VAL_0034_97cf1b",
+      "split": "VAL",
+      "disease": "Migraine",
+      "canonical_symptoms": [
+        "acidity",
+        "blurred and distorted vision",
+        "depression",
+        "headache",
+        "indigestion",
+        "irritability",
+        "stiff neck",
+        "visual disturbances"
+      ],
+      "free_form_text": "I am experiencing depression, headache, blurred and distorted vision, irritability, acidity, stiff neck, indigestion, and visual disturbances starting about 3 days ago.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "starting about 3 days ago",
+      "severity_mentioned": "intense",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0034_97cf1b",
+        "pattern_hash": "a22a07a0a4f1cc8c",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0035_58a778_CON_01_5bc4",
+      "parent_case_id": "CASE_VAL_0035_58a778",
+      "split": "VAL",
+      "disease": "Migraine",
+      "canonical_symptoms": [
+        "acidity",
+        "blurred and distorted vision",
+        "depression",
+        "excessive hunger",
+        "headache",
+        "irritability",
+        "stiff neck",
+        "visual disturbances"
+      ],
+      "free_form_text": "I haven't been feeling well at all lately. I've been having sadness, throbbing head, double vision, rigid neck for the past two days. To make matters worse, I have also developed easily annoyed, sour stomach, visual aura, extreme appetite.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "unbearable",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0035_58a778",
+        "pattern_hash": "80a85f95a76220ed",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0035_58a778_SHO_02_9409",
+      "parent_case_id": "CASE_VAL_0035_58a778",
+      "split": "VAL",
+      "disease": "Migraine",
+      "canonical_symptoms": [
+        "acidity",
+        "blurred and distorted vision",
+        "depression",
+        "excessive hunger",
+        "headache",
+        "irritability",
+        "stiff neck",
+        "visual disturbances"
+      ],
+      "free_form_text": "Currently struggling with acidity, blurred and distorted vision, excessive hunger, visual disturbances, depression, stiff neck, irritability, and headache since yesterday morning.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "since yesterday morning",
+      "severity_mentioned": "intense",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0035_58a778",
+        "pattern_hash": "80a85f95a76220ed",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0035_58a778_COL_03_cd43",
+      "parent_case_id": "CASE_VAL_0035_58a778",
+      "split": "VAL",
+      "disease": "Migraine",
+      "canonical_symptoms": [
+        "acidity",
+        "blurred and distorted vision",
+        "depression",
+        "excessive hunger",
+        "headache",
+        "irritability",
+        "stiff neck",
+        "visual disturbances"
+      ],
+      "free_form_text": "Hello doc, my burning stomach has been acting up for the past few days and I keep having scotoma, loss of vision clarity, easily annoyed, feeling hopeless, temple pain, rigid neck, always feeling hungry.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for the past few days",
+      "severity_mentioned": "constant",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0035_58a778",
+        "pattern_hash": "80a85f95a76220ed",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0036_9b6bbb_CON_01_7c52",
+      "parent_case_id": "CASE_VAL_0036_9b6bbb",
+      "split": "VAL",
+      "disease": "Osteoarthristis",
+      "canonical_symptoms": [
+        "hip joint pain",
+        "joint pain",
+        "knee pain",
+        "neck pain",
+        "painful walking"
+      ],
+      "free_form_text": "Just wanted to check what medical condition might explain this. I've been having arthralgia, difficulty walking due to pain for the past three days. Furthermore, I have also developed stiff neck pain, knee stiffness, hip pain.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for the past three days",
+      "severity_mentioned": "severe",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0036_9b6bbb",
+        "pattern_hash": "11f0d07ec8534d30",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0036_9b6bbb_COL_02_d600",
+      "parent_case_id": "CASE_VAL_0036_9b6bbb",
+      "split": "VAL",
+      "disease": "Osteoarthristis",
+      "canonical_symptoms": [
+        "hip joint pain",
+        "joint pain",
+        "knee pain",
+        "neck pain",
+        "painful walking"
+      ],
+      "free_form_text": "Doc, please help, my knee stiffness has been acting up starting about 3 days ago and I keep having cervical pain, hurts to walk, pain in hip, arthritis aches.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "starting about 3 days ago",
+      "severity_mentioned": "unbearable",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0036_9b6bbb",
+        "pattern_hash": "11f0d07ec8534d30",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0036_9b6bbb_SHO_03_347e",
+      "parent_case_id": "CASE_VAL_0036_9b6bbb",
+      "split": "VAL",
+      "disease": "Osteoarthristis",
+      "canonical_symptoms": [
+        "hip joint pain",
+        "joint pain",
+        "knee pain",
+        "neck pain",
+        "painful walking"
+      ],
+      "free_form_text": "I am experiencing knee pain, hip joint pain, joint pain, neck pain, and painful walking for the past three days.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "for the past three days",
+      "severity_mentioned": "intense",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0036_9b6bbb",
+        "pattern_hash": "11f0d07ec8534d30",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0037_cb25f9_CON_01_7291",
+      "parent_case_id": "CASE_VAL_0037_cb25f9",
+      "split": "VAL",
+      "disease": "Paralysis (brain hemorrhage)",
+      "canonical_symptoms": [
+        "altered sensorium",
+        "vomiting",
+        "weakness of one body side"
+      ],
+      "free_form_text": "Please evaluate what could be causing this illness. I've been having left side weakness for almost a week now. Additionally, I have also developed mental confusion, retching.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for almost a week now",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0037_cb25f9",
+        "pattern_hash": "bb1dedfb2a505760",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0037_cb25f9_DET_02_2183",
+      "parent_case_id": "CASE_VAL_0037_cb25f9",
+      "split": "VAL",
+      "disease": "Paralysis (brain hemorrhage)",
+      "canonical_symptoms": [
+        "altered sensorium",
+        "vomiting",
+        "weakness of one body side"
+      ],
+      "free_form_text": "Since yesterday morning I have been experiencing intense puking. It progressively developed into hemiparesis, alongside confusion.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "since yesterday morning",
+      "severity_mentioned": "intense",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0037_cb25f9",
+        "pattern_hash": "bb1dedfb2a505760",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0037_cb25f9_SHO_03_d22d",
+      "parent_case_id": "CASE_VAL_0037_cb25f9",
+      "split": "VAL",
+      "disease": "Paralysis (brain hemorrhage)",
+      "canonical_symptoms": [
+        "altered sensorium",
+        "vomiting",
+        "weakness of one body side"
+      ],
+      "free_form_text": "I am experiencing weakness of one body side, altered sensorium, and vomiting for the past few days.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "for the past few days",
+      "severity_mentioned": "really bad",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0037_cb25f9",
+        "pattern_hash": "bb1dedfb2a505760",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0038_f6bf93_CON_01_c8c3",
+      "parent_case_id": "CASE_VAL_0038_f6bf93",
+      "split": "VAL",
+      "disease": "Peptic ulcer diseae",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "indigestion",
+        "internal itching",
+        "loss of appetite",
+        "passage of gases"
+      ],
+      "free_form_text": "I've been experiencing a cluster of uncomfortable symptoms. I've been having excessive gas, stomach pain since last Tuesday. Furthermore, I have also developed stomach discomfort after eating, itching deep inside, reduced appetite.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "since last Tuesday",
+      "severity_mentioned": "persistent",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0038_f6bf93",
+        "pattern_hash": "ff59b6799b60699d",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0038_f6bf93_COL_02_cd4a",
+      "parent_case_id": "CASE_VAL_0038_f6bf93",
+      "split": "VAL",
+      "disease": "Peptic ulcer diseae",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "indigestion",
+        "internal itching",
+        "loss of appetite",
+        "passage of gases"
+      ],
+      "free_form_text": "Hi doctor, my poor digestion has been acting up for nearly 5 days and I keep having not hungry, excessive gas, tummy ache, inner itchiness.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for nearly 5 days",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0038_f6bf93",
+        "pattern_hash": "ff59b6799b60699d",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0038_f6bf93_TYP_03_9260",
+      "parent_case_id": "CASE_VAL_0038_f6bf93",
+      "split": "VAL",
+      "disease": "Peptic ulcer diseae",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "indigestion",
+        "internal itching",
+        "loss of appetite",
+        "passage of gases"
+      ],
+      "free_form_text": "Feeling very sick, having lost appetite with indijestion, passing gas, abdonimal pain, internal itch for the past few days.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "for the past few days",
+      "severity_mentioned": "constant",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0038_f6bf93",
+        "pattern_hash": "ff59b6799b60699d",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0039_e529f0_TYP_01_3746",
+      "parent_case_id": "CASE_VAL_0039_e529f0",
+      "split": "VAL",
+      "disease": "Pneumonia",
+      "canonical_symptoms": [
+        "breathlessness",
+        "chest pain",
+        "chills",
+        "cough",
+        "fast heart rate",
+        "fatigue",
+        "high fever",
+        "malaise",
+        "phlegm",
+        "rusty sputum",
+        "sweating"
+      ],
+      "free_form_text": "Doc feeling bad, having sweting with feever, phlem, chest ache, fast heartbeat, rusty phlegm, mallaise, couhg, short of breath, chils, fatigued for the past two days.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "unbearable",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0039_e529f0",
+        "pattern_hash": "209a6657f580819e",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0039_e529f0_CON_02_2d6d",
+      "parent_case_id": "CASE_VAL_0039_e529f0",
+      "split": "VAL",
+      "disease": "Pneumonia",
+      "canonical_symptoms": [
+        "breathlessness",
+        "chest pain",
+        "chills",
+        "cough",
+        "fast heart rate",
+        "fatigue",
+        "high fever",
+        "malaise",
+        "phlegm",
+        "rusty sputum",
+        "sweating"
+      ],
+      "free_form_text": "Just wanted to check what medical condition might explain this. I've been having shivering, chest pain, chest mucus, high fever, chest cough for the past three days. I also noticed I have also developed feeling drained, tachycardia, feeling sick all over, rust colored phlegm, difficulty breathing, perspiration.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for the past three days",
+      "severity_mentioned": "severe",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0039_e529f0",
+        "pattern_hash": "209a6657f580819e",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0039_e529f0_COL_03_e78e",
+      "parent_case_id": "CASE_VAL_0039_e529f0",
+      "split": "VAL",
+      "disease": "Pneumonia",
+      "canonical_symptoms": [
+        "breathlessness",
+        "chest pain",
+        "chills",
+        "cough",
+        "fast heart rate",
+        "fatigue",
+        "high fever",
+        "malaise",
+        "phlegm",
+        "rusty sputum",
+        "sweating"
+      ],
+      "free_form_text": "Doc, please help, my wet cough has been acting up for nearly 5 days and I keep having cold shivering, rusty cough mucus, night sweats, body uneasiness, thick sputum, pyrexia, fast pulse, chest discomfort, feeling drained, winded.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for nearly 5 days",
+      "severity_mentioned": "intense",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0039_e529f0",
+        "pattern_hash": "209a6657f580819e",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0040_83ccd1_SHO_01_6249",
+      "parent_case_id": "CASE_VAL_0040_83ccd1",
+      "split": "VAL",
+      "disease": "Psoriasis",
+      "canonical_symptoms": [
+        "joint pain",
+        "silver like dusting",
+        "skin peeling",
+        "skin rash",
+        "small dents in nails"
+      ],
+      "free_form_text": "I've been dealing with silver like dusting, small dents in nails, skin rash, skin peeling, and joint pain for nearly 5 days.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "for nearly 5 days",
+      "severity_mentioned": "constant",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0040_83ccd1",
+        "pattern_hash": "1f512f1ccd87bfe1",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0040_83ccd1_CON_02_1b10",
+      "parent_case_id": "CASE_VAL_0040_83ccd1",
+      "split": "VAL",
+      "disease": "Psoriasis",
+      "canonical_symptoms": [
+        "joint pain",
+        "silver like dusting",
+        "skin peeling",
+        "skin rash",
+        "small dents in nails"
+      ],
+      "free_form_text": "I haven't been feeling well at all lately. I've been having nail pitting, rash for the past three days. On top of that, I have also developed silvery dusting on skin, skin peeling, stiff painful joints.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for the past three days",
+      "severity_mentioned": "heavy",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0040_83ccd1",
+        "pattern_hash": "1f512f1ccd87bfe1",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0040_83ccd1_COL_03_0082",
+      "parent_case_id": "CASE_VAL_0040_83ccd1",
+      "split": "VAL",
+      "disease": "Psoriasis",
+      "canonical_symptoms": [
+        "joint pain",
+        "silver like dusting",
+        "skin peeling",
+        "skin rash",
+        "small dents in nails"
+      ],
+      "free_form_text": "Hi doctor, my hives has been acting up over the last 24 to 48 hours and I keep having pitted nails, desquamation, silver skin flakes, aching joints.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "over the last 24 to 48 hours",
+      "severity_mentioned": "persistent",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0040_83ccd1",
+        "pattern_hash": "1f512f1ccd87bfe1",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0041_4ef37b_SHO_01_d68d",
+      "parent_case_id": "CASE_VAL_0041_4ef37b",
+      "split": "VAL",
+      "disease": "Tuberculosis",
+      "canonical_symptoms": [
+        "blood in sputum",
+        "breathlessness",
+        "chest pain",
+        "chills",
+        "cough",
+        "fatigue",
+        "loss of appetite",
+        "malaise",
+        "mild fever",
+        "phlegm",
+        "sweating",
+        "swelled lymph nodes",
+        "vomiting",
+        "weight loss",
+        "yellowing of eyes"
+      ],
+      "free_form_text": "I've been dealing with swelled lymph nodes, phlegm, mild fever, malaise, breathlessness, vomiting, fatigue, loss of appetite, blood in sputum, cough, chest pain, chills, yellowing of eyes, sweating, and weight loss starting about 3 days ago.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "starting about 3 days ago",
+      "severity_mentioned": "terrible",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0041_4ef37b",
+        "pattern_hash": "534764f297554f8d",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0041_4ef37b_CON_02_ccbd",
+      "parent_case_id": "CASE_VAL_0041_4ef37b",
+      "split": "VAL",
+      "disease": "Tuberculosis",
+      "canonical_symptoms": [
+        "blood in sputum",
+        "breathlessness",
+        "chest pain",
+        "chills",
+        "cough",
+        "fatigue",
+        "loss of appetite",
+        "malaise",
+        "mild fever",
+        "phlegm",
+        "sweating",
+        "swelled lymph nodes",
+        "vomiting",
+        "weight loss",
+        "yellowing of eyes"
+      ],
+      "free_form_text": "I've been experiencing a cluster of uncomfortable symptoms. I've been having red blood in mucus, reduced appetite, green phlegm, exhaustion, slight fever, threw up, losing weight without trying for nearly 5 days. On top of that, I have also developed gasping for air, sweating, general discomfort, swelled lymph nodes, scleral icterus, chest tightness, cold shivering, persistent cough.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for nearly 5 days",
+      "severity_mentioned": "troubling",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0041_4ef37b",
+        "pattern_hash": "534764f297554f8d",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0041_4ef37b_COL_03_07fb",
+      "parent_case_id": "CASE_VAL_0041_4ef37b",
+      "split": "VAL",
+      "disease": "Tuberculosis",
+      "canonical_symptoms": [
+        "blood in sputum",
+        "breathlessness",
+        "chest pain",
+        "chills",
+        "cough",
+        "fatigue",
+        "loss of appetite",
+        "malaise",
+        "mild fever",
+        "phlegm",
+        "sweating",
+        "swelled lymph nodes",
+        "vomiting",
+        "weight loss",
+        "yellowing of eyes"
+      ],
+      "free_form_text": "Doc, please help, my heart pain has been acting up for the past three days and I keep having lethargy, not hungry, profuse sweating, out of breath, icteric sclera, mucus cough, blood in cough, swollen glands, body uneasiness, losing weight without trying, hacking cough, rigors, retching, mild temperature.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for the past three days",
+      "severity_mentioned": "intense",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0041_4ef37b",
+        "pattern_hash": "534764f297554f8d",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0042_22a01d_DET_01_8bcc",
+      "parent_case_id": "CASE_VAL_0042_22a01d",
+      "split": "VAL",
+      "disease": "Typhoid",
+      "canonical_symptoms": [
+        "belly pain",
+        "chills",
+        "constipation",
+        "diarrhoea",
+        "fatigue",
+        "headache",
+        "high fever",
+        "nausea",
+        "toxic look (typhos)",
+        "vomiting"
+      ],
+      "free_form_text": "Over the last 24 to 48 hours I have been experiencing troubling queasy. It progressively developed into chills, alongside retching. On top of that, I have also noticed temple pain, high fever, tiredness, loose motions, stomach pain, difficulty passing stool, lethargic sick look.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "over the last 24 to 48 hours",
+      "severity_mentioned": "troubling",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0042_22a01d",
+        "pattern_hash": "e8a7d21843373830",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0042_22a01d_CON_02_51ce",
+      "parent_case_id": "CASE_VAL_0042_22a01d",
+      "split": "VAL",
+      "disease": "Typhoid",
+      "canonical_symptoms": [
+        "belly pain",
+        "chills",
+        "constipation",
+        "diarrhoea",
+        "fatigue",
+        "headache",
+        "high fever",
+        "nausea",
+        "toxic look (typhos)",
+        "vomiting"
+      ],
+      "free_form_text": "I've been experiencing a cluster of uncomfortable symptoms. I've been having cold shivering, infrequent stools, temple pain, tummy pain, severely ill appearance for the past two days. Additionally, I have also developed loose stools, nausea, feeling drained, vomiting, high fever.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "really bad",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0042_22a01d",
+        "pattern_hash": "e8a7d21843373830",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0042_22a01d_COL_03_3e4a",
+      "parent_case_id": "CASE_VAL_0042_22a01d",
+      "split": "VAL",
+      "disease": "Typhoid",
+      "canonical_symptoms": [
+        "belly pain",
+        "chills",
+        "constipation",
+        "diarrhoea",
+        "fatigue",
+        "headache",
+        "high fever",
+        "nausea",
+        "toxic look (typhos)",
+        "vomiting"
+      ],
+      "free_form_text": "Hey doctor, my retching has been acting up for nearly 5 days and I keep having hard stool, exhaustion, severely ill appearance, lower abdominal pain, frequent watery bowel movements, rigors, body burning hot, queasiness, head ache.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for nearly 5 days",
+      "severity_mentioned": "persistent",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0042_22a01d",
+        "pattern_hash": "e8a7d21843373830",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0043_0f4d9a_COL_01_3731",
+      "parent_case_id": "CASE_VAL_0043_0f4d9a",
+      "split": "VAL",
+      "disease": "Urinary tract infection",
+      "canonical_symptoms": [
+        "bladder discomfort",
+        "burning micturition",
+        "continuous feel of urine",
+        "foul smell of urine"
+      ],
+      "free_form_text": "Hey doctor, my foul smell ofurine has been acting up since last Tuesday and I keep having frequent urge to urinate, stinging when urinating, pelvic pressure.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "since last Tuesday",
+      "severity_mentioned": "terrible",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0043_0f4d9a",
+        "pattern_hash": "bd2b6404227a1a89",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0043_0f4d9a_CON_02_b0ea",
+      "parent_case_id": "CASE_VAL_0043_0f4d9a",
+      "split": "VAL",
+      "disease": "Urinary tract infection",
+      "canonical_symptoms": [
+        "bladder discomfort",
+        "burning micturition",
+        "continuous feel of urine",
+        "foul smell of urine"
+      ],
+      "free_form_text": "I haven't been feeling well at all lately. I've been having constant urge to pee, burning when peeing starting about 3 days ago. Along with this, I have also developed bladder pressure, foul smell ofurine.",
+      "linguistic_style": "CONVERSATIONAL",
+      "duration_mentioned": "starting about 3 days ago",
+      "severity_mentioned": "constant",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0043_0f4d9a",
+        "pattern_hash": "bd2b6404227a1a89",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0043_0f4d9a_TYP_03_b679",
+      "parent_case_id": "CASE_VAL_0043_0f4d9a",
+      "split": "VAL",
+      "disease": "Urinary tract infection",
+      "canonical_symptoms": [
+        "bladder discomfort",
+        "burning micturition",
+        "continuous feel of urine",
+        "foul smell of urine"
+      ],
+      "free_form_text": "Pls advice, having burning micturation with blader discomfort, continuous feeling of urine, foul smelling urine for the past few days.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "for the past few days",
+      "severity_mentioned": "persistent",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0043_0f4d9a",
+        "pattern_hash": "bd2b6404227a1a89",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0044_3ff17d_SHO_01_15a7",
+      "parent_case_id": "CASE_VAL_0044_3ff17d",
+      "split": "VAL",
+      "disease": "Varicose veins",
+      "canonical_symptoms": [
+        "bruising",
+        "cramps",
+        "fatigue",
+        "prominent veins on calf",
+        "swollen blood vessels",
+        "swollen legs"
+      ],
+      "free_form_text": "Currently struggling with fatigue, bruising, prominent veins on calf, swollen blood vessels, cramps, and swollen legs for the past two days.",
+      "linguistic_style": "SHORT_DIRECT",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "terrible",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0044_3ff17d",
+        "pattern_hash": "58cb82c04ed29413",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0044_3ff17d_COL_02_93f9",
+      "parent_case_id": "CASE_VAL_0044_3ff17d",
+      "split": "VAL",
+      "disease": "Varicose veins",
+      "canonical_symptoms": [
+        "bruising",
+        "cramps",
+        "fatigue",
+        "prominent veins on calf",
+        "swollen blood vessels",
+        "swollen legs"
+      ],
+      "free_form_text": "Hi doctor, my puffy legs has been acting up for the past two days and I keep having inflamed veins, leg cramps, lethargy, hematoma, varicose veins on calf.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "unbearable",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0044_3ff17d",
+        "pattern_hash": "58cb82c04ed29413",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0044_3ff17d_TYP_03_b2d8",
+      "parent_case_id": "CASE_VAL_0044_3ff17d",
+      "split": "VAL",
+      "disease": "Varicose veins",
+      "canonical_symptoms": [
+        "bruising",
+        "cramps",
+        "fatigue",
+        "prominent veins on calf",
+        "swollen blood vessels",
+        "swollen legs"
+      ],
+      "free_form_text": "Feeling very sick, having swollen vessels with bruizing, fatigued, prominent veins on leg, swollen leg, cramp since yesterday morning.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "since yesterday morning",
+      "severity_mentioned": "persistent",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0044_3ff17d",
+        "pattern_hash": "58cb82c04ed29413",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0045_b4fc62_TYP_01_5554",
+      "parent_case_id": "CASE_VAL_0045_b4fc62",
+      "split": "VAL",
+      "disease": "hepatitis A",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "joint pain",
+        "loss of appetite",
+        "mild fever",
+        "muscle pain",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_text": "Doc feeling bad, having joynt pain with dark colored urine, yellow eyes, mild fevr, lost appetite, nawsea, muscle ache, yellow skin, abdomial pain, vomit starting about 3 days ago.",
+      "linguistic_style": "TYPOS_PHONETIC",
+      "duration_mentioned": "starting about 3 days ago",
+      "severity_mentioned": "troubling",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0045_b4fc62",
+        "pattern_hash": "c9dd593a4d286ae2",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0045_b4fc62_COL_02_71d1",
+      "parent_case_id": "CASE_VAL_0045_b4fc62",
+      "split": "VAL",
+      "disease": "hepatitis A",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "joint pain",
+        "loss of appetite",
+        "mild fever",
+        "muscle pain",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_text": "Hi doctor, my poor appetite has been acting up for the past few days and I keep having icteric skin, threw up, queasy, feverish body, aching muscles, yellow eyes, gut pain, arthritis aches, brown urine.",
+      "linguistic_style": "COLLOQUIAL",
+      "duration_mentioned": "for the past few days",
+      "severity_mentioned": "unbearable",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0045_b4fc62",
+        "pattern_hash": "c9dd593a4d286ae2",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    },
+    {
+      "free_form_case_id": "FF_CASE_VAL_0045_b4fc62_DET_03_aa59",
+      "parent_case_id": "CASE_VAL_0045_b4fc62",
+      "split": "VAL",
+      "disease": "hepatitis A",
+      "canonical_symptoms": [
+        "abdominal pain",
+        "dark urine",
+        "joint pain",
+        "loss of appetite",
+        "mild fever",
+        "muscle pain",
+        "nausea",
+        "vomiting",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "free_form_text": "For the past two days I have been experiencing troubling emesis. It progressively developed into not hungry, alongside queasiness. I also noticed I have also noticed skin turning yellow, tea colored urine, aching joints, yellowing of eyes, belly pain, mild fever, sore muscles.",
+      "linguistic_style": "DETAILED_NARRATIVE",
+      "duration_mentioned": "for the past two days",
+      "severity_mentioned": "troubling",
+      "provenance": {
+        "source_case_id": "CASE_VAL_0045_b4fc62",
+        "pattern_hash": "c9dd593a4d286ae2",
+        "split_assignment": "VAL",
+        "generator_version": "1.0.0"
+      }
+    }
+  ]
+}

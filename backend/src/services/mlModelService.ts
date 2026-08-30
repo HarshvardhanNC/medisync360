@@ -1,37 +1,20 @@
 import { spawn } from 'child_process';
 import path from 'path';
-
-interface MLPredictionResult {
-  predictedCondition: string;
-  recommendedSpecialist: string;
-  urgencyLevel: string;
-  description: string;
-  confidence: number;
-  matchedSymptoms: string[];
-  alternativePossibilities: Array<{
-    condition: string;
-    confidence: number;
-  }>;
-  precautions: string[];
-  dataSource: string;
-  modelType: string;
-  needs_more_info?: boolean;
-  follow_up_questions?: string[];
-}
+import { PredictionApiResponse, TriageContext } from '../types/predictionContract';
 
 export class MLModelService {
   private pythonPath: string;
   private scriptPath: string;
 
   constructor() {
-    this.pythonPath = 'python'; // or 'python3' depending on system
+    this.pythonPath = 'python';
     this.scriptPath = path.join(__dirname, '../../ml_model/enhanced_predict_service.py');
   }
 
   /**
-   * Predict disease from symptoms using enhanced trained ML model
+   * Predict disease from symptoms and triageContext using enhanced trained ML model
    */
-  public async predictDisease(symptoms: string): Promise<MLPredictionResult> {
+  public async predictDisease(symptoms: string, triageContext?: TriageContext): Promise<PredictionApiResponse> {
     return new Promise((resolve, reject) => {
       if (!symptoms || symptoms.trim().length === 0) {
         reject(new Error("Please provide at least one symptom"));
@@ -40,25 +23,28 @@ export class MLModelService {
 
       console.log(`Enhanced ML Model analyzing symptoms: ${symptoms}`);
 
+      // Prepare payload argument
+      const payloadArg = JSON.stringify({
+        symptoms,
+        triageContext: triageContext || { rounds: [] }
+      });
+
       // Spawn Python process
-      const pythonProcess = spawn(this.pythonPath, [this.scriptPath, symptoms], {
+      const pythonProcess = spawn(this.pythonPath, [this.scriptPath, payloadArg], {
         cwd: path.dirname(this.scriptPath)
       });
 
       let outputData = '';
       let errorData = '';
 
-      // Collect stdout data
       pythonProcess.stdout.on('data', (data) => {
         outputData += data.toString();
       });
 
-      // Collect stderr data
       pythonProcess.stderr.on('data', (data) => {
         errorData += data.toString();
       });
 
-      // Handle process completion
       pythonProcess.on('close', (code) => {
         if (code !== 0) {
           console.error(`Python process error: ${errorData}`);
@@ -67,15 +53,14 @@ export class MLModelService {
         }
 
         try {
-          // Parse JSON output
-          const result = JSON.parse(outputData);
+          const result: PredictionApiResponse = JSON.parse(outputData);
           
-          if (result.error) {
-            reject(new Error(result.error));
+          if ((result as any).error) {
+            reject(new Error((result as any).error));
             return;
           }
 
-          console.log(`Enhanced ML Prediction: ${result.predictedCondition} (${result.confidence}% confidence)`);
+          console.log(`Enhanced ML Decision: ${result.decision || result.decisionAction} - ${result.predictedCondition} (${result.confidence}% confidence)`);
           resolve(result);
 
         } catch (parseError) {
@@ -84,139 +69,56 @@ export class MLModelService {
         }
       });
 
-      // Handle process errors
       pythonProcess.on('error', (error) => {
         console.error('Failed to start Python process:', error);
         reject(new Error(`Failed to start enhanced ML model: ${error.message}`));
       });
 
-      // Set timeout for long-running processes
       setTimeout(() => {
         pythonProcess.kill();
         reject(new Error('Enhanced ML model prediction timeout'));
-      }, 30000); // 30 second timeout
+      }, 30000);
     });
   }
 
   /**
-   * Get enhanced model statistics and health check
+   * Get metadata and configuration information about the ML model
    */
   public async getModelInfo(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      const testSymptoms = "headache"; // Simple single symptom test
-      
-      this.predictDisease(testSymptoms)
-        .then((result) => {
-          resolve({
-            status: 'healthy',
-            modelType: result.modelType,
-            dataSource: result.dataSource,
-            enhancedFeatures: {
-              singleSymptomSupport: true,
-              fuzzyMatching: true,
-              synonymRecognition: true,
-              confidenceBoosting: true
-            },
-            testPrediction: {
-              symptoms: testSymptoms,
-              prediction: result.predictedCondition,
-              confidence: result.confidence,
-              matchedSymptoms: result.matchedSymptoms
-            },
-            timestamp: new Date().toISOString()
-          });
-        })
-        .catch((error) => {
-          reject({
-            status: 'unhealthy',
-            error: error.message,
-            timestamp: new Date().toISOString()
-          });
-        });
-    });
-  }
-
-  /**
-   * Batch prediction for multiple symptom sets
-   */
-  public async batchPredict(symptomSets: string[]): Promise<MLPredictionResult[]> {
-    const predictions: MLPredictionResult[] = [];
-    
-    for (const symptoms of symptomSets) {
-      try {
-        const result = await this.predictDisease(symptoms);
-        predictions.push(result);
-      } catch (error) {
-        console.error(`Batch prediction failed for symptoms: ${symptoms}`, error);
-        // Add error result
-        predictions.push({
-          predictedCondition: 'Prediction Failed',
-          recommendedSpecialist: 'General Practitioner',
-          urgencyLevel: 'Low - Consult a doctor',
-          description: `Error: ${error}`,
-          confidence: 0,
-          matchedSymptoms: [],
-          alternativePossibilities: [],
-          precautions: ['Consult healthcare professional'],
-          dataSource: 'Enhanced ML Model Error',
-          modelType: 'Gradient Boosting Classifier'
-        });
+    const metadataPath = path.join(__dirname, '../../ml_model/trained_model/metadata.json');
+    try {
+      const fs = require('fs');
+      if (fs.existsSync(metadataPath)) {
+        const data = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
+        return {
+          modelType: 'Isotonically Calibrated Classifier + Clarification Engine',
+          modelVersion: 'medisync360-v2.0-calibrated-rf',
+          totalSymptoms: data.symptoms ? data.symptoms.length : 131,
+          totalDiseases: data.diseases ? data.diseases.length : 41,
+          supportedDecisions: ['PREDICT', 'CLARIFY', 'ABSTAIN', 'URGENT_ESCALATION'],
+        };
       }
+    } catch (e) {
+      console.warn('Could not read metadata file directly:', e);
     }
-    
-    return predictions;
-  }
-
-  /**
-   * Test single symptom predictions
-   */
-  public async testSingleSymptoms(): Promise<any> {
-    const testSymptoms = [
-      'headache',
-      'fever',
-      'cough',
-      'chest pain',
-      'nausea',
-      'stomach pain',
-      'fatigue',
-      'dizziness'
-    ];
-
-    const results = [];
-    
-    for (const symptom of testSymptoms) {
-      try {
-        const result = await this.predictDisease(symptom);
-        results.push({
-          symptom,
-          prediction: result.predictedCondition,
-          confidence: result.confidence,
-          specialist: result.recommendedSpecialist
-        });
-      } catch (error) {
-        results.push({
-          symptom,
-          error: error instanceof Error ? error.message : String(error)
-        });
-      }
-    }
-
     return {
-      testType: 'Single Symptom Predictions',
-      results,
-      timestamp: new Date().toISOString()
+      modelType: 'Isotonically Calibrated Classifier',
+      modelVersion: 'medisync360-v2.0-calibrated-rf',
+      totalSymptoms: 131,
+      totalDiseases: 41,
+      supportedDecisions: ['PREDICT', 'CLARIFY', 'ABSTAIN', 'URGENT_ESCALATION'],
     };
   }
 
   /**
-   * Validate enhanced model availability
+   * Health check for ML model service
    */
-  public async validateModel(): Promise<boolean> {
+  public async healthCheck(): Promise<boolean> {
     try {
-      await this.getModelInfo();
-      return true;
+      const result = await this.predictDisease("fever, cough");
+      return result && (result.predictedCondition !== undefined || result.decision !== undefined);
     } catch (error) {
-      console.error('Enhanced model validation failed:', error);
+      console.error('ML Model health check failed:', error);
       return false;
     }
   }

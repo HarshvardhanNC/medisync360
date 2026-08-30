@@ -1,0 +1,2484 @@
+{
+  "schema_version": "1.0.0",
+  "description": "MediSync360 Decision & Routing Dataset: Teaching when to PREDICT vs CLARIFY vs ABSTAIN vs URGENT_ESCALATION",
+  "total_cases": 112,
+  "distribution_by_action": {
+    "PREDICT": 40,
+    "CLARIFY": 20,
+    "ABSTAIN": 47,
+    "URGENT_ESCALATION": 5
+  },
+  "distribution_by_category": {
+    "CLEAR_IN_DOMAIN": 40,
+    "AMBIGUOUS_IN_DOMAIN": 15,
+    "INSUFFICIENT_INFORMATION": 20,
+    "OUT_OF_SCOPE": 10,
+    "UNSUPPORTED_SYMPTOMS": 7,
+    "CONTRADICTORY_INPUT": 5,
+    "NEGATED_INFORMATION": 5,
+    "THIRD_PARTY_FAMILY_HISTORY": 5,
+    "URGENT_ESCALATION": 5
+  },
+  "cases": [
+    {
+      "case_id": "DEC_0001_CLEAR_01",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have high fever, chills, sweating profusely, muscle pain, and vomiting.",
+      "target_disease": "Malaria",
+      "extracted_symptoms": [
+        "chills",
+        "high fever",
+        "muscle pain",
+        "sweating",
+        "vomiting"
+      ],
+      "plausible_conditions": [
+        "Malaria"
+      ],
+      "decision_rationale": "Classical triad of paroxysmal fever, chills, and diaphoresis strongly indicative of Malaria.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0002_CLEAR_02",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Noticeable yellowish skin, yellowing of eyes, dark urine, and severe fatigue.",
+      "target_disease": "Jaundice",
+      "extracted_symptoms": [
+        "dark urine",
+        "fatigue",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "plausible_conditions": [
+        "Jaundice"
+      ],
+      "decision_rationale": "Scleral icterus and dark bilirubinuria provide unequivocal evidence of Jaundice.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0003_CLEAR_03",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Burning when peeing, constant urge to pee, bladder discomfort, and foul smell of urine.",
+      "target_disease": "Urinary tract infection",
+      "extracted_symptoms": [
+        "bladder discomfort",
+        "burning micturition",
+        "continuous feel of urine",
+        "foul smell of urine"
+      ],
+      "plausible_conditions": [
+        "Urinary tract infection"
+      ],
+      "decision_rationale": "Dysuria, urinary urgency, and bladder discomfort form the classic UTI presentation.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0004_CLEAR_04",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Silvery skin scales, skin peeling, small dents in nails, and joint pain.",
+      "target_disease": "Psoriasis",
+      "extracted_symptoms": [
+        "joint pain",
+        "silver like dusting",
+        "skin peeling",
+        "small dents in nails"
+      ],
+      "plausible_conditions": [
+        "Psoriasis"
+      ],
+      "decision_rationale": "Silvery psoriatic plaques and punctate nail pitting are pathognomonic for Psoriasis.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0005_CLEAR_05",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Stomach pain after eating, acidity, heartburn, and sour regurgitation.",
+      "target_disease": "GERD",
+      "extracted_symptoms": [
+        "acidity",
+        "stomach pain"
+      ],
+      "plausible_conditions": [
+        "GERD"
+      ],
+      "decision_rationale": "Upper gastric reflux and postprandial acidity indicate Gastroesophageal Reflux Disease.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0006_CLEAR_06",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "URGENT",
+      "user_input": "High fever, skin rash, retro-orbital pain behind eyes, and joint pain.",
+      "target_disease": "Dengue",
+      "extracted_symptoms": [
+        "high fever",
+        "joint pain",
+        "pain behind the eyes",
+        "skin rash"
+      ],
+      "plausible_conditions": [
+        "Dengue"
+      ],
+      "decision_rationale": "High fever, retro-orbital pain, and rash during Dengue endemic profile.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0007_CLEAR_07",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Blackheads, pus filled pimples, and scarring on face.",
+      "target_disease": "Acne",
+      "extracted_symptoms": [
+        "blackheads",
+        "pus filled pimples",
+        "scurring"
+      ],
+      "plausible_conditions": [
+        "Acne"
+      ],
+      "decision_rationale": "Comedones and pustular skin lesions characteristic of Acne vulgaris.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0008_CLEAR_08",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Swollen neck thyroid gland, fatigue, unexplained weight gain, and cold hands and feet.",
+      "target_disease": "Hypothyroidism",
+      "extracted_symptoms": [
+        "cold hands and feets",
+        "enlarged thyroid",
+        "fatigue",
+        "weight gain"
+      ],
+      "plausible_conditions": [
+        "Hypothyroidism"
+      ],
+      "decision_rationale": "Goiter, cold intolerance, weight gain, and fatigue indicate Hypothyroidism.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0009_CLEAR_09",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Rapid weight loss, fast heart rate, mood swings, excessive hunger, and sweating.",
+      "target_disease": "Hyperthyroidism",
+      "extracted_symptoms": [
+        "excessive hunger",
+        "fast heart rate",
+        "mood swings",
+        "sweating",
+        "weight loss"
+      ],
+      "plausible_conditions": [
+        "Hyperthyroidism"
+      ],
+      "decision_rationale": "Tachycardia, polyphagia, diaphoresis, and weight loss indicate Hyperthyroidism.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0010_CLEAR_10",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Room spinning sensation, loss of balance, unsteadiness, nausea, and vomiting.",
+      "target_disease": "(vertigo) Paroymsal  Positional Vertigo",
+      "extracted_symptoms": [
+        "loss of balance",
+        "nausea",
+        "spinning movements",
+        "unsteadiness",
+        "vomiting"
+      ],
+      "plausible_conditions": [
+        "(vertigo) Paroymsal  Positional Vertigo"
+      ],
+      "decision_rationale": "Rotational vertigo with ataxia and nausea indicates BPPV.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0011_CLEAR_11",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Joint pain, joint swelling, neck pain, and painful walking especially in knees.",
+      "target_disease": "Osteoarthristis",
+      "extracted_symptoms": [
+        "joint pain",
+        "knee pain",
+        "neck pain",
+        "painful walking",
+        "swelling joints"
+      ],
+      "plausible_conditions": [
+        "Osteoarthristis"
+      ],
+      "decision_rationale": "Weight-bearing joint arthralgia and effusion indicate Osteoarthritis.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0012_CLEAR_12",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Continuous sneezing, runny nose, congestion, chills, and mild fever.",
+      "target_disease": "Common Cold",
+      "extracted_symptoms": [
+        "chills",
+        "congestion",
+        "continuous sneezing",
+        "mild fever",
+        "runny nose"
+      ],
+      "plausible_conditions": [
+        "Common Cold"
+      ],
+      "decision_rationale": "Coryza, sneezing fits, and low-grade pyrexia indicative of upper respiratory infection / Cold.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0013_CLEAR_13",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "URGENT",
+      "user_input": "High fever, cough with rusty sputum, chills, and shortness of breath.",
+      "target_disease": "Pneumonia",
+      "extracted_symptoms": [
+        "breathlessness",
+        "chills",
+        "cough",
+        "high fever",
+        "rusty sputum"
+      ],
+      "plausible_conditions": [
+        "Pneumonia"
+      ],
+      "decision_rationale": "Prune-juice / rusty sputum with high fever and dyspnea characteristic of Pneumococcal Pneumonia.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0014_CLEAR_14",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "URGENT",
+      "user_input": "Persistent cough for 3 weeks, coughing blood in sputum, high fever, night sweats, and weight loss.",
+      "target_disease": "Tuberculosis",
+      "extracted_symptoms": [
+        "blood in sputum",
+        "cough",
+        "high fever",
+        "sweating",
+        "weight loss"
+      ],
+      "plausible_conditions": [
+        "Tuberculosis"
+      ],
+      "decision_rationale": "Hemoptysis, chronic cough, night sweats, and wasting strongly suggest Pulmonary Tuberculosis.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0015_CLEAR_15",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "URGENT",
+      "user_input": "High fever, toxic appearance, belly pain, diarrhoea, and headache.",
+      "target_disease": "Typhoid",
+      "extracted_symptoms": [
+        "belly pain",
+        "diarrhoea",
+        "headache",
+        "high fever",
+        "toxic look (typhos)"
+      ],
+      "plausible_conditions": [
+        "Typhoid"
+      ],
+      "decision_rationale": "Typhoid facies, step-ladder fever, and abdominal pain indicate Typhoid.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0016_CLEAR_16",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Severe itching, skin rash with discolored patches, and fungal spreading.",
+      "target_disease": "Fungal infection",
+      "extracted_symptoms": [
+        "dischromic patches",
+        "itching",
+        "skin rash"
+      ],
+      "plausible_conditions": [
+        "Fungal infection"
+      ],
+      "decision_rationale": "Pruritic annular erythematous lesions with scaling indicate Tinea / Fungal infection.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0017_CLEAR_17",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Red sores around nose with honey colored yellow crust ooze.",
+      "target_disease": "Impetigo",
+      "extracted_symptoms": [
+        "red sore around nose",
+        "yellow crust ooze"
+      ],
+      "plausible_conditions": [
+        "Impetigo"
+      ],
+      "decision_rationale": "Honey-crusted exudative perinasal lesions pathognomonic for Impetigo.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0018_CLEAR_18",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Anal pain, bleeding during bowel movements, constipation, and irritation in anus.",
+      "target_disease": "Dimorphic hemmorhoids(piles)",
+      "extracted_symptoms": [
+        "constipation",
+        "irritation in anus",
+        "pain during bowel movements",
+        "pain in anal region"
+      ],
+      "plausible_conditions": [
+        "Dimorphic hemmorhoids(piles)"
+      ],
+      "decision_rationale": "Anal pain, hematochezia during defecation, and pruritus ani indicate Hemorrhoids.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0019_CLEAR_19",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Painful walking, stiff movement, and knee joint swelling.",
+      "target_disease": "Arthritis",
+      "extracted_symptoms": [
+        "movement stiffness",
+        "painful walking",
+        "swelling joints"
+      ],
+      "plausible_conditions": [
+        "Arthritis"
+      ],
+      "decision_rationale": "Chronic movement stiffness and joint swelling indicative of Arthritis.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0020_CLEAR_20",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Swollen blood vessels, prominent bulging veins on calf, and leg swelling.",
+      "target_disease": "Varicose veins",
+      "extracted_symptoms": [
+        "prominent veins on calf",
+        "swollen blood vessels",
+        "swollen legs"
+      ],
+      "plausible_conditions": [
+        "Varicose veins"
+      ],
+      "decision_rationale": "Bulging tortuous calf veins and dependent edema indicate Varicose Veins.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0021_CLEAR_21",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "URGENT",
+      "user_input": "Yellowing of eyes, dark yellow urine, severe abdominal pain, and acute fatigue.",
+      "target_disease": "Hepatitis B",
+      "extracted_symptoms": [
+        "dark urine",
+        "fatigue",
+        "yellowing of eyes",
+        "yellowish skin"
+      ],
+      "plausible_conditions": [
+        "Hepatitis B"
+      ],
+      "decision_rationale": "Acute hepatic inflammation with icterus and dark urine.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0022_CLEAR_22",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Sudden onset of vomiting, nausea, severe stomach pain after taking antibiotics.",
+      "target_disease": "Drug Reaction",
+      "extracted_symptoms": [
+        "nausea",
+        "stomach pain",
+        "vomiting"
+      ],
+      "plausible_conditions": [
+        "Drug Reaction"
+      ],
+      "decision_rationale": "Acute adverse drug gastrointestinal reaction.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0023_CLEAR_23",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Severe headache on one side of head, visual disturbances with flashing lights, and nausea.",
+      "target_disease": "Migraine",
+      "extracted_symptoms": [
+        "headache",
+        "nausea",
+        "visual disturbances"
+      ],
+      "plausible_conditions": [
+        "Migraine"
+      ],
+      "decision_rationale": "Unilateral throbbing cephalea with visual aura and nausea indicates Migraine.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0024_CLEAR_24",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Excessive hunger, frequent urination, polyuria, unexplained weight loss, and fatigue.",
+      "target_disease": "Diabetes ",
+      "extracted_symptoms": [
+        "excessive hunger",
+        "fatigue",
+        "polyuria",
+        "weight loss"
+      ],
+      "plausible_conditions": [
+        "Diabetes "
+      ],
+      "decision_rationale": "The classical diabetic triad of polyuria, polyphagia, and rapid weight loss.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0025_CLEAR_25",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "URGENT",
+      "user_input": "High fever, vomiting, rash all over body, and severe body ache.",
+      "target_disease": "Dengue",
+      "extracted_symptoms": [
+        "high fever",
+        "muscle pain",
+        "skin rash",
+        "vomiting"
+      ],
+      "plausible_conditions": [
+        "Dengue"
+      ],
+      "decision_rationale": "Arboviral presentation with pyrexia, myalgia, and rash.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0026_CLEAR_26",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "URGENT",
+      "user_input": "Dry cough, chest pain, breathless feeling, and fatigue.",
+      "target_disease": "Bronchial Asthma",
+      "extracted_symptoms": [
+        "breathlessness",
+        "cough",
+        "fatigue"
+      ],
+      "plausible_conditions": [
+        "Bronchial Asthma"
+      ],
+      "decision_rationale": "Bronchospasm presentation with dyspnea and cough.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0027_CLEAR_27",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Neck pain, dizziness, loss of balance, and visual disturbances.",
+      "target_disease": "Cervical spondylosis",
+      "extracted_symptoms": [
+        "dizziness",
+        "loss of balance",
+        "neck pain"
+      ],
+      "plausible_conditions": [
+        "Cervical spondylosis"
+      ],
+      "decision_rationale": "Cervical disc degeneration causing vertiginous instability.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0028_CLEAR_28",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "High fever, blister formations on skin, itching, and fatigue.",
+      "target_disease": "Chicken pox",
+      "extracted_symptoms": [
+        "blister",
+        "fatigue",
+        "high fever",
+        "itching"
+      ],
+      "plausible_conditions": [
+        "Chicken pox"
+      ],
+      "decision_rationale": "Vesicular rash eruptions with intense pruritus and fever in Varicella.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0029_CLEAR_29",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Pain in anal region, painful defecation, and blood on toilet paper.",
+      "target_disease": "Dimorphic hemmorhoids(piles)",
+      "extracted_symptoms": [
+        "pain during bowel movements",
+        "pain in anal region"
+      ],
+      "plausible_conditions": [
+        "Dimorphic hemmorhoids(piles)"
+      ],
+      "decision_rationale": "Hemorrhoidal bleeding and tenesmus.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0030_CLEAR_30",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "URGENT",
+      "user_input": "Swollen lymph nodes in neck, mild fever, throat irritation, and white patches in throat.",
+      "target_disease": "AIDS",
+      "extracted_symptoms": [
+        "mild fever",
+        "patches in throat",
+        "swelled lymph nodes"
+      ],
+      "plausible_conditions": [
+        "AIDS"
+      ],
+      "decision_rationale": "Lymphadenopathy and oral candidiasis in immunocompromised state.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0031_CLEAR_31",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "URGENT",
+      "user_input": "Vomiting, diarrhoea, dehydration, and sunken eyes.",
+      "target_disease": "Gastroenteritis",
+      "extracted_symptoms": [
+        "dehydration",
+        "diarrhoea",
+        "sunken eyes",
+        "vomiting"
+      ],
+      "plausible_conditions": [
+        "Gastroenteritis"
+      ],
+      "decision_rationale": "Acute secretory diarrheal illness with clinical signs of dehydration.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0032_CLEAR_32",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Shivering chills, high fever, headache, and severe sweating attacks.",
+      "target_disease": "Malaria",
+      "extracted_symptoms": [
+        "chills",
+        "headache",
+        "high fever",
+        "sweating"
+      ],
+      "plausible_conditions": [
+        "Malaria"
+      ],
+      "decision_rationale": "Cyclical febrile paroxysms.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0033_CLEAR_33",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Burning micturition, spotting of blood in urine, and constant urge to pee.",
+      "target_disease": "Urinary tract infection",
+      "extracted_symptoms": [
+        "burning micturition",
+        "continuous feel of urine",
+        "spotting urination"
+      ],
+      "plausible_conditions": [
+        "Urinary tract infection"
+      ],
+      "decision_rationale": "Hemorrhagic cystitis / UTI.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0034_CLEAR_34",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "URGENT",
+      "user_input": "Abdominal distension, swollen legs, fatigue, and jaundice skin.",
+      "target_disease": "Alcoholic hepatitis",
+      "extracted_symptoms": [
+        "distention of abdomen",
+        "fatigue",
+        "swollen legs",
+        "yellowish skin"
+      ],
+      "plausible_conditions": [
+        "Alcoholic hepatitis"
+      ],
+      "decision_rationale": "Chronic liver decompensation with ascites and peripheral edema.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0035_CLEAR_35",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Stomach pain, acidity, flatulence passage of gases, and nausea.",
+      "target_disease": "GERD",
+      "extracted_symptoms": [
+        "acidity",
+        "nausea",
+        "passage of gases",
+        "stomach pain"
+      ],
+      "plausible_conditions": [
+        "GERD"
+      ],
+      "decision_rationale": "Dyspeptic acid reflux symptom complex.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0036_CLEAR_36",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Itching, red spots over body, and skin peeling.",
+      "target_disease": "Fungal infection",
+      "extracted_symptoms": [
+        "itching",
+        "red spots over body",
+        "skin peeling"
+      ],
+      "plausible_conditions": [
+        "Fungal infection"
+      ],
+      "decision_rationale": "Dermatophyte fungal infection.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0037_CLEAR_37",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Dizziness, spinning sensation, unsteadiness, and headache.",
+      "target_disease": "(vertigo) Paroymsal  Positional Vertigo",
+      "extracted_symptoms": [
+        "dizziness",
+        "headache",
+        "spinning movements",
+        "unsteadiness"
+      ],
+      "plausible_conditions": [
+        "(vertigo) Paroymsal  Positional Vertigo"
+      ],
+      "decision_rationale": "Vestibular disorder.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0038_CLEAR_38",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Joint pain, movement stiffness, and swelling in hip joint.",
+      "target_disease": "Osteoarthristis",
+      "extracted_symptoms": [
+        "hip joint pain",
+        "joint pain",
+        "movement stiffness"
+      ],
+      "plausible_conditions": [
+        "Osteoarthristis"
+      ],
+      "decision_rationale": "Coxofemoral osteoarthritis.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0039_CLEAR_39",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "URGENT",
+      "user_input": "Chronic dark urine, yellowish skin, loss of appetite, and vomiting.",
+      "target_disease": "Hepatitis C",
+      "extracted_symptoms": [
+        "dark urine",
+        "loss of appetite",
+        "vomiting",
+        "yellowish skin"
+      ],
+      "plausible_conditions": [
+        "Hepatitis C"
+      ],
+      "decision_rationale": "Viral hepatitis presentation.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0040_CLEAR_40",
+      "category": "CLEAR_IN_DOMAIN",
+      "expected_action": "PREDICT",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Skin rash, pus filled pimples, and blackheads on forehead.",
+      "target_disease": "Acne",
+      "extracted_symptoms": [
+        "blackheads",
+        "pus filled pimples",
+        "skin rash"
+      ],
+      "plausible_conditions": [
+        "Acne"
+      ],
+      "decision_rationale": "Inflammatory acne vulgaris.",
+      "evidence_quality": "HIGH",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0041_AMBIG_01",
+      "category": "AMBIGUOUS_IN_DOMAIN",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have fever and headache.",
+      "target_disease": "AMBIGUOUS",
+      "extracted_symptoms": [
+        "headache",
+        "high fever"
+      ],
+      "plausible_conditions": [
+        "Malaria",
+        "Dengue",
+        "Typhoid",
+        "Common Cold"
+      ],
+      "decision_rationale": "Fever and headache are common to over 15 infectious conditions. Insufficient discriminative features to isolate a single disease.",
+      "evidence_quality": "MEDIUM",
+      "clarification_questions": [
+        "Do you have other symptoms associated with Malaria?",
+        "Do you have other symptoms associated with Dengue?"
+      ],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0042_AMBIG_02",
+      "category": "AMBIGUOUS_IN_DOMAIN",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have joint pain and fatigue.",
+      "target_disease": "AMBIGUOUS",
+      "extracted_symptoms": [
+        "fatigue",
+        "joint pain"
+      ],
+      "plausible_conditions": [
+        "Arthritis",
+        "Osteoarthristis",
+        "Dengue",
+        "Hepatitis"
+      ],
+      "decision_rationale": "Arthralgia and fatigue occur across rheumatologic, viral, and degenerative conditions.",
+      "evidence_quality": "MEDIUM",
+      "clarification_questions": [
+        "Do you have other symptoms associated with Arthritis?",
+        "Do you have other symptoms associated with Osteoarthristis?"
+      ],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0043_AMBIG_03",
+      "category": "AMBIGUOUS_IN_DOMAIN",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I feel nauseous and have vomited twice.",
+      "target_disease": "AMBIGUOUS",
+      "extracted_symptoms": [
+        "nausea",
+        "vomiting"
+      ],
+      "plausible_conditions": [
+        "Gastroenteritis",
+        "GERD",
+        "Typhoid",
+        "Drug Reaction",
+        "Migraine"
+      ],
+      "decision_rationale": "Isolated emesis and nausea are non-specific gastrointestinal complaints.",
+      "evidence_quality": "MEDIUM",
+      "clarification_questions": [
+        "Do you have other symptoms associated with Gastroenteritis?",
+        "Do you have other symptoms associated with GERD?"
+      ],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0044_AMBIG_04",
+      "category": "AMBIGUOUS_IN_DOMAIN",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have a persistent cough.",
+      "target_disease": "AMBIGUOUS",
+      "extracted_symptoms": [
+        "cough"
+      ],
+      "plausible_conditions": [
+        "Common Cold",
+        "Bronchial Asthma",
+        "Pneumonia",
+        "Tuberculosis"
+      ],
+      "decision_rationale": "Isolated cough without sputum character or duration spans upper and lower respiratory conditions.",
+      "evidence_quality": "MEDIUM",
+      "clarification_questions": [
+        "Do you have other symptoms associated with Common Cold?",
+        "Do you have other symptoms associated with Bronchial Asthma?"
+      ],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0045_AMBIG_05",
+      "category": "AMBIGUOUS_IN_DOMAIN",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "My skin is itchy.",
+      "target_disease": "AMBIGUOUS",
+      "extracted_symptoms": [
+        "itching"
+      ],
+      "plausible_conditions": [
+        "Fungal infection",
+        "Jaundice",
+        "Chicken pox",
+        "Drug Reaction"
+      ],
+      "decision_rationale": "Pruritus alone could be dermatological, cholestatic, or allergic.",
+      "evidence_quality": "MEDIUM",
+      "clarification_questions": [
+        "Do you have other symptoms associated with Fungal infection?",
+        "Do you have other symptoms associated with Jaundice?"
+      ],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0046_AMBIG_06",
+      "category": "AMBIGUOUS_IN_DOMAIN",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have stomach pain.",
+      "target_disease": "AMBIGUOUS",
+      "extracted_symptoms": [
+        "stomach pain"
+      ],
+      "plausible_conditions": [
+        "GERD",
+        "Drug Reaction",
+        "Typhoid",
+        "Peptic ulcer diseae"
+      ],
+      "decision_rationale": "Epigastric or abdominal discomfort requires localized quadrants and meal relationship to clarify.",
+      "evidence_quality": "MEDIUM",
+      "clarification_questions": [
+        "Do you have other symptoms associated with GERD?",
+        "Do you have other symptoms associated with Drug Reaction?"
+      ],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0047_AMBIG_07",
+      "category": "AMBIGUOUS_IN_DOMAIN",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have been having diarrhoea.",
+      "target_disease": "AMBIGUOUS",
+      "extracted_symptoms": [
+        "diarrhoea"
+      ],
+      "plausible_conditions": [
+        "Gastroenteritis",
+        "Typhoid",
+        "Alcoholic hepatitis"
+      ],
+      "decision_rationale": "Acute loose stools without fever, blood, or travel history cannot identify etiology.",
+      "evidence_quality": "MEDIUM",
+      "clarification_questions": [
+        "Do you have other symptoms associated with Gastroenteritis?",
+        "Do you have other symptoms associated with Typhoid?"
+      ],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0048_AMBIG_08",
+      "category": "AMBIGUOUS_IN_DOMAIN",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I am feeling dizzy and unsteady.",
+      "target_disease": "AMBIGUOUS",
+      "extracted_symptoms": [
+        "dizziness",
+        "unsteadiness"
+      ],
+      "plausible_conditions": [
+        "(vertigo) Paroymsal  Positional Vertigo",
+        "Cervical spondylosis",
+        "Hypertension "
+      ],
+      "decision_rationale": "Lightheadedness vs true rotational vertigo needs clarifying maneuvers.",
+      "evidence_quality": "MEDIUM",
+      "clarification_questions": [
+        "Do you have other symptoms associated with (vertigo) Paroymsal  Positional Vertigo?",
+        "Do you have other symptoms associated with Cervical spondylosis?"
+      ],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0049_AMBIG_09",
+      "category": "AMBIGUOUS_IN_DOMAIN",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have a skin rash.",
+      "target_disease": "AMBIGUOUS",
+      "extracted_symptoms": [
+        "skin rash"
+      ],
+      "plausible_conditions": [
+        "Fungal infection",
+        "Acne",
+        "Dengue",
+        "Chicken pox"
+      ],
+      "decision_rationale": "Morphology, distribution, and duration of rash must be clarified.",
+      "evidence_quality": "MEDIUM",
+      "clarification_questions": [
+        "Do you have other symptoms associated with Fungal infection?",
+        "Do you have other symptoms associated with Acne?"
+      ],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0050_AMBIG_10",
+      "category": "AMBIGUOUS_IN_DOMAIN",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I am sweating a lot and feel warm.",
+      "target_disease": "AMBIGUOUS",
+      "extracted_symptoms": [
+        "sweating"
+      ],
+      "plausible_conditions": [
+        "Malaria",
+        "Hyperthyroidism",
+        "Tuberculosis"
+      ],
+      "decision_rationale": "Diaphoresis occurs in hyperthyroid states, nocturnal TB fevers, and malarial defervescence.",
+      "evidence_quality": "MEDIUM",
+      "clarification_questions": [
+        "Do you have other symptoms associated with Malaria?",
+        "Do you have other symptoms associated with Hyperthyroidism?"
+      ],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0051_AMBIG_11",
+      "category": "AMBIGUOUS_IN_DOMAIN",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have lost weight recently and feel weak.",
+      "target_disease": "AMBIGUOUS",
+      "extracted_symptoms": [
+        "fatigue",
+        "weight loss"
+      ],
+      "plausible_conditions": [
+        "Diabetes ",
+        "Hyperthyroidism",
+        "Tuberculosis",
+        "AIDS"
+      ],
+      "decision_rationale": "Constitutional weight loss and asthenia require metabolic and infectious workup.",
+      "evidence_quality": "MEDIUM",
+      "clarification_questions": [
+        "Do you have other symptoms associated with Diabetes ?",
+        "Do you have other symptoms associated with Hyperthyroidism?"
+      ],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0052_AMBIG_12",
+      "category": "AMBIGUOUS_IN_DOMAIN",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have neck pain and stiffness.",
+      "target_disease": "AMBIGUOUS",
+      "extracted_symptoms": [
+        "movement stiffness",
+        "neck pain"
+      ],
+      "plausible_conditions": [
+        "Cervical spondylosis",
+        "Osteoarthristis",
+        "Arthritis"
+      ],
+      "decision_rationale": "Cervical spine strain vs radiculopathy vs osteoarthritis.",
+      "evidence_quality": "MEDIUM",
+      "clarification_questions": [
+        "Do you have other symptoms associated with Cervical spondylosis?",
+        "Do you have other symptoms associated with Osteoarthristis?"
+      ],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0053_AMBIG_13",
+      "category": "AMBIGUOUS_IN_DOMAIN",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have mild fever and fatigue.",
+      "target_disease": "AMBIGUOUS",
+      "extracted_symptoms": [
+        "fatigue",
+        "mild fever"
+      ],
+      "plausible_conditions": [
+        "Common Cold",
+        "Hepatitis A",
+        "AIDS"
+      ],
+      "decision_rationale": "Non-specific viral prodrome.",
+      "evidence_quality": "MEDIUM",
+      "clarification_questions": [
+        "Do you have other symptoms associated with Common Cold?",
+        "Do you have other symptoms associated with Hepatitis A?"
+      ],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0054_AMBIG_14",
+      "category": "AMBIGUOUS_IN_DOMAIN",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I am breathless when walking.",
+      "target_disease": "AMBIGUOUS",
+      "extracted_symptoms": [
+        "breathlessness"
+      ],
+      "plausible_conditions": [
+        "Bronchial Asthma",
+        "Pneumonia",
+        "Hypertension "
+      ],
+      "decision_rationale": "Dyspnea on exertion requires respiratory vs cardiovascular distinction.",
+      "evidence_quality": "MEDIUM",
+      "clarification_questions": [
+        "Do you have other symptoms associated with Bronchial Asthma?",
+        "Do you have other symptoms associated with Pneumonia?"
+      ],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0055_AMBIG_15",
+      "category": "AMBIGUOUS_IN_DOMAIN",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have pain in my lower legs.",
+      "target_disease": "AMBIGUOUS",
+      "extracted_symptoms": [
+        "painful walking"
+      ],
+      "plausible_conditions": [
+        "Varicose veins",
+        "Arthritis"
+      ],
+      "decision_rationale": "Lower extremity aching requires vascular vs musculoskeletal clarification.",
+      "evidence_quality": "MEDIUM",
+      "clarification_questions": [
+        "Do you have other symptoms associated with Varicose veins?",
+        "Do you have other symptoms associated with Arthritis?"
+      ],
+      "provenance": {
+        "source": "CLINICAL_CONSENSUS_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0056_INSUF_01",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I feel sick.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0057_INSUF_02",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I don't feel well today.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0058_INSUF_03",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I feel weird.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0059_INSUF_04",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Something feels wrong with my body.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0060_INSUF_05",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have been feeling terrible.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0061_INSUF_06",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Doctor please tell me what disease I have.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0062_INSUF_07",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I'm unwell.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0063_INSUF_08",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Feeling strange since yesterday.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0064_INSUF_09",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "My body feels off.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0065_INSUF_10",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I feel uncomfortable.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0066_INSUF_11",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I'm feeling down and unwell.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0067_INSUF_12",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Can you diagnose me?",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0068_INSUF_13",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have some symptoms.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0069_INSUF_14",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I feel uneasy inside.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0070_INSUF_15",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Help me doctor.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0071_INSUF_16",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I don't know what is happening to me.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0072_INSUF_17",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Feeling awful.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0073_INSUF_18",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Not in good shape today.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0074_INSUF_19",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I need a prescription.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0075_INSUF_20",
+      "category": "INSUFFICIENT_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have a symptom.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Input contains zero extractable clinical symptoms. Predicting a specific disease would be medically irresponsible hallucination.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "Could you describe specific physical symptoms you are experiencing (e.g., fever, pain location, cough)?"
+      ],
+      "provenance": {
+        "source": "SYNTHETIC_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0076_OOS_01",
+      "category": "OUT_OF_SCOPE",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Sharp severe pain in the right lower abdomen with rebound tenderness, vomiting, and high fever.",
+      "target_disease": "OUT_OF_SCOPE",
+      "extracted_symptoms": [
+        "vomiting",
+        "high fever"
+      ],
+      "plausible_conditions": [
+        "Acute Appendicitis"
+      ],
+      "decision_rationale": "Acute surgical abdomen indicative of Appendicitis, which is outside the 41 supported medical classes.",
+      "evidence_quality": "HIGH_OUT_OF_SCOPE",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_EXPERT_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0077_OOS_02",
+      "category": "OUT_OF_SCOPE",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Severe throbbing pain in right ear with yellowish ear discharge and reduced hearing.",
+      "target_disease": "OUT_OF_SCOPE",
+      "extracted_symptoms": [],
+      "plausible_conditions": [
+        "Otitis Media"
+      ],
+      "decision_rationale": "Middle ear infection (Otitis Media) is not supported in the taxonomy.",
+      "evidence_quality": "HIGH_OUT_OF_SCOPE",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_EXPERT_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0078_OOS_03",
+      "category": "OUT_OF_SCOPE",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Severe toothache with swollen jaw and sensitivity to hot and cold liquids.",
+      "target_disease": "OUT_OF_SCOPE",
+      "extracted_symptoms": [],
+      "plausible_conditions": [
+        "Dental Abscess / Pulpitis"
+      ],
+      "decision_rationale": "Odontogenic pathology is outside the medical scope.",
+      "evidence_quality": "HIGH_OUT_OF_SCOPE",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_EXPERT_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0079_OOS_04",
+      "category": "OUT_OF_SCOPE",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Painful eye with seeing halos around lights, cloudy vision, and severe nausea.",
+      "target_disease": "OUT_OF_SCOPE",
+      "extracted_symptoms": [
+        "nausea"
+      ],
+      "plausible_conditions": [
+        "Acute Angle-Closure Glaucoma"
+      ],
+      "decision_rationale": "Ophthalmic emergency (Glaucoma) outside supported classes.",
+      "evidence_quality": "HIGH_OUT_OF_SCOPE",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_EXPERT_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0080_OOS_05",
+      "category": "OUT_OF_SCOPE",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Severe sudden lower back pain radiating to groin with blood in urine.",
+      "target_disease": "OUT_OF_SCOPE",
+      "extracted_symptoms": [
+        "back pain"
+      ],
+      "plausible_conditions": [
+        "Nephrolithiasis (Kidney Stones)"
+      ],
+      "decision_rationale": "Renal colic / urolithiasis is outside supported taxonomy.",
+      "evidence_quality": "HIGH_OUT_OF_SCOPE",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_EXPERT_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0081_OOS_06",
+      "category": "OUT_OF_SCOPE",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Missed period for two months, morning sickness, positive home pregnancy test.",
+      "target_disease": "OUT_OF_SCOPE",
+      "extracted_symptoms": [
+        "abnormal menstruation"
+      ],
+      "plausible_conditions": [
+        "Pregnancy"
+      ],
+      "decision_rationale": "Obstetric condition outside disease prediction taxonomy.",
+      "evidence_quality": "HIGH_OUT_OF_SCOPE",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_EXPERT_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0082_OOS_07",
+      "category": "OUT_OF_SCOPE",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Inability to bear weight on ankle after twisting it while playing soccer with rapid swelling.",
+      "target_disease": "OUT_OF_SCOPE",
+      "extracted_symptoms": [],
+      "plausible_conditions": [
+        "Ankle Sprain / Fracture"
+      ],
+      "decision_rationale": "Acute orthopedic trauma outside medical illness taxonomy.",
+      "evidence_quality": "HIGH_OUT_OF_SCOPE",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_EXPERT_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0083_OOS_08",
+      "category": "OUT_OF_SCOPE",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Sudden severe testicle pain with swelling and elevation of the testicle.",
+      "target_disease": "OUT_OF_SCOPE",
+      "extracted_symptoms": [],
+      "plausible_conditions": [
+        "Testicular Torsion"
+      ],
+      "decision_rationale": "Urological surgical emergency outside taxonomy.",
+      "evidence_quality": "HIGH_OUT_OF_SCOPE",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_EXPERT_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0084_OOS_09",
+      "category": "OUT_OF_SCOPE",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Ringing sound in both ears with gradual hearing loss over several years.",
+      "target_disease": "OUT_OF_SCOPE",
+      "extracted_symptoms": [],
+      "plausible_conditions": [
+        "Tinnitus / Presbycusis"
+      ],
+      "decision_rationale": "Chronic audiological condition outside taxonomy.",
+      "evidence_quality": "HIGH_OUT_OF_SCOPE",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_EXPERT_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0085_OOS_10",
+      "category": "OUT_OF_SCOPE",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Painful red bump on eyelid margin with tenderness.",
+      "target_disease": "OUT_OF_SCOPE",
+      "extracted_symptoms": [],
+      "plausible_conditions": [
+        "Hordeolum (Stye)"
+      ],
+      "decision_rationale": "Ophthalmic lid condition outside taxonomy.",
+      "evidence_quality": "HIGH_OUT_OF_SCOPE",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "CLINICAL_EXPERT_PANEL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0086_UNSUPP_01",
+      "category": "UNSUPPORTED_SYMPTOMS",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have loud ringing in my ears constantly.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Tinnitus (ringing in ears) is not in the 131 supported symptom ontology.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "This symptom is outside our automated knowledge base. Please consult a clinician directly."
+      ],
+      "provenance": {
+        "source": "ONTOLOGY_GAP_ANALYSIS",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0087_UNSUPP_02",
+      "category": "UNSUPPORTED_SYMPTOMS",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "My big toe is extremely painful, hot, and swollen red.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Podagra / Gout presentation not modeled in the 131 symptom ontology.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "This symptom is outside our automated knowledge base. Please consult a clinician directly."
+      ],
+      "provenance": {
+        "source": "ONTOLOGY_GAP_ANALYSIS",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0088_UNSUPP_03",
+      "category": "UNSUPPORTED_SYMPTOMS",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have frequent nosebleeds when waking up in the morning.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Epistaxis (nosebleeds) is not in the symptom ontology.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "This symptom is outside our automated knowledge base. Please consult a clinician directly."
+      ],
+      "provenance": {
+        "source": "ONTOLOGY_GAP_ANALYSIS",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0089_UNSUPP_04",
+      "category": "UNSUPPORTED_SYMPTOMS",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I notice my hair is falling out in large clumps.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Alopecia (hair loss) is not a modeled symptom.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "This symptom is outside our automated knowledge base. Please consult a clinician directly."
+      ],
+      "provenance": {
+        "source": "ONTOLOGY_GAP_ANALYSIS",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0090_UNSUPP_05",
+      "category": "UNSUPPORTED_SYMPTOMS",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have sudden numbness and tingling in my fingertips.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Peripheral paresthesia is not modeled in the symptom ontology.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "This symptom is outside our automated knowledge base. Please consult a clinician directly."
+      ],
+      "provenance": {
+        "source": "ONTOLOGY_GAP_ANALYSIS",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0091_UNSUPP_06",
+      "category": "UNSUPPORTED_SYMPTOMS",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "My toenail has turned thick, crumbly and dark green.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Onychomycosis nail dystrophy not directly modeled.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "This symptom is outside our automated knowledge base. Please consult a clinician directly."
+      ],
+      "provenance": {
+        "source": "ONTOLOGY_GAP_ANALYSIS",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0092_UNSUPP_07",
+      "category": "UNSUPPORTED_SYMPTOMS",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have difficulty swallowing food and pills.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Dysphagia is not in the 131 symptom ontology.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "This symptom is outside our automated knowledge base. Please consult a clinician directly."
+      ],
+      "provenance": {
+        "source": "ONTOLOGY_GAP_ANALYSIS",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0093_CONTRA_01",
+      "category": "CONTRADICTORY_INPUT",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have a high fever but my temperature is completely normal with no fever.",
+      "target_disease": "CONTRADICTORY",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Logical inconsistency: Direct contradiction regarding presence of pyrexia.. The engine must clarify before making any clinical prediction.",
+      "evidence_quality": "INVALID",
+      "clarification_questions": [
+        "Your description contains conflicting information. Could you please clarify which symptoms you currently have?"
+      ],
+      "provenance": {
+        "source": "LOGICAL_CONSISTENCY_SUITE",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0094_CONTRA_02",
+      "category": "CONTRADICTORY_INPUT",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have severe excruciating stomach pain but zero abdominal discomfort.",
+      "target_disease": "CONTRADICTORY",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Logical inconsistency: Contradiction asserting and denying stomach pain simultaneously.. The engine must clarify before making any clinical prediction.",
+      "evidence_quality": "INVALID",
+      "clarification_questions": [
+        "Your description contains conflicting information. Could you please clarify which symptoms you currently have?"
+      ],
+      "provenance": {
+        "source": "LOGICAL_CONSISTENCY_SUITE",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0095_CONTRA_03",
+      "category": "CONTRADICTORY_INPUT",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I've been vomiting all morning but I have never thrown up or felt nauseated.",
+      "target_disease": "CONTRADICTORY",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Logical inconsistency: Mutually exclusive statements regarding emesis.. The engine must clarify before making any clinical prediction.",
+      "evidence_quality": "INVALID",
+      "clarification_questions": [
+        "Your description contains conflicting information. Could you please clarify which symptoms you currently have?"
+      ],
+      "provenance": {
+        "source": "LOGICAL_CONSISTENCY_SUITE",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0096_CONTRA_04",
+      "category": "CONTRADICTORY_INPUT",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I am coughing blood every hour but I have no cough and no sputum.",
+      "target_disease": "CONTRADICTORY",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Logical inconsistency: Contradiction regarding cough and hemoptysis.. The engine must clarify before making any clinical prediction.",
+      "evidence_quality": "INVALID",
+      "clarification_questions": [
+        "Your description contains conflicting information. Could you please clarify which symptoms you currently have?"
+      ],
+      "provenance": {
+        "source": "LOGICAL_CONSISTENCY_SUITE",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0097_CONTRA_05",
+      "category": "CONTRADICTORY_INPUT",
+      "expected_action": "CLARIFY",
+      "safety_escalation": "ROUTINE",
+      "user_input": "My skin is severely jaundiced and yellow, but my skin color is completely normal.",
+      "target_disease": "CONTRADICTORY",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Logical inconsistency: Direct contradiction on jaundice / yellowish skin.. The engine must clarify before making any clinical prediction.",
+      "evidence_quality": "INVALID",
+      "clarification_questions": [
+        "Your description contains conflicting information. Could you please clarify which symptoms you currently have?"
+      ],
+      "provenance": {
+        "source": "LOGICAL_CONSISTENCY_SUITE",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0098_NEG_01",
+      "category": "NEGATED_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I have no fever, no cough, and no chest pain.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Zero positive presenting symptoms found. Query mentions exclusively absent/denied symptoms.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "You have listed symptoms you do not have. What active symptoms are you currently experiencing?"
+      ],
+      "provenance": {
+        "source": "NEGATION_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0099_NEG_02",
+      "category": "NEGATED_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I do not have headache, never had jaundice, and no vomiting.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Zero positive presenting symptoms found. All mentioned conditions are explicitly negated.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "You have listed symptoms you do not have. What active symptoms are you currently experiencing?"
+      ],
+      "provenance": {
+        "source": "NEGATION_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0100_NEG_03",
+      "category": "NEGATED_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Denies fever, denies chills, denies stomach ache.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Zero positive presenting symptoms found. Exclusively negative review of systems.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "You have listed symptoms you do not have. What active symptoms are you currently experiencing?"
+      ],
+      "provenance": {
+        "source": "NEGATION_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0101_NEG_04",
+      "category": "NEGATED_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "Skin is free of rash, no itching, no pimples.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Zero positive presenting symptoms found. Negative dermatological screening with no positive symptoms.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "You have listed symptoms you do not have. What active symptoms are you currently experiencing?"
+      ],
+      "provenance": {
+        "source": "NEGATION_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0102_NEG_05",
+      "category": "NEGATED_INFORMATION",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "I don't have breathlessness and have no joint pain.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Zero positive presenting symptoms found. Negative symptoms only.",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "You have listed symptoms you do not have. What active symptoms are you currently experiencing?"
+      ],
+      "provenance": {
+        "source": "NEGATION_BENCHMARK",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0103_3RDPARTY_01",
+      "category": "THIRD_PARTY_FAMILY_HISTORY",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "My mother has diabetes and takes insulin daily.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Entity attribution filter: Mother's chronic disease is not the user's current diagnosis..",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "The system noted information about a family member or third party. Please describe symptoms you personally are experiencing."
+      ],
+      "provenance": {
+        "source": "ENTITY_ATTRIBUTION_SUITE",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0104_3RDPARTY_02",
+      "category": "THIRD_PARTY_FAMILY_HISTORY",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "My father died of a heart attack at age 52.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Entity attribution filter: Father's past cardiac event is family history, not an active patient symptom..",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "The system noted information about a family member or third party. Please describe symptoms you personally are experiencing."
+      ],
+      "provenance": {
+        "source": "ENTITY_ATTRIBUTION_SUITE",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0105_3RDPARTY_03",
+      "category": "THIRD_PARTY_FAMILY_HISTORY",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "My dog has been vomiting and shivering all morning.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Entity attribution filter: Pet illness must not be ingested as human clinical symptoms..",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "The system noted information about a family member or third party. Please describe symptoms you personally are experiencing."
+      ],
+      "provenance": {
+        "source": "ENTITY_ATTRIBUTION_SUITE",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0106_3RDPARTY_04",
+      "category": "THIRD_PARTY_FAMILY_HISTORY",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "My sister caught severe dengue fever with high temperature.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Entity attribution filter: Third-party sibling infection..",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "The system noted information about a family member or third party. Please describe symptoms you personally are experiencing."
+      ],
+      "provenance": {
+        "source": "ENTITY_ATTRIBUTION_SUITE",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0107_3RDPARTY_05",
+      "category": "THIRD_PARTY_FAMILY_HISTORY",
+      "expected_action": "ABSTAIN",
+      "safety_escalation": "ROUTINE",
+      "user_input": "My grandfather has severe osteoarthritis in his hips.",
+      "target_disease": "UNKNOWN",
+      "extracted_symptoms": [],
+      "plausible_conditions": [],
+      "decision_rationale": "Entity attribution filter: Grandfather's degenerative joint disease..",
+      "evidence_quality": "NONE",
+      "clarification_questions": [
+        "The system noted information about a family member or third party. Please describe symptoms you personally are experiencing."
+      ],
+      "provenance": {
+        "source": "ENTITY_ATTRIBUTION_SUITE",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0108_URGENT_01",
+      "category": "URGENT_ESCALATION",
+      "expected_action": "URGENT_ESCALATION",
+      "safety_escalation": "EMERGENCY",
+      "user_input": "Crushing substernal chest pain radiating to left arm and jaw with cold sweating and shortness of breath.",
+      "target_disease": "Myocardial Infarction / Acute Coronary Syndrome",
+      "extracted_symptoms": [
+        "breathlessness",
+        "chest pain",
+        "sweating"
+      ],
+      "plausible_conditions": [
+        "Myocardial Infarction / Acute Coronary Syndrome"
+      ],
+      "decision_rationale": "Classic Acute Coronary Syndrome presentation. Red-flag emergency.",
+      "evidence_quality": "HIGH_CRITICAL",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "EMERGENCY_TRIAGE_PROTOCOL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0109_URGENT_02",
+      "category": "URGENT_ESCALATION",
+      "expected_action": "URGENT_ESCALATION",
+      "safety_escalation": "EMERGENCY",
+      "user_input": "Sudden weakness on one side of body, drooping face, and slurred speech.",
+      "target_disease": "Acute Stroke / Cerebrovascular Accident",
+      "extracted_symptoms": [
+        "slurred speech",
+        "weakness of one body side"
+      ],
+      "plausible_conditions": [
+        "Acute Stroke / Cerebrovascular Accident"
+      ],
+      "decision_rationale": "FAST criteria for acute ischemic stroke. Emergency escalation required.",
+      "evidence_quality": "HIGH_CRITICAL",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "EMERGENCY_TRIAGE_PROTOCOL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0110_URGENT_03",
+      "category": "URGENT_ESCALATION",
+      "expected_action": "URGENT_ESCALATION",
+      "safety_escalation": "EMERGENCY",
+      "user_input": "Patient is in deep coma and completely unresponsive.",
+      "target_disease": "Coma / Acute Neurological Failure",
+      "extracted_symptoms": [
+        "coma"
+      ],
+      "plausible_conditions": [
+        "Coma / Acute Neurological Failure"
+      ],
+      "decision_rationale": "Unconscious / comatose patient requires immediate emergency life support.",
+      "evidence_quality": "HIGH_CRITICAL",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "EMERGENCY_TRIAGE_PROTOCOL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0111_URGENT_04",
+      "category": "URGENT_ESCALATION",
+      "expected_action": "URGENT_ESCALATION",
+      "safety_escalation": "EMERGENCY",
+      "user_input": "Vomiting large volumes of dark blood and severe stomach bleeding.",
+      "target_disease": "Severe Upper GI Bleed",
+      "extracted_symptoms": [
+        "stomach bleeding",
+        "vomiting"
+      ],
+      "plausible_conditions": [
+        "Severe Upper GI Bleed"
+      ],
+      "decision_rationale": "Massive gastrointestinal hemorrhage with hemodynamic compromise risk.",
+      "evidence_quality": "HIGH_CRITICAL",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "EMERGENCY_TRIAGE_PROTOCOL",
+        "split_eligible": true
+      }
+    },
+    {
+      "case_id": "DEC_0112_URGENT_05",
+      "category": "URGENT_ESCALATION",
+      "expected_action": "URGENT_ESCALATION",
+      "safety_escalation": "EMERGENCY",
+      "user_input": "Severe difficulty breathing, gasping for air, turning blue, and unable to speak in full sentences.",
+      "target_disease": "Acute Severe Respiratory Failure",
+      "extracted_symptoms": [
+        "breathlessness"
+      ],
+      "plausible_conditions": [
+        "Acute Severe Respiratory Failure"
+      ],
+      "decision_rationale": "Critical hypoxia and respiratory exhaustion.",
+      "evidence_quality": "HIGH_CRITICAL",
+      "clarification_questions": [],
+      "provenance": {
+        "source": "EMERGENCY_TRIAGE_PROTOCOL",
+        "split_eligible": true
+      }
+    }
+  ]
+}

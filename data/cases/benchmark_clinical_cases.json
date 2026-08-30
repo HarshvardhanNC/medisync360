@@ -1,0 +1,1901 @@
+{
+  "total_cases": 60,
+  "type": "BENCHMARK_CLINICAL_NARRATIVE",
+  "cases": [
+    {
+      "case_id": "CASE_NARRATIVE_0001_c7af9b",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Common Cold",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "runny nose",
+        "continuous sneezing",
+        "throat irritation"
+      ],
+      "free_form_description": "I have a runny nose, sneezing, and mild throat irritation.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "one_line_description",
+        "expected_intent": "PREDICT",
+        "pattern_hash": "c7af9b3a6f69a712"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.6,
+        "symptom_count": 3,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0002_6c4b1c",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Urinary tract infection",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "Burning pain when urinating and continuous urge to pee.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "one_line_description",
+        "expected_intent": "PREDICT",
+        "pattern_hash": "6c4b1c306fb4140f"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0003_99bfda",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Vague Symptom (Needs Clarification)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "I feel slightly unwell today.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "one_line_description",
+        "expected_intent": "CLARIFY",
+        "pattern_hash": "99bfda124bcab562"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0004_8a3fa4",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Vague Symptom (Needs Clarification)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "My head hurts.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "one_line_description",
+        "expected_intent": "CLARIFY",
+        "pattern_hash": "8a3fa4c35f22280f"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0005_4f04c9",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Acute Myocardial Infarction",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "chest pain",
+        "breathlessness"
+      ],
+      "free_form_description": "Crushing chest pain radiating to left arm with cold sweats and difficulty breathing.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "one_line_description",
+        "expected_intent": "URGENT_ESCALATION",
+        "pattern_hash": "4f04c922a907eca1"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 2,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0006_017c49",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "GERD",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "My stomach has been hurting after meals and I keep getting a burning sensation in my chest. It gets worse when I lie down at night.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "multi_sentence_description",
+        "expected_intent": "PREDICT",
+        "pattern_hash": "017c496a6eab5926"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0007_3d8aa3",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Malaria",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "high fever",
+        "shivering",
+        "chills"
+      ],
+      "free_form_description": "I have recurring high fever accompanied by severe shivering chills. I sweat heavily every night and feel completely exhausted.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "multi_sentence_description",
+        "expected_intent": "PREDICT",
+        "pattern_hash": "3d8aa306b29ff93f"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.6,
+        "symptom_count": 3,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0008_c267b9",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Bronchial Asthma",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "I've been feeling extremely tired for the past few days and get breathless when climbing stairs. I can hear a whistling wheezing sound whenever I exhale.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "multi_sentence_description",
+        "expected_intent": "PREDICT",
+        "pattern_hash": "c267b9822601be1e"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0009_b6af16",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Diabetes",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "I am constantly thirsty no matter how much water I drink. I have to wake up multiple times at night to urinate and I have lost 5 kg unintentionally.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "multi_sentence_description",
+        "expected_intent": "PREDICT",
+        "pattern_hash": "b6af16bb951277c6"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": true,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0010_32c67a",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Jaundice",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "My family noticed my eyes and skin are turning yellow. My urine is very dark like tea, and I have lost my appetite.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "multi_sentence_description",
+        "expected_intent": "PREDICT",
+        "pattern_hash": "32c67a10ba6b7c6d"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0011_88bce1",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Migraine",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "headache",
+        "vomiting"
+      ],
+      "free_form_description": "For the past two days, I have a severe throbbing headache on the right side of my forehead. Every time I look at bright light or hear loud sounds, the pain spikes dramatically. I also feel nauseated and had one episode of vomiting this morning.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "long_description",
+        "expected_intent": "PREDICT",
+        "pattern_hash": "88bce1b1191b20f2"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 2,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0012_803cc5",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Chicken pox",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "mild fever",
+        "high fever",
+        "fatigue",
+        "itching",
+        "blister"
+      ],
+      "free_form_description": "I started with a mild fever and feeling fatigued two days ago. Yesterday, small red itchy spots appeared on my stomach and back, and today they have turned into fluid-filled blisters that itch uncontrollably.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "long_description",
+        "expected_intent": "PREDICT",
+        "pattern_hash": "803cc5e6b1cce193"
+      },
+      "evidence_quality": {
+        "completeness_score": 1.0,
+        "symptom_count": 5,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0013_8801c0",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Pneumonia",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "high fever",
+        "chills",
+        "chest pain",
+        "phlegm",
+        "cough",
+        "breathlessness"
+      ],
+      "free_form_description": "I have had a high fever for four days with severe chills and chest pain when breathing deeply. I am coughing up thick greenish-yellow phlegm and feeling short of breath even while resting.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "long_description",
+        "expected_intent": "PREDICT",
+        "pattern_hash": "8801c0777204bba9"
+      },
+      "evidence_quality": {
+        "completeness_score": 1.2,
+        "symptom_count": 6,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0014_a0599f",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Gastroenteritis",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "vomiting",
+        "diarrhoea"
+      ],
+      "free_form_description": "My tummy is wrecked, puking my guts out and got terrible loose motions since street food yesterday.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "colloquial_language",
+        "expected_intent": "PREDICT",
+        "pattern_hash": "a0599f8022444e46"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 2,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0015_5a1795",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Muscle Soreness / Fatigue",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "Feeling super beat after leg day at the gym, body feels like lead and muscles sore as heck.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "colloquial_language",
+        "expected_intent": "CLARIFY",
+        "pattern_hash": "5a17950f9c16c22f"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0016_c31b0e",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Paroymsal Positional Vertigo",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "Whenever I get out of bed the whole room starts spinning like crazy for thirty seconds.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "colloquial_language",
+        "expected_intent": "PREDICT",
+        "pattern_hash": "c31b0ebdac35c751"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0017_5b13f4",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Osteoarthristis",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "My knee joints are creaking and killing me every time I try to climb down the stairs.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "colloquial_language",
+        "expected_intent": "PREDICT",
+        "pattern_hash": "5b13f445e4c7e7ad"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0018_c254fa",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Migraine",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "headache",
+        "nausea"
+      ],
+      "free_form_description": "sever hedache on rite side, nawsea and blured vizion with lite sensitivty.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "spelling_mistakes",
+        "expected_intent": "PREDICT",
+        "pattern_hash": "c254fad098576653"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 2,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0019_ac6cc9",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Heart attack",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "shivering",
+        "breathlessness"
+      ],
+      "free_form_description": "cheest payn, shivring, hi fevr and profuse swetting with bredlesness.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "spelling_mistakes",
+        "expected_intent": "URGENT_ESCALATION",
+        "pattern_hash": "ac6cc9fe73c99551"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 2,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0020_d8bac8",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Allergy",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "itching",
+        "runny nose"
+      ],
+      "free_form_description": "itchy skyn, contnuos snezing, watry eyes and runy nose.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "spelling_mistakes",
+        "expected_intent": "PREDICT",
+        "pattern_hash": "d8bac8da19d29d52"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 2,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0021_89a409",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Fungal infection",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "itching",
+        "skin rash"
+      ],
+      "free_form_description": "itchng skn rash with redish circuler pathes between toes.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "spelling_mistakes",
+        "expected_intent": "PREDICT",
+        "pattern_hash": "89a409e6ebbfc072"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 2,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0022_aeb4ab",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "No symptoms reported (Explicit denial)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "I do NOT have fever, I do NOT have chest pain, I do NOT have cough, and I have no headache.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "negation",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "aeb4abe16f771fc3"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": true,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0023_4989a4",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Mild fatigue without fever or GI issues",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "I am feeling a little tired, but I do not have high fever, no chills, no vomiting, and no stomach pain.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "negation",
+        "expected_intent": "CLARIFY",
+        "pattern_hash": "4989a46bee96208e"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": true,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0024_3d8990",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Dry cough without fever or shortness of breath",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "cough"
+      ],
+      "free_form_description": "I have a dry cough, but no fever, no shortness of breath, no chest pain, and no wheezing.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "negation",
+        "expected_intent": "CLARIFY",
+        "pattern_hash": "3d89901d2704463b"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.2,
+        "symptom_count": 1,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": true,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0025_dbb2f3",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Mild headache without vision changes",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "headache"
+      ],
+      "free_form_description": "I have mild headache without nausea, without vomiting, and no blurred vision.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "negation",
+        "expected_intent": "CLARIFY",
+        "pattern_hash": "dbb2f3dda22c319c"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.2,
+        "symptom_count": 1,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": true,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0026_db6471",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Past resolved infection (Currently asymptomatic)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "Ten years ago I had malaria and chickenpox, but currently I am totally healthy and symptom free.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "historical_symptoms",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "db64713547c0ae75"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0027_37c05c",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Past recovered surgery",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "I had jaundice when I was in college 15 years back. I have no complaints right now.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "historical_symptoms",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "37c05c041b775666"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": true,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0028_3f1797",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "New symptom with historical context",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "knee pain",
+        "movement stiffness"
+      ],
+      "free_form_description": "I had typhoid last summer. Currently I only have mild knee stiffness in the morning.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "historical_symptoms",
+        "expected_intent": "CLARIFY",
+        "pattern_hash": "3f179792b9410205"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 2,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0029_7c19e3",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Family medical history only",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "My father had a fatal heart attack at age 50 and my mother has severe diabetes. I am fine.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "family_history",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "7c19e3434656c9a5"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0030_824928",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Family medical history only",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "Both my grandparents suffered from hypertension and arthritis.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "family_history",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "824928c3fb699561"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0031_cfc209",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Hypothetical scenario / educational question",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "chest pain",
+        "high fever"
+      ],
+      "free_form_description": "If someone hypothetically develops sudden chest pain and high fever, what disease could it be?",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "hypothetical",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "cfc2092a7a04db3c"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 2,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0032_0f7975",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Hypothetical scenario",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "yellowish skin",
+        "dark urine"
+      ],
+      "free_form_description": "Suppose a person experiences yellow skin and dark urine after eating seafood, what should they do?",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "hypothetical",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "0f79750d720e1042"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 2,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0033_3d5e4f",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Medical question / inquiry",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "headache",
+        "nausea"
+      ],
+      "free_form_description": "What are the common causes of headache and nausea in young adults?",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "questions_inquiries",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "3d5e4f7dbaf2a711"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 2,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0034_9096c2",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Medication query",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "headache",
+        "high fever"
+      ],
+      "free_form_description": "Can I take paracetamol if I have a mild headache and fever?",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "questions_inquiries",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "9096c2c1d78c09b7"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 2,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0035_833d60",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "General knowledge query",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "What is the recommended daily intake of water to prevent kidney stones?",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "questions_inquiries",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "833d607ac9a68f0d"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0036_bb1d18",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Veterinary inquiry",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "vomiting"
+      ],
+      "free_form_description": "My dog has been shivering, vomiting, and refusing to eat food since morning.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "third_party",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "bb1d184214991b3b"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.2,
+        "symptom_count": 1,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0037_4c319a",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Third party acute emergency (Spouse)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "My husband suddenly collapsed with slurred speech, facial drooping, and weakness on his left side.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "third_party",
+        "expected_intent": "URGENT_ESCALATION",
+        "pattern_hash": "4c319a9602097fec"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0038_bd7a26",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Dental condition (Toothache / Abscess)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "Severe throbbing toothache in lower left molar with swollen gums and jaw tenderness.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "unsupported_symptoms",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "bd7a262ffa8bab7d"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0039_c61db2",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "ENT / Tinnitus",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "Constant high pitched ringing in both ears for 3 weeks with no other symptoms.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "unsupported_symptoms",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "c61db2ae7e8c0438"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": true,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0040_230b46",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Dermatology / Alopecia",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "Sudden round circular bald patches on my scalp with hair shedding.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "unsupported_symptoms",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "230b4664938d68b7"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0041_614f86",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "GI / Hiccups",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "Continuous hiccups for 48 hours that do not stop with drinking water.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "unsupported_symptoms",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "614f864b9f7fd66a"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": true,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0042_ac4c2a",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "COVID-19 (OOD)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "cough",
+        "throat irritation",
+        "mild fever",
+        "high fever"
+      ],
+      "free_form_description": "Complete sudden loss of sense of smell and taste, dry cough, sore throat, and low grade fever.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "out_of_scope_disease",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "ac4c2a42029ce9df"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.8,
+        "symptom_count": 4,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0043_203c72",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Acute Appendicitis (OOD in ML dataset)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "high fever",
+        "nausea"
+      ],
+      "free_form_description": "Excruciating pain starting around navel and shifting to right lower abdomen, severe tenderness on touching, low fever and nausea.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "out_of_scope_disease",
+        "expected_intent": "URGENT_ESCALATION",
+        "pattern_hash": "203c725634e166f1"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 2,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0044_80c673",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Parkinson's Disease (OOD)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "Resting pill-rolling hand tremor, muscle rigidity, slow shuffling steps, and difficulty getting out of chair.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "out_of_scope_disease",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "80c6737a34eaaa6f"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0045_cab661",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Alzheimer's Disease (OOD)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "Progressive memory loss over 1 year, getting lost in familiar neighborhood, forgetting names of immediate family members.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "out_of_scope_disease",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "cab661559e658856"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0046_4cdb59",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Major Depressive Disorder (OOD)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "depression"
+      ],
+      "free_form_description": "Persistent severe sadness, loss of interest in everything, feelings of worthlessness, insomnia and suicidal thoughts for 3 months.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "out_of_scope_disease",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "4cdb5948f1bb3501"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.2,
+        "symptom_count": 1,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0047_cb9934",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Early Pregnancy (OOD)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "nausea"
+      ],
+      "free_form_description": "Missed menstrual cycle by 3 weeks, morning nausea, breast tenderness, and positive home urine pregnancy test.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "out_of_scope_disease",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "cb993412096720a3"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.2,
+        "symptom_count": 1,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0048_1f00c8",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Acute Bone Fracture (OOD)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "Fell off ladder, heard loud snap in left shin, immediate severe swelling, bone deformity, unable to put any weight.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "out_of_scope_disease",
+        "expected_intent": "URGENT_ESCALATION",
+        "pattern_hash": "1f00c870c35a1199"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0049_19701b",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Acute Concussion / Head Trauma (OOD)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "altered sensorium",
+        "vomiting"
+      ],
+      "free_form_description": "Direct impact to head during soccer game, brief loss of consciousness, confusion, vomiting, and sensitivity to noise.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "out_of_scope_disease",
+        "expected_intent": "URGENT_ESCALATION",
+        "pattern_hash": "19701b073e70940a"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 2,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0050_90a55e",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Acute Pancreatitis (OOD)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "abdominal pain",
+        "vomiting"
+      ],
+      "free_form_description": "Sudden severe epigastric abdominal pain radiating straight through to back, relieved slightly by leaning forward, persistent vomiting.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "out_of_scope_disease",
+        "expected_intent": "URGENT_ESCALATION",
+        "pattern_hash": "90a55edc2e1b1aa0"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.4,
+        "symptom_count": 2,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0051_ea4837",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Non-medical text (Physics)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "Quantum gravitational anomalies in supersymmetric spacetime manifolds.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "nonsense_non_medical",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "ea483703a07205e9"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0052_ea0431",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Non-medical text (Food review)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "I ate a really delicious thin-crust cheese pizza with spicy oregano.",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "nonsense_non_medical",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "ea04315ab3061c7c"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0053_9b2d5b",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Empty input",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [],
+      "free_form_description": "nan",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "nonsense_non_medical",
+        "expected_intent": "ABSTAIN",
+        "pattern_hash": "9b2d5b4678781e53"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.0,
+        "symptom_count": 0,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0054_cfa9ac",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Single isolated symptom (Headache)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "headache"
+      ],
+      "free_form_description": "headache",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "single_vague_symptom",
+        "expected_intent": "CLARIFY",
+        "pattern_hash": "cfa9ac1e084975b5"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.2,
+        "symptom_count": 1,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0055_1e44a1",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Single isolated symptom (Fever)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "high fever"
+      ],
+      "free_form_description": "fever",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "single_vague_symptom",
+        "expected_intent": "CLARIFY",
+        "pattern_hash": "1e44a1c45388c81c"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.2,
+        "symptom_count": 1,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0056_1bce3b",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Single isolated symptom (Chest pain)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "chest pain"
+      ],
+      "free_form_description": "chest pain",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "single_vague_symptom",
+        "expected_intent": "CLARIFY",
+        "pattern_hash": "1bce3b700f26488e"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.2,
+        "symptom_count": 1,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0057_4064e6",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Single isolated symptom (Fatigue)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "fatigue"
+      ],
+      "free_form_description": "fatigue",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "single_vague_symptom",
+        "expected_intent": "CLARIFY",
+        "pattern_hash": "4064e6a9a434b058"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.2,
+        "symptom_count": 1,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0058_5d6261",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Single isolated symptom (Joint pain)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "joint pain"
+      ],
+      "free_form_description": "joint pain",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "single_vague_symptom",
+        "expected_intent": "CLARIFY",
+        "pattern_hash": "5d6261cb0f86901d"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.2,
+        "symptom_count": 1,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0059_35be0f",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Single isolated symptom (Dizziness)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "dizziness"
+      ],
+      "free_form_description": "dizziness",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "single_vague_symptom",
+        "expected_intent": "CLARIFY",
+        "pattern_hash": "35be0fa611e43c36"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.2,
+        "symptom_count": 1,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    },
+    {
+      "case_id": "CASE_NARRATIVE_0060_d741a1",
+      "split": "BENCHMARK_CLINICAL",
+      "disease": "Single isolated symptom (Back pain)",
+      "original_raw_symptoms": [],
+      "canonical_symptoms": [
+        "back pain"
+      ],
+      "free_form_description": "back pain",
+      "duration": "UNKNOWN",
+      "severity": "UNKNOWN",
+      "location": "UNKNOWN",
+      "trigger": "UNKNOWN",
+      "temporal_pattern": "UNKNOWN",
+      "frequency": "UNKNOWN",
+      "associated_symptoms": [],
+      "explicit_negative_symptoms": [],
+      "provenance": {
+        "source_file": "evaluation/baseline_predictions.csv",
+        "benchmark_category": "single_vague_symptom",
+        "expected_intent": "CLARIFY",
+        "pattern_hash": "d741a108a44216c2"
+      },
+      "evidence_quality": {
+        "completeness_score": 0.2,
+        "symptom_count": 1,
+        "record_type": "NATURAL_LANGUAGE_CLINICAL_NARRATIVE",
+        "has_explicit_negations": false,
+        "has_temporal_modifiers": false,
+        "is_synthetic_duplicate_derived": false
+      }
+    }
+  ]
+}

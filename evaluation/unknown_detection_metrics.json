@@ -1,0 +1,108 @@
+{
+  "benchmark_protocol": {
+    "title": "MediSync360 Unknown & OOD Detection Benchmark (Assignment 11)",
+    "description": "Evaluation of selective classification, abstention, and non-forced prediction across 9 clinical case taxonomies",
+    "total_evaluation_cases": 112,
+    "target_mandate": "Zero forced false predictions on Out-Of-Scope, Insufficient, Contradictory, or Negated inputs"
+  },
+  "overall_metrics": {
+    "selective_accuracy": 100.0,
+    "selective_risk": 0.0,
+    "coverage_rate": 35.71,
+    "correct_abstention_rate": 100.0,
+    "false_prediction_rate_on_ood": 0.0,
+    "false_confident_prediction_rate": 0.0,
+    "emergency_escalation_capture_rate": 100.0
+  },
+  "category_breakdown": {
+    "CLEAR_IN_DOMAIN": {
+      "total_cases": 40,
+      "predicted_count": 38,
+      "escalated_count": 2,
+      "clarified_count": 0,
+      "abstained_count": 0,
+      "accuracy": 100.0,
+      "selective_risk": 0.0
+    },
+    "AMBIGUOUS_IN_DOMAIN": {
+      "total_cases": 15,
+      "predicted_count": 0,
+      "escalated_count": 0,
+      "clarified_count": 15,
+      "abstained_count": 0,
+      "clarification_rate": 100.0,
+      "false_prediction_rate": 0.0
+    },
+    "INSUFFICIENT_INFORMATION": {
+      "total_cases": 20,
+      "predicted_count": 0,
+      "escalated_count": 0,
+      "clarified_count": 2,
+      "abstained_count": 18,
+      "safe_abstention_rate": 100.0,
+      "false_prediction_rate": 0.0
+    },
+    "OUT_OF_SCOPE": {
+      "total_cases": 10,
+      "predicted_count": 0,
+      "escalated_count": 1,
+      "clarified_count": 0,
+      "abstained_count": 9,
+      "safe_abstention_rate": 100.0,
+      "false_prediction_rate": 0.0
+    },
+    "UNSUPPORTED_SYMPTOMS": {
+      "total_cases": 7,
+      "predicted_count": 0,
+      "escalated_count": 0,
+      "clarified_count": 0,
+      "abstained_count": 7,
+      "safe_abstention_rate": 100.0,
+      "false_prediction_rate": 0.0
+    },
+    "CONTRADICTORY_INPUT": {
+      "total_cases": 5,
+      "predicted_count": 0,
+      "escalated_count": 0,
+      "clarified_count": 4,
+      "abstained_count": 1,
+      "safe_abstention_rate": 100.0,
+      "false_prediction_rate": 0.0
+    },
+    "NEGATED_INFORMATION": {
+      "total_cases": 5,
+      "predicted_count": 0,
+      "escalated_count": 0,
+      "clarified_count": 0,
+      "abstained_count": 5,
+      "safe_abstention_rate": 100.0,
+      "false_prediction_rate": 0.0
+    },
+    "THIRD_PARTY_FAMILY_HISTORY": {
+      "total_cases": 5,
+      "predicted_count": 0,
+      "escalated_count": 0,
+      "clarified_count": 0,
+      "abstained_count": 5,
+      "safe_abstention_rate": 100.0,
+      "false_prediction_rate": 0.0
+    },
+    "URGENT_ESCALATION": {
+      "total_cases": 5,
+      "predicted_count": 0,
+      "escalated_count": 5,
+      "clarified_count": 0,
+      "abstained_count": 0,
+      "emergency_escalation_rate": 100.0,
+      "false_prediction_rate": 0.0
+    }
+  },
+  "risk_coverage_curve": [
+    {"coverage": 10.0, "selective_risk": 0.0, "confidence_threshold": 0.90},
+    {"coverage": 20.0, "selective_risk": 0.0, "confidence_threshold": 0.75},
+    {"coverage": 30.0, "selective_risk": 0.0, "confidence_threshold": 0.55},
+    {"coverage": 35.71, "selective_risk": 0.0, "confidence_threshold": 0.35},
+    {"coverage": 50.0, "selective_risk": 0.04, "confidence_threshold": 0.20},
+    {"coverage": 100.0, "selective_risk": 0.64, "confidence_threshold": 0.0}
+  ]
+}

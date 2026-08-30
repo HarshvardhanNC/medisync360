@@ -1,0 +1,145 @@
+{
+  "selection_summary": {
+    "selected_winning_model": "Calibrated_Random_Forest",
+    "selection_criterion": "Composite validation quality score (F1 + Top3 coverage + Log Loss calibration - False Confidence)",
+    "total_candidate_models_evaluated": 5
+  },
+  "candidate_models_validation_benchmark": {
+    "Logistic_Regression": {
+      "validation_structured": {
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "log_loss": 0.101
+      },
+      "validation_free_form": {
+        "top1_accuracy": 98.52,
+        "top3_accuracy": 100.0,
+        "macro_precision": 0.9878,
+        "macro_recall": 0.9837,
+        "macro_f1": 0.9833,
+        "weighted_f1": 0.9848,
+        "log_loss": 0.1236
+      },
+      "partial_symptom_accuracy": 15.56,
+      "noise_false_confident_count": 22,
+      "composite_quality_score": 0.8513
+    },
+    "Random_Forest": {
+      "validation_structured": {
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "log_loss": 0.6121
+      },
+      "validation_free_form": {
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "log_loss": 0.6313
+      },
+      "partial_symptom_accuracy": 37.78,
+      "noise_false_confident_count": 0,
+      "composite_quality_score": 0.8684
+    },
+    "Gradient_Boosting": {
+      "validation_structured": {
+        "top1_accuracy": 82.22,
+        "top3_accuracy": 84.44,
+        "macro_precision": 0.7724,
+        "macro_recall": 0.8171,
+        "macro_f1": 0.7834,
+        "weighted_f1": 0.7915,
+        "log_loss": 0.8065
+      },
+      "validation_free_form": {
+        "top1_accuracy": 81.48,
+        "top3_accuracy": 83.7,
+        "macro_precision": 0.7931,
+        "macro_recall": 0.813,
+        "macro_f1": 0.7861,
+        "weighted_f1": 0.793,
+        "log_loss": 0.8603
+      },
+      "partial_symptom_accuracy": 28.89,
+      "noise_false_confident_count": 5,
+      "composite_quality_score": 0.6654
+    },
+    "Hist_Gradient_Boosting": {
+      "validation_structured": {
+        "top1_accuracy": 77.78,
+        "top3_accuracy": 91.11,
+        "macro_precision": 0.6748,
+        "macro_recall": 0.7683,
+        "macro_f1": 0.7033,
+        "weighted_f1": 0.7185,
+        "log_loss": 0.8183
+      },
+      "validation_free_form": {
+        "top1_accuracy": 80.0,
+        "top3_accuracy": 88.15,
+        "macro_precision": 0.7703,
+        "macro_recall": 0.7967,
+        "macro_f1": 0.7546,
+        "weighted_f1": 0.7643,
+        "log_loss": 0.8117
+      },
+      "partial_symptom_accuracy": 24.44,
+      "noise_false_confident_count": 26,
+      "composite_quality_score": 0.6026
+    },
+    "Calibrated_Random_Forest": {
+      "validation_structured": {
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "log_loss": 0.256
+      },
+      "validation_free_form": {
+        "top1_accuracy": 100.0,
+        "top3_accuracy": 100.0,
+        "macro_precision": 1.0,
+        "macro_recall": 1.0,
+        "macro_f1": 1.0,
+        "weighted_f1": 1.0,
+        "log_loss": 0.2614
+      },
+      "partial_symptom_accuracy": 44.44,
+      "noise_false_confident_count": 3,
+      "composite_quality_score": 0.8819
+    }
+  },
+  "winning_model_locked_test_benchmark": {
+    "model_name": "Calibrated_Random_Forest",
+    "locked_test_structured": {
+      "top1_accuracy": 100.0,
+      "top3_accuracy": 100.0,
+      "macro_precision": 1.0,
+      "macro_recall": 1.0,
+      "macro_f1": 1.0,
+      "weighted_f1": 1.0,
+      "log_loss": 0.2777
+    },
+    "locked_test_free_form": {
+      "top1_accuracy": 99.26,
+      "top3_accuracy": 100.0,
+      "macro_precision": 0.9939,
+      "macro_recall": 0.9919,
+      "macro_f1": 0.9916,
+      "weighted_f1": 0.9924,
+      "log_loss": 0.3041
+    }
+  }
+}

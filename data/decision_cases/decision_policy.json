@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "decision_actions": [
+    "PREDICT",
+    "CLARIFY",
+    "ABSTAIN",
+    "URGENT_ESCALATION"
+  ],
+  "action_rules": {
+    "PREDICT": {
+      "min_extracted_symptoms": 2,
+      "min_evidence_quality": "HIGH",
+      "top1_top2_gap_threshold": 0.25,
+      "condition": "Strong discriminatory evidence for a single supported disease"
+    },
+    "CLARIFY": {
+      "min_extracted_symptoms": 1,
+      "max_plausible_conditions": 4,
+      "condition": "Multiple in-domain diseases plausible, or contradictory information needing resolution"
+    },
+    "ABSTAIN": {
+      "condition": "Zero valid symptoms, purely out-of-scope conditions, unsupported symptoms, or third-party attribution"
+    },
+    "URGENT_ESCALATION": {
+      "condition": "Red-flag cardiac, stroke, coma, severe respiratory failure, or massive hemorrhage cues detected"
+    }
+  }
+}

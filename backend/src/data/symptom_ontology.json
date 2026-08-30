@@ -1,0 +1,3664 @@
+{
+  "version": "1.0.0",
+  "total_canonical_symptoms": 131,
+  "total_supported_diseases": 41,
+  "description": "MediSync360 Canonical Symptom Ontology & Normalization Standard",
+  "categories": [
+    "Behavioral / History",
+    "Cardiovascular",
+    "Cardiovascular / Renal",
+    "Cardiovascular / Thoracic",
+    "Circulatory",
+    "Colorectal",
+    "Dermatological",
+    "Dermatological / Systemic",
+    "ENT",
+    "ENT / Neurological",
+    "Endocrine",
+    "Endocrine / Metabolic",
+    "Endocrine / Metabolic / Systemic",
+    "Endocrine / Renal",
+    "Gastrointestinal",
+    "Gastrointestinal / Hepatic",
+    "Genetic / History",
+    "Hematological",
+    "Hepatic",
+    "Immunological",
+    "Medical History",
+    "Metabolic",
+    "Musculoskeletal",
+    "Musculoskeletal / Neurological",
+    "Neurological",
+    "Neurological / ENT",
+    "Neurological / Musculoskeletal",
+    "Neurological / Psychiatric",
+    "Ophthalmological",
+    "Ophthalmological / Neurological",
+    "Oral",
+    "Psychiatric",
+    "Psychiatric / Neurological",
+    "Reproductive",
+    "Respiratory",
+    "Respiratory / ENT",
+    "Systemic",
+    "Systemic / Dehydration",
+    "Systemic / Infectious",
+    "Systemic / Renal",
+    "Urological",
+    "Urological / Hepatic",
+    "Vascular"
+  ],
+  "symptoms": [
+    {
+      "id": "SYM_001",
+      "canonical_name": "abdominal pain",
+      "display_name": "Abdominal Pain",
+      "category": "Gastrointestinal",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "abdominal_pain"
+      ],
+      "aliases": [
+        "abdominal pain",
+        "belly pain",
+        "cramp in stomach",
+        "gastric pain",
+        "gut pain",
+        "stomach cramps",
+        "stomach pain",
+        "tummy ache"
+      ],
+      "spelling_variants": [
+        "abdomial pain",
+        "abdonimal pain",
+        "stomch pain"
+      ],
+      "associated_diseases": [
+        "Alcoholic hepatitis",
+        "Chronic cholestasis",
+        "Hepatitis B",
+        "Hepatitis D",
+        "Hepatitis E",
+        "Jaundice",
+        "Peptic ulcer diseae",
+        "Typhoid",
+        "hepatitis A"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Pain in the stomach or abdominal cavity."
+    },
+    {
+      "id": "SYM_002",
+      "canonical_name": "abnormal menstruation",
+      "display_name": "Abnormal Menstruation",
+      "category": "Reproductive",
+      "severity_weight": 6,
+      "original_dataset_terms": [
+        "abnormal_menstruation"
+      ],
+      "aliases": [
+        "abnormal menstruation",
+        "heavy bleeding",
+        "irregular menstrual cycle",
+        "irregular periods",
+        "menstrual irregularity",
+        "missed period"
+      ],
+      "spelling_variants": [
+        "abnormal menstration",
+        "abnormal mensturation"
+      ],
+      "associated_diseases": [
+        "Hyperthyroidism",
+        "Hypothyroidism"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Irregularity or disruption of normal menstrual flow/cycle."
+    },
+    {
+      "id": "SYM_003",
+      "canonical_name": "acidity",
+      "display_name": "Acidity / Heartburn",
+      "category": "Gastrointestinal",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "acidity"
+      ],
+      "aliases": [
+        "acid reflux",
+        "acid stomach",
+        "acidity",
+        "burning in chest",
+        "burning stomach",
+        "gastric reflux",
+        "heartburn",
+        "indigestion burning",
+        "sour stomach",
+        "tummy on fire",
+        "tummy is on fire",
+        "belly on fire",
+        "belly is on fire"
+      ],
+      "spelling_variants": [
+        "aciditi",
+        "acidty"
+      ],
+      "associated_diseases": [
+        "GERD",
+        "Migraine"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Gastroesophageal reflux / acid sensation."
+    },
+    {
+      "id": "SYM_004",
+      "canonical_name": "acute liver failure",
+      "display_name": "Acute Liver Failure",
+      "category": "Hepatic",
+      "severity_weight": 6,
+      "original_dataset_terms": [
+        "acute_liver_failure"
+      ],
+      "aliases": [
+        "acute liver failure",
+        "hepatic failure",
+        "liver decompensation",
+        "sudden liver failure"
+      ],
+      "spelling_variants": [
+        "acute liver faillure"
+      ],
+      "associated_diseases": [
+        "Hepatitis E"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Rapid deterioration of liver function (critical condition)."
+    },
+    {
+      "id": "SYM_005",
+      "canonical_name": "altered sensorium",
+      "display_name": "Altered Mental Status",
+      "category": "Neurological",
+      "severity_weight": 2,
+      "original_dataset_terms": [
+        "altered_sensorium"
+      ],
+      "aliases": [
+        "altered consciousness",
+        "altered sensorium",
+        "confusion",
+        "dazed",
+        "disorientation",
+        "foggy brain",
+        "mental confusion",
+        "unresponsive"
+      ],
+      "spelling_variants": [
+        "altered sensoria",
+        "altered sensoriun"
+      ],
+      "associated_diseases": [
+        "Paralysis (brain hemorrhage)"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Change in cognitive status, alertness, or awareness."
+    },
+    {
+      "id": "SYM_006",
+      "canonical_name": "anxiety",
+      "display_name": "Anxiety",
+      "category": "Psychiatric",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "anxiety"
+      ],
+      "aliases": [
+        "anxiety",
+        "excessive worry",
+        "feeling anxious",
+        "feeling on edge",
+        "nervousness",
+        "panic",
+        "panic attacks"
+      ],
+      "spelling_variants": [
+        "anxiete",
+        "anxity"
+      ],
+      "associated_diseases": [
+        "Hypoglycemia"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Excessive worry, nervousness, or unease."
+    },
+    {
+      "id": "SYM_007",
+      "canonical_name": "back pain",
+      "display_name": "Back Pain",
+      "category": "Musculoskeletal",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "back_pain"
+      ],
+      "aliases": [
+        "aching back",
+        "back pain",
+        "backache",
+        "lower back pain",
+        "lumbar pain",
+        "spine pain",
+        "upper back pain"
+      ],
+      "spelling_variants": [
+        "back ach",
+        "backpain",
+        "bak pain"
+      ],
+      "associated_diseases": [
+        "Cervical spondylosis",
+        "Dengue"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Pain or discomfort in spinal or lumbar region."
+    },
+    {
+      "id": "SYM_008",
+      "canonical_name": "belly pain",
+      "display_name": "Belly Pain",
+      "category": "Gastrointestinal",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "belly_pain"
+      ],
+      "aliases": [
+        "belly pain",
+        "gut ache",
+        "lower abdominal pain",
+        "stomach pain",
+        "tummy pain"
+      ],
+      "spelling_variants": [
+        "beli pain",
+        "belly ache"
+      ],
+      "associated_diseases": [
+        "Typhoid"
+      ],
+      "flagged_for_review": true,
+      "clinical_notes": "Colloquial term for abdominal discomfort in Typhoid dataset records."
+    },
+    {
+      "id": "SYM_009",
+      "canonical_name": "blackheads",
+      "display_name": "Blackheads",
+      "category": "Dermatological",
+      "severity_weight": 2,
+      "original_dataset_terms": [
+        "blackheads"
+      ],
+      "aliases": [
+        "black head bumps",
+        "blackheads",
+        "blocked pores",
+        "facial pores clogged",
+        "open comedones"
+      ],
+      "spelling_variants": [
+        "black heads",
+        "blakheads"
+      ],
+      "associated_diseases": [
+        "Acne"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Small dark lesions caused by clogged hair follicles."
+    },
+    {
+      "id": "SYM_010",
+      "canonical_name": "bladder discomfort",
+      "display_name": "Bladder Discomfort",
+      "category": "Urological",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "bladder_discomfort"
+      ],
+      "aliases": [
+        "bladder ache",
+        "bladder discomfort",
+        "bladder pressure",
+        "full bladder pain",
+        "pelvic pressure",
+        "urinary discomfort"
+      ],
+      "spelling_variants": [
+        "blader discomfort"
+      ],
+      "associated_diseases": [
+        "Urinary tract infection"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Pressure, fullness, or discomfort in the urinary bladder area."
+    },
+    {
+      "id": "SYM_011",
+      "canonical_name": "blister",
+      "display_name": "Blister",
+      "category": "Dermatological",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "blister"
+      ],
+      "aliases": [
+        "blister",
+        "bulla",
+        "fluid filled bumps",
+        "skin blisters",
+        "vesicles",
+        "water blisters"
+      ],
+      "spelling_variants": [
+        "blisters",
+        "blstr"
+      ],
+      "associated_diseases": [
+        "Impetigo"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Small fluid-filled bubbles on the skin."
+    },
+    {
+      "id": "SYM_012",
+      "canonical_name": "blood in sputum",
+      "display_name": "Blood in Sputum (Hemoptysis)",
+      "category": "Respiratory",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "blood_in_sputum"
+      ],
+      "aliases": [
+        "blood in cough",
+        "blood in sputum",
+        "bloody phlegm",
+        "coughing blood",
+        "hemoptysis",
+        "red blood in mucus"
+      ],
+      "spelling_variants": [
+        "blood in sputm",
+        "bloody sputum"
+      ],
+      "associated_diseases": [
+        "Tuberculosis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Coughing up blood or blood-stained mucus."
+    },
+    {
+      "id": "SYM_013",
+      "canonical_name": "bloody stool",
+      "display_name": "Bloody Stool (Hematochezia / Melena)",
+      "category": "Gastrointestinal",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "bloody_stool"
+      ],
+      "aliases": [
+        "blood in poop",
+        "blood in stool",
+        "bloody stool",
+        "dark bloody stool",
+        "hematochezia",
+        "rectal bleeding"
+      ],
+      "spelling_variants": [
+        "blod in stool",
+        "bloody stools"
+      ],
+      "associated_diseases": [
+        "Dimorphic hemmorhoids(piles)"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Presence of blood in feces."
+    },
+    {
+      "id": "SYM_014",
+      "canonical_name": "blurred and distorted vision",
+      "display_name": "Blurred and Distorted Vision",
+      "category": "Ophthalmological",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "blurred_and_distorted_vision"
+      ],
+      "aliases": [
+        "blurred and distorted vision",
+        "blurred vision",
+        "blurry eyes",
+        "distorted sight",
+        "double vision",
+        "fuzzy vision",
+        "loss of vision clarity",
+        "visual blurring",
+        "visual blur",
+        "blurred eyesight"
+      ],
+      "spelling_variants": [
+        "blured and distorted vision",
+        "blured vision",
+        "blurry vision",
+        "visual bluring"
+      ],
+      "associated_diseases": [
+        "Diabetes",
+        "Hypoglycemia",
+        "Migraine"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Loss of sharpness of eyesight or visual distortion."
+    },
+    {
+      "id": "SYM_015",
+      "canonical_name": "breathlessness",
+      "display_name": "Shortness of Breath (Dyspnea)",
+      "category": "Respiratory",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "breathlessness"
+      ],
+      "aliases": [
+        "breathlessness",
+        "difficulty breathing",
+        "dyspnea",
+        "gasping for air",
+        "out of breath",
+        "shortness of breath",
+        "trouble breathing",
+        "winded"
+      ],
+      "spelling_variants": [
+        "breathlesness",
+        "bredlesness",
+        "short of breath"
+      ],
+      "associated_diseases": [
+        "Bronchial Asthma",
+        "Heart attack",
+        "Pneumonia",
+        "Tuberculosis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Subjective feeling of difficult or uncomfortable breathing."
+    },
+    {
+      "id": "SYM_016",
+      "canonical_name": "brittle nails",
+      "display_name": "Brittle Nails",
+      "category": "Dermatological",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "brittle_nails"
+      ],
+      "aliases": [
+        "brittle nails",
+        "cracking nails",
+        "easily broken nails",
+        "fragile nails",
+        "onychorrhexis",
+        "peeling nails"
+      ],
+      "spelling_variants": [
+        "britle nails"
+      ],
+      "associated_diseases": [
+        "Hypothyroidism"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Nails that split, peel, or break easily."
+    },
+    {
+      "id": "SYM_017",
+      "canonical_name": "bruising",
+      "display_name": "Bruising (Ecchymosis)",
+      "category": "Hematological",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "bruising"
+      ],
+      "aliases": [
+        "black and blue marks",
+        "bruising",
+        "contusion",
+        "easy bruising",
+        "hematoma",
+        "skin discoloration from injury"
+      ],
+      "spelling_variants": [
+        "bruizing",
+        "brusing"
+      ],
+      "associated_diseases": [
+        "Varicose veins"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Bleeding under the skin forming purple/blue discoloration."
+    },
+    {
+      "id": "SYM_018",
+      "canonical_name": "burning micturition",
+      "display_name": "Burning Urination (Dysuria)",
+      "category": "Urological",
+      "severity_weight": 6,
+      "original_dataset_terms": [
+        "burning_micturition"
+      ],
+      "aliases": [
+        "burn while passing urine",
+        "burning micturition",
+        "burning urine",
+        "burning when peeing",
+        "dysuria",
+        "painful urination",
+        "stinging when urinating"
+      ],
+      "spelling_variants": [
+        "burning micturation",
+        "burnng micturition"
+      ],
+      "associated_diseases": [
+        "Drug Reaction",
+        "Urinary tract infection"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Burning sensation or pain when passing urine."
+    },
+    {
+      "id": "SYM_019",
+      "canonical_name": "chest pain",
+      "display_name": "Chest Pain",
+      "category": "Cardiovascular / Thoracic",
+      "severity_weight": 7,
+      "original_dataset_terms": [
+        "chest_pain"
+      ],
+      "aliases": [
+        "chest discomfort",
+        "chest pain",
+        "chest pressure",
+        "chest tightness",
+        "crushing chest pain",
+        "heart pain",
+        "pain in heart",
+        "substernal pain"
+      ],
+      "spelling_variants": [
+        "cheest pain",
+        "chest ache",
+        "chest paine"
+      ],
+      "associated_diseases": [
+        "Common Cold",
+        "GERD",
+        "Heart attack",
+        "Hypertension",
+        "Pneumonia",
+        "Tuberculosis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Pain or pressure anywhere along the chest wall or thoracic cavity."
+    },
+    {
+      "id": "SYM_020",
+      "canonical_name": "chills",
+      "display_name": "Chills & Shivering",
+      "category": "Systemic",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "chills"
+      ],
+      "aliases": [
+        "body shakes with cold",
+        "chills",
+        "cold shivering",
+        "feeling cold",
+        "rigors",
+        "shivering",
+        "teeth chattering",
+        "teeth literally chattering",
+        "violent shivering"
+      ],
+      "spelling_variants": [
+        "chill",
+        "chils"
+      ],
+      "associated_diseases": [
+        "Allergy",
+        "Common Cold",
+        "Dengue",
+        "Malaria",
+        "Pneumonia",
+        "Tuberculosis",
+        "Typhoid"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Feeling of coldness accompanied by shivering."
+    },
+    {
+      "id": "SYM_021",
+      "canonical_name": "cold hands and feets",
+      "display_name": "Cold Hands and Feet",
+      "category": "Circulatory",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "cold_hands_and_feets"
+      ],
+      "aliases": [
+        "cold extremities",
+        "cold feet",
+        "cold hands",
+        "cold hands and feet",
+        "cold hands and feets",
+        "freezing fingers"
+      ],
+      "spelling_variants": [
+        "cold hands and feet",
+        "cold hands and feets"
+      ],
+      "associated_diseases": [
+        "Hypothyroidism"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Reduced peripheral circulation causing chilly extremities."
+    },
+    {
+      "id": "SYM_022",
+      "canonical_name": "coma",
+      "display_name": "Coma",
+      "category": "Neurological",
+      "severity_weight": 7,
+      "original_dataset_terms": [
+        "coma"
+      ],
+      "aliases": [
+        "coma",
+        "deep coma",
+        "non-responsive",
+        "prolonged unconsciousness",
+        "unconscious state"
+      ],
+      "spelling_variants": [
+        "comatose"
+      ],
+      "associated_diseases": [
+        "Hepatitis E"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "State of deep unconsciousness (critical emergency)."
+    },
+    {
+      "id": "SYM_023",
+      "canonical_name": "congestion",
+      "display_name": "Nasal / Chest Congestion",
+      "category": "Respiratory",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "congestion"
+      ],
+      "aliases": [
+        "blocked nose",
+        "chest stuffiness",
+        "congestion",
+        "nasal blockage",
+        "sinus block",
+        "stuffy nose"
+      ],
+      "spelling_variants": [
+        "congested",
+        "conjestion"
+      ],
+      "associated_diseases": [
+        "Common Cold"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Blockage in nasal passages or respiratory tract."
+    },
+    {
+      "id": "SYM_024",
+      "canonical_name": "constipation",
+      "display_name": "Constipation",
+      "category": "Gastrointestinal",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "constipation"
+      ],
+      "aliases": [
+        "cannot poop",
+        "constipation",
+        "difficulty passing stool",
+        "hard stool",
+        "infrequent stools",
+        "irregular bowel movements"
+      ],
+      "spelling_variants": [
+        "constipasion",
+        "constipated"
+      ],
+      "associated_diseases": [
+        "Dimorphic hemmorhoids(piles)",
+        "Typhoid"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Infrequent or hard, difficult bowel movements."
+    },
+    {
+      "id": "SYM_025",
+      "canonical_name": "continuous feel of urine",
+      "display_name": "Urinary Urgency",
+      "category": "Urological",
+      "severity_weight": 6,
+      "original_dataset_terms": [
+        "continuous_feel_of_urine"
+      ],
+      "aliases": [
+        "always feel like peeing",
+        "constant urge to pee",
+        "continuous feel of urine",
+        "continuous need to urinate",
+        "frequent urge to urinate",
+        "urinary urgency"
+      ],
+      "spelling_variants": [
+        "continuous feeling of urine"
+      ],
+      "associated_diseases": [
+        "Urinary tract infection"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Persistent sensation of needing to void bladder."
+    },
+    {
+      "id": "SYM_026",
+      "canonical_name": "continuous sneezing",
+      "display_name": "Continuous Sneezing",
+      "category": "Respiratory",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "continuous_sneezing"
+      ],
+      "aliases": [
+        "constant sneezing",
+        "continuous sneezing",
+        "frequent sneezing",
+        "repetitive sneezing",
+        "sneezing attack",
+        "sneezing fits"
+      ],
+      "spelling_variants": [
+        "continous sneezing",
+        "sneezing"
+      ],
+      "associated_diseases": [
+        "Allergy",
+        "Common Cold"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Repetitive involuntary expulsions of air from nose."
+    },
+    {
+      "id": "SYM_027",
+      "canonical_name": "cough",
+      "display_name": "Cough",
+      "category": "Respiratory",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "cough"
+      ],
+      "aliases": [
+        "chest cough",
+        "cough",
+        "coughing",
+        "dry cough",
+        "hacking cough",
+        "persistent cough",
+        "wet cough"
+      ],
+      "spelling_variants": [
+        "cogh",
+        "couhg"
+      ],
+      "associated_diseases": [
+        "Bronchial Asthma",
+        "Common Cold",
+        "GERD",
+        "Pneumonia",
+        "Tuberculosis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Sudden forceful reflex expulsion of air from lungs."
+    },
+    {
+      "id": "SYM_028",
+      "canonical_name": "cramps",
+      "display_name": "Muscle Cramps",
+      "category": "Musculoskeletal",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "cramps"
+      ],
+      "aliases": [
+        "body cramps",
+        "charley horse",
+        "cramps",
+        "leg cramps",
+        "muscle spasms",
+        "spasms"
+      ],
+      "spelling_variants": [
+        "cramp",
+        "cramping"
+      ],
+      "associated_diseases": [
+        "Varicose veins"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Painful involuntary muscle contractions."
+    },
+    {
+      "id": "SYM_029",
+      "canonical_name": "dark urine",
+      "display_name": "Dark Urine",
+      "category": "Urological / Hepatic",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "dark_urine"
+      ],
+      "aliases": [
+        "brown urine",
+        "cola colored urine",
+        "dark urine",
+        "dark yellow urine",
+        "deep amber urine",
+        "tea colored urine"
+      ],
+      "spelling_variants": [
+        "dark colored urine"
+      ],
+      "associated_diseases": [
+        "Hepatitis B",
+        "Hepatitis D",
+        "Hepatitis E",
+        "Jaundice",
+        "hepatitis A"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Abnormally dark brownish or tea-colored urine."
+    },
+    {
+      "id": "SYM_030",
+      "canonical_name": "dehydration",
+      "display_name": "Dehydration",
+      "category": "Systemic",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "dehydration"
+      ],
+      "aliases": [
+        "dehydrated body",
+        "dehydration",
+        "dry mouth",
+        "extreme thirst and dryness",
+        "lack of fluids"
+      ],
+      "spelling_variants": [
+        "dehydrated"
+      ],
+      "associated_diseases": [
+        "Gastroenteritis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Harmful reduction in the amount of water in the body."
+    },
+    {
+      "id": "SYM_031",
+      "canonical_name": "depression",
+      "display_name": "Depression / Low Mood",
+      "category": "Psychiatric",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "depression"
+      ],
+      "aliases": [
+        "depressed mood",
+        "depression",
+        "feeling hopeless",
+        "low mood",
+        "melancholy",
+        "sadness"
+      ],
+      "spelling_variants": [
+        "depressed"
+      ],
+      "associated_diseases": [
+        "Hypothyroidism",
+        "Migraine"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Persistent feelings of sadness, emptiness, and hopelessness."
+    },
+    {
+      "id": "SYM_032",
+      "canonical_name": "diarrhoea",
+      "display_name": "Diarrhea",
+      "category": "Gastrointestinal",
+      "severity_weight": 6,
+      "original_dataset_terms": [
+        "diarrhoea"
+      ],
+      "aliases": [
+        "diarrhea",
+        "diarrhoea",
+        "frequent watery bowel movements",
+        "loose motions",
+        "loose stools",
+        "runny poops",
+        "watery stools"
+      ],
+      "spelling_variants": [
+        "diarhea",
+        "diarrhea",
+        "diarrheoa"
+      ],
+      "associated_diseases": [
+        "Gastroenteritis",
+        "Hyperthyroidism",
+        "Malaria",
+        "Typhoid",
+        "hepatitis A"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Frequent, loose, or watery bowel movements."
+    },
+    {
+      "id": "SYM_033",
+      "canonical_name": "dischromic patches",
+      "display_name": "Discolored Skin Patches",
+      "category": "Dermatological",
+      "severity_weight": 6,
+      "original_dataset_terms": [
+        "dischromic _patches"
+      ],
+      "aliases": [
+        "dischromic  patches",
+        "dischromic patches",
+        "discolored spots",
+        "pigmentation patches",
+        "skin discoloration",
+        "white patches on skin"
+      ],
+      "spelling_variants": [
+        "dischromic  patches",
+        "dyschromic patches"
+      ],
+      "associated_diseases": [
+        "Fungal infection"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Patches of abnormal skin coloration (e.g. in fungal infections)."
+    },
+    {
+      "id": "SYM_034",
+      "canonical_name": "distention of abdomen",
+      "display_name": "Abdominal Distension / Bloating",
+      "category": "Gastrointestinal",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "distention_of_abdomen"
+      ],
+      "aliases": [
+        "abdominal bloating",
+        "bloated stomach",
+        "distended belly",
+        "distention of abdomen",
+        "swollen abdomen",
+        "swollen belly"
+      ],
+      "spelling_variants": [
+        "distended abdomen",
+        "distention of stomach"
+      ],
+      "associated_diseases": [
+        "Alcoholic hepatitis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Visible outward swelling or enlargement of abdominal area."
+    },
+    {
+      "id": "SYM_035",
+      "canonical_name": "dizziness",
+      "display_name": "Dizziness / Lightheadedness",
+      "category": "Neurological",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "dizziness"
+      ],
+      "aliases": [
+        "dizziness",
+        "feeling faint",
+        "giddiness",
+        "lightheaded",
+        "unsteady head",
+        "wooziness"
+      ],
+      "spelling_variants": [
+        "diziness",
+        "dizzy"
+      ],
+      "associated_diseases": [
+        "Cervical spondylosis",
+        "Hypertension",
+        "Hypothyroidism"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Sensation of unsteadiness, wooziness, or feeling faint."
+    },
+    {
+      "id": "SYM_036",
+      "canonical_name": "drying and tingling lips",
+      "display_name": "Drying and Tingling Lips",
+      "category": "Dermatological / Systemic",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "drying_and_tingling_lips"
+      ],
+      "aliases": [
+        "burning dry lips",
+        "chapped lips",
+        "dry tingling lips",
+        "drying and tingling lips",
+        "prickly lip feeling"
+      ],
+      "spelling_variants": [
+        "dry lips",
+        "tingling lips"
+      ],
+      "associated_diseases": [
+        "Hypoglycemia"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Parched, cracked, or tingling sensations on lips."
+    },
+    {
+      "id": "SYM_037",
+      "canonical_name": "enlarged thyroid",
+      "display_name": "Enlarged Thyroid (Goiter)",
+      "category": "Endocrine",
+      "severity_weight": 6,
+      "original_dataset_terms": [
+        "enlarged_thyroid"
+      ],
+      "aliases": [
+        "enlarged thyroid",
+        "goiter",
+        "neck swelling thyroid",
+        "swollen thyroid",
+        "thyroid lump",
+        "thyromegaly"
+      ],
+      "spelling_variants": [
+        "enlarged tyroid",
+        "swollen thyroid"
+      ],
+      "associated_diseases": [
+        "Hypothyroidism"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Abnormal enlargement of the thyroid gland in neck."
+    },
+    {
+      "id": "SYM_038",
+      "canonical_name": "excessive hunger",
+      "display_name": "Excessive Hunger (Polyphagia)",
+      "category": "Endocrine / Metabolic",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "excessive_hunger"
+      ],
+      "aliases": [
+        "always feeling hungry",
+        "constant hunger",
+        "excessive hunger",
+        "extreme appetite",
+        "polyphagia",
+        "ravenous hunger"
+      ],
+      "spelling_variants": [
+        "excess hunger"
+      ],
+      "associated_diseases": [
+        "Diabetes",
+        "Hyperthyroidism",
+        "Hypoglycemia",
+        "Migraine"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Abnormally high or insatiable appetite."
+    },
+    {
+      "id": "SYM_039",
+      "canonical_name": "extra marital contacts",
+      "display_name": "History of Unprotected Contacts",
+      "category": "Behavioral / History",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "extra_marital_contacts"
+      ],
+      "aliases": [
+        "extra marital contacts",
+        "high risk sexual history",
+        "multiple sexual partners",
+        "unprotected sexual contact"
+      ],
+      "spelling_variants": [
+        "extramarital contacts"
+      ],
+      "associated_diseases": [
+        "AIDS"
+      ],
+      "flagged_for_review": true,
+      "clinical_notes": "Behavioral epidemiological risk factor for AIDS in legacy dataset."
+    },
+    {
+      "id": "SYM_040",
+      "canonical_name": "family history",
+      "display_name": "Family Medical History",
+      "category": "Genetic / History",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "family_history"
+      ],
+      "aliases": [
+        "family history",
+        "family predisposition",
+        "genetic history",
+        "hereditary condition"
+      ],
+      "spelling_variants": [
+        "family medical history"
+      ],
+      "associated_diseases": [
+        "Bronchial Asthma",
+        "Hepatitis C"
+      ],
+      "flagged_for_review": true,
+      "clinical_notes": "Hereditary risk indicator in dataset (must not be confused with active symptoms)."
+    },
+    {
+      "id": "SYM_041",
+      "canonical_name": "fast heart rate",
+      "display_name": "Fast Heart Rate (Tachycardia)",
+      "category": "Cardiovascular",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "fast_heart_rate"
+      ],
+      "aliases": [
+        "fast heart rate",
+        "fast pulse",
+        "pounding pulse",
+        "racing heart",
+        "rapid heartbeat",
+        "tachycardia"
+      ],
+      "spelling_variants": [
+        "fast heartbeat",
+        "rapid heart rate"
+      ],
+      "associated_diseases": [
+        "Hyperthyroidism",
+        "Pneumonia"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Heart beating faster than normal baseline resting rate."
+    },
+    {
+      "id": "SYM_042",
+      "canonical_name": "fatigue",
+      "display_name": "Fatigue / Exhaustion",
+      "category": "Systemic",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "fatigue"
+      ],
+      "aliases": [
+        "exhaustion",
+        "fatigue",
+        "feeling drained",
+        "lethargy",
+        "no energy",
+        "tiredness",
+        "weakness",
+        "worn out",
+        "wiped out",
+        "totally wiped out",
+        "feeling wiped out",
+        "drained out",
+        "bone tired"
+      ],
+      "spelling_variants": [
+        "fatige",
+        "fatigued"
+      ],
+      "associated_diseases": [
+        "Bronchial Asthma",
+        "Chicken pox",
+        "Common Cold",
+        "Dengue",
+        "Diabetes",
+        "Hepatitis B",
+        "Hepatitis C",
+        "Hepatitis D",
+        "Hepatitis E",
+        "Hyperthyroidism",
+        "Hypoglycemia",
+        "Hypothyroidism",
+        "Jaundice",
+        "Pneumonia",
+        "Tuberculosis",
+        "Typhoid",
+        "Varicose veins"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Extreme tiredness resulting from mental or physical exertion or illness."
+    },
+    {
+      "id": "SYM_043",
+      "canonical_name": "fluid overload",
+      "display_name": "Fluid Overload (Hypervolemia)",
+      "category": "Cardiovascular / Renal",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "fluid_overload"
+      ],
+      "aliases": [
+        "body swelling from fluid",
+        "edema",
+        "fluid overload",
+        "fluid retention",
+        "hypervolemia",
+        "water retention"
+      ],
+      "spelling_variants": [
+        "fluid retension"
+      ],
+      "associated_diseases": [
+        "Alcoholic hepatitis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Excess fluid accumulating in bodily tissues."
+    },
+    {
+      "id": "SYM_044",
+      "canonical_name": "foul smell of urine",
+      "display_name": "Foul-Smelling Urine",
+      "category": "Urological",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "foul_smell_of urine"
+      ],
+      "aliases": [
+        "bad smelling pee",
+        "foul smell of urine",
+        "foul smell ofurine",
+        "malodorous urine",
+        "pungent urine",
+        "smelly urine"
+      ],
+      "spelling_variants": [
+        "foul smell ofurine",
+        "foul smelling urine"
+      ],
+      "associated_diseases": [
+        "Urinary tract infection"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Pungent or foul odor from urine."
+    },
+    {
+      "id": "SYM_045",
+      "canonical_name": "headache",
+      "display_name": "Headache",
+      "category": "Neurological",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "headache"
+      ],
+      "aliases": [
+        "cranial ache",
+        "head ache",
+        "head pain",
+        "headache",
+        "migraine",
+        "temple pain",
+        "throbbing head"
+      ],
+      "spelling_variants": [
+        "head ache",
+        "headach",
+        "hedache"
+      ],
+      "associated_diseases": [
+        "(vertigo) Paroymsal  Positional Vertigo",
+        "Chicken pox",
+        "Common Cold",
+        "Dengue",
+        "Hypertension",
+        "Hypoglycemia",
+        "Malaria",
+        "Migraine",
+        "Paralysis (brain hemorrhage)",
+        "Typhoid"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Continuous pain in the head or temples."
+    },
+    {
+      "id": "SYM_046",
+      "canonical_name": "high fever",
+      "display_name": "High Fever (Pyrexia)",
+      "category": "Systemic",
+      "severity_weight": 7,
+      "original_dataset_terms": [
+        "high_fever"
+      ],
+      "aliases": [
+        "body burning hot",
+        "fever",
+        "high fever",
+        "high temperature",
+        "pyrexia",
+        "severe fever",
+        "spiking fever"
+      ],
+      "spelling_variants": [
+        "feever",
+        "hi fever",
+        "high fevr"
+      ],
+      "associated_diseases": [
+        "AIDS",
+        "Bronchial Asthma",
+        "Chicken pox",
+        "Common Cold",
+        "Dengue",
+        "Hepatitis E",
+        "Impetigo",
+        "Jaundice",
+        "Malaria",
+        "Pneumonia",
+        "Tuberculosis",
+        "Typhoid"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Body temperature elevated significantly above normal baseline."
+    },
+    {
+      "id": "SYM_047",
+      "canonical_name": "hip joint pain",
+      "display_name": "Hip Joint Pain",
+      "category": "Musculoskeletal",
+      "severity_weight": 2,
+      "original_dataset_terms": [
+        "hip_joint_pain"
+      ],
+      "aliases": [
+        "aching hip",
+        "hip joint pain",
+        "hip pain",
+        "pain in hip",
+        "pelvic hip discomfort"
+      ],
+      "spelling_variants": [
+        "hip pain"
+      ],
+      "associated_diseases": [
+        "Osteoarthristis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Pain localized around the hip joint."
+    },
+    {
+      "id": "SYM_048",
+      "canonical_name": "history of alcohol consumption",
+      "display_name": "History of Alcohol Consumption",
+      "category": "Behavioral / History",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "history_of_alcohol_consumption"
+      ],
+      "aliases": [
+        "alcohol use",
+        "chronic drinking",
+        "heavy drinking history",
+        "history of alcohol consumption",
+        "regular alcohol intake"
+      ],
+      "spelling_variants": [
+        "alcohol consumption history"
+      ],
+      "associated_diseases": [
+        "Alcoholic hepatitis"
+      ],
+      "flagged_for_review": true,
+      "clinical_notes": "Behavioral risk factor for Alcoholic Hepatitis."
+    },
+    {
+      "id": "SYM_049",
+      "canonical_name": "increased appetite",
+      "display_name": "Increased Appetite",
+      "category": "Endocrine / Metabolic",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "increased_appetite"
+      ],
+      "aliases": [
+        "big appetite",
+        "eating more than usual",
+        "frequent eating",
+        "increased appetite",
+        "increased food cravings"
+      ],
+      "spelling_variants": [
+        "increased hungry"
+      ],
+      "associated_diseases": [
+        "Diabetes"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Noticeably elevated craving for food."
+    },
+    {
+      "id": "SYM_050",
+      "canonical_name": "indigestion",
+      "display_name": "Indigestion (Dyspepsia)",
+      "category": "Gastrointestinal",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "indigestion"
+      ],
+      "aliases": [
+        "dyspepsia",
+        "indigestion",
+        "poor digestion",
+        "stomach discomfort after eating",
+        "upset stomach"
+      ],
+      "spelling_variants": [
+        "indijestion"
+      ],
+      "associated_diseases": [
+        "Migraine",
+        "Peptic ulcer diseae"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Discomfort or pain in the upper abdomen associated with eating."
+    },
+    {
+      "id": "SYM_051",
+      "canonical_name": "inflammatory nails",
+      "display_name": "Inflammatory Nails (Paronychia)",
+      "category": "Dermatological",
+      "severity_weight": 2,
+      "original_dataset_terms": [
+        "inflammatory_nails"
+      ],
+      "aliases": [
+        "inflamed cuticle",
+        "inflammatory nails",
+        "painful nail skin",
+        "paronychia",
+        "red nail borders",
+        "swollen nail bed"
+      ],
+      "spelling_variants": [
+        "inflamed nails"
+      ],
+      "associated_diseases": [
+        "Psoriasis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Redness, swelling, and tenderness around nail beds."
+    },
+    {
+      "id": "SYM_052",
+      "canonical_name": "internal itching",
+      "display_name": "Internal Itching",
+      "category": "Systemic",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "internal_itching"
+      ],
+      "aliases": [
+        "deep body itching",
+        "inner itchiness",
+        "internal itching",
+        "itching deep inside"
+      ],
+      "spelling_variants": [
+        "internal itch"
+      ],
+      "associated_diseases": [
+        "Peptic ulcer diseae"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Sensation of itching located deeply within tissues."
+    },
+    {
+      "id": "SYM_053",
+      "canonical_name": "irregular sugar level",
+      "display_name": "Fluctuating Blood Sugar",
+      "category": "Endocrine / Metabolic",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "irregular_sugar_level"
+      ],
+      "aliases": [
+        "blood sugar spikes",
+        "glucose fluctuation",
+        "high low sugar",
+        "irregular sugar level",
+        "unstable blood sugar"
+      ],
+      "spelling_variants": [
+        "irregular blood sugar"
+      ],
+      "associated_diseases": [
+        "Diabetes"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Erratic blood glucose readings."
+    },
+    {
+      "id": "SYM_054",
+      "canonical_name": "irritability",
+      "display_name": "Irritability / Mood Changes",
+      "category": "Psychiatric",
+      "severity_weight": 2,
+      "original_dataset_terms": [
+        "irritability"
+      ],
+      "aliases": [
+        "agitated",
+        "easily annoyed",
+        "irritability",
+        "mood swings",
+        "short tempered",
+        "snappy"
+      ],
+      "spelling_variants": [
+        "irritable"
+      ],
+      "associated_diseases": [
+        "Hyperthyroidism",
+        "Hypoglycemia",
+        "Hypothyroidism",
+        "Migraine"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Tendency to be easily frustrated or agitated."
+    },
+    {
+      "id": "SYM_055",
+      "canonical_name": "irritation in anus",
+      "display_name": "Anal Irritation (Pruritus Ani)",
+      "category": "Colorectal",
+      "severity_weight": 6,
+      "original_dataset_terms": [
+        "irritation_in_anus"
+      ],
+      "aliases": [
+        "anal burning",
+        "anal itching",
+        "irritation in anus",
+        "itching in rectum",
+        "perianal itch",
+        "pruritus ani"
+      ],
+      "spelling_variants": [
+        "irritation in anus"
+      ],
+      "associated_diseases": [
+        "Dimorphic hemmorhoids(piles)"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Irritation, burning, or itching in the perianal area."
+    },
+    {
+      "id": "SYM_056",
+      "canonical_name": "itching",
+      "display_name": "Itching (Pruritus)",
+      "category": "Dermatological",
+      "severity_weight": 1,
+      "original_dataset_terms": [
+        "itching"
+      ],
+      "aliases": [
+        "itchiness",
+        "itching",
+        "itchy skin",
+        "need to scratch",
+        "pruritus",
+        "scratchy skin"
+      ],
+      "spelling_variants": [
+        "itch",
+        "itchng",
+        "itchy"
+      ],
+      "associated_diseases": [
+        "Chicken pox",
+        "Chronic cholestasis",
+        "Drug Reaction",
+        "Fungal infection",
+        "Hepatitis B",
+        "Jaundice"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Uncomfortable irritating skin sensation that creates desire to scratch."
+    },
+    {
+      "id": "SYM_057",
+      "canonical_name": "joint pain",
+      "display_name": "Joint Pain (Arthralgia)",
+      "category": "Musculoskeletal",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "joint_pain"
+      ],
+      "aliases": [
+        "aching joints",
+        "arthralgia",
+        "arthritis aches",
+        "joint pain",
+        "pain in joints",
+        "stiff painful joints"
+      ],
+      "spelling_variants": [
+        "joint ache",
+        "joynt pain"
+      ],
+      "associated_diseases": [
+        "Dengue",
+        "Hepatitis D",
+        "Hepatitis E",
+        "Osteoarthristis",
+        "Psoriasis",
+        "hepatitis A"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Discomfort or inflammation in one or more joints."
+    },
+    {
+      "id": "SYM_058",
+      "canonical_name": "knee pain",
+      "display_name": "Knee Pain",
+      "category": "Musculoskeletal",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "knee_pain"
+      ],
+      "aliases": [
+        "aching knees",
+        "creaking knees",
+        "knee pain",
+        "knee stiffness",
+        "pain in knee"
+      ],
+      "spelling_variants": [
+        "kne pain"
+      ],
+      "associated_diseases": [
+        "Osteoarthristis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Pain localized around the patella or knee joints."
+    },
+    {
+      "id": "SYM_059",
+      "canonical_name": "lack of concentration",
+      "display_name": "Lack of Concentration",
+      "category": "Neurological / Psychiatric",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "lack_of_concentration"
+      ],
+      "aliases": [
+        "brain fog",
+        "cannot focus",
+        "difficulty concentrating",
+        "inattention",
+        "lack of concentration",
+        "poor focus"
+      ],
+      "spelling_variants": [
+        "loss of concentration"
+      ],
+      "associated_diseases": [
+        "Hypertension"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Inability to sustain mental attention."
+    },
+    {
+      "id": "SYM_060",
+      "canonical_name": "lethargy",
+      "display_name": "Lethargy / Sluggishness",
+      "category": "Systemic",
+      "severity_weight": 2,
+      "original_dataset_terms": [
+        "lethargy"
+      ],
+      "aliases": [
+        "drowsiness",
+        "inactive",
+        "lack of vitality",
+        "lethargy",
+        "listless",
+        "sluggishness"
+      ],
+      "spelling_variants": [
+        "lethargic"
+      ],
+      "associated_diseases": [
+        "Chicken pox",
+        "Diabetes",
+        "Hepatitis B",
+        "Hypothyroidism"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "State of sluggishness and lack of energy."
+    },
+    {
+      "id": "SYM_061",
+      "canonical_name": "loss of appetite",
+      "display_name": "Loss of Appetite (Anorexia)",
+      "category": "Gastrointestinal",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "loss_of_appetite"
+      ],
+      "aliases": [
+        "anorexia",
+        "don't feel like eating",
+        "loss of appetite",
+        "not hungry",
+        "poor appetite",
+        "reduced appetite"
+      ],
+      "spelling_variants": [
+        "lost appetite"
+      ],
+      "associated_diseases": [
+        "Chicken pox",
+        "Chronic cholestasis",
+        "Dengue",
+        "Hepatitis B",
+        "Hepatitis C",
+        "Hepatitis D",
+        "Hepatitis E",
+        "Peptic ulcer diseae",
+        "Tuberculosis",
+        "hepatitis A"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Reduced desire to eat food."
+    },
+    {
+      "id": "SYM_062",
+      "canonical_name": "loss of balance",
+      "display_name": "Loss of Balance (Ataxia)",
+      "category": "Neurological",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "loss_of_balance"
+      ],
+      "aliases": [
+        "ataxia",
+        "imbalance",
+        "loss of balance",
+        "poor balance",
+        "stumbling",
+        "unsteady walking"
+      ],
+      "spelling_variants": [
+        "lost balance"
+      ],
+      "associated_diseases": [
+        "(vertigo) Paroymsal  Positional Vertigo",
+        "Cervical spondylosis",
+        "Hypertension"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Inability to maintain postural equilibrium."
+    },
+    {
+      "id": "SYM_063",
+      "canonical_name": "loss of smell",
+      "display_name": "Loss of Smell (Anosmia)",
+      "category": "ENT / Neurological",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "loss_of_smell"
+      ],
+      "aliases": [
+        "anosmia",
+        "cannot smell",
+        "loss of smell",
+        "lost sense of smell",
+        "smell impairment"
+      ],
+      "spelling_variants": [
+        "lost smell"
+      ],
+      "associated_diseases": [
+        "Common Cold"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Partial or complete loss of olfactory sensation."
+    },
+    {
+      "id": "SYM_064",
+      "canonical_name": "malaise",
+      "display_name": "General Malaise",
+      "category": "Systemic",
+      "severity_weight": 6,
+      "original_dataset_terms": [
+        "malaise"
+      ],
+      "aliases": [
+        "body uneasiness",
+        "feeling sick all over",
+        "feeling unwell",
+        "general discomfort",
+        "malaise"
+      ],
+      "spelling_variants": [
+        "mallaise"
+      ],
+      "associated_diseases": [
+        "Chicken pox",
+        "Common Cold",
+        "Dengue",
+        "Hepatitis B",
+        "Pneumonia",
+        "Tuberculosis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "General feeling of discomfort, illness, or uneasiness."
+    },
+    {
+      "id": "SYM_065",
+      "canonical_name": "mild fever",
+      "display_name": "Mild Fever (Low-Grade Fever)",
+      "category": "Systemic",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "mild_fever"
+      ],
+      "aliases": [
+        "feverish body",
+        "low grade fever",
+        "mild fever",
+        "mild temperature",
+        "slight fever"
+      ],
+      "spelling_variants": [
+        "mild fevr"
+      ],
+      "associated_diseases": [
+        "Chicken pox",
+        "Tuberculosis",
+        "hepatitis A"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Slight elevation of body temperature."
+    },
+    {
+      "id": "SYM_066",
+      "canonical_name": "mood swings",
+      "display_name": "Mood Swings",
+      "category": "Psychiatric",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "mood_swings"
+      ],
+      "aliases": [
+        "emotional instability",
+        "mood swings",
+        "rapid mood changes",
+        "shifting moods",
+        "unpredictable emotions"
+      ],
+      "spelling_variants": [
+        "mood changes"
+      ],
+      "associated_diseases": [
+        "Hyperthyroidism",
+        "Hypothyroidism"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Rapid or extreme fluctuations in emotional state."
+    },
+    {
+      "id": "SYM_067",
+      "canonical_name": "movement stiffness",
+      "display_name": "Movement Stiffness",
+      "category": "Musculoskeletal",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "movement_stiffness"
+      ],
+      "aliases": [
+        "difficulty moving joints",
+        "morning stiffness",
+        "movement stiffness",
+        "stiff body",
+        "stiff limbs"
+      ],
+      "spelling_variants": [
+        "stiffness"
+      ],
+      "associated_diseases": [
+        "Arthritis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Resistance or difficulty when attempting movement."
+    },
+    {
+      "id": "SYM_068",
+      "canonical_name": "mucoid sputum",
+      "display_name": "Mucoid Sputum",
+      "category": "Respiratory",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "mucoid_sputum"
+      ],
+      "aliases": [
+        "clear thick mucus",
+        "mucoid sputum",
+        "sticky clear phlegm",
+        "white mucus cough"
+      ],
+      "spelling_variants": [
+        "mucoid phlegm"
+      ],
+      "associated_diseases": [
+        "Bronchial Asthma"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Clear or whitish mucus coughed up from airways."
+    },
+    {
+      "id": "SYM_069",
+      "canonical_name": "muscle pain",
+      "display_name": "Muscle Pain (Myalgia)",
+      "category": "Musculoskeletal",
+      "severity_weight": 2,
+      "original_dataset_terms": [
+        "muscle_pain"
+      ],
+      "aliases": [
+        "aching muscles",
+        "body ache",
+        "muscle pain",
+        "muscle soreness",
+        "myalgia",
+        "sore muscles"
+      ],
+      "spelling_variants": [
+        "muscl pain",
+        "muscle ache"
+      ],
+      "associated_diseases": [
+        "Common Cold",
+        "Dengue",
+        "Malaria",
+        "hepatitis A"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Pain or aching localized to muscular tissue."
+    },
+    {
+      "id": "SYM_070",
+      "canonical_name": "muscle wasting",
+      "display_name": "Muscle Wasting (Atrophy)",
+      "category": "Musculoskeletal",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "muscle_wasting"
+      ],
+      "aliases": [
+        "loss of muscle bulk",
+        "muscle atrophy",
+        "muscle loss",
+        "muscle wasting",
+        "shrinking muscles"
+      ],
+      "spelling_variants": [
+        "muscle wastng"
+      ],
+      "associated_diseases": [
+        "AIDS"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Loss of muscle tissue bulk."
+    },
+    {
+      "id": "SYM_071",
+      "canonical_name": "muscle weakness",
+      "display_name": "Muscle Weakness",
+      "category": "Neurological / Musculoskeletal",
+      "severity_weight": 2,
+      "original_dataset_terms": [
+        "muscle_weakness"
+      ],
+      "aliases": [
+        "loss of strength in muscles",
+        "muscle weakness",
+        "reduced muscle strength",
+        "weak muscles"
+      ],
+      "spelling_variants": [
+        "muscular weakness"
+      ],
+      "associated_diseases": [
+        "Arthritis",
+        "Hyperthyroidism"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Reduced force production by skeletal muscles."
+    },
+    {
+      "id": "SYM_072",
+      "canonical_name": "nausea",
+      "display_name": "Nausea",
+      "category": "Gastrointestinal",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "nausea"
+      ],
+      "aliases": [
+        "feeling sick",
+        "nausea",
+        "queasiness",
+        "queasy",
+        "upset stomach feeling",
+        "want to throw up"
+      ],
+      "spelling_variants": [
+        "nausia",
+        "nawsea"
+      ],
+      "associated_diseases": [
+        "(vertigo) Paroymsal  Positional Vertigo",
+        "Chronic cholestasis",
+        "Dengue",
+        "Hepatitis C",
+        "Hepatitis D",
+        "Hepatitis E",
+        "Hypoglycemia",
+        "Malaria",
+        "Typhoid",
+        "hepatitis A"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Sensation of unease and discomfort in the stomach with an urge to vomit."
+    },
+    {
+      "id": "SYM_073",
+      "canonical_name": "neck pain",
+      "display_name": "Neck Pain",
+      "category": "Musculoskeletal",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "neck_pain"
+      ],
+      "aliases": [
+        "cervical pain",
+        "neck ache",
+        "neck pain",
+        "pain in neck",
+        "stiff neck pain"
+      ],
+      "spelling_variants": [
+        "neckache"
+      ],
+      "associated_diseases": [
+        "Cervical spondylosis",
+        "Osteoarthristis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Pain in the cervical spine or surrounding neck muscles."
+    },
+    {
+      "id": "SYM_074",
+      "canonical_name": "nodal skin eruptions",
+      "display_name": "Nodal Skin Eruptions",
+      "category": "Dermatological",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "nodal_skin_eruptions"
+      ],
+      "aliases": [
+        "nodal skin eruptions",
+        "nodular rash",
+        "red bumps on skin",
+        "skin lumps",
+        "tender skin nodes"
+      ],
+      "spelling_variants": [
+        "nodal eruptions"
+      ],
+      "associated_diseases": [
+        "Fungal infection"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Nodular raised skin bumps."
+    },
+    {
+      "id": "SYM_075",
+      "canonical_name": "obesity",
+      "display_name": "Obesity",
+      "category": "Metabolic",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "obesity"
+      ],
+      "aliases": [
+        "excess body fat",
+        "heavy body weight",
+        "high BMI",
+        "obesity",
+        "overweight"
+      ],
+      "spelling_variants": [
+        "obesety"
+      ],
+      "associated_diseases": [
+        "Diabetes",
+        "Varicose veins"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Excessive accumulation of body fat."
+    },
+    {
+      "id": "SYM_076",
+      "canonical_name": "pain behind the eyes",
+      "display_name": "Pain Behind the Eyes (Retro-Orbital Pain)",
+      "category": "Ophthalmological / Neurological",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "pain_behind_the_eyes"
+      ],
+      "aliases": [
+        "deep eye ache",
+        "eye socket ache",
+        "pain behind eyeball",
+        "pain behind the eyes",
+        "retro-orbital pain"
+      ],
+      "spelling_variants": [
+        "pain behind eyes"
+      ],
+      "associated_diseases": [
+        "Dengue"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Ache located behind the ocular globes (characteristic of Dengue)."
+    },
+    {
+      "id": "SYM_077",
+      "canonical_name": "pain during bowel movements",
+      "display_name": "Pain During Bowel Movements",
+      "category": "Colorectal",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "pain_during_bowel_movements"
+      ],
+      "aliases": [
+        "dyschezia",
+        "pain during bowel movements",
+        "pain passing stool",
+        "painful pooping",
+        "rectal pain during defecation"
+      ],
+      "spelling_variants": [
+        "painful bowel movement"
+      ],
+      "associated_diseases": [
+        "Dimorphic hemmorhoids(piles)"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Discomfort or sharp pain when defecating."
+    },
+    {
+      "id": "SYM_078",
+      "canonical_name": "pain in anal region",
+      "display_name": "Pain in Anal Region",
+      "category": "Colorectal",
+      "severity_weight": 6,
+      "original_dataset_terms": [
+        "pain_in_anal_region"
+      ],
+      "aliases": [
+        "anal ache",
+        "anus pain",
+        "hemorrhoid pain",
+        "pain in anal region",
+        "rectal pain"
+      ],
+      "spelling_variants": [
+        "anal pain"
+      ],
+      "associated_diseases": [
+        "Dimorphic hemmorhoids(piles)"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Pain localized around the anus or lower rectum."
+    },
+    {
+      "id": "SYM_079",
+      "canonical_name": "painful walking",
+      "display_name": "Painful Walking",
+      "category": "Musculoskeletal",
+      "severity_weight": 2,
+      "original_dataset_terms": [
+        "painful_walking"
+      ],
+      "aliases": [
+        "difficulty walking due to pain",
+        "hurts to walk",
+        "limping from pain",
+        "pain when walking",
+        "painful walking"
+      ],
+      "spelling_variants": [
+        "pain in walking"
+      ],
+      "associated_diseases": [
+        "Arthritis",
+        "Osteoarthristis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Pain exacerbated by ambulation."
+    },
+    {
+      "id": "SYM_080",
+      "canonical_name": "palpitations",
+      "display_name": "Palpitations",
+      "category": "Cardiovascular",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "palpitations"
+      ],
+      "aliases": [
+        "heart fluttering",
+        "irregular heartbeat sensation",
+        "palpitations",
+        "pounding heart",
+        "skipped heart beats"
+      ],
+      "spelling_variants": [
+        "palpitation"
+      ],
+      "associated_diseases": [
+        "Hypoglycemia"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Sensation of rapid, strong, or irregular heartbeat."
+    },
+    {
+      "id": "SYM_081",
+      "canonical_name": "passage of gases",
+      "display_name": "Flatulence (Passage of Gas)",
+      "category": "Gastrointestinal",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "passage_of_gases"
+      ],
+      "aliases": [
+        "bloated gas",
+        "excessive gas",
+        "farting often",
+        "flatulence",
+        "gas passing",
+        "passage of gases"
+      ],
+      "spelling_variants": [
+        "passing gas"
+      ],
+      "associated_diseases": [
+        "Peptic ulcer diseae"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Frequent release of gas from the digestive tract."
+    },
+    {
+      "id": "SYM_082",
+      "canonical_name": "patches in throat",
+      "display_name": "Patches in Throat",
+      "category": "ENT",
+      "severity_weight": 6,
+      "original_dataset_terms": [
+        "patches_in_throat"
+      ],
+      "aliases": [
+        "patches in throat",
+        "strep spots",
+        "throat patches",
+        "white exudate on throat",
+        "white spots on tonsils"
+      ],
+      "spelling_variants": [
+        "throat patches"
+      ],
+      "associated_diseases": [
+        "AIDS"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "White or yellow patches on pharynx or tonsils."
+    },
+    {
+      "id": "SYM_083",
+      "canonical_name": "phlegm",
+      "display_name": "Phlegm / Sputum",
+      "category": "Respiratory",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "phlegm"
+      ],
+      "aliases": [
+        "chest mucus",
+        "green phlegm",
+        "mucus cough",
+        "phlegm",
+        "thick sputum",
+        "yellow phlegm"
+      ],
+      "spelling_variants": [
+        "flegm",
+        "phlem"
+      ],
+      "associated_diseases": [
+        "Common Cold",
+        "Pneumonia",
+        "Tuberculosis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Thick mucus secreted by respiratory mucous membranes."
+    },
+    {
+      "id": "SYM_084",
+      "canonical_name": "polyuria",
+      "display_name": "Frequent Urination (Polyuria)",
+      "category": "Endocrine / Renal",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "polyuria"
+      ],
+      "aliases": [
+        "excessive urination",
+        "frequent peeing",
+        "peeing often",
+        "polyuria",
+        "urinating large volumes"
+      ],
+      "spelling_variants": [
+        "polyurea"
+      ],
+      "associated_diseases": [
+        "Diabetes"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Production of abnormally large volumes of urine."
+    },
+    {
+      "id": "SYM_085",
+      "canonical_name": "prominent veins on calf",
+      "display_name": "Prominent Calf Veins (Varicose Veins)",
+      "category": "Vascular",
+      "severity_weight": 6,
+      "original_dataset_terms": [
+        "prominent_veins_on_calf"
+      ],
+      "aliases": [
+        "bulging leg veins",
+        "prominent veins on calf",
+        "spider veins calf",
+        "twisted blue veins on legs",
+        "varicose veins on calf"
+      ],
+      "spelling_variants": [
+        "prominent veins on leg"
+      ],
+      "associated_diseases": [
+        "Varicose veins"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Enlarged, visible veins on the lower extremities."
+    },
+    {
+      "id": "SYM_086",
+      "canonical_name": "puffy face and eyes",
+      "display_name": "Puffy Face and Eyes",
+      "category": "Systemic / Renal",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "puffy_face_and_eyes"
+      ],
+      "aliases": [
+        "facial edema",
+        "facial swelling",
+        "puffy eyes",
+        "puffy face and eyes",
+        "swollen eyelids"
+      ],
+      "spelling_variants": [
+        "puffy eyes and face"
+      ],
+      "associated_diseases": [
+        "Hypothyroidism"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Fluid swelling around facial tissues and periorbital area."
+    },
+    {
+      "id": "SYM_087",
+      "canonical_name": "pus filled pimples",
+      "display_name": "Pus-Filled Pimples (Pustules)",
+      "category": "Dermatological",
+      "severity_weight": 2,
+      "original_dataset_terms": [
+        "pus_filled_pimples"
+      ],
+      "aliases": [
+        "acne pustules",
+        "inflamed acne",
+        "pus filled pimples",
+        "pus pimples",
+        "pustules",
+        "whiteheads with pus"
+      ],
+      "spelling_variants": [
+        "pus pimples"
+      ],
+      "associated_diseases": [
+        "Acne"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Small inflamed pus-filled skin lesions."
+    },
+    {
+      "id": "SYM_088",
+      "canonical_name": "receiving blood transfusion",
+      "display_name": "History of Blood Transfusion",
+      "category": "Medical History",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "receiving_blood_transfusion"
+      ],
+      "aliases": [
+        "blood transfusion history",
+        "received donor blood",
+        "receiving blood transfusion"
+      ],
+      "spelling_variants": [
+        "blood transfusion"
+      ],
+      "associated_diseases": [
+        "Hepatitis B"
+      ],
+      "flagged_for_review": true,
+      "clinical_notes": "Epidemiological risk factor for Hepatitis B/C."
+    },
+    {
+      "id": "SYM_089",
+      "canonical_name": "receiving unsterile injections",
+      "display_name": "History of Unsterile Injections",
+      "category": "Medical History",
+      "severity_weight": 2,
+      "original_dataset_terms": [
+        "receiving_unsterile_injections"
+      ],
+      "aliases": [
+        "injections with reused syringe",
+        "needle sharing history",
+        "receiving unsterile injections",
+        "unsterile needle exposure"
+      ],
+      "spelling_variants": [
+        "unsterile injections"
+      ],
+      "associated_diseases": [
+        "Hepatitis B"
+      ],
+      "flagged_for_review": true,
+      "clinical_notes": "Epidemiological risk factor for Hepatitis B/C."
+    },
+    {
+      "id": "SYM_090",
+      "canonical_name": "red sore around nose",
+      "display_name": "Red Sore Around Nose (Impetigo)",
+      "category": "Dermatological",
+      "severity_weight": 2,
+      "original_dataset_terms": [
+        "red_sore_around_nose"
+      ],
+      "aliases": [
+        "crusty sore nose",
+        "honey colored crusts on nose",
+        "impetigo sores",
+        "nasal cold sores",
+        "red sore around nose"
+      ],
+      "spelling_variants": [
+        "red sores around nose"
+      ],
+      "associated_diseases": [
+        "Impetigo"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Red crusting sores around nostrils (typical of impetigo)."
+    },
+    {
+      "id": "SYM_091",
+      "canonical_name": "red spots over body",
+      "display_name": "Red Spots Over Body",
+      "category": "Dermatological",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "red_spots_over_body"
+      ],
+      "aliases": [
+        "erythematous spots",
+        "petechiae",
+        "red rash spots",
+        "red spots over body",
+        "spots on body"
+      ],
+      "spelling_variants": [
+        "red spots"
+      ],
+      "associated_diseases": [
+        "Chicken pox",
+        "Dengue"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Widespread small red skin lesions."
+    },
+    {
+      "id": "SYM_092",
+      "canonical_name": "redness of eyes",
+      "display_name": "Redness of Eyes (Conjunctival Injection)",
+      "category": "Ophthalmological",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "redness_of_eyes"
+      ],
+      "aliases": [
+        "bloodshot eyes",
+        "conjunctivitis",
+        "eye inflammation",
+        "pink eye",
+        "red eyes",
+        "redness of eyes"
+      ],
+      "spelling_variants": [
+        "red eyes"
+      ],
+      "associated_diseases": [
+        "Common Cold"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Hyperemia of conjunctival blood vessels."
+    },
+    {
+      "id": "SYM_093",
+      "canonical_name": "restlessness",
+      "display_name": "Restlessness / Agitation",
+      "category": "Psychiatric / Neurological",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "restlessness"
+      ],
+      "aliases": [
+        "cannot sit still",
+        "feeling unsettled",
+        "fidgety",
+        "motor restlessness",
+        "restlessness"
+      ],
+      "spelling_variants": [
+        "restlesness"
+      ],
+      "associated_diseases": [
+        "Diabetes",
+        "Hyperthyroidism"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Inability to rest or remain relaxed."
+    },
+    {
+      "id": "SYM_094",
+      "canonical_name": "runny nose",
+      "display_name": "Runny Nose (Rhinorrhea)",
+      "category": "Respiratory",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "runny_nose"
+      ],
+      "aliases": [
+        "dripping nose",
+        "nasal fluid",
+        "rhinorrhea",
+        "runny nose",
+        "watery nasal discharge"
+      ],
+      "spelling_variants": [
+        "runy nose"
+      ],
+      "associated_diseases": [
+        "Common Cold"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Excess thin nasal discharge."
+    },
+    {
+      "id": "SYM_095",
+      "canonical_name": "rusty sputum",
+      "display_name": "Rusty Sputum",
+      "category": "Respiratory",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "rusty_sputum"
+      ],
+      "aliases": [
+        "brownish red mucus cough",
+        "rust colored phlegm",
+        "rusty cough mucus",
+        "rusty sputum"
+      ],
+      "spelling_variants": [
+        "rusty phlegm"
+      ],
+      "associated_diseases": [
+        "Pneumonia"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Prune-juice or rust-colored sputum characteristic of Pneumococcal pneumonia."
+    },
+    {
+      "id": "SYM_096",
+      "canonical_name": "scurring",
+      "display_name": "Skin Scarring / Crusting",
+      "category": "Dermatological",
+      "severity_weight": 2,
+      "original_dataset_terms": [
+        "scurring"
+      ],
+      "aliases": [
+        "crusted skin lesions",
+        "scabs",
+        "scarring",
+        "scars from blisters",
+        "scurring"
+      ],
+      "spelling_variants": [
+        "scabs",
+        "scarring"
+      ],
+      "associated_diseases": [
+        "Acne"
+      ],
+      "flagged_for_review": true,
+      "clinical_notes": "Typo in original Kaggle dataset ('scurring' for scarring/scabs in Chickenpox)."
+    },
+    {
+      "id": "SYM_097",
+      "canonical_name": "shivering",
+      "display_name": "Shivering / Rigors",
+      "category": "Systemic",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "shivering"
+      ],
+      "aliases": [
+        "body shaking",
+        "shivering",
+        "teeth chattering chills",
+        "trembling with cold"
+      ],
+      "spelling_variants": [
+        "shivring"
+      ],
+      "associated_diseases": [
+        "Allergy"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Involuntary shaking caused by cold or fever."
+    },
+    {
+      "id": "SYM_098",
+      "canonical_name": "silver like dusting",
+      "display_name": "Silvery Skin Scales (Psoriasis)",
+      "category": "Dermatological",
+      "severity_weight": 2,
+      "original_dataset_terms": [
+        "silver_like_dusting"
+      ],
+      "aliases": [
+        "psoriatic plaques",
+        "silver like dusting",
+        "silver skin flakes",
+        "silvery dusting on skin",
+        "silvery scales"
+      ],
+      "spelling_variants": [
+        "silver dusting"
+      ],
+      "associated_diseases": [
+        "Psoriasis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Silvery micaceous scales characteristic of Psoriasis."
+    },
+    {
+      "id": "SYM_099",
+      "canonical_name": "sinus pressure",
+      "display_name": "Sinus Pressure",
+      "category": "ENT",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "sinus_pressure"
+      ],
+      "aliases": [
+        "facial fullness",
+        "forehead pressure",
+        "pressure under eyes",
+        "sinus headache",
+        "sinus pain",
+        "sinus pressure"
+      ],
+      "spelling_variants": [
+        "sinus presure"
+      ],
+      "associated_diseases": [
+        "Common Cold"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Pressure or aching sensation over paranasal sinuses."
+    },
+    {
+      "id": "SYM_100",
+      "canonical_name": "skin peeling",
+      "display_name": "Skin Peeling (Desquamation)",
+      "category": "Dermatological",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "skin_peeling"
+      ],
+      "aliases": [
+        "desquamation",
+        "flaking skin",
+        "peeling skin",
+        "shedding skin",
+        "skin peeling"
+      ],
+      "spelling_variants": [
+        "skin pealing"
+      ],
+      "associated_diseases": [
+        "Psoriasis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Loss of the epidermal outer layer in scales or sheets."
+    },
+    {
+      "id": "SYM_101",
+      "canonical_name": "skin rash",
+      "display_name": "Skin Rash",
+      "category": "Dermatological",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "skin_rash"
+      ],
+      "aliases": [
+        "dermatitis rash",
+        "hives",
+        "rash",
+        "red skin bumps",
+        "skin eruption",
+        "skin rash"
+      ],
+      "spelling_variants": [
+        "skin rashs",
+        "skyn rash"
+      ],
+      "associated_diseases": [
+        "Acne",
+        "Chicken pox",
+        "Dengue",
+        "Drug Reaction",
+        "Fungal infection",
+        "Impetigo",
+        "Psoriasis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Noticeable change in texture or color of skin."
+    },
+    {
+      "id": "SYM_102",
+      "canonical_name": "slurred speech",
+      "display_name": "Slurred Speech (Dysarthria)",
+      "category": "Neurological",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "slurred_speech"
+      ],
+      "aliases": [
+        "dysarthria",
+        "garbled words",
+        "mumbled speech",
+        "slurred speech",
+        "trouble speaking clearly"
+      ],
+      "spelling_variants": [
+        "slured speech"
+      ],
+      "associated_diseases": [
+        "Hypoglycemia"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Impaired articulation of speech (critical stroke symptom)."
+    },
+    {
+      "id": "SYM_103",
+      "canonical_name": "small dents in nails",
+      "display_name": "Nail Pitting",
+      "category": "Dermatological",
+      "severity_weight": 2,
+      "original_dataset_terms": [
+        "small_dents_in_nails"
+      ],
+      "aliases": [
+        "nail pitting",
+        "pinpoint nail dents",
+        "pitted nails",
+        "small dents in nails",
+        "small indentations in nails"
+      ],
+      "spelling_variants": [
+        "nail dents"
+      ],
+      "associated_diseases": [
+        "Psoriasis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Punctate depressions in nail plate (typical in Psoriasis)."
+    },
+    {
+      "id": "SYM_104",
+      "canonical_name": "spinning movements",
+      "display_name": "Spinning Sensation (Vertigo)",
+      "category": "Neurological / ENT",
+      "severity_weight": 6,
+      "original_dataset_terms": [
+        "spinning_movements"
+      ],
+      "aliases": [
+        "room spinning",
+        "rotational dizziness",
+        "spinning movements",
+        "vertigo",
+        "whirling sensation"
+      ],
+      "spelling_variants": [
+        "spinning sensation"
+      ],
+      "associated_diseases": [
+        "(vertigo) Paroymsal  Positional Vertigo"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Illusion of rotational movement."
+    },
+    {
+      "id": "SYM_105",
+      "canonical_name": "spotting urination",
+      "display_name": "Spotting of Blood in Urine",
+      "category": "Urological",
+      "severity_weight": 6,
+      "original_dataset_terms": [
+        "spotting_ urination"
+      ],
+      "aliases": [
+        "blood spots in urine",
+        "hematuria spots",
+        "spotting  urination",
+        "spotting urination",
+        "trace blood in pee"
+      ],
+      "spelling_variants": [
+        "spotting  urination",
+        "spotting urine"
+      ],
+      "associated_diseases": [
+        "Drug Reaction"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Intermittent spotting or blood tinges during urination."
+    },
+    {
+      "id": "SYM_106",
+      "canonical_name": "stiff neck",
+      "display_name": "Stiff Neck (Nuchal Rigidity)",
+      "category": "Musculoskeletal / Neurological",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "stiff_neck"
+      ],
+      "aliases": [
+        "cannot turn head",
+        "neck stiffness",
+        "nuchal rigidity",
+        "rigid neck",
+        "stiff neck"
+      ],
+      "spelling_variants": [
+        "stif neck"
+      ],
+      "associated_diseases": [
+        "Arthritis",
+        "Migraine"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Soreness and difficulty moving neck, especially looking down."
+    },
+    {
+      "id": "SYM_107",
+      "canonical_name": "stomach bleeding",
+      "display_name": "Stomach Bleeding (Upper GI Bleed)",
+      "category": "Gastrointestinal",
+      "severity_weight": 6,
+      "original_dataset_terms": [
+        "stomach_bleeding"
+      ],
+      "aliases": [
+        "coffee ground emesis",
+        "gastric bleeding",
+        "internal stomach bleed",
+        "stomach bleeding",
+        "vomiting dark blood"
+      ],
+      "spelling_variants": [
+        "stomach bleed"
+      ],
+      "associated_diseases": [
+        "Hepatitis E"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Active hemorrhage in the stomach or upper GI tract (critical)."
+    },
+    {
+      "id": "SYM_108",
+      "canonical_name": "stomach pain",
+      "display_name": "Stomach Pain",
+      "category": "Gastrointestinal",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "stomach_pain"
+      ],
+      "aliases": [
+        "gastric pain",
+        "pain in tummy",
+        "stomach ache",
+        "stomach pain",
+        "tummy ache"
+      ],
+      "spelling_variants": [
+        "stomch pain"
+      ],
+      "associated_diseases": [
+        "Drug Reaction",
+        "GERD"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Upper digestive / stomach pain."
+    },
+    {
+      "id": "SYM_109",
+      "canonical_name": "sunken eyes",
+      "display_name": "Sunken Eyes (Enophthalmos from Dehydration)",
+      "category": "Systemic / Dehydration",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "sunken_eyes"
+      ],
+      "aliases": [
+        "dark sunken eyes",
+        "deep sunken eyes",
+        "hollow eye sockets",
+        "sunken eyes"
+      ],
+      "spelling_variants": [
+        "sunken eye"
+      ],
+      "associated_diseases": [
+        "Gastroenteritis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Eyes receding into sockets caused by severe dehydration."
+    },
+    {
+      "id": "SYM_110",
+      "canonical_name": "sweating",
+      "display_name": "Sweating (Diaphoresis)",
+      "category": "Systemic",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "sweating"
+      ],
+      "aliases": [
+        "diaphoresis",
+        "excessive sweating",
+        "night sweats",
+        "perspiration",
+        "profuse sweating",
+        "sweating"
+      ],
+      "spelling_variants": [
+        "sweting"
+      ],
+      "associated_diseases": [
+        "Heart attack",
+        "Hyperthyroidism",
+        "Hypoglycemia",
+        "Malaria",
+        "Pneumonia",
+        "Tuberculosis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Heavy excretion of fluid by sweat glands."
+    },
+    {
+      "id": "SYM_111",
+      "canonical_name": "swelled lymph nodes",
+      "display_name": "Swollen Lymph Nodes (Lymphadenopathy)",
+      "category": "Immunological",
+      "severity_weight": 6,
+      "original_dataset_terms": [
+        "swelled_lymph_nodes"
+      ],
+      "aliases": [
+        "lymph node swelling",
+        "lymphadenopathy",
+        "swelled lymph nodes",
+        "swollen glands",
+        "tender neck lumps"
+      ],
+      "spelling_variants": [
+        "swollen lymph nodes"
+      ],
+      "associated_diseases": [
+        "Chicken pox",
+        "Common Cold",
+        "Tuberculosis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Enlargement of lymph nodes in neck, armpits, or groin."
+    },
+    {
+      "id": "SYM_112",
+      "canonical_name": "swelling joints",
+      "display_name": "Joint Swelling",
+      "category": "Musculoskeletal",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "swelling_joints"
+      ],
+      "aliases": [
+        "inflamed swollen joints",
+        "joint effusion",
+        "puffy joints",
+        "swelling joints",
+        "swollen joint"
+      ],
+      "spelling_variants": [
+        "joint swelling"
+      ],
+      "associated_diseases": [
+        "Arthritis",
+        "Osteoarthristis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Abnormal enlargement or fluid buildup around joints."
+    },
+    {
+      "id": "SYM_113",
+      "canonical_name": "swelling of stomach",
+      "display_name": "Abdominal Swelling (Ascites)",
+      "category": "Gastrointestinal / Hepatic",
+      "severity_weight": 7,
+      "original_dataset_terms": [
+        "swelling_of_stomach"
+      ],
+      "aliases": [
+        "abdominal fluid buildup",
+        "ascites",
+        "fluid in belly",
+        "swelling of stomach",
+        "swollen abdomen from fluid"
+      ],
+      "spelling_variants": [
+        "swollen stomach"
+      ],
+      "associated_diseases": [
+        "Alcoholic hepatitis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Fluid accumulation in the peritoneal cavity (critical hepatic sign)."
+    },
+    {
+      "id": "SYM_114",
+      "canonical_name": "swollen blood vessels",
+      "display_name": "Swollen Blood Vessels",
+      "category": "Vascular",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "swollen_blood_vessels"
+      ],
+      "aliases": [
+        "engorged vessels",
+        "inflamed veins",
+        "phlebitis",
+        "swollen blood vessels",
+        "vasculitis"
+      ],
+      "spelling_variants": [
+        "swollen vessels"
+      ],
+      "associated_diseases": [
+        "Varicose veins"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Enlargement and inflammation of blood vessels."
+    },
+    {
+      "id": "SYM_115",
+      "canonical_name": "swollen extremeties",
+      "display_name": "Swollen Extremities (Peripheral Edema)",
+      "category": "Cardiovascular / Renal",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "swollen_extremeties"
+      ],
+      "aliases": [
+        "peripheral edema",
+        "swelling in arms and legs",
+        "swollen extremeties",
+        "swollen extremities",
+        "swollen hands and feet"
+      ],
+      "spelling_variants": [
+        "swollen extremeties",
+        "swollen extremities"
+      ],
+      "associated_diseases": [
+        "Hypothyroidism"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Swelling in the hands, arms, feet, or legs."
+    },
+    {
+      "id": "SYM_116",
+      "canonical_name": "swollen legs",
+      "display_name": "Swollen Legs (Leg Edema)",
+      "category": "Cardiovascular / Renal",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "swollen_legs"
+      ],
+      "aliases": [
+        "fluid in legs",
+        "leg swelling",
+        "lower limb swelling",
+        "puffy legs",
+        "swollen legs"
+      ],
+      "spelling_variants": [
+        "swollen leg"
+      ],
+      "associated_diseases": [
+        "Varicose veins"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Fluid accumulation causing swelling in lower legs."
+    },
+    {
+      "id": "SYM_117",
+      "canonical_name": "throat irritation",
+      "display_name": "Throat Irritation / Sore Throat",
+      "category": "Respiratory / ENT",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "throat_irritation"
+      ],
+      "aliases": [
+        "pharyngitis",
+        "raw throat",
+        "scratchy throat",
+        "sore throat",
+        "throat irritation",
+        "throat pain"
+      ],
+      "spelling_variants": [
+        "throat irritation"
+      ],
+      "associated_diseases": [
+        "Common Cold"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Pain, scratchiness, or irritation of the pharynx."
+    },
+    {
+      "id": "SYM_118",
+      "canonical_name": "toxic look (typhos)",
+      "display_name": "Toxic Appearance (Typhoid Facies)",
+      "category": "Systemic / Infectious",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "toxic_look_(typhos)"
+      ],
+      "aliases": [
+        "lethargic sick look",
+        "severely ill appearance",
+        "toxic look",
+        "toxic look (typhos)",
+        "typhoid facies"
+      ],
+      "spelling_variants": [
+        "toxic look",
+        "toxic look (typhos)"
+      ],
+      "associated_diseases": [
+        "Typhoid"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Dull, apathetic, toxemic facial expression in severe typhoid fever."
+    },
+    {
+      "id": "SYM_119",
+      "canonical_name": "ulcers on tongue",
+      "display_name": "Tongue Ulcers (Aphthous Stomatitis)",
+      "category": "Oral",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "ulcers_on_tongue"
+      ],
+      "aliases": [
+        "canker sores on tongue",
+        "oral ulcers",
+        "painful mouth blisters",
+        "tongue sores",
+        "ulcers on tongue"
+      ],
+      "spelling_variants": [
+        "tongue ulcers"
+      ],
+      "associated_diseases": [
+        "GERD"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Painful sores on the surface of the tongue."
+    },
+    {
+      "id": "SYM_120",
+      "canonical_name": "unsteadiness",
+      "display_name": "Unsteadiness / Gait Instability",
+      "category": "Neurological",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "unsteadiness"
+      ],
+      "aliases": [
+        "feeling off balance",
+        "loss of footing",
+        "shaky walking",
+        "unsteadiness",
+        "wobbly legs"
+      ],
+      "spelling_variants": [
+        "unsteady"
+      ],
+      "associated_diseases": [
+        "(vertigo) Paroymsal  Positional Vertigo"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Feeling unstable while standing or walking."
+    },
+    {
+      "id": "SYM_121",
+      "canonical_name": "visual disturbances",
+      "display_name": "Visual Disturbances (Aura / Scotoma)",
+      "category": "Ophthalmological / Neurological",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "visual_disturbances"
+      ],
+      "aliases": [
+        "blind spots",
+        "flashing lights in vision",
+        "scotoma",
+        "visual aura",
+        "visual disturbances",
+        "zig zag lines"
+      ],
+      "spelling_variants": [
+        "visual disturbance"
+      ],
+      "associated_diseases": [
+        "Migraine"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Visual sensory distortions, flashes, or blind spots."
+    },
+    {
+      "id": "SYM_122",
+      "canonical_name": "vomiting",
+      "display_name": "Vomiting (Emesis)",
+      "category": "Gastrointestinal",
+      "severity_weight": 5,
+      "original_dataset_terms": [
+        "vomiting"
+      ],
+      "aliases": [
+        "emesis",
+        "puking",
+        "retching",
+        "threw up",
+        "throwing up",
+        "vomiting",
+        "barfing",
+        "barfing all morning",
+        "puking my guts out",
+        "heaving"
+      ],
+      "spelling_variants": [
+        "vomit",
+        "vomitting"
+      ],
+      "associated_diseases": [
+        "(vertigo) Paroymsal  Positional Vertigo",
+        "Alcoholic hepatitis",
+        "Chronic cholestasis",
+        "Dengue",
+        "GERD",
+        "Gastroenteritis",
+        "Heart attack",
+        "Hepatitis D",
+        "Hepatitis E",
+        "Hypoglycemia",
+        "Jaundice",
+        "Malaria",
+        "Paralysis (brain hemorrhage)",
+        "Peptic ulcer diseae",
+        "Tuberculosis",
+        "Typhoid",
+        "hepatitis A"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Involuntary forceful expulsion of stomach contents."
+    },
+    {
+      "id": "SYM_123",
+      "canonical_name": "watering from eyes",
+      "display_name": "Watering from Eyes (Epiphora)",
+      "category": "Ophthalmological",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "watering_from_eyes"
+      ],
+      "aliases": [
+        "crying eyes",
+        "epiphora",
+        "excessive tearing",
+        "teary eyes",
+        "watering from eyes",
+        "watery eyes"
+      ],
+      "spelling_variants": [
+        "watering eyes",
+        "watery eyes"
+      ],
+      "associated_diseases": [
+        "Allergy"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Excessive tear production or overflow."
+    },
+    {
+      "id": "SYM_124",
+      "canonical_name": "weakness in limbs",
+      "display_name": "Weakness in Limbs",
+      "category": "Neurological / Musculoskeletal",
+      "severity_weight": 7,
+      "original_dataset_terms": [
+        "weakness_in_limbs"
+      ],
+      "aliases": [
+        "heavy limbs",
+        "loss of power in limbs",
+        "shaky arms and legs",
+        "weak arms and legs",
+        "weakness in limbs"
+      ],
+      "spelling_variants": [
+        "limb weakness"
+      ],
+      "associated_diseases": [
+        "Cervical spondylosis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Loss of strength or motor control in extremities."
+    },
+    {
+      "id": "SYM_125",
+      "canonical_name": "weakness of one body side",
+      "display_name": "Unilateral Weakness (Hemiparesis)",
+      "category": "Neurological",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "weakness_of_one_body_side"
+      ],
+      "aliases": [
+        "hemiparesis",
+        "left side weakness",
+        "one sided weakness",
+        "right side weakness",
+        "stroke weakness",
+        "weakness of one body side"
+      ],
+      "spelling_variants": [
+        "one sided weakness"
+      ],
+      "associated_diseases": [
+        "Paralysis (brain hemorrhage)"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Weakness affecting one side of the body (critical stroke indicator)."
+    },
+    {
+      "id": "SYM_126",
+      "canonical_name": "weight gain",
+      "display_name": "Weight Gain",
+      "category": "Endocrine / Metabolic",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "weight_gain"
+      ],
+      "aliases": [
+        "gaining weight rapidly",
+        "putting on weight",
+        "unexplained weight gain",
+        "weight gain"
+      ],
+      "spelling_variants": [
+        "weight increase"
+      ],
+      "associated_diseases": [
+        "Hypothyroidism"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Increase in body mass."
+    },
+    {
+      "id": "SYM_127",
+      "canonical_name": "weight loss",
+      "display_name": "Weight Loss",
+      "category": "Endocrine / Metabolic / Systemic",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "weight_loss"
+      ],
+      "aliases": [
+        "dropping weight",
+        "losing weight without trying",
+        "unexplained weight loss",
+        "wasting",
+        "weight loss"
+      ],
+      "spelling_variants": [
+        "weight reduction"
+      ],
+      "associated_diseases": [
+        "Diabetes",
+        "Hyperthyroidism",
+        "Jaundice",
+        "Tuberculosis"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Reduction of total body mass without intentional dieting."
+    },
+    {
+      "id": "SYM_128",
+      "canonical_name": "yellow crust ooze",
+      "display_name": "Yellow Crust Ooze (Honey-Crusted Lesions)",
+      "category": "Dermatological",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "yellow_crust_ooze"
+      ],
+      "aliases": [
+        "honey colored crust",
+        "impetigo crusts",
+        "oozing skin sores",
+        "yellow crust ooze",
+        "yellow fluid crust"
+      ],
+      "spelling_variants": [
+        "yellow crusting"
+      ],
+      "associated_diseases": [
+        "Impetigo"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Honey-colored dried exudate typical of bacterial skin infections (Impetigo)."
+    },
+    {
+      "id": "SYM_129",
+      "canonical_name": "yellow urine",
+      "display_name": "Dark Yellow Urine",
+      "category": "Urological / Hepatic",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "yellow_urine"
+      ],
+      "aliases": [
+        "bright yellow urine",
+        "concentrated urine",
+        "deep yellow pee",
+        "yellow urine"
+      ],
+      "spelling_variants": [
+        "yellowish urine"
+      ],
+      "associated_diseases": [
+        "Hepatitis B"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Deeply pigmented yellow urine."
+    },
+    {
+      "id": "SYM_130",
+      "canonical_name": "yellowing of eyes",
+      "display_name": "Yellowing of Eyes (Scleral Icterus)",
+      "category": "Hepatic",
+      "severity_weight": 4,
+      "original_dataset_terms": [
+        "yellowing_of_eyes"
+      ],
+      "aliases": [
+        "icteric sclera",
+        "jaundice eyes",
+        "scleral icterus",
+        "yellow eyes",
+        "yellowing of eyes"
+      ],
+      "spelling_variants": [
+        "yellow eyes"
+      ],
+      "associated_diseases": [
+        "Chronic cholestasis",
+        "Hepatitis B",
+        "Hepatitis C",
+        "Hepatitis D",
+        "Hepatitis E",
+        "Tuberculosis",
+        "hepatitis A"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Yellow pigmentation of the white of the eyes (sclera) due to bilirubin."
+    },
+    {
+      "id": "SYM_131",
+      "canonical_name": "yellowish skin",
+      "display_name": "Yellowish Skin (Jaundice)",
+      "category": "Hepatic",
+      "severity_weight": 3,
+      "original_dataset_terms": [
+        "yellowish_skin"
+      ],
+      "aliases": [
+        "icteric skin",
+        "jaundice skin",
+        "skin turning yellow",
+        "yellow skin",
+        "yellowish skin",
+        "yellowing of skin",
+        "yellowing skin",
+        "yellow discoloration of skin"
+      ],
+      "spelling_variants": [
+        "yellow skin"
+      ],
+      "associated_diseases": [
+        "Alcoholic hepatitis",
+        "Chronic cholestasis",
+        "Hepatitis B",
+        "Hepatitis C",
+        "Hepatitis D",
+        "Hepatitis E",
+        "Jaundice",
+        "hepatitis A"
+      ],
+      "flagged_for_review": false,
+      "clinical_notes": "Yellow discoloration of the skin caused by elevated bilirubin levels."
+    }
+  ]
+}

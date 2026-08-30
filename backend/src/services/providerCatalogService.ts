@@ -321,7 +321,15 @@ Rules:
 - no markdown
 `;
 
-  const result = await model.generateContent(prompt);
+  const withTimeout = <T>(promise: Promise<T>, ms: number): Promise<T> =>
+    Promise.race([
+      promise,
+      new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error(`Gemini API call timed out after ${ms}ms`)), ms),
+      ),
+    ]);
+
+  const result = await withTimeout(model.generateContent(prompt), 3500);
   const response = await result.response;
   const text = response.text();
   return normalizeProviders(safeJsonParse(text), specialist, location);
