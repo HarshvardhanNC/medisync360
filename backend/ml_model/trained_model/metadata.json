@@ -600,21 +600,21 @@
   },
   "symptom_to_diseases": {
     "itching": [
-      "Jaundice",
-      "Hepatitis B",
+      "Drug Reaction",
       "Chronic cholestasis",
+      "Hepatitis B",
+      "Jaundice",
       "Chicken pox",
-      "Fungal infection",
-      "Drug Reaction"
+      "Fungal infection"
     ],
     "skin rash": [
-      "Dengue",
-      "Impetigo",
-      "Psoriasis",
-      "Acne",
+      "Drug Reaction",
       "Chicken pox",
       "Fungal infection",
-      "Drug Reaction"
+      "Psoriasis",
+      "Dengue",
+      "Acne",
+      "Impetigo"
     ],
     "nodal skin eruptions": [
       "Fungal infection"
@@ -630,119 +630,119 @@
       "Allergy"
     ],
     "chills": [
-      "Allergy",
+      "Typhoid",
       "Common Cold",
-      "Pneumonia",
+      "Allergy",
       "Dengue",
-      "Malaria",
       "Tuberculosis",
-      "Typhoid"
+      "Pneumonia",
+      "Malaria"
     ],
     "watering from eyes": [
       "Allergy"
     ],
     "stomach pain": [
-      "GERD",
-      "Drug Reaction"
+      "Drug Reaction",
+      "GERD"
     ],
     "acidity": [
-      "GERD",
-      "Migraine"
+      "Migraine",
+      "GERD"
     ],
     "ulcers on tongue": [
       "GERD"
     ],
     "vomiting": [
-      "Jaundice",
-      "Dengue",
-      "Paralysis (brain hemorrhage)",
-      "hepatitis A",
       "Hepatitis D",
-      "Heart attack",
-      "Malaria",
-      "Hypoglycemia",
-      "Chronic cholestasis",
-      "Peptic ulcer diseae",
-      "GERD",
-      "Hepatitis E",
-      "Alcoholic hepatitis",
-      "Gastroenteritis",
-      "Tuberculosis",
       "Typhoid",
-      "(vertigo) Paroymsal  Positional Vertigo"
+      "Chronic cholestasis",
+      "GERD",
+      "Paralysis (brain hemorrhage)",
+      "Jaundice",
+      "hepatitis A",
+      "Heart attack",
+      "Hypoglycemia",
+      "Gastroenteritis",
+      "Peptic ulcer diseae",
+      "Alcoholic hepatitis",
+      "Dengue",
+      "Hepatitis E",
+      "(vertigo) Paroymsal  Positional Vertigo",
+      "Tuberculosis",
+      "Malaria"
     ],
     "cough": [
-      "Common Cold",
-      "Pneumonia",
       "GERD",
+      "Common Cold",
+      "Bronchial Asthma",
       "Tuberculosis",
-      "Bronchial Asthma"
+      "Pneumonia"
     ],
     "chest pain": [
-      "Common Cold",
-      "Pneumonia",
-      "Heart attack",
       "GERD",
+      "Heart attack",
+      "Common Cold",
+      "Hypertension ",
       "Tuberculosis",
-      "Hypertension "
+      "Pneumonia"
     ],
     "yellowish skin": [
-      "Jaundice",
-      "Hepatitis B",
-      "hepatitis A",
       "Hepatitis D",
       "Chronic cholestasis",
-      "Hepatitis E",
+      "Hepatitis B",
+      "hepatitis A",
+      "Jaundice",
       "Alcoholic hepatitis",
-      "Hepatitis C"
+      "Hepatitis C",
+      "Hepatitis E"
     ],
     "nausea": [
-      "Dengue",
-      "hepatitis A",
       "Hepatitis D",
-      "Malaria",
-      "Hypoglycemia",
-      "Chronic cholestasis",
-      "Hepatitis E",
-      "Hepatitis C",
       "Typhoid",
-      "(vertigo) Paroymsal  Positional Vertigo"
+      "Chronic cholestasis",
+      "hepatitis A",
+      "Hypoglycemia",
+      "Hepatitis C",
+      "Dengue",
+      "Hepatitis E",
+      "(vertigo) Paroymsal  Positional Vertigo",
+      "Malaria"
     ],
     "loss of appetite": [
-      "Hepatitis B",
-      "Dengue",
-      "hepatitis A",
       "Hepatitis D",
       "Chronic cholestasis",
-      "Peptic ulcer diseae",
+      "Hepatitis B",
+      "hepatitis A",
       "Chicken pox",
-      "Hepatitis E",
+      "Peptic ulcer diseae",
       "Hepatitis C",
+      "Dengue",
+      "Hepatitis E",
       "Tuberculosis"
     ],
     "abdominal pain": [
-      "Jaundice",
+      "Hepatitis D",
+      "Typhoid",
+      "Chronic cholestasis",
       "Hepatitis B",
       "hepatitis A",
-      "Hepatitis D",
-      "Chronic cholestasis",
+      "Jaundice",
       "Peptic ulcer diseae",
-      "Hepatitis E",
       "Alcoholic hepatitis",
-      "Typhoid"
+      "Hepatitis E"
     ],
     "yellowing of eyes": [
-      "Hepatitis B",
       "Hepatitis D",
-      "hepatitis A",
       "Chronic cholestasis",
-      "Hepatitis E",
+      "Hepatitis B",
+      "hepatitis A",
       "Hepatitis C",
+      "Hepatitis E",
       "Tuberculosis"
     ],
     "burning micturition": [
-      "Urinary tract infection",
-      "Drug Reaction"
+      "Drug Reaction",
+      "Urinary tract infection"
     ],
     "spotting  urination": [
       "Drug Reaction"
@@ -754,8 +754,8 @@
       "Peptic ulcer diseae"
     ],
     "indigestion": [
-      "Peptic ulcer diseae",
-      "Migraine"
+      "Migraine",
+      "Peptic ulcer diseae"
     ],
     "muscle wasting": [
       "AIDS"
@@ -764,74 +764,74 @@
       "AIDS"
     ],
     "high fever": [
-      "Jaundice",
-      "Common Cold",
-      "Pneumonia",
-      "Dengue",
-      "Impetigo",
-      "Malaria",
       "Typhoid",
-      "AIDS",
+      "Jaundice",
       "Chicken pox",
+      "AIDS",
+      "Common Cold",
+      "Dengue",
       "Hepatitis E",
+      "Bronchial Asthma",
       "Tuberculosis",
-      "Bronchial Asthma"
+      "Impetigo",
+      "Pneumonia",
+      "Malaria"
     ],
     "extra marital contacts": [
       "AIDS"
     ],
     "fatigue": [
-      "Jaundice",
-      "Common Cold",
-      "Hepatitis B",
-      "Dengue",
-      "Diabetes ",
-      "Pneumonia",
       "Hepatitis D",
-      "Varicose veins",
-      "Hypothyroidism",
-      "Hyperthyroidism",
-      "Hypoglycemia",
       "Typhoid",
+      "Hepatitis B",
+      "Jaundice",
       "Chicken pox",
-      "Hepatitis E",
+      "Diabetes ",
+      "Hypoglycemia",
+      "Common Cold",
       "Hepatitis C",
+      "Dengue",
+      "Hepatitis E",
+      "Bronchial Asthma",
       "Tuberculosis",
-      "Bronchial Asthma"
+      "Varicose veins",
+      "Pneumonia",
+      "Hypothyroidism",
+      "Hyperthyroidism"
     ],
     "weight loss": [
-      "Jaundice",
+      "Diabetes ",
+      "Hyperthyroidism",
       "Tuberculosis",
+      "Jaundice"
+    ],
+    "restlessness": [
       "Diabetes ",
       "Hyperthyroidism"
     ],
-    "restlessness": [
-      "Hyperthyroidism",
-      "Diabetes "
-    ],
     "lethargy": [
-      "Hypothyroidism",
-      "Hepatitis B",
       "Chicken pox",
-      "Diabetes "
+      "Diabetes ",
+      "Hypothyroidism",
+      "Hepatitis B"
     ],
     "irregular sugar level": [
       "Diabetes "
     ],
     "blurred and distorted vision": [
+      "Migraine",
       "Hypoglycemia",
-      "Diabetes ",
-      "Migraine"
+      "Diabetes "
     ],
     "obesity": [
       "Varicose veins",
       "Diabetes "
     ],
     "excessive hunger": [
+      "Migraine",
       "Hypoglycemia",
-      "Hyperthyroidism",
       "Diabetes ",
-      "Migraine"
+      "Hyperthyroidism"
     ],
     "increased appetite": [
       "Diabetes "
@@ -846,41 +846,41 @@
       "Gastroenteritis"
     ],
     "diarrhoea": [
-      "Hyperthyroidism",
+      "Typhoid",
       "hepatitis A",
-      "Malaria",
       "Gastroenteritis",
-      "Typhoid"
+      "Hyperthyroidism",
+      "Malaria"
     ],
     "breathlessness": [
-      "Heart attack",
       "Pneumonia",
-      "Tuberculosis",
-      "Bronchial Asthma"
+      "Bronchial Asthma",
+      "Heart attack",
+      "Tuberculosis"
     ],
     "family history": [
-      "Hepatitis C",
-      "Bronchial Asthma"
+      "Bronchial Asthma",
+      "Hepatitis C"
     ],
     "mucoid sputum": [
       "Bronchial Asthma"
     ],
     "headache": [
+      "Typhoid",
+      "Paralysis (brain hemorrhage)",
+      "Chicken pox",
+      "Migraine",
+      "Hypoglycemia",
       "Common Cold",
       "Dengue",
-      "Paralysis (brain hemorrhage)",
-      "Malaria",
-      "Hypoglycemia",
-      "Typhoid",
-      "Chicken pox",
       "Hypertension ",
       "(vertigo) Paroymsal  Positional Vertigo",
-      "Migraine"
+      "Malaria"
     ],
     "dizziness": [
       "Cervical spondylosis",
-      "Hypothyroidism",
-      "Hypertension "
+      "Hypertension ",
+      "Hypothyroidism"
     ],
     "loss of balance": [
       "Cervical spondylosis",
@@ -895,14 +895,14 @@
       "Migraine"
     ],
     "depression": [
-      "Hypothyroidism",
-      "Migraine"
+      "Migraine",
+      "Hypothyroidism"
     ],
     "irritability": [
-      "Hypothyroidism",
       "Hyperthyroidism",
-      "Hypoglycemia",
-      "Migraine"
+      "Migraine",
+      "Hypothyroidism",
+      "Hypoglycemia"
     ],
     "visual disturbances": [
       "Migraine"
@@ -925,62 +925,62 @@
       "Paralysis (brain hemorrhage)"
     ],
     "dark urine": [
-      "Jaundice",
-      "Hepatitis B",
       "Hepatitis D",
+      "Hepatitis B",
       "hepatitis A",
+      "Jaundice",
       "Hepatitis E"
     ],
     "sweating": [
+      "Heart attack",
+      "Hypoglycemia",
+      "Tuberculosis",
       "Pneumonia",
       "Hyperthyroidism",
-      "Heart attack",
-      "Malaria",
-      "Hypoglycemia",
-      "Tuberculosis"
+      "Malaria"
     ],
     "muscle pain": [
+      "Dengue",
       "Common Cold",
       "Malaria",
-      "Dengue",
       "hepatitis A"
     ],
     "mild fever": [
-      "Tuberculosis",
       "Chicken pox",
+      "Tuberculosis",
       "hepatitis A"
     ],
     "swelled lymph nodes": [
+      "Chicken pox",
       "Common Cold",
-      "Tuberculosis",
-      "Chicken pox"
+      "Tuberculosis"
     ],
     "malaise": [
-      "Common Cold",
       "Hepatitis B",
-      "Dengue",
-      "Pneumonia",
       "Chicken pox",
-      "Tuberculosis"
+      "Common Cold",
+      "Dengue",
+      "Tuberculosis",
+      "Pneumonia"
     ],
     "red spots over body": [
       "Dengue",
       "Chicken pox"
     ],
     "joint pain": [
-      "Dengue",
       "Hepatitis D",
       "hepatitis A",
       "Psoriasis",
-      "Osteoarthristis",
-      "Hepatitis E"
+      "Dengue",
+      "Hepatitis E",
+      "Osteoarthristis"
     ],
     "pain behind the eyes": [
       "Dengue"
     ],
     "constipation": [
-      "Dimorphic hemmorhoids(piles)",
-      "Typhoid"
+      "Typhoid",
+      "Dimorphic hemmorhoids(piles)"
     ],
     "toxic look (typhos)": [
       "Typhoid"
@@ -1019,9 +1019,9 @@
       "Alcoholic hepatitis"
     ],
     "phlegm": [
+      "Pneumonia",
       "Common Cold",
-      "Tuberculosis",
-      "Pneumonia"
+      "Tuberculosis"
     ],
     "blood in sputum": [
       "Tuberculosis"
@@ -1105,8 +1105,8 @@
       "Hyperthyroidism"
     ],
     "muscle weakness": [
-      "Hyperthyroidism",
-      "Arthritis"
+      "Arthritis",
+      "Hyperthyroidism"
     ],
     "anxiety": [
       "Hypoglycemia"
@@ -1127,12 +1127,12 @@
       "Osteoarthristis"
     ],
     "swelling joints": [
-      "Osteoarthristis",
-      "Arthritis"
+      "Arthritis",
+      "Osteoarthristis"
     ],
     "painful walking": [
-      "Osteoarthristis",
-      "Arthritis"
+      "Arthritis",
+      "Osteoarthristis"
     ],
     "movement stiffness": [
       "Arthritis"

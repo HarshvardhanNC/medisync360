@@ -9,6 +9,10 @@ export interface IMedicalReport extends Document {
   uploadDate: Date;
   fileHash: string;
   blockchainHashReference: string;
+  blockchainTransactionHash: string;
+  blockchainBlockNumber?: number;
+  blockchainContractAddress: string;
+  blockchainNetwork: string;
   verificationStatus: 'verified' | 'tampered' | 'unchecked';
   sharedWith: mongoose.Types.ObjectId[];
 }
@@ -23,6 +27,10 @@ const MedicalReportSchema: Schema = new Schema(
     uploadDate: { type: Date, default: Date.now },
     fileHash: { type: String, required: true },
     blockchainHashReference: { type: String, default: 'pending' },
+    blockchainTransactionHash: { type: String, default: 'pending' },
+    blockchainBlockNumber: { type: Number },
+    blockchainContractAddress: { type: String, default: '' },
+    blockchainNetwork: { type: String, default: 'hardhat-local' },
     verificationStatus: {
       type: String,
       enum: ['verified', 'tampered', 'unchecked'],

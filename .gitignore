@@ -6,3 +6,4 @@ build/
 artifacts/
 cache/
  coverage/
+blockchain/deployments/*.json

@@ -10,8 +10,7 @@ MediSync360 is built using a modern tech stack and is divided into three core co
     *   **MongoDB & Mongoose**: For databases and data modeling.
     *   **Authentication**: Using `jsonwebtoken` (JWT) and `bcryptjs`.
     *   **AI Integration**: Harnessing `@google/generative-ai` (Gemini API) for AI-driven features (e.g., AI symptom checker).
-    *   **Blockchain Integration**: Interacting with blockchain networks using `ethers.js`.
-*   **Blockchain**: Smart contract development and deployment utilizing **Hardhat**, aimed at providing secure, decentralized record keeping or operations.
+    *   **Blockchain Integration**: A local Ethereum-compatible blockchain using `ethers.js` and Hardhat. Medical report files remain off-chain; only their SHA-256 integrity proof is anchored on-chain.
 
 ## Project Structure
 
@@ -52,12 +51,52 @@ MediSync360/
     ```
     *   Start the Next.js development server: `npm run dev`
 
-4.  **Setup Blockchain (Optional/If needed):**
+4.  **Setup Local Blockchain:**
     ```bash
     cd ../blockchain
     npm install
     ```
-    *   Run local blockchain node or run tests: `npx hardhat node`
+    *   In a separate terminal, start the local node: `npm run node`
+    *   In another terminal, deploy the contract: `npm run deploy:local`
+    *   Copy the printed `CONTRACT_ADDRESS` into `backend/.env`.
+
+### Backend environment
+
+Copy `backend/.env.example` to `backend/.env` and set:
+
+```env
+MONGO_URI=mongodb://localhost:27017/medisync360
+JWT_SECRET=replace-with-a-long-random-secret
+RPC_URL=http://127.0.0.1:8545
+PRIVATE_KEY=the-first-private-key-printed-by-hardhat-node
+CONTRACT_ADDRESS=the-address-printed-by-deploy-blockchain
+BLOCKCHAIN_NETWORK=hardhat-local
+```
+
+Cloudinary credentials are also required for report upload. Use the existing `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, and `CLOUDINARY_API_SECRET` settings in the backend environment template.
+
+### Start the application
+
+Keep the Hardhat node running, then start the backend and frontend in separate terminals:
+
+```bash
+cd backend
+npm run dev
+```
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+On Windows, `start-blockchain.ps1` and `start-blockchain.bat` start the local node, while the deploy scripts deploy the contract. The node must remain running while the backend is using the blockchain.
+
+### What the blockchain demonstrates
+
+Uploading a report now creates a real local blockchain transaction. The smart contract stores the report ID and SHA-256 file hash, emits a `ReportAnchored` event, and rejects duplicate report IDs. Report verification downloads the file, recomputes its hash, reads the hash from the contract, and reports `Verified` or `Tampered`.
+
+This is a genuine local EVM demonstration and requires no money, MetaMask, public RPC provider, or funded wallet. Restarting the Hardhat node resets its local chain, so redeploy the contract and update `CONTRACT_ADDRESS` when starting a fresh node.
 
 ## Collaborators
 When pushing changes:

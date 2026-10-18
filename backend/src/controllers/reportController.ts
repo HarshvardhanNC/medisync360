@@ -6,13 +6,13 @@ import {
   fetchFileBufferFromCloudinary,
   getSignedCloudinaryDownloadUrl,
 } from '../services/cloudinaryService';
-import { mockStoreHash, mockVerifyHash } from '../services/blockchainService';
+import { anchorReportHash, getAnchoredReport } from '../services/blockchainService';
 import { AuthRequest } from '../middleware/authMiddleware';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // POST /api/reports/upload
 // Multer memoryStorage puts the file in req.file.buffer
-// Flow: hash → Cloudinary upload → MongoDB save → mock blockchain store
+// Flow: hash → Cloudinary upload → MongoDB save → real local blockchain anchor
 // ─────────────────────────────────────────────────────────────────────────────
 export const uploadReport = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
@@ -48,14 +48,21 @@ export const uploadReport = async (req: AuthRequest, res: Response): Promise<voi
       cloudinaryPublicId,
       fileHash,
       blockchainHashReference: 'pending',
+      blockchainTransactionHash: 'pending',
+      blockchainContractAddress: '',
+      blockchainNetwork: 'hardhat-local',
       verificationStatus: 'unchecked',
     });
 
-    // Step 4: Store hash on mock blockchain (append-only)
-    const blockId = await mockStoreHash(report._id as any, fileHash);
+    // Step 4: Store hash in the deployed registry contract
+    const blockchainAnchor = await anchorReportHash(report._id.toString(), fileHash);
 
-    // Step 5: Update report with the blockchain reference
-    report.blockchainHashReference = blockId;
+    // Step 5: Persist the mined transaction metadata
+    report.blockchainHashReference = blockchainAnchor.transactionHash;
+    report.blockchainTransactionHash = blockchainAnchor.transactionHash;
+    report.blockchainBlockNumber = blockchainAnchor.blockNumber;
+    report.blockchainContractAddress = blockchainAnchor.contractAddress;
+    report.blockchainNetwork = blockchainAnchor.network;
     await report.save();
 
     res.status(201).json({
@@ -68,6 +75,10 @@ export const uploadReport = async (req: AuthRequest, res: Response): Promise<voi
         uploadDate: report.uploadDate,
         fileHash: report.fileHash,
         blockchainHashReference: report.blockchainHashReference,
+        blockchainTransactionHash: report.blockchainTransactionHash,
+        blockchainBlockNumber: report.blockchainBlockNumber,
+        blockchainContractAddress: report.blockchainContractAddress,
+        blockchainNetwork: report.blockchainNetwork,
         verificationStatus: report.verificationStatus,
       },
     });
@@ -183,18 +194,15 @@ export const verifyReport = async (req: AuthRequest, res: Response): Promise<voi
     // Step 2: Compare against DB hash
     const dbHashMatch = recomputedHash === report.fileHash;
 
-    // Step 3: Compare against blockchain record (mock)
+    // Step 3: Compare against the deployed registry contract
     let blockchainMatch = false;
     let blockchainInfo: any = null;
 
     try {
-      const blockchainResult = await mockVerifyHash(report._id as any, recomputedHash);
-      blockchainMatch = blockchainResult.matches;
-      blockchainInfo = blockchainResult;
+      blockchainInfo = await getAnchoredReport(report._id.toString());
+      blockchainMatch = blockchainInfo.exists && blockchainInfo.fileHash === recomputedHash;
     } catch (blockErr) {
       console.warn('Blockchain verification warning:', blockErr);
-      // Fall back to DB-only verification if blockchain record missing
-      blockchainMatch = dbHashMatch;
     }
 
     // Both must agree for a "Verified" status
@@ -213,7 +221,12 @@ export const verifyReport = async (req: AuthRequest, res: Response): Promise<voi
         storedHash: report.fileHash,
         dbHashMatch,
         blockchainMatch,
-        blockId: blockchainInfo?.blockId || report.blockchainHashReference,
+        transactionHash: report.blockchainTransactionHash,
+        blockNumber: report.blockchainBlockNumber,
+        contractAddress: report.blockchainContractAddress,
+        blockchainNetwork: report.blockchainNetwork,
+        onChainUploader: blockchainInfo?.uploader,
+        onChainTimestamp: blockchainInfo?.timestamp,
       },
     });
   } catch (error: any) {

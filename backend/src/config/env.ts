@@ -21,4 +21,8 @@ export const env = {
   cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME ?? '',
   cloudinaryApiKey: process.env.CLOUDINARY_API_KEY ?? '',
   cloudinaryApiSecret: process.env.CLOUDINARY_API_SECRET ?? '',
+  blockchainRpcUrl: process.env.RPC_URL ?? 'http://127.0.0.1:8545',
+  blockchainPrivateKey: process.env.PRIVATE_KEY ?? '',
+  blockchainContractAddress: process.env.CONTRACT_ADDRESS ?? '',
+  blockchainNetwork: process.env.BLOCKCHAIN_NETWORK ?? 'hardhat-local',
 } as const;

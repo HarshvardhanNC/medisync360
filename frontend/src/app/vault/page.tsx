@@ -11,6 +11,10 @@ interface MedicalReport {
   uploadDate: string;
   fileHash: string;
   blockchainHashReference: string;
+  blockchainTransactionHash?: string;
+  blockchainBlockNumber?: number;
+  blockchainContractAddress?: string;
+  blockchainNetwork?: string;
   verificationStatus: "verified" | "tampered" | "unchecked";
 }
 
@@ -249,12 +253,22 @@ export default function MedicalVault() {
                 </p>
               </div>
 
-              {/* Block ID */}
-              {report.blockchainHashReference && report.blockchainHashReference !== "pending" && (
-                <p className="text-xs font-mono text-gray-600 px-1 truncate" title={report.blockchainHashReference}>
-                  <span className="text-gray-700 mr-1">Block:</span>
-                  {report.blockchainHashReference.substring(0, 18)}…
-                </p>
+              {/* Real local EVM transaction metadata */}
+              {report.blockchainTransactionHash && report.blockchainTransactionHash !== "pending" && (
+                <div className="space-y-1 px-1 text-xs font-mono text-gray-500">
+                  <p className="truncate" title={report.blockchainTransactionHash}>
+                    <span className="text-gray-700 mr-1">Tx:</span>
+                    {report.blockchainTransactionHash.substring(0, 18)}…
+                  </p>
+                  <p>
+                    <span className="text-gray-700 mr-1">Block:</span>
+                    {report.blockchainBlockNumber ?? "Pending"}
+                  </p>
+                  <p>
+                    <span className="text-gray-700 mr-1">Network:</span>
+                    {report.blockchainNetwork || "hardhat-local"}
+                  </p>
+                </div>
               )}
             </div>
 
