@@ -1,4 +1,6 @@
 import http from 'http';
+import path from 'path';
+import { spawn } from 'child_process';
 import { Request, Response } from 'express';
 import { predictDiseaseFromSymptoms, analyzeInsurancePolicy, TriageContext } from '../services/aiService';
 import { extractTopDisease, getSpecialistForDisease } from '../utils/doctorRecommendation';
@@ -148,6 +150,59 @@ export const bookGeneratedProviderSlot = async (req: AuthRequest, res: Response)
   }
 };
 
+const executePythonInsuranceRuleEngine = (mode: 'predict' | 'compare', payload: any): Promise<any> => {
+  return new Promise((resolve, reject) => {
+    const candidates = [
+      'C:\\Users\\omman\\AppData\\Local\\Programs\\Python\\Python312\\python.exe',
+      process.env.PYTHON_PATH,
+      'python',
+      'py',
+    ].filter(Boolean) as string[];
+
+    const scriptPath = path.resolve(__dirname, '../../../insurance_ai/cli.py');
+
+    const tryCandidate = (index: number) => {
+      if (index >= candidates.length) {
+        return reject(new Error('Could not find a valid Python executable to run the Insurance Rule Engine.'));
+      }
+      const bin = candidates[index];
+      let child: any;
+      try {
+        child = spawn(bin, [scriptPath, mode]);
+      } catch (e) {
+        return tryCandidate(index + 1);
+      }
+
+      let stdout = '';
+      let stderr = '';
+
+      child.stdout.on('data', (d: any) => { stdout += d.toString(); });
+      child.stderr.on('data', (d: any) => { stderr += d.toString(); });
+
+      child.on('close', (code: number) => {
+        if (code !== 0) {
+          return tryCandidate(index + 1);
+        }
+        try {
+          const parsed = JSON.parse(stdout);
+          resolve(parsed);
+        } catch (e: any) {
+          tryCandidate(index + 1);
+        }
+      });
+
+      child.on('error', () => {
+        tryCandidate(index + 1);
+      });
+
+      child.stdin.write(JSON.stringify(payload));
+      child.stdin.end();
+    };
+
+    tryCandidate(0);
+  });
+};
+
 const postToFlask = (path: string, payload: any): Promise<any> => {
   return new Promise((resolve, reject) => {
     const dataString = JSON.stringify(payload);
@@ -196,7 +251,13 @@ export const predictClaimProxy = async (req: Request, res: Response, next: any) 
     return res.json(data);
   } catch (error: any) {
     console.error('Insurance Proxy Error:', error?.message || error);
-    return res.status(500).json({ error: error?.message || 'Could not connect to Insurance AI service on port 5001.' });
+    try {
+      const fallbackData = await executePythonInsuranceRuleEngine('predict', req.body);
+      return res.json(fallbackData);
+    } catch (fbErr: any) {
+      console.error('Insurance Rule Engine Error:', fbErr?.message || fbErr);
+      return res.status(500).json({ error: fbErr?.message || 'Could not connect to Insurance AI service on port 5001.' });
+    }
   }
 };
 
@@ -206,6 +267,12 @@ export const compareClaimProxy = async (req: Request, res: Response, next: any) 
     return res.json(data);
   } catch (error: any) {
     console.error('Insurance Compare Proxy Error:', error?.message || error);
-    return res.status(500).json({ error: error?.message || 'Could not connect to Insurance AI service on port 5001.' });
+    try {
+      const fallbackData = await executePythonInsuranceRuleEngine('compare', req.body);
+      return res.json(fallbackData);
+    } catch (fbErr: any) {
+      console.error('Insurance Rule Engine Error:', fbErr?.message || fbErr);
+      return res.status(500).json({ error: fbErr?.message || 'Could not connect to Insurance AI service on port 5001.' });
+    }
   }
 };

@@ -25,7 +25,12 @@ export class CSVDataLoader {
   private dataPath: string;
 
   constructor() {
-    this.dataPath = path.join(__dirname, '../data');
+    const defaultDataPath = path.join(__dirname, '../data');
+    if (fs.existsSync(defaultDataPath) && fs.existsSync(path.join(defaultDataPath, 'dataset.csv'))) {
+      this.dataPath = defaultDataPath;
+    } else {
+      this.dataPath = path.join(process.cwd(), 'src/data');
+    }
   }
 
   // Parse main dataset CSV

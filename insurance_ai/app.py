@@ -10,6 +10,9 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from rules import INSURANCE_RULES, PRE_EXISTING_DISEASES, DISEASE_SPECIFIC_OVERRIDES
 from model import predict as ml_predict, train_model, MODEL_PATH
+from legacy_adapter import execute_claim_evaluation, adapt_legacy_payload_to_claim
+from engine.pipeline import calculate_claim
+from registry.product_registry import list_supported_policies, get_policy
 
 app = Flask(__name__)
 CORS(app, origins="*")
@@ -348,6 +351,7 @@ def predict_claim():
         return jsonify({"error": f"Unknown company: {data['company']}"}), 422
 
     try:
+        return jsonify(execute_claim_evaluation(data)), 200
         rule_result = run_rule_engine(data)
         ml_result   = ml_predict(data)
 
@@ -391,6 +395,20 @@ def compare_claim():
     for company_name in INSURANCE_RULES:
         payload = {**data, "company": company_name}
         try:
+            eval_res = execute_claim_evaluation(payload)
+            results.append({
+                "company":              company_name,
+                "approved_amount":      eval_res["approved_amount"],
+                "total_deducted":       round(eval_res["total_claimed_amount"] - eval_res["approved_amount"], 2),
+                "claim_efficiency_pct": eval_res["claim_efficiency_pct"],
+                "approval_probability": eval_res["approval_probability"],
+                "risk_score":           eval_res["risk_score"],
+                "risk_tier":            eval_res["risk_tier"],
+                "co_pay_pct":           INSURANCE_RULES.get(company_name, {}).get("co_pay_pct", 0),
+                "hard_reject":          eval_res["status"] == "REJECTED",
+                "top_recommendation":   eval_res["recommendations"][0] if eval_res["recommendations"] else "",
+            })
+            continue
             rule_r = run_rule_engine(payload)
             ml_r   = ml_predict(payload)
             if rule_r["hard_reject"]:

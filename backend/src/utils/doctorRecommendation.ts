@@ -1,15 +1,5 @@
-const doctors = require('../data/doctors.js') as Array<{
-  id: string;
-  name: string;
-  specialization: string;
-  experience: number;
-  location: string;
-  fees: number;
-  rating: number;
-  availability: Array<{ date: string; time: string }>;
-}>;
-
-const specialistMap = require('./specialistMap.js') as Record<string, string>;
+import doctors from '../data/doctors';
+import specialistMap from './specialistMap';
 
 type PredictionResult = {
   predictedCondition?: string;

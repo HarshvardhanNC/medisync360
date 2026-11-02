@@ -1,4 +1,4 @@
-# MediSync360
+  # MediSync360
 
 MediSync360 is a healthcare platform combining symptom-based disease prediction, insurance claim intelligence, secure medical-report storage, and a real local Ethereum-compatible blockchain demonstration.
 
