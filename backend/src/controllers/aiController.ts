@@ -150,7 +150,7 @@ export const bookGeneratedProviderSlot = async (req: AuthRequest, res: Response)
   }
 };
 
-const executePythonInsuranceRuleEngine = (mode: 'predict' | 'compare', payload: any): Promise<any> => {
+const executePythonInsuranceRuleEngine = (mode: 'predict' | 'compare' | 'assistant' | 'chat', payload: any): Promise<any> => {
   return new Promise((resolve, reject) => {
     const candidates = [
       'C:\\Users\\omman\\AppData\\Local\\Programs\\Python\\Python312\\python.exe',
@@ -272,6 +272,49 @@ export const compareClaimProxy = async (req: Request, res: Response, next: any) 
       return res.json(fallbackData);
     } catch (fbErr: any) {
       console.error('Insurance Rule Engine Error:', fbErr?.message || fbErr);
+      return res.status(500).json({ error: fbErr?.message || 'Could not connect to Insurance AI service on port 5001.' });
+    }
+  }
+};
+
+export const insuranceAssistantChatProxy = async (req: Request, res: Response, next: any) => {
+  try {
+    const data = await postToFlask('/assistant-chat', req.body);
+
+    if (process.env.GEMINI_API_KEY && req.body?.query) {
+      try {
+        const { GoogleGenerativeAI } = require('@google/generative-ai');
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+        const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+        const prompt = `You are MediSync360's Senior Health Insurance Claims Specialist.
+A user asked: "${req.body.query}"
+
+Here is the VERIFIED GROUNDING CONTEXT from our deterministic insurance rule engine:
+${JSON.stringify(data, null, 2)}
+
+INSTRUCTIONS:
+- Explain this clearly and helpfully to the policyholder.
+- Strictly adhere to the figures, reasons, UINs, and clauses provided. Do NOT invent new limits or clauses.
+- Use markdown formatting with bullet points.`;
+
+        const aiRes = await model.generateContent(prompt);
+        const text = aiRes.response.text();
+        if (text && text.trim().length > 20) {
+          data.answer = text;
+        }
+      } catch (geminiErr) {
+        // Fall back cleanly to the rule engine grounded answer
+      }
+    }
+
+    return res.json(data);
+  } catch (error: any) {
+    console.error('Insurance Assistant Proxy Error:', error?.message || error);
+    try {
+      const fallbackData = await executePythonInsuranceRuleEngine('assistant', req.body);
+      return res.json(fallbackData);
+    } catch (fbErr: any) {
+      console.error('Insurance Rule Engine Chatbot Error:', fbErr?.message || fbErr);
       return res.status(500).json({ error: fbErr?.message || 'Could not connect to Insurance AI service on port 5001.' });
     }
   }

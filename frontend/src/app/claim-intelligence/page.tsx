@@ -1,6 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 import { fetchAPI } from "../../utils/api";
+import InsuranceChatAssistant from "../../components/InsuranceChatAssistant";
 
 interface Deduction {
   item: string;
@@ -1099,6 +1100,7 @@ export default function ClaimIntelligencePage() {
           {comparison && <ComparePanel rows={comparison} />}
         </div>
       </div>
+      <InsuranceChatAssistant claimData={form} claimResult={result} />
       <style>{`@media(max-width:768px){div[style*="grid-template-columns: 1.05fr 0.95fr"]{grid-template-columns:1fr!important;}}`}</style>
     </div>
   );
@@ -1586,6 +1588,54 @@ function ResultPanel({ result }: { result: ClaimResult }) {
           {result.final_decision_explanation}
         </p>
       </section>
+
+      {/* Interactive AI Specialist Consultation Prompt */}
+      <div
+        style={{
+          background: "linear-gradient(135deg, rgba(99,102,241,0.12), rgba(139,92,246,0.08))",
+          border: "1px solid rgba(99,102,241,0.3)",
+          borderRadius: 10,
+          padding: "0.9rem 1.25rem",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexWrap: "wrap",
+          gap: "0.75rem",
+        }}
+      >
+        <div style={{ flex: 1, minWidth: 240 }}>
+          <div style={{ fontSize: "0.88rem", fontWeight: 700, color: "#fafafa", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <span>💬</span> Questions About Your Deductions or Coverage?
+          </div>
+          <div style={{ fontSize: "0.76rem", color: "#a1a1aa", marginTop: "0.2rem", lineHeight: 1.4 }}>
+            Ask our AI Insurance Specialist to explain why room cuts or non-payables were applied, or how riders can help.
+          </div>
+        </div>
+        <button
+          type="button"
+          onClick={() => {
+            const floatingBtn = Array.from(document.querySelectorAll("button")).find(b => b.textContent?.includes("Ask Insurance AI"));
+            if (floatingBtn) floatingBtn.click();
+          }}
+          style={{
+            background: "#6366f1",
+            color: "#ffffff",
+            border: "none",
+            borderRadius: 6,
+            padding: "0.5rem 0.9rem",
+            fontSize: "0.8rem",
+            fontWeight: 600,
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.4rem",
+            boxShadow: "0 2px 8px rgba(99,102,241,0.4)",
+          }}
+        >
+          <span>Ask AI Specialist</span>
+          <span>➔</span>
+        </button>
+      </div>
     </>
   );
 }

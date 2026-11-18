@@ -11,6 +11,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from legacy_adapter import execute_claim_evaluation
 from registry.product_registry import list_supported_policies
+from assistant_bridge import handle_assistant_query
 
 
 def main():
@@ -22,7 +23,13 @@ def main():
         sys.stderr.write(f"JSON Parse Error: {e}\n")
         sys.exit(1)
 
-    if mode == "compare":
+    if mode in ("chat", "assistant"):
+        query = payload.get("query", "")
+        claim_data = payload.get("claimData")
+        claim_result = payload.get("claimResult")
+        result = handle_assistant_query(query, current_claim=claim_data, current_result=claim_result)
+        sys.stdout.write(json.dumps(result))
+    elif mode == "compare":
         results = []
         for p in list_supported_policies():
             comp_payload = {**payload, "company": p.insurer_name}
@@ -52,4 +59,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

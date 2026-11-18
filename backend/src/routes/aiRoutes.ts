@@ -7,6 +7,7 @@ import {
   predictAndRecommendDoctors,
   predictClaimProxy,
   compareClaimProxy,
+  insuranceAssistantChatProxy,
 } from '../controllers/aiController';
 import { protect } from '../middleware/authMiddleware';
 
@@ -20,5 +21,6 @@ router.post('/hospitals', compareHospitals);
 router.post('/book-generated-slot', protect, bookGeneratedProviderSlot);
 router.post('/predict-claim', predictClaimProxy);
 router.post('/compare-claim', compareClaimProxy);
+router.post('/assistant-chat', insuranceAssistantChatProxy);
 
 export default router;

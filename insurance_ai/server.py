@@ -113,6 +113,25 @@ class InsuranceAIHandler(BaseHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(json.dumps({"error": str(e)}).encode("utf-8"))
 
+        elif self.path == "/assistant-chat":
+            try:
+                from assistant_bridge import handle_assistant_query
+                query = payload.get("query", "")
+                claim_data = payload.get("claimData")
+                claim_result = payload.get("claimResult")
+                res = handle_assistant_query(query, current_claim=claim_data, current_result=claim_result)
+                self.send_response(200)
+                self._send_cors_headers()
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps(res).encode("utf-8"))
+            except Exception as e:
+                self.send_response(500)
+                self._send_cors_headers()
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": str(e)}).encode("utf-8"))
+
         else:
             self.send_response(404)
             self._send_cors_headers()
